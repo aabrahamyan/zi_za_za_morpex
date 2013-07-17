@@ -1,0 +1,393 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C0B759117971C0900735AD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0B759017971C0900735AD3 /* UIKit.framework */; };
+		2C0B759317971C0900735AD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0B759217971C0900735AD3 /* Foundation.framework */; };
+		2C0B759517971C0900735AD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0B759417971C0900735AD3 /* CoreGraphics.framework */; };
+		2C0B759B17971C0900735AD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B759917971C0900735AD3 /* InfoPlist.strings */; };
+		2C0B759D17971C0900735AD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B759C17971C0900735AD3 /* main.m */; };
+		2C0B75A117971C0900735AD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75A017971C0900735AD3 /* AppDelegate.m */; };
+		2C0B75A317971C0900735AD3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75A217971C0900735AD3 /* Default.png */; };
+		2C0B75A517971C0900735AD3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75A417971C0900735AD3 /* Default@2x.png */; };
+		2C0B75A717971C0900735AD3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75A617971C0900735AD3 /* Default-568h@2x.png */; };
+		2C0B75C9179725CE00735AD3 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75C8179725CE00735AD3 /* MainTabBarViewController.m */; };
+		2C0B75CC1797288B00735AD3 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75CB1797288B00735AD3 /* AppDelegate_iPad.m */; };
+		2C0B75CF179728C200735AD3 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75CE179728C200735AD3 /* AppDelegate_iPhone.m */; };
+		2C0B75D217972A7600735AD3 /* MainTabBarViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */; };
+		2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */; };
+		2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C0B758D17971C0900735AD3 /* Joomag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joomag.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C0B759017971C0900735AD3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2C0B759217971C0900735AD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C0B759417971C0900735AD3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2C0B759817971C0900735AD3 /* Joomag-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Joomag-Info.plist"; sourceTree = "<group>"; };
+		2C0B759A17971C0900735AD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C0B759C17971C0900735AD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2C0B759E17971C0900735AD3 /* Joomag-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Joomag-Prefix.pch"; sourceTree = "<group>"; };
+		2C0B759F17971C0900735AD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2C0B75A017971C0900735AD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2C0B75A217971C0900735AD3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2C0B75A417971C0900735AD3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2C0B75A617971C0900735AD3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2C0B75C7179725CE00735AD3 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		2C0B75C8179725CE00735AD3 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		2C0B75CA1797288B00735AD3 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPad.h; sourceTree = "<group>"; };
+		2C0B75CB1797288B00735AD3 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPad.m; sourceTree = "<group>"; };
+		2C0B75CD179728C200735AD3 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
+		2C0B75CE179728C200735AD3 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
+		2C0B75D017972A7600735AD3 /* MainTabBarViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController_iPad.h; sourceTree = "<group>"; };
+		2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController_iPad.m; sourceTree = "<group>"; };
+		2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
+		2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow_iPhone.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C0B758A17971C0900735AD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C0B759117971C0900735AD3 /* UIKit.framework in Frameworks */,
+				2C0B759317971C0900735AD3 /* Foundation.framework in Frameworks */,
+				2C0B759517971C0900735AD3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C0B758417971C0900735AD3 = {
+			isa = PBXGroup;
+			children = (
+				2C0B759617971C0900735AD3 /* Joomag */,
+				2C0B758F17971C0900735AD3 /* Frameworks */,
+				2C0B758E17971C0900735AD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C0B758E17971C0900735AD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B758D17971C0900735AD3 /* Joomag.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C0B758F17971C0900735AD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B759017971C0900735AD3 /* UIKit.framework */,
+				2C0B759217971C0900735AD3 /* Foundation.framework */,
+				2C0B759417971C0900735AD3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C0B759617971C0900735AD3 /* Joomag */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75B81797228100735AD3 /* Shared */,
+				2C0B75B91797228100735AD3 /* iPad */,
+				2C0B75BA1797228100735AD3 /* iPhone */,
+				2C0B759F17971C0900735AD3 /* AppDelegate.h */,
+				2C0B75A017971C0900735AD3 /* AppDelegate.m */,
+				2C0B759717971C0900735AD3 /* Supporting Files */,
+			);
+			path = Joomag;
+			sourceTree = "<group>";
+		};
+		2C0B759717971C0900735AD3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B759817971C0900735AD3 /* Joomag-Info.plist */,
+				2C0B759917971C0900735AD3 /* InfoPlist.strings */,
+				2C0B759C17971C0900735AD3 /* main.m */,
+				2C0B759E17971C0900735AD3 /* Joomag-Prefix.pch */,
+				2C0B75A217971C0900735AD3 /* Default.png */,
+				2C0B75A417971C0900735AD3 /* Default@2x.png */,
+				2C0B75A617971C0900735AD3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C0B75B81797228100735AD3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2C0B75B91797228100735AD3 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75C31797257E00735AD3 /* controllers */,
+				2C0B75BB179723A200735AD3 /* Resources-iPad */,
+				2C0B75CA1797288B00735AD3 /* AppDelegate_iPad.h */,
+				2C0B75CB1797288B00735AD3 /* AppDelegate_iPad.m */,
+			);
+			path = iPad;
+			sourceTree = "<group>";
+		};
+		2C0B75BA1797228100735AD3 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75C51797258700735AD3 /* controllers */,
+				2C0B75BE179723AD00735AD3 /* Resources-iPhone */,
+				2C0B75CD179728C200735AD3 /* AppDelegate_iPhone.h */,
+				2C0B75CE179728C200735AD3 /* AppDelegate_iPhone.m */,
+			);
+			path = iPhone;
+			sourceTree = "<group>";
+		};
+		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */,
+			);
+			path = "Resources-iPad";
+			sourceTree = "<group>";
+		};
+		2C0B75BE179723AD00735AD3 /* Resources-iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
+			);
+			path = "Resources-iPhone";
+			sourceTree = "<group>";
+		};
+		2C0B75C31797257E00735AD3 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75C41797257E00735AD3 /* tabbar */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		2C0B75C41797257E00735AD3 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75D017972A7600735AD3 /* MainTabBarViewController_iPad.h */,
+				2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
+		2C0B75C51797258700735AD3 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75C61797258700735AD3 /* tabbar */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		2C0B75C61797258700735AD3 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B75C7179725CE00735AD3 /* MainTabBarViewController.h */,
+				2C0B75C8179725CE00735AD3 /* MainTabBarViewController.m */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C0B758C17971C0900735AD3 /* Joomag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C0B75B317971C0A00735AD3 /* Build configuration list for PBXNativeTarget "Joomag" */;
+			buildPhases = (
+				2C0B758917971C0900735AD3 /* Sources */,
+				2C0B758A17971C0900735AD3 /* Frameworks */,
+				2C0B758B17971C0900735AD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Joomag;
+			productName = Joomag;
+			productReference = 2C0B758D17971C0900735AD3 /* Joomag.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C0B758517971C0900735AD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Joomag;
+			};
+			buildConfigurationList = 2C0B758817971C0900735AD3 /* Build configuration list for PBXProject "Joomag" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2C0B758417971C0900735AD3;
+			productRefGroup = 2C0B758E17971C0900735AD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C0B758C17971C0900735AD3 /* Joomag */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C0B758B17971C0900735AD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C0B759B17971C0900735AD3 /* InfoPlist.strings in Resources */,
+				2C0B75A317971C0900735AD3 /* Default.png in Resources */,
+				2C0B75A517971C0900735AD3 /* Default@2x.png in Resources */,
+				2C0B75A717971C0900735AD3 /* Default-568h@2x.png in Resources */,
+				2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */,
+				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C0B758917971C0900735AD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C0B759D17971C0900735AD3 /* main.m in Sources */,
+				2C0B75A117971C0900735AD3 /* AppDelegate.m in Sources */,
+				2C0B75C9179725CE00735AD3 /* MainTabBarViewController.m in Sources */,
+				2C0B75CC1797288B00735AD3 /* AppDelegate_iPad.m in Sources */,
+				2C0B75CF179728C200735AD3 /* AppDelegate_iPhone.m in Sources */,
+				2C0B75D217972A7600735AD3 /* MainTabBarViewController_iPad.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2C0B759917971C0900735AD3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C0B759A17971C0900735AD3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C0B75B117971C0A00735AD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C0B75B217971C0A00735AD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C0B75B417971C0A00735AD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
+				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2C0B75B517971C0A00735AD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
+				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C0B758817971C0900735AD3 /* Build configuration list for PBXProject "Joomag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C0B75B117971C0A00735AD3 /* Debug */,
+				2C0B75B217971C0A00735AD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C0B75B317971C0A00735AD3 /* Build configuration list for PBXNativeTarget "Joomag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C0B75B417971C0A00735AD3 /* Debug */,
+				2C0B75B517971C0A00735AD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C0B758517971C0900735AD3 /* Project object */;
+}
