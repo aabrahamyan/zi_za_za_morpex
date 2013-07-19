@@ -126,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				2C0B759617971C0900735AD3 /* Joomag */,
-				5ACAC178179983570029A07F /* AFNetworking */,
 				2C0B758F17971C0900735AD3 /* Frameworks */,
 				2C0B758E17971C0900735AD3 /* Products */,
 			);
@@ -182,6 +181,7 @@
 		2C0B75B81797228100735AD3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5ACAC178179983570029A07F /* AFNetworking */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -313,7 +313,8 @@
 				5ACAC18A179983570029A07F /* UIImageView+AFNetworking.h */,
 				5ACAC18B179983570029A07F /* UIImageView+AFNetworking.m */,
 			);
-			path = AFNetworking;
+			name = AFNetworking;
+			path = ../../AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
