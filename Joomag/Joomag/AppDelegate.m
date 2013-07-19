@@ -20,7 +20,6 @@
     @autoreleasepool {
         return [[MainTabBarViewController alloc] init];
     }
-    
 }
 
 - (void) displayStartView {
@@ -34,7 +33,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     
     [self displayStartView];
     
