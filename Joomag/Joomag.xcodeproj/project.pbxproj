@@ -22,6 +22,14 @@
 		2C0B75D217972A7600735AD3 /* MainTabBarViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */; };
 		2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */; };
 		2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */; };
+		2CADE37917993D0A002202D5 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37817993D0A002202D5 /* ExploreViewController.m */; };
+		2CADE37C17993D1F002202D5 /* ExploreViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37B17993D1F002202D5 /* ExploreViewController_iPad.m */; };
+		2CADE37F17993D56002202D5 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37E17993D56002202D5 /* LibraryViewController.m */; };
+		2CADE38217993D68002202D5 /* LibraryViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38117993D68002202D5 /* LibraryViewController_iPad.m */; };
+		2CADE38517994124002202D5 /* MyBookshelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38417994124002202D5 /* MyBookshelfViewController.m */; };
+		2CADE38817994144002202D5 /* MyBookshelViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38717994144002202D5 /* MyBookshelViewController_iPad.m */; };
+		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
+		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +56,22 @@
 		2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController_iPad.m; sourceTree = "<group>"; };
 		2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
 		2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		2CADE37717993D0A002202D5 /* ExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
+		2CADE37817993D0A002202D5 /* ExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
+		2CADE37A17993D1F002202D5 /* ExploreViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreViewController_iPad.h; sourceTree = "<group>"; };
+		2CADE37B17993D1F002202D5 /* ExploreViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController_iPad.m; sourceTree = "<group>"; };
+		2CADE37D17993D56002202D5 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
+		2CADE37E17993D56002202D5 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
+		2CADE38017993D68002202D5 /* LibraryViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController_iPad.h; sourceTree = "<group>"; };
+		2CADE38117993D68002202D5 /* LibraryViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController_iPad.m; sourceTree = "<group>"; };
+		2CADE38317994124002202D5 /* MyBookshelfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookshelfViewController.h; sourceTree = "<group>"; };
+		2CADE38417994124002202D5 /* MyBookshelfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookshelfViewController.m; sourceTree = "<group>"; };
+		2CADE38617994144002202D5 /* MyBookshelViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookshelViewController_iPad.h; sourceTree = "<group>"; };
+		2CADE38717994144002202D5 /* MyBookshelViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookshelViewController_iPad.m; sourceTree = "<group>"; };
+		2CADE3891799429E002202D5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		2CADE38A1799429E002202D5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
+		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +190,7 @@
 		2C0B75C31797257E00735AD3 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CADE37217993C41002202D5 /* main */,
 				2C0B75C41797257E00735AD3 /* tabbar */,
 			);
 			path = controllers;
@@ -183,6 +208,7 @@
 		2C0B75C51797258700735AD3 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CADE37617993CFD002202D5 /* main */,
 				2C0B75C61797258700735AD3 /* tabbar */,
 			);
 			path = controllers;
@@ -195,6 +221,36 @@
 				2C0B75C8179725CE00735AD3 /* MainTabBarViewController.m */,
 			);
 			path = tabbar;
+			sourceTree = "<group>";
+		};
+		2CADE37217993C41002202D5 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				2CADE37A17993D1F002202D5 /* ExploreViewController_iPad.h */,
+				2CADE37B17993D1F002202D5 /* ExploreViewController_iPad.m */,
+				2CADE38017993D68002202D5 /* LibraryViewController_iPad.h */,
+				2CADE38117993D68002202D5 /* LibraryViewController_iPad.m */,
+				2CADE38617994144002202D5 /* MyBookshelViewController_iPad.h */,
+				2CADE38717994144002202D5 /* MyBookshelViewController_iPad.m */,
+				2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */,
+				2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		2CADE37617993CFD002202D5 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				2CADE37717993D0A002202D5 /* ExploreViewController.h */,
+				2CADE37817993D0A002202D5 /* ExploreViewController.m */,
+				2CADE37D17993D56002202D5 /* LibraryViewController.h */,
+				2CADE37E17993D56002202D5 /* LibraryViewController.m */,
+				2CADE38317994124002202D5 /* MyBookshelfViewController.h */,
+				2CADE38417994124002202D5 /* MyBookshelfViewController.m */,
+				2CADE3891799429E002202D5 /* SettingsViewController.h */,
+				2CADE38A1799429E002202D5 /* SettingsViewController.m */,
+			);
+			path = main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +326,14 @@
 				2C0B75CC1797288B00735AD3 /* AppDelegate_iPad.m in Sources */,
 				2C0B75CF179728C200735AD3 /* AppDelegate_iPhone.m in Sources */,
 				2C0B75D217972A7600735AD3 /* MainTabBarViewController_iPad.m in Sources */,
+				2CADE37917993D0A002202D5 /* ExploreViewController.m in Sources */,
+				2CADE37C17993D1F002202D5 /* ExploreViewController_iPad.m in Sources */,
+				2CADE37F17993D56002202D5 /* LibraryViewController.m in Sources */,
+				2CADE38217993D68002202D5 /* LibraryViewController_iPad.m in Sources */,
+				2CADE38517994124002202D5 /* MyBookshelfViewController.m in Sources */,
+				2CADE38817994144002202D5 /* MyBookshelViewController_iPad.m in Sources */,
+				2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */,
+				2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +450,7 @@
 				2C0B75B517971C0A00735AD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

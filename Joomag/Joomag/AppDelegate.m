@@ -25,8 +25,8 @@
 
 - (void) displayStartView {
     MainTabBarViewController * mainVC = [self getStartScreen];
-    navController = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    [self.window setRootViewController:navController];
+//    navController = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    [self.window setRootViewController:mainVC];
 }
 
 #pragma -- Main App Cycle --

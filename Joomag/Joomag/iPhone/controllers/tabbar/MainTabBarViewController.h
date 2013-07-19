@@ -8,13 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainTabBarViewController : UIViewController {
+@class ExploreViewController;
+@class LibraryViewController;
+@class MyBookshelfViewController;
+@class SettingsViewController;
+
+@interface MainTabBarViewController : UIViewController<UITabBarControllerDelegate> {
 
 
 @protected
     UITabBarController * maintabBarController;
-    
+    ExploreViewController * exploreVC;
+    LibraryViewController * libraryVC;
+    MyBookshelfViewController * myBookShelfVC;
+    SettingsViewController * settingsVC;
 }
+
+
 
 
 
