@@ -33,6 +33,7 @@
 		5AC6FFE7179B31F70062736F /* testData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFE6179B31F70062736F /* testData.xml */; };
 		5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEA179B32AF0062736F /* ImageDownloader.m */; };
 		5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEC179B32AF0062736F /* MagazinRecord.m */; };
+		5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF3179B33AF0062736F /* DataHolder.m */; };
 		5ACAC18C179983570029A07F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17A179983570029A07F /* AFHTTPClient.m */; };
 		5ACAC18D179983570029A07F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17C179983570029A07F /* AFHTTPRequestOperation.m */; };
 		5ACAC18E179983570029A07F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17E179983570029A07F /* AFImageRequestOperation.m */; };
@@ -91,6 +92,8 @@
 		5AC6FFEA179B32AF0062736F /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		5AC6FFEB179B32AF0062736F /* MagazinRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazinRecord.h; sourceTree = "<group>"; };
 		5AC6FFEC179B32AF0062736F /* MagazinRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazinRecord.m; sourceTree = "<group>"; };
+		5AC6FFF2179B33AF0062736F /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataHolder.h; path = Joomag/DataHolder.h; sourceTree = SOURCE_ROOT; };
+		5AC6FFF3179B33AF0062736F /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataHolder.m; path = Joomag/DataHolder.m; sourceTree = SOURCE_ROOT; };
 		5ACAC179179983570029A07F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ACAC17A179983570029A07F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ACAC17B179983570029A07F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				5ACAC178179983570029A07F /* AFNetworking */,
+				5AC6FFF2179B33AF0062736F /* DataHolder.h */,
+				5AC6FFF3179B33AF0062736F /* DataHolder.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				5ACAC194179983570029A07F /* UIImageView+AFNetworking.m in Sources */,
 				5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */,
 				5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */,
+				5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
