@@ -10,4 +10,9 @@
 
 @interface DataHolder : NSObject
 
+//Test Data For Showing in ScrollView
+@property (strong, nonatomic) NSArray *testData;
+
++ (DataHolder *) sharedData;
+
 @end
