@@ -21,6 +21,7 @@
 - (void) loadView {
     [super loadView];
     NSLog(@"ExploreViewController");
+    
     DataHolder *dataHolder = [DataHolder sharedData];
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];

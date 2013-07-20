@@ -60,7 +60,6 @@
 {
     // Set appIcon and clear temporary data/image
     UIImage *image = [[UIImage alloc] initWithData:self.activeDownload];
-    //NSLog(@"image: %@",image);
     
     if (image.size.width != kAppIconSizeWidth || image.size.height != kAppIconSizeHeight)
 	{

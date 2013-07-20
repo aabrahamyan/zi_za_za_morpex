@@ -35,6 +35,7 @@
 		5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEC179B32AF0062736F /* MagazinRecord.m */; };
 		5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF3179B33AF0062736F /* DataHolder.m */; };
 		5AC6FFF7179B34920062736F /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF6179B34920062736F /* ScrollView.m */; };
+		5AC6FFF9179B392D0062736F /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF8179B392D0062736F /* placeholder.png */; };
 		5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC1951799836F0029A07F /* MobileCoreServices.framework */; };
 		5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC197179983760029A07F /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		5AC6FFF3179B33AF0062736F /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataHolder.m; path = Joomag/DataHolder.m; sourceTree = SOURCE_ROOT; };
 		5AC6FFF5179B34920062736F /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
 		5AC6FFF6179B34920062736F /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
+		5AC6FFF8179B392D0062736F /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5ACAC1951799836F0029A07F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5ACAC197179983760029A07F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -208,6 +210,7 @@
 		2C0B75BE179723AD00735AD3 /* Resources-iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				5AC6FFF8179B392D0062736F /* placeholder.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
 			);
 			path = "Resources-iPhone";
@@ -350,6 +353,7 @@
 				2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */,
 				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
 				5AC6FFE7179B31F70062736F /* testData.xml in Resources */,
+				5AC6FFF9179B392D0062736F /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

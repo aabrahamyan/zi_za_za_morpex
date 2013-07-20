@@ -44,7 +44,7 @@ static NSString *kMagazineStr      = @"magazine";
 
 - (id)init {
     if (self = [super init]) {
-        NSLog(@"DataHolder");
+        //NSLog(@"DataHolder");
         
         //self.testData = [NSMutableArray array];
         self.workingArray = [NSMutableArray array];
