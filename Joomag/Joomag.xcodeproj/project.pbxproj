@@ -30,6 +30,7 @@
 		2CADE38817994144002202D5 /* MyBookshelViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38717994144002202D5 /* MyBookshelViewController_iPad.m */; };
 		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
+		5AC6FFE7179B31F70062736F /* testData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFE6179B31F70062736F /* testData.xml */; };
 		5ACAC18C179983570029A07F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17A179983570029A07F /* AFHTTPClient.m */; };
 		5ACAC18D179983570029A07F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17C179983570029A07F /* AFHTTPRequestOperation.m */; };
 		5ACAC18E179983570029A07F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17E179983570029A07F /* AFImageRequestOperation.m */; };
@@ -83,6 +84,7 @@
 		2CADE38A1799429E002202D5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
 		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
+		5AC6FFE6179B31F70062736F /* testData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testData.xml; sourceTree = "<group>"; };
 		5ACAC179179983570029A07F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ACAC17A179983570029A07F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ACAC17B179983570029A07F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		2C0B759717971C0900735AD3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5AC6FFE6179B31F70062736F /* testData.xml */,
 				2C0B759817971C0900735AD3 /* Joomag-Info.plist */,
 				2C0B759917971C0900735AD3 /* InfoPlist.strings */,
 				2C0B759C17971C0900735AD3 /* main.m */,
@@ -374,6 +377,7 @@
 				2C0B75A717971C0900735AD3 /* Default-568h@2x.png in Resources */,
 				2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */,
 				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
+				5AC6FFE7179B31F70062736F /* testData.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

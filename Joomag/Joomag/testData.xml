@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<bookstore>
+  <magazine category="COOKING">
+    <title lang="en">Title 1</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/1.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/1.png</detailsImageUrl>
+    <detailsText>detais text 1</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 2</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/2.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/2.png</detailsImageUrl>
+    <detailsText>detais text 2</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 3</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/3.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/3.png</detailsImageUrl>
+    <detailsText>detais text 3</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 4</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/4.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/4.png</detailsImageUrl>
+    <detailsText>detais text 4</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 5</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/5.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/5.png</detailsImageUrl>
+    <detailsText>detais text 5</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 6</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/6.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/6.png</detailsImageUrl>
+    <detailsText>detais text 6</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 7</title>
+    <author>Autor 7</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/7.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/7.png</detailsImageUrl>
+    <detailsText>detais text 7</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 8</title>
+    <author>Autor 8</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/8.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/8.png</detailsImageUrl>
+    <detailsText>detais text 8</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 9</title>
+    <author>Autor 9</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/9.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/9.png</detailsImageUrl>
+    <detailsText>detais text 9</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 10</title>
+    <author>Autor 10</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/10.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/10.png</detailsImageUrl>
+    <detailsText>detais text</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 11</title>
+    <author>Autor 11</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/11.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
+    <detailsText>detais text</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 12</title>
+    <author>Autor 12</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/12.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/12.png</detailsImageUrl>
+    <detailsText>detais text 12</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 13</title>
+    <author>Autor 13</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/13.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/13.png</detailsImageUrl>
+    <detailsText>detais text 13</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 14</title>
+    <author>Autor 14</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/14.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/14.png</detailsImageUrl>
+    <detailsText>detais text 14</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 15</title>
+    <author>Autor 15</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/15.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/15.png</detailsImageUrl>
+    <detailsText>detais text 15</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 16</title>
+    <author>Autor 16</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/16.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/16.png</detailsImageUrl>
+    <detailsText>detais text 16</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 17</title>
+    <author>Autor 17</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/17.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/17.png</detailsImageUrl>
+    <detailsText>detais text 17</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 18</title>
+    <author>Autor 18</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/18.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/18.png</detailsImageUrl>
+    <detailsText>detais text 18</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 19</title>
+    <author>Autor 19</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/19.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/19.png</detailsImageUrl>
+    <detailsText>detais text 19</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 20</title>
+    <author>Autor 1</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/20.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/20.png</detailsImageUrl>
+    <detailsText>detais text 20</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 21</title>
+    <author>Autor 21</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/21.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/21.png</detailsImageUrl>
+    <detailsText>detais text 21</detailsText>
+  </magazine>
+  <magazine category="COOKING">
+    <title lang="en">Title 22</title>
+    <author>Autor 22</author>
+    <imageUrl>http://78.47.194.157/ads/tracking/images/22.png</imageUrl>
+    <detailsImageUrl>http://78.47.194.157/ads/tracking/images/22.png</detailsImageUrl>
+    <detailsText>detais text 22</detailsText>
+  </magazine>
+</bookstore>
