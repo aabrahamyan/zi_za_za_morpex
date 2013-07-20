@@ -31,6 +31,8 @@
 		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
 		5AC6FFE7179B31F70062736F /* testData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFE6179B31F70062736F /* testData.xml */; };
+		5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEA179B32AF0062736F /* ImageDownloader.m */; };
+		5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEC179B32AF0062736F /* MagazinRecord.m */; };
 		5ACAC18C179983570029A07F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17A179983570029A07F /* AFHTTPClient.m */; };
 		5ACAC18D179983570029A07F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17C179983570029A07F /* AFHTTPRequestOperation.m */; };
 		5ACAC18E179983570029A07F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACAC17E179983570029A07F /* AFImageRequestOperation.m */; };
@@ -85,6 +87,10 @@
 		2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
 		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
 		5AC6FFE6179B31F70062736F /* testData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testData.xml; sourceTree = "<group>"; };
+		5AC6FFE9179B32AF0062736F /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		5AC6FFEA179B32AF0062736F /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
+		5AC6FFEB179B32AF0062736F /* MagazinRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazinRecord.h; sourceTree = "<group>"; };
+		5AC6FFEC179B32AF0062736F /* MagazinRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazinRecord.m; sourceTree = "<group>"; };
 		5ACAC179179983570029A07F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ACAC17A179983570029A07F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ACAC17B179983570029A07F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 		2C0B759617971C0900735AD3 /* Joomag */ = {
 			isa = PBXGroup;
 			children = (
+				5AC6FFE8179B328C0062736F /* Class */,
 				2C0B75B81797228100735AD3 /* Shared */,
 				2C0B75B91797228100735AD3 /* iPad */,
 				2C0B75BA1797228100735AD3 /* iPhone */,
@@ -293,6 +300,17 @@
 			path = main;
 			sourceTree = "<group>";
 		};
+		5AC6FFE8179B328C0062736F /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				5AC6FFE9179B32AF0062736F /* ImageDownloader.h */,
+				5AC6FFEA179B32AF0062736F /* ImageDownloader.m */,
+				5AC6FFEB179B32AF0062736F /* MagazinRecord.h */,
+				5AC6FFEC179B32AF0062736F /* MagazinRecord.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		5ACAC178179983570029A07F /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +429,8 @@
 				5ACAC192179983570029A07F /* AFURLConnectionOperation.m in Sources */,
 				5ACAC193179983570029A07F /* AFXMLRequestOperation.m in Sources */,
 				5ACAC194179983570029A07F /* UIImageView+AFNetworking.m in Sources */,
+				5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */,
+				5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
