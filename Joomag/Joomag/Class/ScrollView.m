@@ -90,8 +90,8 @@
             }
         } else {
             NSLog(@"else");
-            UIImageView *oldPageView = [self.subviews objectAtIndex:page];
-            oldPageView.image = mRecord.magazinIcon;
+            UIImageView *previousPageImage = [self.subviews objectAtIndex:page];
+            previousPageImage.image = mRecord.magazinIcon;
         }
     }
 }

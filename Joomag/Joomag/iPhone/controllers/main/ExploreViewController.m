@@ -9,11 +9,19 @@
 #import "ExploreViewController.h"
 #import "DataHolder.h"
 #import "ScrollView.h"
+#import "MagazinRecord.h"
 
 @interface ExploreViewController (){
+    DataHolder *dataHolder;
     ScrollView *scrollView;
+    MagazinRecord *mRecord;
+    
     UIPageControl *pageControl;
+    
     UIView *detailsView;
+    UILabel *detailsText;
+    UILabel *detailsTitle;
+    UILabel *detailsAutor;
 }
 
 @end
@@ -24,8 +32,7 @@
     [super loadView];
     NSLog(@"ExploreViewController");
     
-    DataHolder *dataHolder = [DataHolder sharedData];
-    
+    dataHolder = [DataHolder sharedData];
     
     //---------------------------- Scroll View ------------------------------------
     scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, dataHolder.screenHeight)];
@@ -46,6 +53,30 @@
     detailsView.frame = CGRectMake(30, 284, 260, 150); //TODO
     detailsView.backgroundColor = [UIColor blackColor];
     detailsView.alpha = 0;
+    
+    //---------------------------- Details View ------------------------------------
+    detailsView = [[UIView alloc] init];
+    detailsView.frame = CGRectMake(30, 284, 260, 150); //TODO
+    detailsView.backgroundColor = [UIColor blackColor];
+    detailsView.alpha = 0;
+
+    detailsTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 100, 30)];
+    detailsTitle.backgroundColor = [UIColor clearColor];
+    detailsTitle.textColor = [UIColor whiteColor];
+    [detailsView addSubview:detailsTitle];
+    
+    detailsAutor = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 100, 30)];
+    detailsAutor.backgroundColor = [UIColor clearColor];
+    detailsAutor.textColor = [UIColor whiteColor];
+    [detailsView addSubview:detailsAutor];
+    
+    detailsText = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, 100, 30)];
+    detailsText.backgroundColor = [UIColor clearColor];
+    detailsText.textColor = [UIColor whiteColor];
+    [detailsView addSubview:detailsText];
+    
+    [self.view addSubview:detailsView];
+    [self showDetailsView:0];
     
     [self.view addSubview:detailsView];
     [self showDetailsView:0];
@@ -69,8 +100,13 @@
 // Show details view with alpha value animating
 // -------------------------------------------------------------------------------
 - (void)showDetailsView: (NSInteger)page {
+    mRecord = [dataHolder.testData objectAtIndex:page];
+    detailsText.text = mRecord.magazinDetailsText;
+    detailsAutor.text = mRecord.magazinAutor;
+    detailsTitle.text = mRecord.magazinTitle;
+    
     [UIView animateWithDuration:0.6 animations:^() {
-        detailsView.alpha = 0.5;
+        detailsView.alpha = 0.7;
     }];
 }
 
