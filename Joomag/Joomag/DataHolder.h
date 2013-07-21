@@ -12,6 +12,8 @@
 
 //Test Data For Showing in ScrollView
 @property (strong, nonatomic) NSArray *testData;
+@property float screenWidth;
+@property float screenHeight;
 
 + (DataHolder *) sharedData;
 

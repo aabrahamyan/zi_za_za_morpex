@@ -44,7 +44,9 @@ static NSString *kMagazineStr      = @"magazine";
 
 - (id)init {
     if (self = [super init]) {
-        //NSLog(@"DataHolder");
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        self.screenWidth = screenRect.size.width;
+        self.screenHeight = screenRect.size.height;
         
         //self.testData = [NSMutableArray array];
         self.workingArray = [NSMutableArray array];

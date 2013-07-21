@@ -77,7 +77,7 @@
     <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
     <detailsText>detais text</detailsText>
   </magazine>
-  <magazine category="COOKING">
+<!--  <magazine category="COOKING">
     <title lang="en">Title 12</title>
     <author>Autor 12</author>
     <imageUrl>http://78.47.194.157/ads/tracking/images/12.png</imageUrl>
@@ -153,5 +153,5 @@
     <imageUrl>http://78.47.194.157/ads/tracking/images/22.png</imageUrl>
     <detailsImageUrl>http://78.47.194.157/ads/tracking/images/22.png</detailsImageUrl>
     <detailsText>detais text 22</detailsText>
-  </magazine>
+  </magazine> -->
 </bookstore>

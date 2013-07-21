@@ -176,7 +176,8 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    self.currentPage = [self currentPage:self.contentOffset.x];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 
 // any zoom scale changes
