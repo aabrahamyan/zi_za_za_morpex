@@ -107,6 +107,8 @@
         imageDownloader = [[ImageDownloader alloc] init];
         imageDownloader.magazinRecord = magazinRecord;
         [imageDownloader setCompletionHandler:^{
+            NSLog(@"Download Image: %i",page);
+            
             // Display the newly loaded image
             UIImageView *newPageView = [self.subviews objectAtIndex:page];
             newPageView.image = magazinRecord.magazinIcon;
