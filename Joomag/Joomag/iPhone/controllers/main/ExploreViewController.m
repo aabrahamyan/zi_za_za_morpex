@@ -42,18 +42,17 @@
     [self.view addSubview:pageControl];
     
     //---------------------------- Details View ------------------------------------
-    NSLog(@"height: %f",dataHolder.screenHeight);
     detailsView = [[UIView alloc] init];
     detailsView.frame = CGRectMake(30, 284, 260, 150); //TODO
     detailsView.backgroundColor = [UIColor blackColor];
     detailsView.alpha = 0;
-    //detailsView.hidden = YES;
     
     [self.view addSubview:detailsView];
     [self showDetailsView:0];
     
     //Notify When Page Changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl) name:@"updatePageControl" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
 }
 
 - (void)updatePageControl {
@@ -62,11 +61,14 @@
 }
 
 - (void)showDetailsView: (NSInteger)page {
-    [UIView animateWithDuration:0 animations:^() {
-        detailsView.alpha = 0;
-    }];
     [UIView animateWithDuration:0.6 animations:^() {
         detailsView.alpha = 0.5;
+    }];
+}
+
+- (void)hideDetailsView {
+    [UIView animateWithDuration:0 animations:^() {
+        detailsView.alpha = 0;
     }];
 }
 

@@ -168,6 +168,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self loadImagesForOnscreenRows:[self currentPage:self.contentOffset.x]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 
 // -------------------------------------------------------------------------------
@@ -177,7 +178,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     self.currentPage = [self currentPage:self.contentOffset.x];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 
 // any zoom scale changes
@@ -189,7 +189,7 @@
 // called on start of dragging (may require some time and or distance to move)
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
 }
 
 // called on finger up if the user dragged. velocity is in points/second. targetContentOffset may be changed to adjust where the scroll view comes to rest. not called when pagingEnabled is YES
