@@ -55,21 +55,30 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
 }
 
+// -------------------------------------------------------------------------------
+// updatePageControl
+// Update UIPageControl and show details view with current page
+// -------------------------------------------------------------------------------
 - (void)updatePageControl {
     pageControl.currentPage = scrollView.currentPage;
     [self showDetailsView: scrollView.currentPage];
 }
 
+// -------------------------------------------------------------------------------
+// showDetailsView:
+// Show details view with alpha value animating
+// -------------------------------------------------------------------------------
 - (void)showDetailsView: (NSInteger)page {
     [UIView animateWithDuration:0.6 animations:^() {
         detailsView.alpha = 0.5;
     }];
 }
 
+// -------------------------------------------------------------------------------
+// hideDetailsView
+// -------------------------------------------------------------------------------
 - (void)hideDetailsView {
-    [UIView animateWithDuration:0 animations:^() {
-        detailsView.alpha = 0;
-    }];
+    detailsView.alpha = 0;
 }
 
 - (void)didReceiveMemoryWarning {
