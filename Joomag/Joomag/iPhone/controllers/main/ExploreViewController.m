@@ -105,7 +105,7 @@
     detailsAutor.text = mRecord.magazinAutor;
     detailsTitle.text = mRecord.magazinTitle;
     
-    [UIView animateWithDuration:0.6 animations:^() {
+    [UIView animateWithDuration:0.3 animations:^() {
         detailsView.alpha = 0.7;
     }];
 }

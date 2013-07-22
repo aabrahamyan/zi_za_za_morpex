@@ -18,6 +18,7 @@
 
 // the set of ImageDownloader objects for each app
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
+@property (nonatomic, strong) NSMutableArray *pageViews;
 
 @end
 
@@ -50,11 +51,11 @@
         // Set up the content size of the scroll view
         self.contentSize = CGSizeMake(pagesScrollViewSize.width * [self.entries count], pagesScrollViewSize.height);
         
-        // Set Container Views With Placholder Image
+        // Set up the array to hold the views for each page
+        self.pageViews = [[NSMutableArray alloc] init];
+        
         for (NSInteger i = 0; i < entriesLength; ++i) {
-            UIImageView *containerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
-            containerView.frame = [self currentFrame:i];
-            [self addSubview:containerView];
+            [self.pageViews addObject:[NSNull null]];
         }
         
         // Load the initial set of pages that are on screen
@@ -69,10 +70,27 @@
 // loadVisiblePages
 // Load the pages which are now on screen
 // -------------------------------------------------------------------------------
+
 - (void)loadVisiblePages {
     // First, determine which page is currently visible
-    for (NSInteger i = 0; i < 5; i++) {
-            [self loadPage:i];
+    NSInteger page = [self currentPage:self.contentOffset.x];
+    
+    // Work out which pages we want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // Purge anything before the first page
+    for (NSInteger i = 0; i < firstPage; i++) {
+        [self purgePage:i];
+    }
+    
+    for (NSInteger i = firstPage; i <= lastPage; i++) {
+        [self loadPage:i];
+    }
+    
+    // Purge anything after the last page
+    for (NSInteger i = lastPage+1; i < entriesLength; i++) {
+        [self purgePage:i];
     }
 }
 
@@ -80,19 +98,43 @@
 // loadPage:
 // Load an individual page
 // -------------------------------------------------------------------------------
-- (void)loadPage: (NSInteger)page{
-    if(entriesLength > 0){
+- (void)loadPage:(NSInteger)page {
+    if (page < 0 || page >= entriesLength) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    // Load an individual page, first seeing if we've already loaded it
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull*)pageView == [NSNull null]) {
         // Set up the page...
         MagazinRecord *mRecord = [self.entries objectAtIndex:page];
         if (!mRecord.magazinIcon) {
-            if (self.dragging == NO && self.decelerating == NO) {
-                [self startIconDownload:mRecord forIndexPath:page];
-            }
+            [self startIconDownload:mRecord forIndexPath:page];
         } else {
-            NSLog(@"else");
-            UIImageView *previousPageImage = [self.subviews objectAtIndex:page];
-            previousPageImage.image = mRecord.magazinIcon;
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:mRecord.magazinIcon];
+            newPageView.frame = [self currentFrame:page];
+            [self addSubview:newPageView];
+            [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
         }
+    }
+}
+
+// -------------------------------------------------------------------------------
+// purgePage:
+// Purge an individual page
+// -------------------------------------------------------------------------------
+- (void)purgePage:(NSInteger)page {
+    if (page < 0 || page >= entriesLength) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
     }
 }
 
@@ -110,8 +152,10 @@
             NSLog(@"Download Image: %i",page);
             
             // Display the newly loaded image
-            UIImageView *newPageView = [self.subviews objectAtIndex:page];
-            newPageView.image = magazinRecord.magazinIcon;
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:magazinRecord.magazinIcon];
+            newPageView.frame = [self currentFrame:page];
+            [self addSubview:newPageView];
+            [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
             
             // Remove the IconDownloader from the in progress list.
             // This will result in it being deallocated.
@@ -120,25 +164,6 @@
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:index];
         [imageDownloader startDownload];
-    }
-}
-
-// -------------------------------------------------------------------------------
-//	loadImagesForOnscreenRows
-//  This method is used in case the user scrolled into a set of cells that don't
-//  have their app icons yet.
-// -------------------------------------------------------------------------------
-- (void)loadImagesForOnscreenRows: (NSInteger)page
-{
-    if ([self.entries count] > 0)
-    {
-        MagazinRecord *magazinRecord = [self.entries objectAtIndex:page];
-        
-        if (!magazinRecord.magazinIcon)
-            // Avoid the app icon download if the app already has an icon
-        {
-            [self startIconDownload:magazinRecord forIndexPath:page];
-        }
     }
 }
 
@@ -169,7 +194,6 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self loadImagesForOnscreenRows:[self currentPage:self.contentOffset.x]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 
@@ -180,6 +204,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     self.currentPage = [self currentPage:self.contentOffset.x];
+    [self loadVisiblePages];
 }
 
 // any zoom scale changes
