@@ -30,6 +30,7 @@
 		2CADE38817994144002202D5 /* MyBookshelViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38717994144002202D5 /* MyBookshelViewController_iPad.m */; };
 		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
+		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
 		5ABDDBCC179BF75D002F23AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBC179BF75D002F23AD /* AFImageRequestOperation.m */; };
@@ -89,6 +90,7 @@
 		2CADE38A1799429E002202D5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
 		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
+		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ABDDBB9179BF75D002F23AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */,
 				5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */,
 				5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */,
 				2C0B759117971C0900735AD3 /* UIKit.framework in Frameworks */,
@@ -158,6 +161,7 @@
 		2C0B758F17971C0900735AD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A0795D117A1C93B0039F705 /* QuartzCore.framework */,
 				5ACAC197179983760029A07F /* SystemConfiguration.framework */,
 				5ACAC1951799836F0029A07F /* MobileCoreServices.framework */,
 				2C0B759017971C0900735AD3 /* UIKit.framework */,

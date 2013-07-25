@@ -148,11 +148,13 @@
     if (imageDownloader == nil) {
         imageDownloader = [[ImageDownloader alloc] init];
         imageDownloader.magazinRecord = magazinRecord;
+        UIImageView *newPageView = [[UIImageView alloc] init];
+        
         [imageDownloader setCompletionHandler:^{
             NSLog(@"Download Image: %i",page);
             
             // Display the newly loaded image
-            UIImageView *newPageView = [[UIImageView alloc] initWithImage:magazinRecord.magazinIcon];
+            newPageView.image = magazinRecord.magazinIcon;
             newPageView.frame = [self currentFrame:page];
             [self addSubview:newPageView];
             [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
@@ -163,7 +165,7 @@
         }];
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:index];
-        [imageDownloader startDownload];
+        [imageDownloader startDownloadWithImageView:newPageView];
     }
 }
 
