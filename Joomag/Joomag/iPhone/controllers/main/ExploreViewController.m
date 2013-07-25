@@ -91,7 +91,7 @@
     [readBtn addTarget:self  action:@selector(readHandler) forControlEvents:UIControlEventTouchDown];
     [readBtn setTitle:@"READ" forState:UIControlStateNormal];
     readBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-    [[readBtn layer] setBorderWidth:1.0f];
+    [[readBtn layer] setBorderWidth:1.5f];
     [[readBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
     
     [detailsView addSubview:readBtn];
@@ -102,7 +102,7 @@
     [buyIssueBtn setTitle:@"BUY ISSUE" forState:UIControlStateNormal];
     buyIssueBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     buyIssueBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-    [[buyIssueBtn layer] setBorderWidth:1.0f];
+    [[buyIssueBtn layer] setBorderWidth:1.5f];
     [[buyIssueBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
     
     [detailsView addSubview:buyIssueBtn];

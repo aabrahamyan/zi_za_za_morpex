@@ -12,7 +12,7 @@
 
 // string constants found in the XML
 static NSString *kTitleStr         = @"title";
-static NSString *kAutorStr         = @"author";
+static NSString *kDateStr         = @"date";
 static NSString *kImageStr         = @"imageUrl";
 static NSString *kDetailsImageStr  = @"detailsImageUrl";
 static NSString *kDetailsTextStr   = @"detailsText";
@@ -51,7 +51,7 @@ static NSString *kMagazineStr      = @"magazine";
         //self.testData = [NSMutableArray array];
         self.workingArray = [NSMutableArray array];
         self.workingPropertyString = [NSMutableString string];
-        self.elementsToParse = [[NSArray alloc] initWithObjects:kTitleStr, kAutorStr, kImageStr, kDetailsImageStr, kDetailsTextStr, nil];
+        self.elementsToParse = [[NSArray alloc] initWithObjects:kTitleStr, kDateStr, kImageStr, kDetailsImageStr, kDetailsTextStr, nil];
         
         NSString *xmlFilePath = [[NSBundle mainBundle] pathForResource:@"testData" ofType:@"xml"];
         NSURL* xmlURL = [NSURL fileURLWithPath:xmlFilePath];
@@ -94,7 +94,7 @@ static NSString *kMagazineStr      = @"magazine";
             {
                 self.workingEntry.magazinTitle = trimmedString;
             }
-            else if ([elementName isEqualToString:kAutorStr])
+            else if ([elementName isEqualToString:kDateStr])
             {
                 self.workingEntry.magazinAutor = trimmedString;
             }
