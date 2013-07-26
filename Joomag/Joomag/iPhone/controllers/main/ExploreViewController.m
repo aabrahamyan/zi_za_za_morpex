@@ -54,6 +54,8 @@
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(50, 40, 220, 30)];
     pageControl.numberOfPages = dataHolder.testData.count;
     pageControl.currentPage = 0;
+    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageControl.pageIndicatorTintColor = [UIColor grayColor];
     pageControl.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:pageControl];
