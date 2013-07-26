@@ -27,6 +27,7 @@
     UIImageView *detailsImageView;
     UIButton *readBtn;
     UIButton *buyIssueBtn;
+    UIView *detailsViewBackGround;
 }
 
 // the set of ImageDownloader objects for each app
@@ -58,57 +59,59 @@
     [self.view addSubview:pageControl];
     
     //---------------------------- Details View ------------------------------------
-    detailsView = [[UIView alloc] init];
-    detailsView.frame = CGRectMake(5, 295, 300, 150); //TODO
-    detailsView.backgroundColor = [UIColor blackColor];
+    detailsView = [[UIView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
     detailsView.alpha = 0;
     
-    detailsImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 120, 130)];
+    detailsViewBackGround = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 160)];
+    detailsViewBackGround.backgroundColor = [UIColor blackColor];
+    detailsViewBackGround.alpha = 0.8;
+    [detailsView addSubview:detailsViewBackGround];
+    
+    detailsImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 135)];
+    detailsImageView.alpha = 1;
     [detailsView addSubview:detailsImageView];
     
-    detailsTitle = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 130, 20)];
+    detailsTitle = [[UILabel alloc] initWithFrame:CGRectMake(140, 15, 150, 20)];
     detailsTitle.backgroundColor = [UIColor clearColor];
-    detailsTitle.font = [UIFont systemFontOfSize:20];
+    detailsTitle.font = [UIFont systemFontOfSize:18];
     //detailsTitle.font = [UIFont boldSystemFontOfSize:20];
     detailsTitle.textColor = [UIColor whiteColor];
     [detailsView addSubview:detailsTitle];
     
-    detailsDate = [[UILabel alloc] initWithFrame:CGRectMake(150, 30, 130, 20)];
+    detailsDate = [[UILabel alloc] initWithFrame:CGRectMake(145, 50, 130, 20)];
     detailsDate.backgroundColor = [UIColor clearColor];
     detailsDate.font = [UIFont systemFontOfSize:14];
-    detailsDate.textColor = [UIColor whiteColor];
+    detailsDate.textColor = [UIColor grayColor];
     [detailsView addSubview:detailsDate];
     
-    /*
-     detailsText = [[UILabel alloc] initWithFrame:CGRectMake(120, 80, 100, 30)];
-     detailsText.backgroundColor = [UIColor clearColor];
-     detailsText.textColor = [UIColor whiteColor];
-     [detailsView addSubview:detailsText];
-     */
     
-    readBtn = [[UIButton alloc] initWithFrame:CGRectMake(160, 60, 110, 30)];
+    readBtn = [[UIButton alloc] initWithFrame:CGRectMake(145, 75, 100, 30)];
     readBtn.backgroundColor = [UIColor clearColor];
     [readBtn addTarget:self  action:@selector(readHandler) forControlEvents:UIControlEventTouchDown];
     [readBtn setTitle:@"READ" forState:UIControlStateNormal];
-    readBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
+    readBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    readBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
     [[readBtn layer] setBorderWidth:1.5f];
-    [[readBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [[readBtn layer] setBorderColor:[UIColor grayColor].CGColor];
     
     [detailsView addSubview:readBtn];
     
-    buyIssueBtn = [[UIButton alloc] initWithFrame:CGRectMake(160, 100, 110, 30)];
+    buyIssueBtn = [[UIButton alloc] initWithFrame:CGRectMake(145, 115, 100, 30)];
     buyIssueBtn.backgroundColor = [UIColor clearColor];
-    [buyIssueBtn addTarget:self  action:@selector(buyIssueHandler) forControlEvents:UIControlEventTouchDown];
+    [buyIssueBtn addTarget:self  action:@selector(readHandler) forControlEvents:UIControlEventTouchDown];
     [buyIssueBtn setTitle:@"BUY ISSUE" forState:UIControlStateNormal];
-    buyIssueBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-    buyIssueBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
+    buyIssueBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    buyIssueBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
     [[buyIssueBtn layer] setBorderWidth:1.5f];
-    [[buyIssueBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [[buyIssueBtn layer] setBorderColor:[UIColor grayColor].CGColor];
     
     [detailsView addSubview:buyIssueBtn];
     
-    [self.view addSubview:detailsView];
-    [self showDetailsView:0];
+    /*
+     for (UIView *subView in detailsView.subviews) {
+     subView.alpha = 1.0;
+     }
+     */
     
     [self.view addSubview:detailsView];
     [self showDetailsView:0];
@@ -139,9 +142,12 @@
     
     if (!mRecord.magazinDetailsIcon) {
         [self startIconDownload:mRecord forIndexPath:page];
+    } else {
+        detailsImageView.image = mRecord.magazinDetailsIcon;
     }
+    
     [UIView animateWithDuration:0.3 animations:^() {
-        detailsView.alpha = 0.7;
+        detailsView.alpha = 1;
     }];
 }
 

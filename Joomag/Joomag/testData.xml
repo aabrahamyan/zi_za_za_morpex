@@ -2,42 +2,42 @@
 <bookstore>
     <magazine category="COOKING">
         <title lang="en">Title 1 some Name</title>
-        <date>Jun 01 Jul-07-2013</date>
+        <date>Jun 01 Jul-07</date>
         <imageUrl>http://78.47.194.157/ads/tracking/images/3.png</imageUrl>
         <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/1.jpg</detailsImageUrl>
         <detailsText>detais text 1</detailsText>
     </magazine>
     <magazine category="COOKING">
         <title lang="en">Title 2</title>
-        <date>Jun 02 Jul-07-2013</date>
+        <date>Jun 02 Jul-07</date>
         <imageUrl>http://78.47.194.157/ads/tracking/images/2.png</imageUrl>
         <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/2.jpg</detailsImageUrl>
         <detailsText>detais text 2</detailsText>
     </magazine>
     <magazine category="COOKING">
         <title lang="en">Title 3</title>
-        <date>Sep 03 Oct-07-2013</date>
+        <date>Sep 03 Oct-07</date>
         <imageUrl>http://78.47.194.157/ads/tracking/images/1.png</imageUrl>
         <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/3.jpg</detailsImageUrl>
         <detailsText>detais text 3</detailsText>
     </magazine>
     <magazine category="COOKING">
         <title lang="en">Title 4</title>
-        <date>Nov 12 Des-07-2013</date>
+        <date>Nov 12 Des-07</date>
         <imageUrl>http://78.47.194.157/ads/tracking/images/4.png</imageUrl>
         <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/4.jpg</detailsImageUrl>
         <detailsText>detais text 4</detailsText>
     </magazine>
     <magazine category="COOKING">
         <title lang="en">Title 5</title>
-        <date>Jun 01 Jul-07-2013</date>
+        <date>Jun 01 Jul-07</date>
         <imageUrl>http://78.47.194.157/ads/tracking/images/5.png</imageUrl>
         <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/5.jpg</detailsImageUrl>
         <detailsText>detais text 5</detailsText>
     </magazine>
     <magazine category="COOKING">
         <title lang="en">Title 6</title>
-        <date>Jun 01 Jul-07-2013</date>
+        <date>Jun 01 Jul-07</date>
         <imageUrl>http://78.47.194.157/ads/tracking/images/6.png</imageUrl>
         <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/6.jpg</detailsImageUrl>
         <detailsText>detais text 6</detailsText>
