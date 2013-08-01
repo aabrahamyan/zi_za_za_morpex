@@ -22,6 +22,12 @@
 		2C0B75D217972A7600735AD3 /* MainTabBarViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */; };
 		2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */; };
 		2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */; };
+		2C0C126B17AAE45700A0357A /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C126A17AAE45700A0357A /* ConnectionManager.m */; };
+		2C0C126E17AAE75700A0357A /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C126D17AAE75700A0357A /* RequestHelper.m */; };
+		2C0C127217AB00DC00A0357A /* LoginResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127117AB00DC00A0357A /* LoginResponseParser.m */; };
+		2C0C127917AB038E00A0357A /* BaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127817AB038E00A0357A /* BaseParser.m */; };
+		2C0C127C17AB083B00A0357A /* MagazineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127B17AB083B00A0357A /* MagazineParser.m */; };
+		2C0C127F17AB087600A0357A /* PageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127E17AB087600A0357A /* PageParser.m */; };
 		2CADE37917993D0A002202D5 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37817993D0A002202D5 /* ExploreViewController.m */; };
 		2CADE37C17993D1F002202D5 /* ExploreViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37B17993D1F002202D5 /* ExploreViewController_iPad.m */; };
 		2CADE37F17993D56002202D5 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37E17993D56002202D5 /* LibraryViewController.m */; };
@@ -30,6 +36,8 @@
 		2CADE38817994144002202D5 /* MyBookshelViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38717994144002202D5 /* MyBookshelViewController_iPad.m */; };
 		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
+		2CC4247E17A6DE17007A494E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4247D17A6DE17007A494E /* Constants.m */; };
+		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
@@ -74,6 +82,19 @@
 		2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController_iPad.m; sourceTree = "<group>"; };
 		2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
 		2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		2C0C126917AAE45700A0357A /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
+		2C0C126A17AAE45700A0357A /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		2C0C126C17AAE75700A0357A /* RequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHelper.h; sourceTree = "<group>"; };
+		2C0C126D17AAE75700A0357A /* RequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHelper.m; sourceTree = "<group>"; };
+		2C0C127017AB00DC00A0357A /* LoginResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponseParser.h; sourceTree = "<group>"; };
+		2C0C127117AB00DC00A0357A /* LoginResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponseParser.m; sourceTree = "<group>"; };
+		2C0C127617AB030B00A0357A /* ResponseTrackerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseTrackerDelegate.h; sourceTree = "<group>"; };
+		2C0C127717AB038E00A0357A /* BaseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseParser.h; sourceTree = "<group>"; };
+		2C0C127817AB038E00A0357A /* BaseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseParser.m; sourceTree = "<group>"; };
+		2C0C127A17AB083A00A0357A /* MagazineParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazineParser.h; sourceTree = "<group>"; };
+		2C0C127B17AB083B00A0357A /* MagazineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazineParser.m; sourceTree = "<group>"; };
+		2C0C127D17AB087600A0357A /* PageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageParser.h; sourceTree = "<group>"; };
+		2C0C127E17AB087600A0357A /* PageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageParser.m; sourceTree = "<group>"; };
 		2CADE37717993D0A002202D5 /* ExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
 		2CADE37817993D0A002202D5 /* ExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
 		2CADE37A17993D1F002202D5 /* ExploreViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreViewController_iPad.h; sourceTree = "<group>"; };
@@ -90,6 +111,10 @@
 		2CADE38A1799429E002202D5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
 		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
+		2CC4247C17A6DE17007A494E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		2CC4247D17A6DE17007A494E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		2CC4247F17A6DE23007A494E /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		2CC4248017A6DE23007A494E /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
@@ -275,6 +300,51 @@
 			path = tabbar;
 			sourceTree = "<group>";
 		};
+		2C0C126717AAE44200A0357A /* connection */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C126817AAE44200A0357A /* service */,
+			);
+			name = connection;
+			path = Shared/connection;
+			sourceTree = "<group>";
+		};
+		2C0C126817AAE44200A0357A /* service */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C126F17AB00CA00A0357A /* parser */,
+				2C0C126917AAE45700A0357A /* ConnectionManager.h */,
+				2C0C126A17AAE45700A0357A /* ConnectionManager.m */,
+				2C0C126C17AAE75700A0357A /* RequestHelper.h */,
+				2C0C126D17AAE75700A0357A /* RequestHelper.m */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		2C0C126F17AB00CA00A0357A /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C127017AB00DC00A0357A /* LoginResponseParser.h */,
+				2C0C127117AB00DC00A0357A /* LoginResponseParser.m */,
+				2C0C127717AB038E00A0357A /* BaseParser.h */,
+				2C0C127817AB038E00A0357A /* BaseParser.m */,
+				2C0C127A17AB083A00A0357A /* MagazineParser.h */,
+				2C0C127B17AB083B00A0357A /* MagazineParser.m */,
+				2C0C127D17AB087600A0357A /* PageParser.h */,
+				2C0C127E17AB087600A0357A /* PageParser.m */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		2C0C127417AB022500A0357A /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C127617AB030B00A0357A /* ResponseTrackerDelegate.h */,
+			);
+			name = protocol;
+			path = Shared/protocol;
+			sourceTree = "<group>";
+		};
 		2CADE37217993C41002202D5 /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,9 +375,24 @@
 			path = main;
 			sourceTree = "<group>";
 		};
+		2CC4247B17A6DE03007A494E /* util */ = {
+			isa = PBXGroup;
+			children = (
+				2CC4247C17A6DE17007A494E /* Constants.h */,
+				2CC4247D17A6DE17007A494E /* Constants.m */,
+				2CC4247F17A6DE23007A494E /* Util.h */,
+				2CC4248017A6DE23007A494E /* Util.m */,
+			);
+			name = util;
+			path = Shared/util;
+			sourceTree = "<group>";
+		};
 		5ABDDBB5179BF70D002F23AD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2C0C127417AB022500A0357A /* protocol */,
+				2C0C126717AAE44200A0357A /* connection */,
+				2CC4247B17A6DE03007A494E /* util */,
 				5AC6FFF2179B33AF0062736F /* DataHolder.h */,
 				5AC6FFF3179B33AF0062736F /* DataHolder.m */,
 				5ABDDBB6179BF75D002F23AD /* AFNetworking */,
@@ -450,6 +535,14 @@
 				5ABDDBD0179BF75D002F23AD /* AFURLConnectionOperation.m in Sources */,
 				5ABDDBD1179BF75D002F23AD /* AFXMLRequestOperation.m in Sources */,
 				5ABDDBD2179BF75D002F23AD /* UIImageView+AFNetworking.m in Sources */,
+				2CC4247E17A6DE17007A494E /* Constants.m in Sources */,
+				2CC4248117A6DE23007A494E /* Util.m in Sources */,
+				2C0C126B17AAE45700A0357A /* ConnectionManager.m in Sources */,
+				2C0C126E17AAE75700A0357A /* RequestHelper.m in Sources */,
+				2C0C127217AB00DC00A0357A /* LoginResponseParser.m in Sources */,
+				2C0C127917AB038E00A0357A /* BaseParser.m in Sources */,
+				2C0C127C17AB083B00A0357A /* MagazineParser.m in Sources */,
+				2C0C127F17AB087600A0357A /* PageParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
