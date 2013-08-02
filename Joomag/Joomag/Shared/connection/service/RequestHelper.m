@@ -65,7 +65,122 @@
     requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
     //---------------------- Close Envelope ---------------------------------//
-    requestString = [NSString stringWithFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    
+    return requestString;
+    
+}
+
++ (NSString *) constructGetMagazineString : (NSInteger) magazineId {
+    
+    //---------------------- Open Envelope ---------------------------------//
+    NSString * requestString = [NSString stringWithFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Header ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Header ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Request ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Magazine Mobile -------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINE_MOBILE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Magazine ID -------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",MAGAZINE_ID];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Value of ID -------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%d",magazineId];
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",MAGAZINE_ID];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Magazine Mobile -------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINE_MOBILE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Request ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Envelope ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    
+    return requestString;
+}
+
++ (NSString *) constructGetMagazinePageString : (NSInteger) magazineId withPageNumber : (NSInteger) pageNumber {
+    
+    //---------------------- Open Envelope ---------------------------------//
+    NSString * requestString = [NSString stringWithFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Header ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Header ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Request ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Get Page ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",GETPAGE_MOBILE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Magazine ID ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",PAGE_MAGAZINE_ID];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Magazine ID VALUE ------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%d",magazineId];
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",PAGE_MAGAZINE_ID];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open PageNumber ------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",PAGE_NUMABER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open PageNumber VALUE ------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%d",pageNumber];
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",PAGE_NUMABER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Get Page ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",GETPAGE_MOBILE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Request ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Envelope ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@", SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
     requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];

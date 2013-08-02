@@ -13,4 +13,8 @@
 
 + (NSString *) constructAndGetLoginString: (NSString *) email withPassword : (NSString *) password;
 
++ (NSString *) constructGetMagazineString : (NSInteger) magazineId;
+
++ (NSString *) constructGetMagazinePageString : (NSInteger) magazineId withPageNumber : (NSInteger) pageNumber;
+
 @end

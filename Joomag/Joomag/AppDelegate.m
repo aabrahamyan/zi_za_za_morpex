@@ -36,6 +36,7 @@
     
     [self displayStartView];
     
+    
     [self.window makeKeyAndVisible];
     
     return YES;

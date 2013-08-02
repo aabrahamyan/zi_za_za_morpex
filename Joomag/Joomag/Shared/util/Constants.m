@@ -29,7 +29,12 @@ NSString * const PASSWORD = @"password";
 
 //-------------- GETMAGAZINEMOBILE Request/Response handling ---------------//
 NSString * const GETMAGAZINE_MOBILE = @"GETMAGAZINEMOBILE";
-NSString * const MAGAZINE_ID = @"ID";  
+NSString * const MAGAZINE_ID = @"ID";
+
+//-------------- GETPAGEMOBILE Request/Response handling ---------------//
+NSString * const GETPAGE_MOBILE = @"GETPAGEMOBILE";
+NSString * const PAGE_MAGAZINE_ID = @"MAGAZINE_ID";
+NSString * const PAGE_NUMABER = @"PAGE_NUM";
 
 
 @implementation Constants

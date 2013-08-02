@@ -13,6 +13,8 @@
 #import "ImageDownloader.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "ConnectionManager.h"
+
 @interface ExploreViewController (){
     DataHolder *dataHolder;
     ScrollView *scrollView;
@@ -121,6 +123,10 @@
     //Notify When Page Changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl) name:@"updatePageControl" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
+    
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
+    
+    [connManager constructLoginRequest:@"kutuzov@mailinator.com" withPassword:@"a6e514f9486b83cb53d8d932f9a04292" withCallback:self]; 
 }
 
 // -------------------------------------------------------------------------------
@@ -195,6 +201,16 @@
 
 - (void)buyIssueHandler {
     NSLog(@"buy Issue");
+}
+
+#pragma Response Tracker Delegates ---
+
+- (void) didFailResponse: (id) responseObject {
+
+}
+
+- (void) didFinishResponse: (id) responseObject {
+
 }
 
 @end

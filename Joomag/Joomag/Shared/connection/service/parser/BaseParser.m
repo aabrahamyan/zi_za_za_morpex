@@ -54,12 +54,12 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
 	NSString * errorString = [NSString stringWithFormat:@" (Error code %i )", [parseError code]];
 	NSLog(@"errorString = %@", errorString);
-    
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {

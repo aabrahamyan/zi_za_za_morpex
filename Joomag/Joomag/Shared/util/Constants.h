@@ -31,6 +31,11 @@ extern NSString * const PASSWORD;
 extern NSString * const GETMAGAZINE_MOBILE;
 extern NSString * const MAGAZINE_ID;
 
+//-------------- GETPAGEMOBILE Request/Response handling ---------------//
+extern NSString * const GETPAGE_MOBILE;
+extern NSString * const PAGE_MAGAZINE_ID;
+extern NSString * const PAGE_NUMABER;
+
 @interface Constants : NSObject
 
 @end

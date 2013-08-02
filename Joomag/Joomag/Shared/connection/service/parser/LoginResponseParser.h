@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "BaseParser.h"
 
-@interface LoginResponseParser : BaseParser
+@interface LoginResponseParser : BaseParser {
+
+    NSMutableDictionary * accontInfo;
+
+}
 
 @end

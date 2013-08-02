@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResponseTrackerDelegate.h"
 
-@interface ExploreViewController : UIViewController
+@interface ExploreViewController : UIViewController<ResponseTrackerDelegate>
 
 @end

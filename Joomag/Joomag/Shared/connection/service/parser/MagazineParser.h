@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "BaseParser.h"
 
-@interface MagazineParser : BaseParser
+@interface MagazineParser : BaseParser {
+
+    NSMutableDictionary * magainzeData;
+
+}
+
 
 @end
+
+
