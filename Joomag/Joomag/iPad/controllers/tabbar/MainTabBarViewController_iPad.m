@@ -7,18 +7,81 @@
 //
 
 #import "MainTabBarViewController_iPad.h"
+#import "ExploreViewController_iPad.h"
+#import "LibraryViewController_iPad.h"
+#import "MyBookshelViewController_iPad.h"
+#import "SettingsViewController_iPad.h"
 
-@interface MainTabBarViewController_iPad ()
+@interface MainTabBarViewController_iPad () {
+    ExploreViewController_iPad *explorVcIPad;
+    LibraryViewController_iPad *libraryVvIPad;
+    MyBookshelViewController_iPad *myBookShelfVvIPad;
+    SettingsViewController_iPad *settingsVcIPad;
+    
+}
 
 @end
 
 @implementation MainTabBarViewController_iPad
 
+// -------------------------------------------------------------------------------
+// setupIPadTabBarViewControllers
+// -------------------------------------------------------------------------------
+- (NSArray *) setupIPadTabBarViewControllers {
+    explorVcIPad = [[ExploreViewController_iPad alloc] init];
+    libraryVvIPad = [[LibraryViewController_iPad alloc] init];
+    myBookShelfVvIPad = [[MyBookshelViewController_iPad alloc] init];
+    settingsVcIPad = [[SettingsViewController_iPad alloc] init];
+    
+    NSArray *arrVC = [NSArray arrayWithObjects: explorVcIPad, libraryVvIPad, myBookShelfVvIPad, settingsVcIPad, nil];
+    
+    return arrVC;
+}
 
 -(void) loadView {
     [super loadView];
-    NSLog(@"iPad");    
+    NSLog(@"iPad");
+    [self setupTabBar:[self setupIPadTabBarViewControllers]];
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
     
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+    
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
+    switch (maintabBarController.selectedIndex) {
+            
+        case 0:
+            [explorVcIPad positioningExploreView];
+            break;
+        case 1:
+            [libraryVvIPad positioningLibraryView];
+            break;
+        case 2:
+            [myBookShelfVvIPad positioningMyBookshelView];
+            break;
+        case 3:
+            [settingsVcIPad positioningSettingsView];
+            break;
+        default:
+            break;
+            
+    }
 }
 
 - (void)didReceiveMemoryWarning {

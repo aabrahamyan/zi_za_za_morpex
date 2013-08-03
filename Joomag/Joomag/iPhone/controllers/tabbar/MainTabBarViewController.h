@@ -8,24 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class ExploreViewController;
-@class LibraryViewController;
-@class MyBookshelfViewController;
-@class SettingsViewController;
-
 @interface MainTabBarViewController : UIViewController<UITabBarControllerDelegate> {
-
 
 @protected
     UITabBarController * maintabBarController;
-    ExploreViewController * exploreVC;
-    LibraryViewController * libraryVC;
-    MyBookshelfViewController * myBookShelfVC;
-    SettingsViewController * settingsVC;
 }
 
-
-
-
+- (void) setupTabBar:(NSArray *)arrayVC;
 
 @end

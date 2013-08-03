@@ -13,26 +13,35 @@
 #import "MyBookshelfViewController.h"
 #import "SettingsViewController.h"
 
+#define TAB_BAR_VIEW_COUNT 4
+
 @interface MainTabBarViewController ()
 
 @end
 
 @implementation MainTabBarViewController
 
-#define TAB_BAR_VIEW_COUNT 4
-
-//------------------- init view controllers ----------------------//
-- (void) setupTabBarViewControllers {
+// -------------------------------------------------------------------------------
+// setupIPhoneTabBarViewControllers
+// -------------------------------------------------------------------------------
+- (NSArray *) setupIPhoneTabBarViewControllers {
     
-    exploreVC = [[ExploreViewController alloc] init];
-    libraryVC = [[LibraryViewController alloc] init];
-    myBookShelfVC = [[MyBookshelfViewController alloc] init];
-    settingsVC = [[SettingsViewController alloc] init];
+    ExploreViewController *exploreVC = [[ExploreViewController alloc] init];
+    LibraryViewController *libraryVC = [[LibraryViewController alloc] init];
+    MyBookshelfViewController *myBookShelfVC = [[MyBookshelfViewController alloc] init];
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
     
+    NSArray *arrVC = [NSArray arrayWithObjects: exploreVC, libraryVC, myBookShelfVC, settingsVC, nil];
+    
+    return arrVC;
 }
 
-- (void) setupTabBar {    
-    
+// -------------------------------------------------------------------------------
+// setupTabBar:
+// Set up tab bar with iPhone view controllers.
+// -------------------------------------------------------------------------------
+- (void) setupTabBar:(NSArray *)arrayVC {
+    //---------------------------- TODO ------------------------------
     UITabBarItem * explorItem = [[UITabBarItem alloc] init];
     [explorItem setTitle:@"Explore"];
     
@@ -45,31 +54,33 @@
     UITabBarItem * settingsfBarItem = [[UITabBarItem alloc] init];
     [settingsfBarItem setTitle:@"Settings"];
     
-    [exploreVC setTabBarItem:explorItem];
-    exploreVC.title = @"Explore";
-    [libraryVC setTabBarItem:libraryBarItem];
-    libraryVC.title = @"Library";
-    [myBookShelfVC setTabBarItem:myBookShelfBarItem];
-    myBookShelfVC.title = @"My Bookshelf";
-    [settingsVC setTabBarItem:settingsfBarItem];
-    settingsVC.title = @"Settings";
+    [[arrayVC objectAtIndex:0] setTabBarItem:explorItem];
+    [[arrayVC objectAtIndex:0] setTitle: @"Explore"];
     
-    UINavigationController * navCont = [[UINavigationController alloc] initWithRootViewController:exploreVC];
+    [[arrayVC objectAtIndex:1] setTabBarItem:explorItem];
+    [[arrayVC objectAtIndex:1] setTitle: @"Library"];
     
+    [[arrayVC objectAtIndex:2] setTabBarItem:explorItem];
+    [[arrayVC objectAtIndex:2] setTitle: @"My Bookshelf"];
+    
+    [[arrayVC objectAtIndex:3] setTabBarItem:explorItem];
+    [[arrayVC objectAtIndex:3] setTitle: @"Settings"];
+    
+    NSMutableArray *viewArray = [NSMutableArray arrayWithCapacity:TAB_BAR_VIEW_COUNT];
+    
+    UINavigationController * navCont = [[UINavigationController alloc] initWithRootViewController:[arrayVC objectAtIndex:0]];
     navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
-    
-	NSMutableArray * viewArray = [NSMutableArray arrayWithCapacity:TAB_BAR_VIEW_COUNT];
 	[viewArray addObject:navCont];
     
-    navCont = [[UINavigationController alloc] initWithRootViewController:libraryVC];
+    navCont = [[UINavigationController alloc] initWithRootViewController:[arrayVC objectAtIndex:1]];
     navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
     [viewArray addObject:navCont];
     
-    navCont = [[UINavigationController alloc] initWithRootViewController:myBookShelfVC];
+    navCont = [[UINavigationController alloc] initWithRootViewController:[arrayVC objectAtIndex:2]];
     navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
     [viewArray addObject:navCont];
     
-    navCont = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    navCont = [[UINavigationController alloc] initWithRootViewController:[arrayVC objectAtIndex:3]];
     navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
     [viewArray addObject:navCont];
     
@@ -78,7 +89,6 @@
     maintabBarController.viewControllers = viewArray;
     
     [self.view addSubview:maintabBarController.view];
-    
 }
 
 #pragma mark -
@@ -99,16 +109,12 @@
         } else {
             self.view.frame = CGRectMake(0, 0, 320, 480);
         }
+        
+        [self setupTabBar: [self setupIPhoneTabBarViewControllers]];
+        
     } else {
         self.view.frame = CGRectMake(0, 0, 768, 1024);
     }
-    
-    
-    [self setupTabBarViewControllers];
-    
-    [self setupTabBar];
-    
-
 }
 
 - (void)didReceiveMemoryWarning

@@ -11,4 +11,6 @@
 
 @interface LibraryViewController_iPad : LibraryViewController
 
+- (void)positioningLibraryView;
+
 @end

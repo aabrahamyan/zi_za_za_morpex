@@ -14,25 +14,13 @@
 
 @implementation SettingsViewController_iPad
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
+- (void)loadView {
+    [super loadView];
+    NSLog(@"SettingsViewController_iPad");
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)positioningSettingsView {
+    
 }
 
 @end

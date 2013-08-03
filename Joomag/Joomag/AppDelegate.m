@@ -24,7 +24,7 @@
 
 - (void) displayStartView {
     MainTabBarViewController * mainVC = [self getStartScreen];
-//    navController = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    
     [self.window setRootViewController:mainVC];
 }
 
@@ -32,10 +32,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
-    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     
     [self displayStartView];
-    
     
     [self.window makeKeyAndVisible];
     

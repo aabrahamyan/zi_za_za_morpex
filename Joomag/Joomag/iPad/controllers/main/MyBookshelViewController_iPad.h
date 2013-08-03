@@ -11,4 +11,6 @@
 
 @interface MyBookshelViewController_iPad : MyBookshelfViewController
 
+- (void)positioningMyBookshelView;
+
 @end

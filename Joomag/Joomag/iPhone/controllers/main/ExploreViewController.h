@@ -8,7 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "ResponseTrackerDelegate.h"
+#import "ScrollView.h"
 
-@interface ExploreViewController : UIViewController<ResponseTrackerDelegate>
+@class ScrollView;
+
+@interface ExploreViewController : UIViewController <ResponseTrackerDelegate>  {
+    
+@protected
+    ScrollView    *scrollView;
+    UIPageControl *pageControl;
+    UIView        *detailsViewContainer;
+    UIView        *detailsViewBackGround;
+    UIImageView   *detailsImageView;
+    UILabel       *detailsTitle;
+    UILabel       *detailsDate;
+    UITextView    *detailsText;
+    UIButton      *readBtn;
+    UIButton      *buyIssueBtn;
+    UIButton      *shareBtn;
+}
+
+- (void)showDetailsView: (NSInteger)page;
+
 
 @end
