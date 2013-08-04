@@ -25,15 +25,6 @@
     
     dataHolder = [DataHolder sharedData];
     
-    detailsViewBackGround.frame = CGRectMake(0, 0, 500, 200);
-    detailsImageView.frame = CGRectMake(10, 10, 150, 180);
-    detailsTitle.frame = CGRectMake(170, 10, 200, 20);
-    detailsDate.frame = CGRectMake(170, 40, 200, 20);
-    detailsText.frame = CGRectMake(165 , 60, 320, 90);
-    readBtn.frame = CGRectMake(170, 160, 90, 30);
-    buyIssueBtn.frame = CGRectMake(270, 160, 90, 30);
-    shareBtn.frame = CGRectMake(390, 160, 90, 30);
-    
     [self positioningExploreView];
 }
 
@@ -66,8 +57,7 @@
     
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
-    detailsViewContainer.frame = detailsViewFrame;
-    
+    detailsView.frame = detailsViewFrame;
 }
 
 - (void)didReceiveMemoryWarning
