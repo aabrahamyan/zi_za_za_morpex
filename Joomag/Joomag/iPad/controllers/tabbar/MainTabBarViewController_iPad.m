@@ -7,17 +7,17 @@
 //
 
 #import "MainTabBarViewController_iPad.h"
-#import "ExploreViewController_iPad.h"
+#import "FeaturedViewController_iPad.h"
 #import "LibraryViewController_iPad.h"
-#import "MyBookshelViewController_iPad.h"
+#import "ExploreViewController_iPad.h"
 #import "SettingsViewController_iPad.h"
+#import "Util.h"
 
 @interface MainTabBarViewController_iPad () {
-    ExploreViewController_iPad *explorVcIPad;
+    FeaturedViewController_iPad *explorVcIPad;
     LibraryViewController_iPad *libraryVvIPad;
-    MyBookshelViewController_iPad *myBookShelfVvIPad;
+    ExploreViewController_iPad *myBookShelfVvIPad;
     SettingsViewController_iPad *settingsVcIPad;
-    
 }
 
 @end
@@ -28,9 +28,9 @@
 // setupIPadTabBarViewControllers
 // -------------------------------------------------------------------------------
 - (NSArray *) setupIPadTabBarViewControllers {
-    explorVcIPad = [[ExploreViewController_iPad alloc] init];
+    explorVcIPad = [[FeaturedViewController_iPad alloc] init];
     libraryVvIPad = [[LibraryViewController_iPad alloc] init];
-    myBookShelfVvIPad = [[MyBookshelViewController_iPad alloc] init];
+    myBookShelfVvIPad = [[ExploreViewController_iPad alloc] init];
     settingsVcIPad = [[SettingsViewController_iPad alloc] init];
     
     NSArray *arrVC = [NSArray arrayWithObjects: explorVcIPad, libraryVvIPad, myBookShelfVvIPad, settingsVcIPad, nil];
@@ -73,7 +73,7 @@
             [libraryVvIPad positioningLibraryView];
             break;
         case 2:
-            [myBookShelfVvIPad positioningMyBookshelView];
+            [myBookShelfVvIPad positioningExploreView];
             break;
         case 3:
             [settingsVcIPad positioningSettingsView];
