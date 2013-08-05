@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExploreScrollView.h"
 
-@interface ExploreViewController : UIViewController
+@class ExploreScrollView;
+
+@interface ExploreViewController : UIViewController {
+    
+@protected
+    ExploreScrollView *scrollView;
+}
 
 @end

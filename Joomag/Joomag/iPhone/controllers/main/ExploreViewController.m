@@ -8,8 +8,10 @@
 
 #import "ExploreViewController.h"
 #import "Util.h"
+#import "DataHolder.h"
 
 @interface ExploreViewController () {
+    DataHolder *dataHolder;
     UILabel *label1;
     UILabel *label2;
     UILabel *label3;
@@ -23,14 +25,23 @@
 - (void)loadView {
     [super loadView];
     
+    dataHolder = [DataHolder sharedData];
+    
     self.view.backgroundColor = RGBA(43, 43, 44, 1);
+    
+    //---------------------------- Scroll View ------------------------------------
+    scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(0, 60, 320, 390)];
+    //scrollView.backgroundColor = [UIColor lightGrayColor];
+    scrollView.entries = dataHolder.testData;
+    
+    [self.view addSubview: scrollView];
     
     [self.view addSubview:[self titleLabelsWithBorder]];
 }
 
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 30)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 300, 30)];
     //container.backgroundColor = [UIColor lightGrayColor];
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
@@ -48,7 +59,7 @@
         [container addSubview:[labelArr objectAtIndex:i]];
         ((UILabel *)[labelArr objectAtIndex:i]).backgroundColor = [UIColor clearColor];
         ((UILabel *)[labelArr objectAtIndex:i]).textColor = [UIColor whiteColor];
-        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:16.0];
+        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:15.0];
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
         ((UILabel *)[labelArr objectAtIndex:i]).lineBreakMode = NSLineBreakByWordWrapping;
         // ((UILabel *)[labelArr objectAtIndex:i]).shadowColor = [UIColor grayColor];

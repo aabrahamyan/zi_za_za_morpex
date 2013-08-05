@@ -10,6 +10,4 @@
 
 @interface SettingsViewController_iPad : SettingsViewController
 
-- (void)positioningSettingsView;
-
 @end

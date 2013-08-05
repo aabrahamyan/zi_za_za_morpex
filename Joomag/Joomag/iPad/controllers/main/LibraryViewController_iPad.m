@@ -19,8 +19,4 @@
     NSLog(@"LibraryViewController_iPad");
 }
 
-- (void)positioningLibraryView {
-    
-}
-
 @end

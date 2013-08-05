@@ -31,7 +31,7 @@
     dataHolder = [DataHolder sharedData];
     
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, dataHolder.screenHeight)];
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, dataHolder.screenHeight)];
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
@@ -53,9 +53,9 @@
     
     //---------------------------- Details View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        detailsView = [[ExploreDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
     } else {
-        detailsView = [[ExploreDetailsView alloc] initWithFrame:CGRectMake(250, 700, 500, 200)];
+        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(250, 700, 500, 200)];
     }
     detailsView.alpha = 0;
     

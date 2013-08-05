@@ -19,8 +19,4 @@
     NSLog(@"SettingsViewController_iPad");
 }
 
-- (void)positioningSettingsView {
-    
-}
-
 @end

@@ -1,17 +1,17 @@
 //
-//  ScrollView.m
+//  FeaturedFeaturedScrollView.m
 //  Joomag
 //
 //  Created by Anatoli Petrosyants on 2013-07-20.
 //  Copyright (c) 2013 Joomag. All rights reserved.
 //
 
-#import "ScrollView.h"
+#import "FeaturedScrollView.h"
 #import "DataHolder.h"
 #import "ImageDownloader.h"
 #import "MagazinRecord.h"
 
-@interface ScrollView () {
+@interface FeaturedScrollView () {
     CGFloat pageWidth;
     NSInteger entriesLength;
 }
@@ -23,7 +23,7 @@
 @end
 
 
-@implementation ScrollView
+@implementation FeaturedScrollView
 
 - (id)initWithFrame:(CGRect)frame
 {

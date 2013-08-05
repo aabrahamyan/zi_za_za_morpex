@@ -1,15 +1,15 @@
 //
-//  ExploreDetailsView.m
+//  FeaturedDetailsView.m
 //  Joomag
 //
 //  Created by Anatoli Petrosyants on 2013-08-04.
 //  Copyright (c) 2013 Joomag. All rights reserved.
 //
 
-#import "ExploreDetailsView.h"
+#import "FeaturedDetailsView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation ExploreDetailsView {
+@implementation FeaturedDetailsView {
     CGRect imageViewFrame, titleFrame, dateFrame, backGroundFrame,
            textFrame, readBtnFrame, buyIssueBtnFrame, shareBtnFrame;
 }

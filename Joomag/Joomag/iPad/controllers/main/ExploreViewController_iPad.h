@@ -11,6 +11,4 @@
 
 @interface ExploreViewController_iPad : ExploreViewController
 
-- (void)positioningExploreView;
-
 @end

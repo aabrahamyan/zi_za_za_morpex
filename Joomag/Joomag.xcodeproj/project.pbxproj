@@ -48,15 +48,16 @@
 		5ABDDBD0179BF75D002F23AD /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBC5179BF75D002F23AD /* AFURLConnectionOperation.m */; };
 		5ABDDBD1179BF75D002F23AD /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBC7179BF75D002F23AD /* AFXMLRequestOperation.m */; };
 		5ABDDBD2179BF75D002F23AD /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBC9179BF75D002F23AD /* UIImageView+AFNetworking.m */; };
+		5ABEC45617B0013800E2EAEA /* ExploreScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEC45517B0013800E2EAEA /* ExploreScrollView.m */; };
+		5ABEC45917B0016600E2EAEA /* FeaturedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEC45817B0016600E2EAEA /* FeaturedScrollView.m */; };
+		5ABEC45C17B0017C00E2EAEA /* FeaturedDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */; };
 		5AC6FFE7179B31F70062736F /* testData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFE6179B31F70062736F /* testData.xml */; };
 		5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEA179B32AF0062736F /* ImageDownloader.m */; };
 		5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEC179B32AF0062736F /* MagazinRecord.m */; };
 		5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF3179B33AF0062736F /* DataHolder.m */; };
-		5AC6FFF7179B34920062736F /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF6179B34920062736F /* ScrollView.m */; };
 		5AC6FFF9179B392D0062736F /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF8179B392D0062736F /* placeholder.png */; };
 		5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC1951799836F0029A07F /* MobileCoreServices.framework */; };
 		5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC197179983760029A07F /* SystemConfiguration.framework */; };
-		5AE66ADA17AE54470019EFD9 /* ExploreDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE66AD917AE54470019EFD9 /* ExploreDetailsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,12 @@
 		5ABDDBC7179BF75D002F23AD /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		5ABDDBC8179BF75D002F23AD /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		5ABDDBC9179BF75D002F23AD /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		5ABEC45417B0013800E2EAEA /* ExploreScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreScrollView.h; sourceTree = "<group>"; };
+		5ABEC45517B0013800E2EAEA /* ExploreScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreScrollView.m; sourceTree = "<group>"; };
+		5ABEC45717B0016600E2EAEA /* FeaturedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedScrollView.h; sourceTree = "<group>"; };
+		5ABEC45817B0016600E2EAEA /* FeaturedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturedScrollView.m; sourceTree = "<group>"; };
+		5ABEC45A17B0017C00E2EAEA /* FeaturedDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedDetailsView.h; sourceTree = "<group>"; };
+		5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturedDetailsView.m; sourceTree = "<group>"; };
 		5AC6FFE6179B31F70062736F /* testData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testData.xml; sourceTree = "<group>"; };
 		5AC6FFE9179B32AF0062736F /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		5AC6FFEA179B32AF0062736F /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
@@ -143,13 +150,9 @@
 		5AC6FFEC179B32AF0062736F /* MagazinRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MagazinRecord.m; path = ../../Class/MagazinRecord.m; sourceTree = "<group>"; };
 		5AC6FFF2179B33AF0062736F /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataHolder.h; path = Joomag/DataHolder.h; sourceTree = SOURCE_ROOT; };
 		5AC6FFF3179B33AF0062736F /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataHolder.m; path = Joomag/DataHolder.m; sourceTree = SOURCE_ROOT; };
-		5AC6FFF5179B34920062736F /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollView.h; path = ../Class/ScrollView.h; sourceTree = "<group>"; };
-		5AC6FFF6179B34920062736F /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollView.m; path = ../Class/ScrollView.m; sourceTree = "<group>"; };
 		5AC6FFF8179B392D0062736F /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5ACAC1951799836F0029A07F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5ACAC197179983760029A07F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5AE66AD817AE54470019EFD9 /* ExploreDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreDetailsView.h; sourceTree = "<group>"; };
-		5AE66AD917AE54470019EFD9 /* ExploreDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreDetailsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,10 +399,12 @@
 		5AA1A73717AD45C100EADCA3 /* viewHelper */ = {
 			isa = PBXGroup;
 			children = (
-				5AC6FFF5179B34920062736F /* ScrollView.h */,
-				5AC6FFF6179B34920062736F /* ScrollView.m */,
-				5AE66AD817AE54470019EFD9 /* ExploreDetailsView.h */,
-				5AE66AD917AE54470019EFD9 /* ExploreDetailsView.m */,
+				5ABEC45717B0016600E2EAEA /* FeaturedScrollView.h */,
+				5ABEC45817B0016600E2EAEA /* FeaturedScrollView.m */,
+				5ABEC45A17B0017C00E2EAEA /* FeaturedDetailsView.h */,
+				5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */,
+				5ABEC45417B0013800E2EAEA /* ExploreScrollView.h */,
+				5ABEC45517B0013800E2EAEA /* ExploreScrollView.m */,
 			);
 			path = viewHelper;
 			sourceTree = "<group>";
@@ -538,7 +543,6 @@
 				5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */,
 				5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */,
 				5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */,
-				5AC6FFF7179B34920062736F /* ScrollView.m in Sources */,
 				5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */,
 				5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */,
 				5ABDDBCC179BF75D002F23AD /* AFImageRequestOperation.m in Sources */,
@@ -556,7 +560,9 @@
 				2C0C127917AB038E00A0357A /* BaseParser.m in Sources */,
 				2C0C127C17AB083B00A0357A /* MagazineParser.m in Sources */,
 				2C0C127F17AB087600A0357A /* PageParser.m in Sources */,
-				5AE66ADA17AE54470019EFD9 /* ExploreDetailsView.m in Sources */,
+				5ABEC45617B0013800E2EAEA /* ExploreScrollView.m in Sources */,
+				5ABEC45917B0016600E2EAEA /* FeaturedScrollView.m in Sources */,
+				5ABEC45C17B0017C00E2EAEA /* FeaturedDetailsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

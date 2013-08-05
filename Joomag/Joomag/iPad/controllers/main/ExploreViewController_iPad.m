@@ -20,8 +20,4 @@
     NSLog(@"ExploreViewController_iPad");
 }
 
-- (void)positioningExploreView {
-    
-}
-
 @end

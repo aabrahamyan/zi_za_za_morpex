@@ -24,12 +24,9 @@
     NSLog(@"FeaturedViewController_iPad:");
     
     dataHolder = [DataHolder sharedData];
-    
-    [self positioningFeaturedView];
 }
 
-- (void)positioningFeaturedView {
-    NSLog(@"positioningExploreView");
+- (void)viewDidLayoutSubviews {
     
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
@@ -42,11 +39,15 @@
             break;
             
         case UIDeviceOrientationLandscapeLeft:
+            scrollViewFrame = CGRectMake(0, 0, dataHolder.screenHeight, dataHolder.screenWidth);
+            [scrollView setContentSize:CGSizeMake(scrollViewFrame.size.width*11, dataHolder.screenWidth)];
             detailsViewFrame = CGRectMake(500, 430, 500, 200);
             pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
             
         case UIDeviceOrientationLandscapeRight:
+            scrollViewFrame = CGRectMake(0, 0, dataHolder.screenHeight, dataHolder.screenWidth);
+            [scrollView setContentSize:CGSizeMake(scrollViewFrame.size.width*11, dataHolder.screenWidth)];
             detailsViewFrame = CGRectMake(500, 430, 500, 200);
             pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
@@ -58,6 +59,7 @@
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
     detailsView.frame = detailsViewFrame;
+    
 }
 
 - (void)didReceiveMemoryWarning

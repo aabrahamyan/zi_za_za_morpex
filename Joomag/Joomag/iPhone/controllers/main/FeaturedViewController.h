@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ResponseTrackerDelegate.h"
-#import "ScrollView.h"
-#import "ExploreDetailsView.h"
+#import "FeaturedScrollView.h"
+#import "FeaturedDetailsView.h"
 
-@class ScrollView;
-@class ExploreDetailsView;
+@class FeaturedScrollView;
+@class FeaturedDetailsView;
 
 @interface FeaturedViewController : UIViewController <ResponseTrackerDelegate>  {
     
 @protected
-    ScrollView    *scrollView;
+    FeaturedScrollView    *scrollView;
     UIPageControl *pageControl;
-    ExploreDetailsView *detailsView;
+    FeaturedDetailsView *detailsView;
 }
 
 - (void)showDetailsView: (NSInteger)page;

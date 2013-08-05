@@ -63,25 +63,7 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    
-    switch (maintabBarController.selectedIndex) {
-            
-        case 0:
-            [featuredVcIPad positioningFeaturedView];
-            break;
-        case 1:
-            [explorVcIPad positioningExploreView];
-            break;
-        case 2:
-            [libraryVcIPad positioningLibraryView];
-            break;
-        case 3:
-            [settingsVcIPad positioningSettingsView];
-            break;
-        default:
-            break;
-            
-    }
+
 }
 
 - (void)didReceiveMemoryWarning {
