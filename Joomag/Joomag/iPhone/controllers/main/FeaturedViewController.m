@@ -10,7 +10,6 @@
 #import "DataHolder.h"
 #import "MagazinRecord.h"
 #import "ImageDownloader.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface FeaturedViewController (){
     DataHolder *dataHolder;

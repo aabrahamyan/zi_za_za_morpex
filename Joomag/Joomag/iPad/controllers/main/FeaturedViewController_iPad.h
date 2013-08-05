@@ -11,6 +11,6 @@
 
 @interface FeaturedViewController_iPad : FeaturedViewController
 
-- (void)positioningExploreView;
+- (void)positioningFeaturedView;
 
 @end

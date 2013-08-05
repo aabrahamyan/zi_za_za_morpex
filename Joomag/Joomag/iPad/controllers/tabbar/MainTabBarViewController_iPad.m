@@ -14,9 +14,9 @@
 #import "Util.h"
 
 @interface MainTabBarViewController_iPad () {
-    FeaturedViewController_iPad *explorVcIPad;
-    LibraryViewController_iPad *libraryVvIPad;
-    ExploreViewController_iPad *myBookShelfVvIPad;
+    FeaturedViewController_iPad *featuredVcIPad;
+    ExploreViewController_iPad *explorVcIPad;
+    LibraryViewController_iPad *libraryVcIPad;
     SettingsViewController_iPad *settingsVcIPad;
 }
 
@@ -28,12 +28,12 @@
 // setupIPadTabBarViewControllers
 // -------------------------------------------------------------------------------
 - (NSArray *) setupIPadTabBarViewControllers {
-    explorVcIPad = [[FeaturedViewController_iPad alloc] init];
-    libraryVvIPad = [[LibraryViewController_iPad alloc] init];
-    myBookShelfVvIPad = [[ExploreViewController_iPad alloc] init];
+    featuredVcIPad = [[FeaturedViewController_iPad alloc] init];
+    explorVcIPad = [[ExploreViewController_iPad alloc] init];
+    libraryVcIPad = [[LibraryViewController_iPad alloc] init];
     settingsVcIPad = [[SettingsViewController_iPad alloc] init];
     
-    NSArray *arrVC = [NSArray arrayWithObjects: explorVcIPad, libraryVvIPad, myBookShelfVvIPad, settingsVcIPad, nil];
+    NSArray *arrVC = [NSArray arrayWithObjects: featuredVcIPad, explorVcIPad, libraryVcIPad, settingsVcIPad, nil];
     
     return arrVC;
 }
@@ -67,13 +67,13 @@
     switch (maintabBarController.selectedIndex) {
             
         case 0:
-            [explorVcIPad positioningExploreView];
+            [featuredVcIPad positioningFeaturedView];
             break;
         case 1:
-            [libraryVvIPad positioningLibraryView];
+            [explorVcIPad positioningExploreView];
             break;
         case 2:
-            [myBookShelfVvIPad positioningExploreView];
+            [libraryVcIPad positioningLibraryView];
             break;
         case 3:
             [settingsVcIPad positioningSettingsView];

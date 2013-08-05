@@ -25,10 +25,10 @@
     
     dataHolder = [DataHolder sharedData];
     
-    [self positioningExploreView];
+    [self positioningFeaturedView];
 }
 
-- (void)positioningExploreView {
+- (void)positioningFeaturedView {
     NSLog(@"positioningExploreView");
     
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;

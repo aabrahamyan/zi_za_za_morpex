@@ -30,9 +30,9 @@
     FeaturedViewController *featuredVC = [[FeaturedViewController alloc] init];
     ExploreViewController *exploreVC = [[ExploreViewController alloc] init];
     LibraryViewController *libraryVC = [[LibraryViewController alloc] init];
-    //SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
     
-    NSArray *arrVC = [NSArray arrayWithObjects: featuredVC, exploreVC, libraryVC, nil];
+    NSArray *arrVC = [NSArray arrayWithObjects: featuredVC, exploreVC, libraryVC, settingsVC, nil];
     
     return arrVC;
 }
@@ -61,20 +61,20 @@
     UITabBarItem * libraryBarItem = [[UITabBarItem alloc] init];
     [libraryBarItem setTitle:@"Library"];
     
-    //UITabBarItem * settingsfBarItem = [[UITabBarItem alloc] init];
-    //[settingsfBarItem setTitle:@"Settings"];
+    UITabBarItem * settingsfBarItem = [[UITabBarItem alloc] init];
+    [settingsfBarItem setTitle:@"Settings"];
     
     [[arrayVC objectAtIndex:0] setTabBarItem:featured];
     [[arrayVC objectAtIndex:0] setTitle: @"Featured"];
     
     [[arrayVC objectAtIndex:1] setTabBarItem:explorItem];
-    [[arrayVC objectAtIndex:1] setTitle: @"Library"];
+    [[arrayVC objectAtIndex:1] setTitle: @"Explore"];
     
     [[arrayVC objectAtIndex:2] setTabBarItem:libraryBarItem];
-    [[arrayVC objectAtIndex:2] setTitle: @"My Bookshelf"];
+    [[arrayVC objectAtIndex:2] setTitle: @"Library"];
     
-    //[[arrayVC objectAtIndex:3] setTabBarItem:settingsfBarItem];
-    //[[arrayVC objectAtIndex:3] setTitle: @"Settings"];
+    [[arrayVC objectAtIndex:3] setTabBarItem:settingsfBarItem];
+    [[arrayVC objectAtIndex:3] setTitle: @"Settings"];
     
     NSMutableArray *viewArray = [NSMutableArray arrayWithCapacity:TAB_BAR_VIEW_COUNT];
     
@@ -90,9 +90,9 @@
     navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
     [viewArray addObject:navCont];
     
-    //navCont = [[UINavigationController alloc] initWithRootViewController:[arrayVC objectAtIndex:3]];
-    //navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
-    //[viewArray addObject:navCont];
+    navCont = [[UINavigationController alloc] initWithRootViewController:[arrayVC objectAtIndex:3]];
+    navCont.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] ;
+    [viewArray addObject:navCont];
     
     maintabBarController.viewControllers = viewArray;
     
