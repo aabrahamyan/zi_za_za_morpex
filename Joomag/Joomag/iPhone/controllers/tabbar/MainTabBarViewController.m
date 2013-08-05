@@ -53,6 +53,7 @@
     [[maintabBarController tabBar] addSubview:v];
     
     UITabBarItem * featured = [[UITabBarItem alloc] init];
+
     [featured setTitle:@"Featured"];
     
     UITabBarItem * explorItem = [[UITabBarItem alloc] init];

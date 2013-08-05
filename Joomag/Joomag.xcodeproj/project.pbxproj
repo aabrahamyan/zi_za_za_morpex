@@ -38,6 +38,7 @@
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
 		2CC4247E17A6DE17007A494E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4247D17A6DE17007A494E /* Constants.m */; };
 		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
+		2CDE2E4917B034D700CC9AAE /* tabbar~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDE2E4817B034D700CC9AAE /* tabbar~ipad.png */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
@@ -117,6 +118,7 @@
 		2CC4247D17A6DE17007A494E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2CC4247F17A6DE23007A494E /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		2CC4248017A6DE23007A494E /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		2CDE2E4817B034D700CC9AAE /* tabbar~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar~ipad.png"; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				2CDE2E4817B034D700CC9AAE /* tabbar~ipad.png */,
 				2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */,
 			);
 			path = "Resources-iPad";
@@ -516,6 +519,7 @@
 				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
 				5AC6FFE7179B31F70062736F /* testData.xml in Resources */,
 				5AC6FFF9179B392D0062736F /* placeholder.png in Resources */,
+				2CDE2E4917B034D700CC9AAE /* tabbar~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

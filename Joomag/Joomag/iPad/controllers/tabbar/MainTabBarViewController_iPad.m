@@ -28,6 +28,9 @@
 // setupIPadTabBarViewControllers
 // -------------------------------------------------------------------------------
 - (NSArray *) setupIPadTabBarViewControllers {
+    
+    [[maintabBarController tabBar] setBackgroundImage:[UIImage imageNamed:@"tabbar.png"]];
+    
     featuredVcIPad = [[FeaturedViewController_iPad alloc] init];
     explorVcIPad = [[ExploreViewController_iPad alloc] init];
     libraryVcIPad = [[LibraryViewController_iPad alloc] init];
