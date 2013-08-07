@@ -14,6 +14,7 @@
 @interface FeaturedScrollView () {
     CGFloat pageWidth;
     NSInteger entriesLength;
+    int counter;
 }
 
 // the set of ImageDownloader objects for each app
@@ -30,6 +31,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        counter = 1;
         
         //Init DataHolder
         DataHolder *dataHolder = [DataHolder sharedData];
@@ -49,17 +51,13 @@
         pageWidth = pagesScrollViewSize.width;
         
         // Set up the content size of the scroll view
-        self.contentSize = CGSizeMake(pagesScrollViewSize.width * [self.entries count], pagesScrollViewSize.height);
+        self.contentSize = CGSizeMake(pageWidth * [self.entries count], pagesScrollViewSize.height);
         
         // Set up the array to hold the views for each page
         self.pageViews = [[NSMutableArray alloc] init];
         
-        for (NSInteger i = 0; i < entriesLength; ++i) {
-            [self.pageViews addObject:[NSNull null]];
-        }
-        
         // Load the initial set of pages that are on screen
-        [self loadVisiblePages];
+        [self loadVisiblePage];
     }
     return self;
 }
@@ -71,27 +69,10 @@
 // Load the pages which are now on screen
 // -------------------------------------------------------------------------------
 
-- (void)loadVisiblePages {
+- (void)loadVisiblePage {
     // First, determine which page is currently visible
     NSInteger page = [self currentPage:self.contentOffset.x];
-    
-    // Work out which pages we want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i = 0; i < firstPage; i++) {
-        [self purgePage:i];
-    }
-    
-    for (NSInteger i = firstPage; i <= lastPage; i++) {
-        [self loadPage:i];
-    }
-    
-    // Purge anything after the last page
-    for (NSInteger i = lastPage+1; i < entriesLength; i++) {
-        [self purgePage:i];
-    }
+    [self loadPage:page];
 }
 
 // -------------------------------------------------------------------------------
@@ -105,36 +86,12 @@
     }
     
     // Load an individual page, first seeing if we've already loaded it
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        // Set up the page...
-        MagazinRecord *mRecord = [self.entries objectAtIndex:page];
-        if (!mRecord.magazinIcon) {
-            [self startIconDownload:mRecord forIndexPath:page];
-        } else {
-            UIImageView *newPageView = [[UIImageView alloc] initWithImage:mRecord.magazinIcon];
-            newPageView.frame = [self currentFrame:page];
-            [self addSubview:newPageView];
-            [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
-        }
-    }
-}
-
-// -------------------------------------------------------------------------------
-// purgePage:
-// Purge an individual page
-// -------------------------------------------------------------------------------
-- (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= entriesLength) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Remove a page from the scroll view and reset the container array
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+    MagazinRecord *mRecord = [self.entries objectAtIndex:page];
+    if (!mRecord.magazinIcon) {
+        [self startIconDownload:mRecord forIndexPath:page];
+    } else {
+        NSLog(@"exist: %i",page);
+        ((UIImageView *)[self.pageViews objectAtIndex: page]).image = mRecord.magazinIcon;
     }
 }
 
@@ -148,24 +105,28 @@
     if (imageDownloader == nil) {
         imageDownloader = [[ImageDownloader alloc] init];
         imageDownloader.magazinRecord = magazinRecord;
-        UIImageView *newPageView = [[UIImageView alloc] init];
+        
+        UIImageView *imageView = [[UIImageView alloc] init];
         
         [imageDownloader setCompletionHandler:^{
             NSLog(@"Download Image: %i",page);
             
             // Display the newly loaded image
-            newPageView.image = magazinRecord.magazinIcon;
-            newPageView.frame = [self currentFrame:page];
-            [self addSubview:newPageView];
-            [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
+            imageView.image = magazinRecord.magazinIcon;
+            imageView.frame = self.bounds;
+            imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+            imageView.tag = counter; counter++;
+            
+            [self addSubview: imageView];
             
             // Remove the IconDownloader from the in progress list.
             // This will result in it being deallocated.
             [self.imageDownloadsInProgress removeObjectForKey:index];
         }];
         
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:index];
-        [imageDownloader startDownloadWithImageView:newPageView];
+        [self.imageDownloadsInProgress setObject: imageDownloader forKey:index];
+        [self.pageViews insertObject:imageView atIndex: page];
+        [imageDownloader startDownloadWithImageView: imageView];
     }
 }
 
@@ -196,7 +157,7 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self loadVisiblePages];
+    [self loadVisiblePage];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 

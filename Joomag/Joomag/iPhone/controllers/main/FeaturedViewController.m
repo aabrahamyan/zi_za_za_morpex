@@ -94,7 +94,8 @@
     detailsView.text.text = mRecord.magazinDetailsText;
     
     if (!mRecord.magazinDetailsIcon) {
-        detailsView.imageView.image = [UIImage imageNamed:@"placeholder.png"];
+        //detailsView.imageView.image = [UIImage imageNamed:@"placeholder.png"];
+        detailsView.imageView.image = nil;
         [self startIconDownload:mRecord forIndexPath:page];
     } else {
         detailsView.imageView.image = mRecord.magazinDetailsIcon;
@@ -119,7 +120,7 @@
         UIImageView *newPageView = [[UIImageView alloc] init];
         
         [imageDownloader setCompletionHandler:^{
-            NSLog(@"Details Download Image: %i",page);
+            // NSLog(@"Details Download Image: %i",page);
             
             // Display the newly loaded image
             detailsView.imageView.image = magazinRecord.magazinDetailsIcon;
