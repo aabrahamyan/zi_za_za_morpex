@@ -8,10 +8,12 @@
 
 #import "ExploreViewController_iPad.h"
 #import "DataHolder.h"
+#import "Util.h"
 
 @interface ExploreViewController_iPad () {
     DataHolder *dataHolder;
     CGRect titleLabelsViewFrame, pageControlFrame, scrollViewFrame;
+    NSArray *data;
 }
 
 @end
@@ -23,10 +25,17 @@
     
     NSLog(@"ExploreViewController_iPad");
     
+    data = [NSArray arrayWithObjects: @"Categories",@"Art",@"Automotive",
+            @"Entertainment",@"Home",@"Lifestyle", @"Men",@"News",@"Science and Tech",
+            @"Business",@"Sports",@"Travel", @"Women", nil];
+    
     dataHolder = [DataHolder sharedData];
+    
+    //--------------------- Settings --------------------
+    settingsTable = [[ExploreTableView alloc] init];
+    
+    [self.view addSubview:settingsTable];
 }
-
-
 
 - (void)viewDidLayoutSubviews {
     
@@ -59,6 +68,8 @@
     titleLabels.frame = titleLabelsViewFrame;
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
+    
+    settingsTable.frame = CGRectMake(self.view.frame.size.width-260, 0, 260, self.view.frame.size.height);
 }
 
 
