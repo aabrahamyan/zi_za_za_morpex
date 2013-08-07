@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExploreScrollView : UIScrollView <UIScrollViewDelegate>
+@interface ExploreScrollView : UIScrollView <UIScrollViewDelegate> {
+@protected
+    int tileW;
+    int tileH;
+    
+}
 
 // the main data model for our UIScrollView
 @property (nonatomic, strong) NSArray *entries;
+@property (nonatomic, assign) NSInteger currentPage;
+
+- (void)reloadScroll;
 
 @end

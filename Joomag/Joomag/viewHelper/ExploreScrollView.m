@@ -12,20 +12,22 @@
 #import "MagazinRecord.h"
 
 @interface ExploreScrollView () {
-    CGFloat pageHeight;
+    CGFloat pageWidth;
     NSInteger entriesLength;
     int yPosition;
     int xPosition;
+    int index;
 }
 
 // the set of ImageDownloader objects for each app
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
+@property (nonatomic, strong) NSMutableArray *pageViews;
 
 @end
 @implementation ExploreScrollView
 
 - (id)initWithFrame:(CGRect)frame
-{
+{ NSLog(@"----------------------------------------------------------------");
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -40,46 +42,158 @@
         self.backgroundColor = [UIColor clearColor];
         
         self.delegate = self;
-        //self.pagingEnabled = YES;
-        
+        self.pagingEnabled = YES;
+        self.showsHorizontalScrollIndicator = NO;
         entriesLength = self.entries.count;
         
         CGSize pagesScrollViewSize = self.frame.size;
-        pageHeight = pagesScrollViewSize.height;
+        pageWidth = pagesScrollViewSize.width;
         
+        xPosition = 0;
         yPosition = 0;
-        xPosition = 20;
         
-        for (int i = 0; i < entriesLength; i ++) {
+        int offsetX = 0;
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            tileW = 150;
+            tileH = 200;
+            int arrIPhone[4][2] ={{0,0},{1,0},{0,1},{1,1}};
             
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 130, 170)];
-            imageView.image = [UIImage imageNamed:@"placeholder.png"];
-            
-            [self addSubview:imageView];
-            
-            xPosition += 150;
-            if(xPosition >=300){
-                xPosition = 20;
-                yPosition += 220;
+            for (int i = 0; i < 11; i ++) {
+                if(i%4 == 0 && i!=0){
+                    offsetX += 2*tileW+20;
+                }
+                
+                xPosition = offsetX + arrIPhone[i%4][0]*tileW;
+                yPosition = arrIPhone[i%4][1]*tileH;
+                
+                //NSLog(@"x: %d y: %d",xPosition, yPosition);
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition+20, yPosition, 130, 170)];
+                imageView.image = [UIImage imageNamed:@"placeholder.png"];
+                imageView.tag = i+1;
+                
+                [self addSubview:imageView];
             }
+            
+            index = 4;
+            
+            // Set up the content size of the scroll view for IPHONE
+            self.contentSize = CGSizeMake(3*320, pagesScrollViewSize.height);
+            
+        } else {
+            tileW = 220;
+            tileH = 280;
+            int arrIpad[6][2] ={{0,0},{1,0},{2,0},{0,1},{1,1},{2,1}};
+            
+            for (int i = 0; i < 11; i ++) {
+                if(i%6 == 0 && i!=0){
+                    NSLog(@"i: %i",i);
+                    offsetX += 3*tileW;
+                }
+                
+                xPosition = offsetX + arrIpad[i%6][0]*tileW;
+                yPosition = arrIpad[i%6][1]*tileH;
+                
+                //NSLog(@"x: %d y: %d",xPosition, yPosition);
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 170, 220)];
+                imageView.image = [UIImage imageNamed:@"placeholder.png"];
+                imageView.tag = i+1;
+                
+                [self addSubview:imageView];
+            }
+            
+            index = 6;
+            
+            // Set up the content size of the scroll view for IPHONE
+            self.contentSize = CGSizeMake(6*320, pagesScrollViewSize.height);
         }
         
-        // Set up the content size of the scroll view
-        self.contentSize = CGSizeMake(pagesScrollViewSize.width, yPosition+180);
-        
-        NSLog(@"self.contentSize: %f",self.contentSize.width);
+        self.pageViews = [[NSMutableArray alloc] init];
         
         // Load the initial set of pages that are on screen
+        [self loadVisibleImages];
     }
     return self;
+}
+
+// -------------------------------------------------------------------------------
+// loadVisibleImages
+// Load the images which are now on screen
+// -------------------------------------------------------------------------------
+- (void)loadVisibleImages {
+    // First, determine which page is currently visible
+    int page = [self currentPage:self.contentOffset.x];
+    [self loadPage:page];
+}
+
+// -------------------------------------------------------------------------------
+// loadPage:
+// Load an individual page
+// -------------------------------------------------------------------------------
+- (void)loadPage:(int)page {
+    int len = index*page+index;
+    
+    for (UIImageView *subview in [self subviews]) {
+        if (subview.tag < len+1 && subview.tag != 0) {
+            // Load an individual page, first seeing if we've already loaded it
+            MagazinRecord *mRecord = [self.entries objectAtIndex:subview.tag-1];
+            if (!mRecord.magazinTESTIcon) {
+                NSLog(@"index: %i",subview.tag);
+                [self startIconDownload:mRecord forIndexPath:subview.tag-1];
+            } else {
+                NSLog(@"exist");
+                subview.image = mRecord.magazinTESTIcon;
+            }
+        }
+    }
+}
+
+- (void)reloadScroll {
+    for (UIImageView *subview in [self subviews]) {
+        if([subview isKindOfClass:[UIImageView class]]) {
+            if (subview.tag != 0) {
+                subview.image = [UIImage imageNamed:@"placeholder.png"];
+            }
+        }
+    }
+    
+    //[self loadVisibleImages];
+}
+
+
+// -------------------------------------------------------------------------------
+//	startIconDownload:forIndexPath:
+// -------------------------------------------------------------------------------
+- (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
+    NSNumber *indexP = [NSNumber numberWithInteger:page];
+    
+    //NSLog(@"imageview: %i",page);
+    
+    ImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexP];
+    
+    if (imageDownloader == nil) {
+        
+        imageDownloader = [[ImageDownloader alloc] init];
+        imageDownloader.magazinRecord = magazinRecord;
+        
+        [imageDownloader setCompletionHandler:^{
+            NSLog(@"Download Image: %i",page);
+            ((UIImageView *)[[self subviews] objectAtIndex:page]).image = magazinRecord.magazinTESTIcon;
+            [self setShadow:((UIImageView *)[[self subviews] objectAtIndex:page])];
+        }];
+        
+        
+        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
+        [imageDownloader startDownloadTEST:((UIImageView *)[[self subviews] objectAtIndex:page])];
+    }
 }
 
 // -------------------------------------------------------------------------------
 //	currentPage:
 //  return current page by offset x
 // -------------------------------------------------------------------------------
-- (NSInteger)currentPage: (float)offsetY {
-    return (NSInteger)floor((offsetY * 2.0f + pageHeight) / (pageHeight * 2.0f));
+- (int)currentPage: (float)offsetX {
+    return (int)floor((offsetX * 2.0f + pageWidth) / (pageWidth * 2.0f));
 }
 
 // -------------------------------------------------------------------------------
@@ -95,6 +209,14 @@
     return frame;
 }
 
+- (void)setShadow: (UIImageView *)imageView {
+    imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    imageView.layer.shadowOffset = CGSizeMake(3, 3);
+    imageView.layer.shadowOpacity = 0.7;
+    imageView.layer.shadowRadius = 1.0;
+    imageView.clipsToBounds = NO;
+}
+
 #pragma mark - UIScrollViewDelegate
 
 // -------------------------------------------------------------------------------
@@ -102,7 +224,8 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    //[self loadVisiblePages];
+    [self loadVisibleImages];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl2" object:nil];
 }
 
 // -------------------------------------------------------------------------------
@@ -111,7 +234,7 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    self.currentPage = [self currentPage:self.contentOffset.x];
 }
 
 // any zoom scale changes
@@ -123,7 +246,7 @@
 // called on start of dragging (may require some time and or distance to move)
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
+    
 }
 
 // called on finger up if the user dragged. velocity is in points/second. targetContentOffset may be changed to adjust where the scroll view comes to rest. not called when pagingEnabled is YES
@@ -179,5 +302,28 @@
 {
     
 }
+
+/*/if ([self subviews]) {
+ for (UIImageView *subview in [self subviews]) {
+ if([subview isKindOfClass:[UIImageView class]]) {
+ if (!CGRectIntersectsRect(self.bounds, subview.frame)) {
+ 
+ NSLog(@"index: %i",index);
+ 
+ // Load an individual page, first seeing if we've already loaded it
+ MagazinRecord *mRecord = [self.entries objectAtIndex:index];
+ 
+ if (!mRecord.magazinTESTIcon) {
+ [self startIconDownload:mRecord forIndexPath:index];
+ index++;
+ } else {
+ NSLog(@"exist");
+ subview.image = mRecord.magazinTESTIcon;
+ }
+ 
+ }
+ }
+ }
+ /}*/
 
 @end

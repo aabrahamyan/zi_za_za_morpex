@@ -60,4 +60,24 @@
      }];
 }
 
+- (void)startDownloadTEST:(UIImageView *)imageView
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.magazinRecord.magazinDetailsImageURL]];
+    [imageView setImageWithURLRequest:request
+                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+     {
+         self.magazinRecord.magazinTESTIcon = image;
+         
+         // call our delegate and tell it that our icon is ready for display
+         if (self.completionHandler)
+             self.completionHandler();
+         
+     }
+                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
+     {
+         NSLog(@"ImageDownloader Details failure");
+     }];
+}
+
 @end
