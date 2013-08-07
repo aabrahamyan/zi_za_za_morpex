@@ -36,6 +36,11 @@ extern NSString * const GETPAGE_MOBILE;
 extern NSString * const PAGE_MAGAZINE_ID;
 extern NSString * const PAGE_NUMABER;
 
+//-------------- GETMAGAZINESLIST Request/Response handling ---------------//
+extern NSString * const GETMAGAZINESLIST;
+//-------------- GET CATEGORIES LIST Request/Response handling ---------------//
+extern NSString * const GETCATEGORIESLIST;
+
 @interface Constants : NSObject
 
 @end
