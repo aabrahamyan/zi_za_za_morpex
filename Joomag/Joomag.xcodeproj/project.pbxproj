@@ -28,6 +28,10 @@
 		2C0C127917AB038E00A0357A /* BaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127817AB038E00A0357A /* BaseParser.m */; };
 		2C0C127C17AB083B00A0357A /* MagazineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127B17AB083B00A0357A /* MagazineParser.m */; };
 		2C0C127F17AB087600A0357A /* PageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127E17AB087600A0357A /* PageParser.m */; };
+		2CA13BC417B3C3BD00D0257F /* restoreButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */; };
+		2CA13BC517B3C3BD00D0257F /* restoreDescription@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */; };
+		2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */; };
+		2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC317B3C3BD00D0257F /* desc@2x.png */; };
 		2CADE37917993D0A002202D5 /* FeaturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37817993D0A002202D5 /* FeaturedViewController.m */; };
 		2CADE37C17993D1F002202D5 /* FeaturedViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37B17993D1F002202D5 /* FeaturedViewController_iPad.m */; };
 		2CADE37F17993D56002202D5 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37E17993D56002202D5 /* LibraryViewController.m */; };
@@ -121,6 +125,10 @@
 		2C0C127B17AB083B00A0357A /* MagazineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazineParser.m; sourceTree = "<group>"; };
 		2C0C127D17AB087600A0357A /* PageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageParser.h; sourceTree = "<group>"; };
 		2C0C127E17AB087600A0357A /* PageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageParser.m; sourceTree = "<group>"; };
+		2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restoreButton@2x.png"; sourceTree = "<group>"; };
+		2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restoreDescription@2x.png"; sourceTree = "<group>"; };
+		2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutJoomag@2x.png"; sourceTree = "<group>"; };
+		2CA13BC317B3C3BD00D0257F /* desc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "desc@2x.png"; sourceTree = "<group>"; };
 		2CADE37717993D0A002202D5 /* FeaturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedViewController.h; sourceTree = "<group>"; };
 		2CADE37817993D0A002202D5 /* FeaturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturedViewController.m; sourceTree = "<group>"; };
 		2CADE37A17993D1F002202D5 /* FeaturedViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedViewController_iPad.h; sourceTree = "<group>"; };
@@ -308,6 +316,10 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */,
+				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
+				2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */,
+				2CA13BC317B3C3BD00D0257F /* desc@2x.png */,
 				2CC3E45B17B388CD00801BC9 /* realSettingsBG@2x.png */,
 				2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */,
 				2CB7890C17B30496009ECE98 /* Settings@2x.png */,
@@ -615,6 +627,10 @@
 				2CB7891417B30499009ECE98 /* settingsTextFieldBG@2x.png in Resources */,
 				2CB7891517B30499009ECE98 /* submitSettings@2x.png in Resources */,
 				2CC3E45C17B388CD00801BC9 /* realSettingsBG@2x.png in Resources */,
+				2CA13BC417B3C3BD00D0257F /* restoreButton@2x.png in Resources */,
+				2CA13BC517B3C3BD00D0257F /* restoreDescription@2x.png in Resources */,
+				2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */,
+				2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

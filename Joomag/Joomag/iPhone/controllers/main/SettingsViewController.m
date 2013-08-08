@@ -15,6 +15,10 @@
 
 @implementation SettingsViewController
 
+- (void) animateDown {
+    [self animateUpAndDown:NO];
+}
+
 - (void) loadView {
     [super loadView];
     
@@ -27,7 +31,14 @@
     tabsView.frame = CGRectMake(50, 122, 186, 247);
     
     //--------------- Draw Here -----------------//
-    closeButtonView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"closeButton"]];
+
+    closeButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButtonView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateNormal];
+    [closeButtonView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateSelected];
+    [closeButtonView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateHighlighted];
+    closeButtonView.showsTouchWhenHighlighted = YES;
+    [closeButtonView addTarget:self action:@selector(animateDown) forControlEvents:UIControlEventTouchUpInside];
+    
     gearView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"gear"]];
     
     settingsLabel = [[UILabel alloc] init];
@@ -50,8 +61,8 @@
     accountSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     accountSettingsButton.backgroundColor = [UIColor clearColor]; 
     accountSettingsButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-
-
+    accountSettingsButton.tag = 8765432;
+    [accountSettingsButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
 
     [accountSettingsButton setTitle:@"Account Settings" forState:UIControlStateNormal];
     [accountSettingsButton setTitle:@"Account Settings" forState:UIControlStateSelected];
@@ -69,7 +80,8 @@
     notificationSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     notificationSettingsButton.backgroundColor = [UIColor clearColor];
     notificationSettingsButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    
+    notificationSettingsButton.tag = 8765431;
+    [notificationSettingsButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
     
     
     [notificationSettingsButton setTitle:@"Notification Settings" forState:UIControlStateNormal];
@@ -86,7 +98,8 @@
     aboutJoomagButton = [UIButton buttonWithType:UIButtonTypeCustom];
     aboutJoomagButton.backgroundColor = [UIColor clearColor];
     aboutJoomagButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    
+    aboutJoomagButton.tag = 8765430;
+    [aboutJoomagButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
     
     
     [aboutJoomagButton setTitle:@"About Joomag" forState:UIControlStateNormal];
@@ -101,9 +114,9 @@
     
     helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     helpButton.backgroundColor = [UIColor clearColor];
-    helpButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    
-    
+    helpButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];    
+    helpButton.tag = 8765439;
+    [helpButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
     
     [helpButton setTitle:@"Help" forState:UIControlStateNormal];
     [helpButton setTitle:@"Help" forState:UIControlStateSelected];
@@ -119,6 +132,8 @@
     restoreItunes.backgroundColor = [UIColor clearColor];
     restoreItunes.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
     restoreItunes.titleLabel.numberOfLines = 2;
+    restoreItunes.tag = 8765438;
+    [restoreItunes addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
     
     
     [restoreItunes setTitle:@"Restore iTunes Purchases" forState:UIControlStateNormal];
@@ -201,6 +216,14 @@
     passBgRepeat = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"settingsTextFieldBG"]];
     [registrationView addSubview:passBgRepeat];
     
+    retypeLabel = [[UILabel alloc] init];
+    retypeLabel.font = [UIFont boldSystemFontOfSize:17.5];
+    retypeLabel.textColor = [UIColor grayColor];
+    retypeLabel.backgroundColor = [UIColor clearColor];
+    retypeLabel.text = @"Retype:";
+    
+    [registrationView addSubview:retypeLabel];
+    
     passwordTextFieldRepeat = [[UITextField alloc] init];
 	passwordTextFieldRepeat.backgroundColor = [UIColor clearColor];
     passwordTextFieldRepeat.font = [UIFont systemFontOfSize:17.5] ;
@@ -230,6 +253,10 @@
     
     [registrationView addSubview:termsOfService];
     
+    tmpDesc = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"desc"]];
+    
+    [registrationView addSubview:tmpDesc];
+    
     [self.view addSubview:registrationView];
     
 }
@@ -245,8 +272,116 @@
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         
         [UIView commitAnimations];
+    } else {
+        [UIView beginAnimations:@"popingUP" context:nil];
+
+        self.view.frame = CGRectMake(0, 0, 1024, 768);
+        [UIView setAnimationDuration:1.0];
+        self.view.frame = CGRectMake(0, 1024, 1024, 768);
+        
+        [UIView commitAnimations];
     }
     
+}
+//TODO: CHANGE LATER !!!!! A>A>
+- (void) updateFramesForiPad {   
+    
+    closeButtonView.frame = CGRectMake(15, 15, 13, 13);
+    gearView.frame = CGRectMake(60, 13, 20, 18);
+    settingsLabel.frame = CGRectMake(93, 13, 100, 20);
+    signInButton.frame = CGRectMake(900, 10, 88, 27);
+    
+    accountSettingsButton.frame = CGRectMake(0, 0, 180, 20);
+    accountSettingsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    notificationSettingsButton.frame = CGRectMake(0, 60, 190, 20);
+    notificationSettingsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    aboutJoomagButton.frame = CGRectMake(0, 115, 180, 20);
+    aboutJoomagButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    helpButton.frame = CGRectMake(0, 165, 180, 20);
+    helpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    restoreItunes.frame = CGRectMake(0, 220, 120, 20);
+    helpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    //-------------- Construct Registration View -----------------//
+    registrationView.frame = CGRectMake(278, 122, 700, 400);
+    joinJoomag.frame = CGRectMake(0, 1, 150, 20);
+    
+    genericBackgroundImage.frame = CGRectMake(0, 54, 287, 44);
+    emailLabel.frame = CGRectMake(5, 64, 80, 20);
+    emailTextField.frame = CGRectMake(105, 63, 165, 20);
+    
+    passBg.frame = CGRectMake(0, 111, 287, 44);
+    passBgRepeat.frame = CGRectMake(0, 155, 287, 44);
+    
+    passwordLabel.frame = CGRectMake(5, 121, 100, 20);
+    passwordTextField.frame = CGRectMake(104, 120, 180, 20);
+    
+    retypeLabel.frame = CGRectMake(5, 165, 80, 20);
+    passwordTextFieldRepeat.frame = CGRectMake(105, 164, 155, 20);
+    
+    termsOfService.frame = CGRectMake(200, 270, 120, 20);
+    
+    submitButton.frame = CGRectMake(0, 242, 175, 44);
+    
+    tmpDesc.frame = CGRectMake(358, 54, 323, 101);
+}
+
+- (void) createAboutView {
+    tmpAbout = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"aboutJoomag"]];
+    tmpAbout.frame = CGRectMake(336, 105, 584, 470);
+    [self.view addSubview:tmpAbout];
+}
+
+- (void) toggleButtons: (id) target {
+    NSInteger buttonTag = ((UIButton *)target).tag;
+    
+    switch (buttonTag) {
+        case 8765432:
+            [accountSettingsButton setSelected:YES];
+            [notificationSettingsButton setSelected:NO];
+            [aboutJoomagButton setSelected:NO];
+            [restoreItunes setSelected:NO];
+            [helpButton setSelected:NO];
+            
+            if(tmpAbout) {
+                [tmpAbout removeFromSuperview];
+                tmpAbout = nil;
+            }
+            
+            [self constructRegistrationView];
+            [self updateFramesForiPad];
+            
+            break;
+        case 8765431:
+            [accountSettingsButton setSelected:NO];
+            [notificationSettingsButton setSelected:YES];
+            [aboutJoomagButton setSelected:NO];
+            [restoreItunes setSelected:NO];
+            [helpButton setSelected:NO];
+            
+            break;
+            
+        case 8765430:
+            [accountSettingsButton setSelected:NO];
+            [notificationSettingsButton setSelected:NO];
+            [aboutJoomagButton setSelected:YES];
+            [restoreItunes setSelected:NO];
+            [helpButton setSelected:NO];
+            
+            if(registrationView) {
+                [registrationView removeFromSuperview];
+                registrationView = nil;
+            }
+            [self createAboutView];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

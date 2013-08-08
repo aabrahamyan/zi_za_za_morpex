@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate> {
-    UIImageView * closeButtonView;
+    UIButton * closeButtonView;
     UIImageView * gearView;
     UILabel * settingsLabel;
     UIButton * accountSettingsButton;
@@ -42,7 +42,10 @@
     UIImageView * passBg;
     UIImageView * passBgRepeat;
     UITextField * passwordTextField;
-    UITextField * passwordTextFieldRepeat; 
+    UITextField * passwordTextFieldRepeat;
+    
+    UIImageView * tmpDesc;
+    UIImageView * tmpAbout;
 
 }
 

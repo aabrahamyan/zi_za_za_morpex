@@ -40,12 +40,12 @@
     helpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
     //-------------- Construct Registration View -----------------//
-    registrationView.frame = CGRectMake(278, 122, 400, 200);
+    registrationView.frame = CGRectMake(278, 122, 700, 400);
     joinJoomag.frame = CGRectMake(0, 1, 150, 20);
     
     genericBackgroundImage.frame = CGRectMake(0, 54, 287, 44);
     emailLabel.frame = CGRectMake(5, 64, 80, 20);
-    emailTextField.frame = CGRectMake(70, 63, 200, 20);
+    emailTextField.frame = CGRectMake(105, 63, 165, 20);
     
     passBg.frame = CGRectMake(0, 111, 287, 44);
     passBgRepeat.frame = CGRectMake(0, 155, 287, 44);
@@ -53,8 +53,19 @@
     passwordLabel.frame = CGRectMake(5, 121, 100, 20);
     passwordTextField.frame = CGRectMake(104, 120, 180, 20);
     
+    retypeLabel.frame = CGRectMake(5, 165, 80, 20);
+    passwordTextFieldRepeat.frame = CGRectMake(105, 164, 155, 20);
+    
+    termsOfService.frame = CGRectMake(200, 270, 120, 20);
     
     submitButton.frame = CGRectMake(0, 242, 175, 44);
+    
+    tmpDesc.frame = CGRectMake(358, 54, 323, 101);
+    
+    
+
 }
+
+
 
 @end
