@@ -41,9 +41,9 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     self.view.frame = CGRectMake(0, 0, 768, 1024);
     self.backGroundView.frame = CGRectMake(0, 703, self.width, self.height); 
     
-    self.featuredButton.frame = CGRectMake(50, 15, 99, 24);
-    self.exploreButton.frame = CGRectMake(220, 15, 94, 24);
-    self.myLibButton.frame = CGRectMake(390, 15, 112, 24);
+    self.featuredButton.frame = CGRectMake(50, 10, 99, 24);
+    self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
+    self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
     
     self.gearButton.frame = CGRectMake(900, 15, 20, 20);
     self.noteButton.frame = CGRectMake(950, 15, 20, 20);
