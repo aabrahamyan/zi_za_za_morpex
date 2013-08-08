@@ -31,7 +31,7 @@
     dataHolder = [DataHolder sharedData];
     
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, dataHolder.screenHeight)];
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenHeight, dataHolder.screenWidth)];
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];

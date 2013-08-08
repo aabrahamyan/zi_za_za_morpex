@@ -23,8 +23,8 @@
     if (self) {
         // Initialization code
         data = [NSArray arrayWithObjects: @"Categories",@"Art",@"Automotive",
-                         @"Entertainment",@"Home",@"Lifestyle", @"Men",@"News",@"Science and Tech",
-                         @"Business",@"Sports",@"Travel", @"Women", nil];
+                @"Entertainment",@"Home",@"Lifestyle", @"Men",@"News",@"Science and Tech",
+                @"Business",@"Sports",@"Travel", @"Women", nil];
         
         self.delegate = self;
         self.dataSource = self;
@@ -62,6 +62,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
+    data = [NSArray arrayWithObjects: @"Sub Categories",@"Sub Art",@"Sub Automotive",
+            @"Sub Entertainment",@"Sub Home", nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTitles" object:nil];
+    
+    [tableView reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

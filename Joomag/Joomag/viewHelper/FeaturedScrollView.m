@@ -109,12 +109,12 @@
         UIImageView *imageView = [[UIImageView alloc] init];
         
         [imageDownloader setCompletionHandler:^{
-            NSLog(@"Download Image: %i",page);
+            NSLog(@"Download Featured Image: %i",page);
             
             // Display the newly loaded image
             imageView.image = magazinRecord.magazinIcon;
             imageView.frame = self.bounds;
-            imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+            //imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
             imageView.tag = counter; counter++;
             
             [self addSubview: imageView];
