@@ -36,9 +36,31 @@
 		2CADE38817994144002202D5 /* ExploreViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38717994144002202D5 /* ExploreViewController_iPad.m */; };
 		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
+		2CB788E717B2DA4C009ECE98 /* CustomTabBarController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB788E617B2DA4C009ECE98 /* CustomTabBarController_iPad.m */; };
+		2CB788F717B2EA26009ECE98 /* barExplore.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788E817B2EA25009ECE98 /* barExplore.png */; };
+		2CB788F817B2EA26009ECE98 /* barFeatured.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788E917B2EA25009ECE98 /* barFeatured.png */; };
+		2CB788F917B2EA26009ECE98 /* barMyLib.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EA17B2EA25009ECE98 /* barMyLib.png */; };
+		2CB788FA17B2EA26009ECE98 /* bigSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EB17B2EA25009ECE98 /* bigSeparator.png */; };
+		2CB788FB17B2EA26009ECE98 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EC17B2EA25009ECE98 /* closeButton@2x.png */; };
+		2CB788FC17B2EA26009ECE98 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788ED17B2EA25009ECE98 /* gear@2x.png */; };
+		2CB788FD17B2EA26009ECE98 /* signInButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EE17B2EA25009ECE98 /* signInButton@2x.png */; };
+		2CB788FE17B2EA26009ECE98 /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EF17B2EA25009ECE98 /* separator.png */; };
+		2CB7890117B2EA26009ECE98 /* tabBarBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F217B2EA26009ECE98 /* tabBarBook.png */; };
+		2CB7890217B2EA26009ECE98 /* tabBarEye.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F317B2EA26009ECE98 /* tabBarEye.png */; };
+		2CB7890317B2EA26009ECE98 /* tabBarGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F417B2EA26009ECE98 /* tabBarGear.png */; };
+		2CB7890417B2EA26009ECE98 /* tabBarStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F517B2EA26009ECE98 /* tabBarStar.png */; };
+		2CB7890517B2EA26009ECE98 /* tabBarXuyEgo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F617B2EA26009ECE98 /* tabBarXuyEgo.png */; };
+		2CB7890917B2F56A009ECE98 /* tabbarSmbatich@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */; };
+		2CB7890B17B2F66A009ECE98 /* Tabich@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */; };
+		2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890C17B30496009ECE98 /* Settings@2x.png */; };
+		2CB7891217B30499009ECE98 /* settingsLabelsBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */; };
+		2CB7891317B30499009ECE98 /* settingsLandBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */; };
+		2CB7891417B30499009ECE98 /* settingsTextFieldBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890F17B30498009ECE98 /* settingsTextFieldBG@2x.png */; };
+		2CB7891517B30499009ECE98 /* submitSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7891017B30499009ECE98 /* submitSettings@2x.png */; };
+		2CC3E45C17B388CD00801BC9 /* realSettingsBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3E45B17B388CD00801BC9 /* realSettingsBG@2x.png */; };
 		2CC4247E17A6DE17007A494E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4247D17A6DE17007A494E /* Constants.m */; };
 		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
-		2CDE2E4917B034D700CC9AAE /* tabbar~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDE2E4817B034D700CC9AAE /* tabbar~ipad.png */; };
+		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
@@ -114,11 +136,35 @@
 		2CADE38A1799429E002202D5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
 		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
+		2CB788E517B2DA4C009ECE98 /* CustomTabBarController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController_iPad.h; sourceTree = "<group>"; };
+		2CB788E617B2DA4C009ECE98 /* CustomTabBarController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController_iPad.m; sourceTree = "<group>"; };
+		2CB788E817B2EA25009ECE98 /* barExplore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barExplore.png; sourceTree = "<group>"; };
+		2CB788E917B2EA25009ECE98 /* barFeatured.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barFeatured.png; sourceTree = "<group>"; };
+		2CB788EA17B2EA25009ECE98 /* barMyLib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barMyLib.png; sourceTree = "<group>"; };
+		2CB788EB17B2EA25009ECE98 /* bigSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigSeparator.png; sourceTree = "<group>"; };
+		2CB788EC17B2EA25009ECE98 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		2CB788ED17B2EA25009ECE98 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		2CB788EE17B2EA25009ECE98 /* signInButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signInButton@2x.png"; sourceTree = "<group>"; };
+		2CB788EF17B2EA25009ECE98 /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
+		2CB788F217B2EA26009ECE98 /* tabBarBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarBook.png; sourceTree = "<group>"; };
+		2CB788F317B2EA26009ECE98 /* tabBarEye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarEye.png; sourceTree = "<group>"; };
+		2CB788F417B2EA26009ECE98 /* tabBarGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarGear.png; sourceTree = "<group>"; };
+		2CB788F517B2EA26009ECE98 /* tabBarStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarStar.png; sourceTree = "<group>"; };
+		2CB788F617B2EA26009ECE98 /* tabBarXuyEgo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarXuyEgo.png; sourceTree = "<group>"; };
+		2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSmbatich@2x.png"; sourceTree = "<group>"; };
+		2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabich@2x.png"; sourceTree = "<group>"; };
+		2CB7890C17B30496009ECE98 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
+		2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLabelsBG@2x.png"; sourceTree = "<group>"; };
+		2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLandBG@2x.png"; sourceTree = "<group>"; };
+		2CB7890F17B30498009ECE98 /* settingsTextFieldBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsTextFieldBG@2x.png"; sourceTree = "<group>"; };
+		2CB7891017B30499009ECE98 /* submitSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitSettings@2x.png"; sourceTree = "<group>"; };
+		2CC3E45B17B388CD00801BC9 /* realSettingsBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "realSettingsBG@2x.png"; sourceTree = "<group>"; };
 		2CC4247C17A6DE17007A494E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2CC4247D17A6DE17007A494E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2CC4247F17A6DE23007A494E /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		2CC4248017A6DE23007A494E /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		2CDE2E4817B034D700CC9AAE /* tabbar~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar~ipad.png"; sourceTree = "<group>"; };
+		2CE40CF617B27C94000097E2 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		2CE40CF717B27C94000097E2 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
@@ -259,7 +305,27 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
-				2CDE2E4817B034D700CC9AAE /* tabbar~ipad.png */,
+				2CC3E45B17B388CD00801BC9 /* realSettingsBG@2x.png */,
+				2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */,
+				2CB7890C17B30496009ECE98 /* Settings@2x.png */,
+				2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */,
+				2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */,
+				2CB7890F17B30498009ECE98 /* settingsTextFieldBG@2x.png */,
+				2CB7891017B30499009ECE98 /* submitSettings@2x.png */,
+				2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */,
+				2CB788E817B2EA25009ECE98 /* barExplore.png */,
+				2CB788E917B2EA25009ECE98 /* barFeatured.png */,
+				2CB788EA17B2EA25009ECE98 /* barMyLib.png */,
+				2CB788EB17B2EA25009ECE98 /* bigSeparator.png */,
+				2CB788EC17B2EA25009ECE98 /* closeButton@2x.png */,
+				2CB788ED17B2EA25009ECE98 /* gear@2x.png */,
+				2CB788EE17B2EA25009ECE98 /* signInButton@2x.png */,
+				2CB788EF17B2EA25009ECE98 /* separator.png */,
+				2CB788F217B2EA26009ECE98 /* tabBarBook.png */,
+				2CB788F317B2EA26009ECE98 /* tabBarEye.png */,
+				2CB788F417B2EA26009ECE98 /* tabBarGear.png */,
+				2CB788F517B2EA26009ECE98 /* tabBarStar.png */,
+				2CB788F617B2EA26009ECE98 /* tabBarXuyEgo.png */,
 				2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */,
 			);
 			path = "Resources-iPad";
@@ -288,6 +354,8 @@
 			children = (
 				2C0B75D017972A7600735AD3 /* MainTabBarViewController_iPad.h */,
 				2C0B75D117972A7600735AD3 /* MainTabBarViewController_iPad.m */,
+				2CB788E517B2DA4C009ECE98 /* CustomTabBarController_iPad.h */,
+				2CB788E617B2DA4C009ECE98 /* CustomTabBarController_iPad.m */,
 			);
 			path = tabbar;
 			sourceTree = "<group>";
@@ -306,6 +374,8 @@
 			children = (
 				2C0B75C7179725CE00735AD3 /* MainTabBarViewController.h */,
 				2C0B75C8179725CE00735AD3 /* MainTabBarViewController.m */,
+				2CE40CF617B27C94000097E2 /* CustomTabBarController.h */,
+				2CE40CF717B27C94000097E2 /* CustomTabBarController.m */,
 			);
 			path = tabbar;
 			sourceTree = "<group>";
@@ -519,7 +589,27 @@
 				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
 				5AC6FFE7179B31F70062736F /* testData.xml in Resources */,
 				5AC6FFF9179B392D0062736F /* placeholder.png in Resources */,
-				2CDE2E4917B034D700CC9AAE /* tabbar~ipad.png in Resources */,
+				2CB788F717B2EA26009ECE98 /* barExplore.png in Resources */,
+				2CB788F817B2EA26009ECE98 /* barFeatured.png in Resources */,
+				2CB788F917B2EA26009ECE98 /* barMyLib.png in Resources */,
+				2CB788FA17B2EA26009ECE98 /* bigSeparator.png in Resources */,
+				2CB788FB17B2EA26009ECE98 /* closeButton@2x.png in Resources */,
+				2CB788FC17B2EA26009ECE98 /* gear@2x.png in Resources */,
+				2CB788FD17B2EA26009ECE98 /* signInButton@2x.png in Resources */,
+				2CB788FE17B2EA26009ECE98 /* separator.png in Resources */,
+				2CB7890117B2EA26009ECE98 /* tabBarBook.png in Resources */,
+				2CB7890217B2EA26009ECE98 /* tabBarEye.png in Resources */,
+				2CB7890317B2EA26009ECE98 /* tabBarGear.png in Resources */,
+				2CB7890417B2EA26009ECE98 /* tabBarStar.png in Resources */,
+				2CB7890517B2EA26009ECE98 /* tabBarXuyEgo.png in Resources */,
+				2CB7890917B2F56A009ECE98 /* tabbarSmbatich@2x.png in Resources */,
+				2CB7890B17B2F66A009ECE98 /* Tabich@2x.png in Resources */,
+				2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */,
+				2CB7891217B30499009ECE98 /* settingsLabelsBG@2x.png in Resources */,
+				2CB7891317B30499009ECE98 /* settingsLandBG@2x.png in Resources */,
+				2CB7891417B30499009ECE98 /* settingsTextFieldBG@2x.png in Resources */,
+				2CB7891517B30499009ECE98 /* submitSettings@2x.png in Resources */,
+				2CC3E45C17B388CD00801BC9 /* realSettingsBG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +657,8 @@
 				5ABEC45617B0013800E2EAEA /* ExploreScrollView.m in Sources */,
 				5ABEC45917B0016600E2EAEA /* FeaturedScrollView.m in Sources */,
 				5ABEC45C17B0017C00E2EAEA /* FeaturedDetailsView.m in Sources */,
+				2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */,
+				2CB788E717B2DA4C009ECE98 /* CustomTabBarController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,6 @@
     UITabBarController * maintabBarController;
 }
 
-- (void) setupTabBar:(NSArray *)arrayVC;
+//- (void) setupTabBar:(NSArray *)arrayVC;
 
 @end

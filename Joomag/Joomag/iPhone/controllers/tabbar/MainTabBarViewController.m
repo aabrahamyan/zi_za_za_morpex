@@ -13,6 +13,7 @@
 #import "ExploreViewController.h"
 #import "SettingsViewController.h"
 #import "Util.h"
+#import "CustomTabBarController.h"
 
 #define TAB_BAR_VIEW_COUNT 4
 
@@ -41,7 +42,7 @@
 // setupTabBar:
 // Set up tab bar with iPhone view controllers.
 // -------------------------------------------------------------------------------
-- (void) setupTabBar:(NSArray *)arrayVC {
+/*- (void) setupTabBar:(NSArray *)arrayVC {
     //---------------------------- TODO ------------------------------
     
     maintabBarController = [[UITabBarController alloc] init];
@@ -97,7 +98,7 @@
     maintabBarController.viewControllers = viewArray;
     
     [self.view addSubview:maintabBarController.view];
-}
+}*/
 
 #pragma mark -
 #pragma mark TabBarController delegate methods
@@ -105,6 +106,16 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
     return YES;
+}
+
+- (CustomTabBarController *) createAndGetTabbar {
+    return [CustomTabBarController getInstance:[UIImage imageNamed:@"tabbar.png"] withWidth:1024 withHeight:768];
+}
+
+- (void) setupTabBar {
+    CustomTabBarController * customTabBarVC = [self createAndGetTabbar];
+    
+    [self.view addSubview:customTabBarVC.view];
 }
 
 - (void) loadView {
@@ -118,9 +129,10 @@
             self.view.frame = CGRectMake(0, 0, 320, 480);
         }
         
-        [self setupTabBar: [self setupIPhoneTabBarViewControllers]];
+        //[self setupTabBar: [self setupIPhoneTabBarViewControllers]];
         
     } else {
+        [self setupTabBar];
         self.view.frame = CGRectMake(0, 0, 768, 1024);
     }
 }

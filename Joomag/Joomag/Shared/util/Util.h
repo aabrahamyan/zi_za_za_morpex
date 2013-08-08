@@ -12,4 +12,7 @@
 
 @interface Util : NSObject
 
+
++ (UIImage *) imageNamedSmart:(NSString *) name;
+
 @end

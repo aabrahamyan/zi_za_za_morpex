@@ -12,6 +12,7 @@
 #import "ExploreViewController_iPad.h"
 #import "SettingsViewController_iPad.h"
 #import "Util.h"
+#import "CustomTabBarController_iPad.h"
 
 @interface MainTabBarViewController_iPad () {
     FeaturedViewController_iPad *featuredVcIPad;
@@ -27,7 +28,7 @@
 // -------------------------------------------------------------------------------
 // setupIPadTabBarViewControllers
 // -------------------------------------------------------------------------------
-- (NSArray *) setupIPadTabBarViewControllers {
+/*- (NSArray *) setupIPadTabBarViewControllers {
     
     [[maintabBarController tabBar] setBackgroundImage:[UIImage imageNamed:@"tabbar.png"]];
     
@@ -39,12 +40,26 @@
     NSArray *arrVC = [NSArray arrayWithObjects: featuredVcIPad, explorVcIPad, libraryVcIPad, settingsVcIPad, nil];
     
     return arrVC;
+}*/
+
+- (void) setupIPadTabBarViewControllers {
+    featuredVcIPad = [[FeaturedViewController_iPad alloc] init];
+    explorVcIPad = [[ExploreViewController_iPad alloc] init];
+    libraryVcIPad = [[LibraryViewController_iPad alloc] init];
+    
+    
+}
+
+- (CustomTabBarController *) createAndGetTabbar {
+    return [CustomTabBarController_iPad getInstance:[Util imageNamedSmart:@"Tabich"] withWidth:1024 withHeight:45];
 }
 
 -(void) loadView {
     [super loadView];
     NSLog(@"iPad");
-    [self setupTabBar:[self setupIPadTabBarViewControllers]];
+    //[self setupTabBar:[self setupIPadTabBarViewControllers]];
+    
+    
 }
 
 - (BOOL)shouldAutorotate {
