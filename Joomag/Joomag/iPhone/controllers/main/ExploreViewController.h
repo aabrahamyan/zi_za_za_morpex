@@ -14,6 +14,8 @@
 @interface ExploreViewController : UIViewController {
     
 @protected
+    UIView *titleLabels;
+    UIPageControl *pageControl;
     ExploreScrollView *scrollView;
 }
 

@@ -62,6 +62,7 @@
 		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
+		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
 		5ABDDBCC179BF75D002F23AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBC179BF75D002F23AD /* AFImageRequestOperation.m */; };
@@ -166,6 +167,8 @@
 		2CE40CF617B27C94000097E2 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		2CE40CF717B27C94000097E2 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableView.h; sourceTree = "<group>"; };
+		5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableView.m; sourceTree = "<group>"; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ABDDBB9179BF75D002F23AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -478,6 +481,8 @@
 				5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */,
 				5ABEC45417B0013800E2EAEA /* ExploreScrollView.h */,
 				5ABEC45517B0013800E2EAEA /* ExploreScrollView.m */,
+				5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */,
+				5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */,
 			);
 			path = viewHelper;
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 				5ABEC45C17B0017C00E2EAEA /* FeaturedDetailsView.m in Sources */,
 				2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */,
 				2CB788E717B2DA4C009ECE98 /* CustomTabBarController_iPad.m in Sources */,
+				5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

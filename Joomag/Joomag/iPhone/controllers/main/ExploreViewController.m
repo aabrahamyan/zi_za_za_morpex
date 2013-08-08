@@ -29,24 +29,50 @@
     
     self.view.backgroundColor = RGBA(43, 43, 44, 1);
     
+    //---------------------------- Page Control ------------------------------------
+    pageControl = [[UIPageControl alloc] init];
+    pageControl.currentPage = 0;
+    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    pageControl.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview: pageControl];
+    
+    
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(0, 60, 320, 390)];
-    //scrollView.backgroundColor = [UIColor lightGrayColor];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 50, 320, 390)];
+        pageControl.numberOfPages = 3;
+    } else {
+        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 110, 720, 450)];
+        pageControl.numberOfPages = 2;
+    }
+        
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
     
-    [self.view addSubview:[self titleLabelsWithBorder]];
+    CGRect pageControlFrame = CGRectMake(0, scrollView.frame.size.height+30, 320, 30);
+    pageControl.frame = pageControlFrame;
+    
+    //Notify When Page Changes
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl2) name:@"updatePageControl2" object:nil];
+    
+    //----------------------------Title Labels With Border ------------------------
+    titleLabels = [self titleLabelsWithBorder];
+    
+    [self.view addSubview:titleLabels];
 }
 
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 300, 30)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
     //container.backgroundColor = [UIColor lightGrayColor];
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
-    label2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 80, 20)]; label2.text = @"POPULAR";
-    label3 = [[UILabel alloc] initWithFrame:CGRectMake(190, 0, 81, 20)]; label3.text = @"NEW ARRIVALS";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(92, 0, 80, 20)]; label2.text = @"POPULAR";
+    label3 = [[UILabel alloc] initWithFrame:CGRectMake(175, 0, 81, 20)]; label3.text = @"NEW ARRIVALS";
     
     UITapGestureRecognizer *labelTap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
     UITapGestureRecognizer *labelTap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
@@ -59,12 +85,14 @@
         [container addSubview:[labelArr objectAtIndex:i]];
         ((UILabel *)[labelArr objectAtIndex:i]).backgroundColor = [UIColor clearColor];
         ((UILabel *)[labelArr objectAtIndex:i]).textColor = [UIColor whiteColor];
-        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:15.0];
+        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:14.0];
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
         ((UILabel *)[labelArr objectAtIndex:i]).lineBreakMode = NSLineBreakByWordWrapping;
+        
         // ((UILabel *)[labelArr objectAtIndex:i]).shadowColor = [UIColor grayColor];
         // ((UILabel *)[labelArr objectAtIndex:i]).shadowOffset = CGSizeMake(0, 1);
         // ((UILabel *)[labelArr objectAtIndex:i]).autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        
         ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
         [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
@@ -90,12 +118,15 @@
     if (gesture.view.tag == 0) {
         [self animateLabelBorder: label1];
         // Do stuff here
+        [scrollView reloadScroll];
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];
         // Do stuff here
+        [scrollView reloadScroll];
     } else if(gesture.view.tag == 2) {
         [self animateLabelBorder: label3];
         // Do stuff here
+        [scrollView reloadScroll];
     }
 }
 
@@ -125,6 +156,14 @@
     [result setDuration:duration];
     
     return  result;
+}
+
+// -------------------------------------------------------------------------------
+// updatePageControl
+// Update UIPageControl and show details view with current page
+// -------------------------------------------------------------------------------
+- (void)updatePageControl2 {
+    pageControl.currentPage = scrollView.currentPage;
 }
 
 - (void)didReceiveMemoryWarning {

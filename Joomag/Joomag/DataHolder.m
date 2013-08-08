@@ -101,6 +101,7 @@ static NSString *kMagazineStr      = @"magazine";
             else if ([elementName isEqualToString:kImageStr])
             {
                 self.workingEntry.magazinImageURL = trimmedString;
+                self.workingEntry.magazinTESTImageURL = trimmedString;
             }
             else if ([elementName isEqualToString:kDetailsImageStr])
             {

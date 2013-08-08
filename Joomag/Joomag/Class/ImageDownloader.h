@@ -18,4 +18,6 @@
 - (void)startDownloadWithImageView: (UIImageView *)imageView;
 - (void)startDownloadDetailsImageWithImageView:(UIImageView *)imageView;
 
+- (void)startDownloadTEST: (UIImageView *)imageView;
+
 @end
