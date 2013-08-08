@@ -45,8 +45,8 @@
     {
         case UIDeviceOrientationPortrait:
             
-            titleLabelsViewFrame = CGRectMake(0, 30, 768, 30);
-            pageControlFrame = CGRectMake(0, 30, 768, 30);
+            //titleLabelsViewFrame = CGRectMake(0, 30, 768, 30);
+            //pageControlFrame = CGRectMake(0, 30, 768, 30);
             
             break;
             
@@ -58,17 +58,17 @@
             
         case UIDeviceOrientationLandscapeRight:
             
-            pageControlFrame = CGRectMake(0, 30, 1024, 30);
+            //pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
             
         default:
             break;
     };
-    
+    CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.view.frame = frm;
     titleLabels.frame = titleLabelsViewFrame;
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
-    
     settingsTable.frame = CGRectMake(self.view.frame.size.width-260, 0, 260, self.view.frame.size.height);
 }
 
