@@ -42,7 +42,7 @@
     //---------------------------- Scroll View ------------------------------------
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(0, 50, 320, 390)];
+        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 50, 320, 390)];
         pageControl.numberOfPages = 3;
     } else {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 110, 720, 450)];
@@ -118,15 +118,15 @@
     if (gesture.view.tag == 0) {
         [self animateLabelBorder: label1];
         // Do stuff here
-        //[scrollView reloadScroll];
+        [scrollView reloadScroll];
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];
         // Do stuff here
-        //[scrollView reloadScroll];
+        [scrollView reloadScroll];
     } else if(gesture.view.tag == 2) {
         [self animateLabelBorder: label3];
         // Do stuff here
-        //[scrollView reloadScroll];
+        [scrollView reloadScroll];
     }
 }
 

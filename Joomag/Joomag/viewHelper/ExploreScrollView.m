@@ -11,11 +11,15 @@
 #import "ImageDownloader.h"
 #import "MagazinRecord.h"
 
+#define TILE_WIDTH_IPHONE 160
+#define TILE_HEIGHT_IPHONE 200
+#define TILE_WIDTH_IPAD 220
+#define TILE_HEIGHT_IPAD 280
+
 @interface ExploreScrollView () {
-    CGFloat pageWidth;
     NSInteger entriesLength;
-    int yPosition;
-    int xPosition;
+    int tileW;
+    int tileH;
     int index;
 }
 
@@ -27,7 +31,7 @@
 @implementation ExploreScrollView
 
 - (id)initWithFrame:(CGRect)frame
-{ NSLog(@"----------------------------------------------------------------");
+{
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -35,85 +39,67 @@
         //Init DataHolder
         DataHolder *dataHolder = [DataHolder sharedData];
         self.entries = dataHolder.testData;
-        
-        self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
+        entriesLength = self.entries.count;
         
         //Set BackGround Color
         self.backgroundColor = [UIColor clearColor];
-        
         self.delegate = self;
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
-        entriesLength = self.entries.count;
         
-        CGSize pagesScrollViewSize = self.frame.size;
-        pageWidth = pagesScrollViewSize.width;
-        
-        xPosition = 0;
-        yPosition = 0;
-        
-        int offsetX = 0;
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            tileW = 150;
-            tileH = 200;
-            int arrIPhone[4][2] ={{0,0},{1,0},{0,1},{1,1}};
-            
-            for (int i = 0; i < 11; i ++) {
-                if(i%4 == 0 && i!=0){
-                    offsetX += 2*tileW+20;
-                }
-                
-                xPosition = offsetX + arrIPhone[i%4][0]*tileW;
-                yPosition = arrIPhone[i%4][1]*tileH;
-                
-                //NSLog(@"x: %d y: %d",xPosition, yPosition);
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition+20, yPosition, 130, 170)];
-                imageView.image = [UIImage imageNamed:@"placeholder.png"];
-                imageView.tag = i+1;
-                
-                [self addSubview:imageView];
-            }
-            
-            index = 4;
-            
-            // Set up the content size of the scroll view for IPHONE
-            self.contentSize = CGSizeMake(3*320, pagesScrollViewSize.height);
-            
-        } else {
-            tileW = 220;
-            tileH = 280;
-            int arrIpad[6][2] ={{0,0},{1,0},{2,0},{0,1},{1,1},{2,1}};
-            
-            for (int i = 0; i < 11; i ++) {
-                if(i%6 == 0 && i!=0){
-                    NSLog(@"i: %i",i);
-                    offsetX += 3*tileW;
-                }
-                
-                xPosition = offsetX + arrIpad[i%6][0]*tileW;
-                yPosition = arrIpad[i%6][1]*tileH;
-                
-                //NSLog(@"x: %d y: %d",xPosition, yPosition);
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 170, 220)];
-                imageView.image = [UIImage imageNamed:@"placeholder.png"];
-                imageView.tag = i+1;
-                
-                [self addSubview:imageView];
-            }
-            
-            index = 6;
-            
-            // Set up the content size of the scroll view for IPHONE
-            self.contentSize = CGSizeMake(6*320, pagesScrollViewSize.height);
-        }
-        
+        self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
         self.pageViews = [[NSMutableArray alloc] init];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        {
+            NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0], @[@0, @1], @[@1, @1] ];
+            tileH = 170; tileW = 130;
+            [self setTilesWithArray: arrayIPhone tileWidth: TILE_WIDTH_IPHONE andHeight: TILE_HEIGHT_IPHONE];
+        }
+        else
+        {
+            NSArray *arrayIPad = @[ @[@0, @0], @[@1, @0], @[@2, @0], @[@0, @1], @[@1, @1], @[@2, @1] ];
+            tileH = 220; tileW = 170;
+            [self setTilesWithArray: arrayIPad tileWidth: TILE_WIDTH_IPAD andHeight: TILE_HEIGHT_IPAD];
+        }
         
         // Load the initial set of pages that are on screen
         [self loadVisibleImages];
     }
     return self;
+}
+
+// -------------------------------------------------------------------------------
+// setTilesWithArray: tileWidth: andHeight:
+// Set the images in scroll view
+// -------------------------------------------------------------------------------
+- (void)setTilesWithArray: (NSArray *)arr tileWidth: (int)width andHeight: (int)height {
+    
+    int xPosition = 0;
+    int yPosition = 0;
+    int offsetX = 0;
+    index = [arr count];
+    
+    for (int i = 0; i < entriesLength; i ++) {
+        
+        if(i%index == 0 && i!=0){
+            offsetX += index/2*width;
+        }
+        
+        xPosition = offsetX + [arr[i%index][0] intValue]*width;
+        yPosition = [arr[i%index][1] intValue]*height;
+        
+        //NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
+        imageView.image = [UIImage imageNamed:@"placeholder.png"];
+        imageView.tag = i+1;
+        
+        [self addSubview:imageView];
+    }
+    
+    // Set up the content size of the scroll view for IPHONE
+    self.contentSize = CGSizeMake(index*320, self.frame.size.height); //TODO
 }
 
 // -------------------------------------------------------------------------------
@@ -148,6 +134,9 @@
     }
 }
 
+// -------------------------------------------------------------------------------
+//	reloadScroll
+// -------------------------------------------------------------------------------
 - (void)reloadScroll {
     for (UIImageView *subview in [self subviews]) {
         if([subview isKindOfClass:[UIImageView class]]) {
@@ -157,9 +146,12 @@
         }
     }
     
-    //[self loadVisibleImages];
+    [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(showTiles) userInfo:nil repeats:NO];
 }
 
+- (void)showTiles {
+    [self loadVisibleImages];
+}
 
 // -------------------------------------------------------------------------------
 //	startIconDownload:forIndexPath:
@@ -193,7 +185,7 @@
 //  return current page by offset x
 // -------------------------------------------------------------------------------
 - (int)currentPage: (float)offsetX {
-    return (int)floor((offsetX * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    return (int)floor((offsetX * 2.0f + self.frame.size.width) / (self.frame.size.width * 2.0f));
 }
 
 // -------------------------------------------------------------------------------
@@ -303,27 +295,62 @@
     
 }
 
-/*/if ([self subviews]) {
- for (UIImageView *subview in [self subviews]) {
- if([subview isKindOfClass:[UIImageView class]]) {
- if (!CGRectIntersectsRect(self.bounds, subview.frame)) {
+/*
+ int arrIPhone[4][2] ={{0,0},{1,0},{0,1},{1,1}};
+ int arrIpad[6][2] ={{0,0},{1,0},{2,0},{0,1},{1,1},{2,1}};
  
- NSLog(@"index: %i",index);
+ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+ tileW = 150;
+ tileH = 200;
  
- // Load an individual page, first seeing if we've already loaded it
- MagazinRecord *mRecord = [self.entries objectAtIndex:index];
+ for (int i = 0; i < 11; i ++) {
+ if(i%4 == 0 && i!=0){
+ offsetX += 2*tileW+20;
+ }
  
- if (!mRecord.magazinTESTIcon) {
- [self startIconDownload:mRecord forIndexPath:index];
- index++;
+ xPosition = offsetX + arrIPhone[i%4][0]*tileW;
+ yPosition = arrIPhone[i%4][1]*tileH;
+ 
+ //NSLog(@"x: %d y: %d",xPosition, yPosition);
+ UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition+20, yPosition, 130, 170)];
+ imageView.image = [UIImage imageNamed:@"placeholder.png"];
+ imageView.tag = i+1;
+ 
+ [self addSubview:imageView];
+ }
+ 
+ index = 4;
+ 
+ // Set up the content size of the scroll view for IPHONE
+ self.contentSize = CGSizeMake(3*320, self.frame.size.height);
+ 
  } else {
- NSLog(@"exist");
- subview.image = mRecord.magazinTESTIcon;
+ tileW = 220;
+ tileH = 280;
+ 
+ for (int i = 0; i < 11; i ++) {
+ if(i%6 == 0 && i!=0){
+ NSLog(@"i: %i",i);
+ offsetX += 3*tileW;
  }
  
+ xPosition = offsetX + arrIpad[i%6][0]*tileW;
+ yPosition = arrIpad[i%6][1]*tileH;
+ 
+ //NSLog(@"x: %d y: %d",xPosition, yPosition);
+ UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 170, 220)];
+ imageView.image = [UIImage imageNamed:@"placeholder.png"];
+ imageView.tag = i+1;
+ 
+ [self addSubview:imageView];
  }
+ 
+ index = 6;
+ 
+ // Set up the content size of the scroll view for IPHONE
+ self.contentSize = CGSizeMake(6*320, self.frame.size.height);
  }
- }
- /}*/
+ */
+
 
 @end

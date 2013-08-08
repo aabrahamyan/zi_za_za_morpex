@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ExploreScrollView : UIScrollView <UIScrollViewDelegate> {
-@protected
-    int tileW;
-    int tileH;
     
 }
 
