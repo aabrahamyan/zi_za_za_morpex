@@ -66,6 +66,8 @@
 		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
 		2CC450B117BADBC200DE806E /* MagazinesListParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B017BADBC200DE806E /* MagazinesListParser.m */; };
 		2CC450B517BADC2A00DE806E /* MainDataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B417BADC2A00DE806E /* MainDataHolder.m */; };
+		2CC450B817BAE31B00DE806E /* CategoriesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B717BAE31B00DE806E /* CategoriesParser.m */; };
+		2CC450BB17BAE54600DE806E /* ImageBlocksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450BA17BAE54500DE806E /* ImageBlocksParser.m */; };
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
@@ -178,6 +180,10 @@
 		2CC450B017BADBC200DE806E /* MagazinesListParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazinesListParser.m; sourceTree = "<group>"; };
 		2CC450B317BADC2A00DE806E /* MainDataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDataHolder.h; sourceTree = "<group>"; };
 		2CC450B417BADC2A00DE806E /* MainDataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainDataHolder.m; sourceTree = "<group>"; };
+		2CC450B617BAE31A00DE806E /* CategoriesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoriesParser.h; path = ../CategoriesParser.h; sourceTree = "<group>"; };
+		2CC450B717BAE31B00DE806E /* CategoriesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoriesParser.m; path = ../CategoriesParser.m; sourceTree = "<group>"; };
+		2CC450B917BAE54500DE806E /* ImageBlocksParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBlocksParser.h; sourceTree = "<group>"; };
+		2CC450BA17BAE54500DE806E /* ImageBlocksParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBlocksParser.m; sourceTree = "<group>"; };
 		2CE40CF617B27C94000097E2 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		2CE40CF717B27C94000097E2 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -425,6 +431,8 @@
 		2C0C126F17AB00CA00A0357A /* parser */ = {
 			isa = PBXGroup;
 			children = (
+				2CC450B617BAE31A00DE806E /* CategoriesParser.h */,
+				2CC450B717BAE31B00DE806E /* CategoriesParser.m */,
 				2C0C127017AB00DC00A0357A /* LoginResponseParser.h */,
 				2C0C127117AB00DC00A0357A /* LoginResponseParser.m */,
 				2C0C127717AB038E00A0357A /* BaseParser.h */,
@@ -435,6 +443,8 @@
 				2C0C127E17AB087600A0357A /* PageParser.m */,
 				2CC450AF17BADBC200DE806E /* MagazinesListParser.h */,
 				2CC450B017BADBC200DE806E /* MagazinesListParser.m */,
+				2CC450B917BAE54500DE806E /* ImageBlocksParser.h */,
+				2CC450BA17BAE54500DE806E /* ImageBlocksParser.m */,
 			);
 			path = parser;
 			sourceTree = "<group>";
@@ -701,6 +711,8 @@
 				5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */,
 				2CC450B117BADBC200DE806E /* MagazinesListParser.m in Sources */,
 				2CC450B517BADC2A00DE806E /* MainDataHolder.m in Sources */,
+				2CC450B817BAE31B00DE806E /* CategoriesParser.m in Sources */,
+				2CC450BB17BAE54600DE806E /* ImageBlocksParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

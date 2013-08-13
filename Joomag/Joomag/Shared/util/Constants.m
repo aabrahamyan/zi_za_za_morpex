@@ -38,6 +38,8 @@ NSString * const PAGE_NUMABER = @"PAGE_NUM";
 
 //-------------- GETMAGAZINES LIST Request/Response handling ---------------//
 NSString * const GETMAGAZINESLIST = @"GETMAGAZINELIST";
+//-------------- GET CATEGORIES LIST Request/Response handling ---------------//
+NSString * const GETTYPESWITHCATEGORIES = @"GETTYPESWITHCATEGORIES";
 
 
 @implementation Constants

@@ -39,7 +39,8 @@ extern NSString * const PAGE_NUMABER;
 //-------------- GETMAGAZINESLIST Request/Response handling ---------------//
 extern NSString * const GETMAGAZINESLIST;
 //-------------- GET CATEGORIES LIST Request/Response handling ---------------//
-extern NSString * const GETCATEGORIESLIST;
+extern NSString * const GETTYPESWITHCATEGORIES;
+//--------------
 
 @interface Constants : NSObject
 
