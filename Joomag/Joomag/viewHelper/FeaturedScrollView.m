@@ -70,9 +70,23 @@
 // -------------------------------------------------------------------------------
 
 - (void)loadVisiblePage {
+    
     // First, determine which page is currently visible
     NSInteger page = [self currentPage:self.contentOffset.x];
-    [self loadPage:page];
+    
+    // Work out which pages we want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // First, determine which page is currently visible
+    //NSInteger page = [self currentPage:self.contentOffset.x];
+    //[self loadPage:page];
+    
+    for (NSInteger i = firstPage; i <= lastPage; i++) {
+        [self loadPage:i];
+    }
+    
+    //NSLog(@"count: %i",[[self subviews] count]); TODO perge
 }
 
 // -------------------------------------------------------------------------------
@@ -113,8 +127,7 @@
             
             // Display the newly loaded image
             imageView.image = magazinRecord.magazinIcon;
-            imageView.frame = self.bounds;
-            //imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+            imageView.frame = [self currentFrame: page];//self.bounds;
             imageView.tag = counter; counter++;
             
             [self addSubview: imageView];
