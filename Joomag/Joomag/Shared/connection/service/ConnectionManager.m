@@ -14,6 +14,7 @@
 #import "LoginResponseParser.h"
 #import "MagazineParser.h"
 #import "PageParser.h"
+#import "MagazinesListParser.h"
 
 @implementation ConnectionManager
 
@@ -114,7 +115,26 @@
         
     }
 
-    
 }
+
+- (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback {
+    AFHTTPClient * requestClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:SERVICE_URL]];
+    
+    NSString * magazinesListReqString = [RequestHelper constructAndGetMagazinesListRequestString];
+    
+    if(magazinesListReqString) {
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:magazinesListReqString,MAIN_POST_PARAM, nil];
+        
+        [requestClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            MagazinesListParser * magListParser = [[MagazinesListParser alloc] init];
+            NSArray * resultArray = [magListParser parserData:responseObject];
+
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //TODO: Parser call for failure
+        }];
+    }
+}
+
+
 
 @end

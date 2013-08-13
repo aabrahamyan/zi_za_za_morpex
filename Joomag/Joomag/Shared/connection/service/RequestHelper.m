@@ -189,4 +189,46 @@
     
 }
 
++ (NSString *) constructAndGetMagazinesListRequestString {
+    
+    //---------------------- Open Envelope ---------------------------------//
+    NSString * requestString = [NSString stringWithFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Header ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Header ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Request ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Open Magazines List --------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINESLIST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINESLIST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Request ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",REQUEST];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Close Envelope ---------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@", SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    
+    return requestString;
+    
+}
+
 @end

@@ -17,4 +17,6 @@
 
 + (NSString *) constructGetMagazinePageString : (NSInteger) magazineId withPageNumber : (NSInteger) pageNumber;
 
++ (NSString *) constructAndGetMagazinesListRequestString;
+
 @end

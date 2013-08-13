@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainTabBarViewController.h"
+#import "ConnectionManager.h"
 
 @implementation AppDelegate
 
@@ -37,6 +38,9 @@
     [self displayStartView];
     
     [self.window makeKeyAndVisible];
+    
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
+    [connManager constructGetMagazinesListRequest:nil];
     
     return YES;
 }

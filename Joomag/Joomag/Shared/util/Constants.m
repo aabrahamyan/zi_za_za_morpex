@@ -36,6 +36,9 @@ NSString * const GETPAGE_MOBILE = @"GETPAGEMOBILE";
 NSString * const PAGE_MAGAZINE_ID = @"MAGAZINE_ID";
 NSString * const PAGE_NUMABER = @"PAGE_NUM";
 
+//-------------- GETMAGAZINES LIST Request/Response handling ---------------//
+NSString * const GETMAGAZINESLIST = @"GETMAGAZINELIST";
+
 
 @implementation Constants
 

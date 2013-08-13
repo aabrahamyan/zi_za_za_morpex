@@ -64,6 +64,8 @@
 		2CC3E45C17B388CD00801BC9 /* realSettingsBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3E45B17B388CD00801BC9 /* realSettingsBG@2x.png */; };
 		2CC4247E17A6DE17007A494E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4247D17A6DE17007A494E /* Constants.m */; };
 		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
+		2CC450B117BADBC200DE806E /* MagazinesListParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B017BADBC200DE806E /* MagazinesListParser.m */; };
+		2CC450B517BADC2A00DE806E /* MainDataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B417BADC2A00DE806E /* MainDataHolder.m */; };
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
@@ -172,6 +174,10 @@
 		2CC4247D17A6DE17007A494E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2CC4247F17A6DE23007A494E /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		2CC4248017A6DE23007A494E /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		2CC450AF17BADBC200DE806E /* MagazinesListParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagazinesListParser.h; sourceTree = "<group>"; };
+		2CC450B017BADBC200DE806E /* MagazinesListParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazinesListParser.m; sourceTree = "<group>"; };
+		2CC450B317BADC2A00DE806E /* MainDataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDataHolder.h; sourceTree = "<group>"; };
+		2CC450B417BADC2A00DE806E /* MainDataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainDataHolder.m; sourceTree = "<group>"; };
 		2CE40CF617B27C94000097E2 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		2CE40CF717B27C94000097E2 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -427,6 +433,8 @@
 				2C0C127B17AB083B00A0357A /* MagazineParser.m */,
 				2C0C127D17AB087600A0357A /* PageParser.h */,
 				2C0C127E17AB087600A0357A /* PageParser.m */,
+				2CC450AF17BADBC200DE806E /* MagazinesListParser.h */,
+				2CC450B017BADBC200DE806E /* MagazinesListParser.m */,
 			);
 			path = parser;
 			sourceTree = "<group>";
@@ -484,6 +492,15 @@
 			path = Shared/util;
 			sourceTree = "<group>";
 		};
+		2CC450B217BADC0A00DE806E /* data */ = {
+			isa = PBXGroup;
+			children = (
+				2CC450B317BADC2A00DE806E /* MainDataHolder.h */,
+				2CC450B417BADC2A00DE806E /* MainDataHolder.m */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
 		5AA1A73717AD45C100EADCA3 /* viewHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +519,7 @@
 		5ABDDBB5179BF70D002F23AD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2CC450B217BADC0A00DE806E /* data */,
 				2C0C127417AB022500A0357A /* protocol */,
 				2C0C126717AAE44200A0357A /* connection */,
 				2CC4247B17A6DE03007A494E /* util */,
@@ -681,6 +699,8 @@
 				2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */,
 				2CB788E717B2DA4C009ECE98 /* CustomTabBarController_iPad.m in Sources */,
 				5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */,
+				2CC450B117BADBC200DE806E /* MagazinesListParser.m in Sources */,
+				2CC450B517BADC2A00DE806E /* MainDataHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
