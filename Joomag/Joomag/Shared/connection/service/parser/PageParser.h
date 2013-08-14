@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BaseParser.h"
 
-@interface PageParser : BaseParser
+@interface PageParser : BaseParser {
+    NSString * upperPageElem;
+    NSMutableDictionary * elems;
+}
 
 @end

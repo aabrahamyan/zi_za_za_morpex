@@ -10,4 +10,20 @@
 
 @implementation ImageBlocksParser
 
+- (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+    
+    [super parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qualifiedName attributes:attributeDict];
+    
+}
+
+- (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+	[super parser:parser didEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
+    
+}
+
+- (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    [super parser:parser foundCharacters:string];
+}
+
+
 @end

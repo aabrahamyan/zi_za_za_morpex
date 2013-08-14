@@ -19,4 +19,6 @@
 
 + (NSString *) constructAndGetMagazinesListRequestString;
 
++ (NSString *) constructAndGetCategoriesRequestString;
+
 @end

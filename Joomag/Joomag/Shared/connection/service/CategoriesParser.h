@@ -10,8 +10,13 @@
 
 @interface CategoriesParser : BaseParser {
 
-    NSMutableArray * types;
+    NSString * typeElem;
+    NSString * categoriesElem;
+    NSString * categoryElem;
+    
+    NSMutableDictionary * inTypes;
     NSMutableArray * categories;
+    NSMutableDictionary * category;
 
 }
 

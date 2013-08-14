@@ -40,7 +40,7 @@
     [self.window makeKeyAndVisible];
     
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
-    [connManager constructGetMagazinesListRequest:nil];
+    [connManager constructGetMapagzinePage:47643 withPageNumber:9 andWithDelegate:nil];
     
     return YES;
 }

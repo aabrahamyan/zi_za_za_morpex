@@ -20,4 +20,6 @@
 
 - (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback;
 
+- (void) constrcutAndGetCategoriesTypesRequest: (id<ResponseTrackerDelegate>) callback;
+
 @end

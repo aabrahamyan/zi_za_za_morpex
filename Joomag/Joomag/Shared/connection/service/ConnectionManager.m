@@ -15,6 +15,7 @@
 #import "MagazineParser.h"
 #import "PageParser.h"
 #import "MagazinesListParser.h"
+#import "CategoriesParser.h"
 
 @implementation ConnectionManager
 
@@ -105,6 +106,7 @@
                             
                             NSArray * resultArray = [pageResponseParser parserData:responseObject];
                             [callback didFinishResponse:resultArray];
+                            NSLog(@"RORE !");
                         }
          
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -133,6 +135,27 @@
             //TODO: Parser call for failure
         }];
     }
+}
+
+- (void) constrcutAndGetCategoriesTypesRequest: (id<ResponseTrackerDelegate>) callback {
+    AFHTTPClient * requestClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:SERVICE_URL]];
+    
+    NSString * categoriesRequestString = [RequestHelper constructAndGetCategoriesRequestString];
+    
+    if(categoriesRequestString) {
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:categoriesRequestString,MAIN_POST_PARAM, nil];                
+        
+        [requestClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            CategoriesParser * catsParser = [[CategoriesParser alloc] init];
+            NSArray * resultSet = [catsParser parserData:responseObject];
+            NSLog(@"HERE");
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //TODO: Call in case of failure
+        }];
+    }
+    
 }
 
 
