@@ -23,7 +23,7 @@
 - (void)loadView {
     [super loadView];
     
-    NSLog(@"ExploreViewController_iPad");
+    //NSLog(@"ExploreViewController_iPad");
     
     data = [NSArray arrayWithObjects: @"Categories",@"Art",@"Automotive",
             @"Entertainment",@"Home",@"Lifestyle", @"Men",@"News",@"Science and Tech",

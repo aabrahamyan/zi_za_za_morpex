@@ -21,7 +21,7 @@
 - (void)loadView { // TODO landscape
     [super loadView];
     
-    NSLog(@"FeaturedViewController_iPad:");
+    //NSLog(@"FeaturedViewController_iPad:");
     
     dataHolder = [DataHolder sharedData];
 }

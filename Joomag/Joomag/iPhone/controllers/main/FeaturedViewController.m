@@ -10,10 +10,15 @@
 #import "DataHolder.h"
 #import "MagazinRecord.h"
 #import "ImageDownloader.h"
+#import "ReadViewController.h"
+#import "Util.h"
+#import "AFNetworking.h"
+
 
 @interface FeaturedViewController (){
     DataHolder *dataHolder;
     MagazinRecord *mRecord;
+    UILabel *testLabel;
 }
 
 // the set of ImageDownloader objects for each app
@@ -26,7 +31,8 @@
 - (void) loadView {
     [super loadView];
     
-    NSLog(@"FeaturedViewController:");
+    //NSLog(@"FeaturedViewController:");
+    self.view.backgroundColor = [UIColor blackColor];
     
     dataHolder = [DataHolder sharedData];
     
@@ -58,6 +64,7 @@
         detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(250, 700, 500, 200)];
     }
     detailsView.alpha = 0;
+    detailsView.delegate = self;
     
     [self.view addSubview: detailsView];
     
@@ -89,7 +96,7 @@
     
     mRecord = [dataHolder.testData objectAtIndex:page];
     
-    detailsView.date.text = mRecord.magazinAutor;
+    detailsView.date.text = mRecord.magazinDate;
     detailsView.title.text = mRecord.magazinTitle;
     detailsView.text.text = mRecord.magazinDetailsText;
     
@@ -145,8 +152,27 @@
 
 #pragma Explore Buttons Handlers
 
-- (void)readHandler {
-    NSLog(@"read");
+-(void)readHandler {
+        
+    UIView *loaderContainer = [[UIView alloc] initWithFrame:CGRectMake(0, -20, 1024, 768)]; //TODO
+    loaderContainer.backgroundColor = RGBA(43, 43, 44, 1);
+    //Create and add the Activity Indicator to first view
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = loaderContainer.center;
+    activityIndicator.hidesWhenStopped = YES;
+    [loaderContainer addSubview:activityIndicator];
+    [loaderContainer bringSubviewToFront:activityIndicator];
+    [activityIndicator startAnimating];
+    
+    //[self.view addSubview: loaderContainer];
+    
+    ReadViewController *readVC = [[ReadViewController alloc] init];
+    NSLog(@"current: %i", scrollView.currentPage);
+    
+    [readVC startDownloadMagazine: scrollView.currentPage];
+    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
+    [self.navigationController pushViewController:readVC animated:YES];
 }
 
 - (void)buyIssueHandler {

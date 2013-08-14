@@ -90,6 +90,8 @@
 		5AC6FFF9179B392D0062736F /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF8179B392D0062736F /* placeholder.png */; };
 		5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC1951799836F0029A07F /* MobileCoreServices.framework */; };
 		5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC197179983760029A07F /* SystemConfiguration.framework */; };
+		5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EEE17BBC006008E4865 /* ReadViewController.m */; };
+		5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -224,6 +226,10 @@
 		5AC6FFF8179B392D0062736F /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5ACAC1951799836F0029A07F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5ACAC197179983760029A07F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5AD69EED17BBC006008E4865 /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController.h; sourceTree = "<group>"; };
+		5AD69EEE17BBC006008E4865 /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController.m; sourceTree = "<group>"; };
+		5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController_iPad.h; sourceTree = "<group>"; };
+		5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController_iPad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +475,8 @@
 				2CADE38117993D68002202D5 /* LibraryViewController_iPad.m */,
 				2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */,
 				2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */,
+				5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */,
+				5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -484,6 +492,8 @@
 				2CADE37E17993D56002202D5 /* LibraryViewController.m */,
 				2CADE3891799429E002202D5 /* SettingsViewController.h */,
 				2CADE38A1799429E002202D5 /* SettingsViewController.m */,
+				5AD69EED17BBC006008E4865 /* ReadViewController.h */,
+				5AD69EEE17BBC006008E4865 /* ReadViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -713,6 +723,8 @@
 				2CC450B517BADC2A00DE806E /* MainDataHolder.m in Sources */,
 				2CC450B817BAE31B00DE806E /* CategoriesParser.m in Sources */,
 				2CC450BB17BAE54600DE806E /* ImageBlocksParser.m in Sources */,
+				5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */,
+				5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

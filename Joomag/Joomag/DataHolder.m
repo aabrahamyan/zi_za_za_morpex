@@ -12,9 +12,10 @@
 
 // string constants found in the XML
 static NSString *kTitleStr         = @"title";
-static NSString *kDateStr         = @"date";
+static NSString *kDateStr          = @"date";
 static NSString *kImageStr         = @"imageUrl";
 static NSString *kDetailsImageStr  = @"detailsImageUrl";
+static NSString *kPageImage        = @"pageImage";
 static NSString *kDetailsTextStr   = @"detailsText";
 static NSString *kMagazineStr      = @"magazine";
 
@@ -51,7 +52,7 @@ static NSString *kMagazineStr      = @"magazine";
         //self.testData = [NSMutableArray array];
         self.workingArray = [NSMutableArray array];
         self.workingPropertyString = [NSMutableString string];
-        self.elementsToParse = [[NSArray alloc] initWithObjects:kTitleStr, kDateStr, kImageStr, kDetailsImageStr, kDetailsTextStr, nil];
+        self.elementsToParse = [[NSArray alloc] initWithObjects:kTitleStr, kDateStr, kImageStr, kDetailsImageStr, kPageImage, kDetailsTextStr, nil];
         
         NSString *xmlFilePath = [[NSBundle mainBundle] pathForResource:@"testData" ofType:@"xml"];
         NSURL* xmlURL = [NSURL fileURLWithPath:xmlFilePath];
@@ -96,7 +97,7 @@ static NSString *kMagazineStr      = @"magazine";
             }
             else if ([elementName isEqualToString:kDateStr])
             {
-                self.workingEntry.magazinAutor = trimmedString;
+                self.workingEntry.magazinDate = trimmedString;
             }
             else if ([elementName isEqualToString:kImageStr])
             {
@@ -110,6 +111,10 @@ static NSString *kMagazineStr      = @"magazine";
             else if ([elementName isEqualToString:kDetailsTextStr])
             {
                 self.workingEntry.magazinDetailsText = trimmedString;
+            }
+            else if ([elementName isEqualToString:kPageImage])
+            {
+                [self.workingEntry.pageImageURLsArray addObject: trimmedString];
             }
             else
             {
@@ -136,6 +141,12 @@ static NSString *kMagazineStr      = @"magazine";
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
     self.testData = [NSArray arrayWithArray:self.workingArray];
+    
+    /*
+     MagazinRecord *m = [[MagazinRecord alloc] init];
+     m = [self.testData objectAtIndex:0];
+     NSLog(@"magazine: %@",m.pageImageURLsArray);
+     */
 }
 
 @end

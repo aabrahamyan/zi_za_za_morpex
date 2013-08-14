@@ -70,23 +70,9 @@
 // -------------------------------------------------------------------------------
 
 - (void)loadVisiblePage {
-    
     // First, determine which page is currently visible
     NSInteger page = [self currentPage:self.contentOffset.x];
-    
-    // Work out which pages we want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // First, determine which page is currently visible
-    //NSInteger page = [self currentPage:self.contentOffset.x];
-    //[self loadPage:page];
-    
-    for (NSInteger i = firstPage; i <= lastPage; i++) {
-        [self loadPage:i];
-    }
-    
-    //NSLog(@"count: %i",[[self subviews] count]); TODO perge
+    [self loadPage:page];
 }
 
 // -------------------------------------------------------------------------------
@@ -123,11 +109,12 @@
         UIImageView *imageView = [[UIImageView alloc] init];
         
         [imageDownloader setCompletionHandler:^{
-            NSLog(@"Download Featured Image: %i",page);
+            //NSLog(@"Download Featured Image: %i",page);
             
             // Display the newly loaded image
             imageView.image = magazinRecord.magazinIcon;
-            imageView.frame = [self currentFrame: page];//self.bounds;
+            imageView.frame = self.bounds;
+            //imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
             imageView.tag = counter; counter++;
             
             [self addSubview: imageView];
@@ -148,7 +135,8 @@
 //  return current page by offset x
 // -------------------------------------------------------------------------------
 - (NSInteger)currentPage: (float)offsetX {
-    return (NSInteger)floor((offsetX * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    self.currentPage = (NSInteger)floor((offsetX * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    return self.currentPage;
 }
 
 // -------------------------------------------------------------------------------

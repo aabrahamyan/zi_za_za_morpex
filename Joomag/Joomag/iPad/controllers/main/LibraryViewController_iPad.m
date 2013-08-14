@@ -16,7 +16,7 @@
 
 - (void)loadView {
     [super loadView];
-    NSLog(@"LibraryViewController_iPad");
+    //NSLog(@"LibraryViewController_iPad");
 }
 
 @end

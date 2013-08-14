@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeaturedDetailsView : UIView
+@protocol FeaturedDetailsButtonsDelegate <NSObject>
+@optional
+- (void)readHandler;
+@end
+
+@interface FeaturedDetailsView : UIView <FeaturedDetailsButtonsDelegate>
+
+@property (weak, nonatomic) id <FeaturedDetailsButtonsDelegate> delegate;
 
 @property (nonatomic, strong) UIView        *backGround;
 @property (nonatomic, strong) UIImageView   *imageView;

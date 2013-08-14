@@ -11,7 +11,7 @@
 
 @implementation FeaturedDetailsView {
     CGRect imageViewFrame, titleFrame, dateFrame, backGroundFrame,
-           textFrame, readBtnFrame, buyIssueBtnFrame, shareBtnFrame;
+    textFrame, readBtnFrame, buyIssueBtnFrame, shareBtnFrame;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,7 +54,7 @@
         self.readBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [[self.readBtn layer] setBorderWidth:1.5f];
         [[self.readBtn layer] setBorderColor:[UIColor grayColor].CGColor];
-        [self.readBtn addTarget:self  action:@selector(readHandler) forControlEvents:UIControlEventTouchDown];
+        [self.readBtn addTarget:self  action:@selector(readButtonTap) forControlEvents:UIControlEventTouchDown];
         [self addSubview: self.readBtn];
         
         self.buyIssueBtn = [[UIButton alloc] init];
@@ -79,15 +79,15 @@
         //CGRect screenBounds = [[UIScreen mainScreen] bounds];
         if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
             //if (screenBounds.size.height == 568) {
-                imageViewFrame = CGRectMake(10, 10, 100, 135);
-                titleFrame = CGRectMake(140, 15, 150, 20);
-                dateFrame = CGRectMake(145, 50, 130, 20);
-                textFrame = CGRectMake(0 , 0, 0, 0);
-                readBtnFrame = CGRectMake(145, 75, 100, 30);
-                buyIssueBtnFrame = CGRectMake(145, 115, 100, 30);
-                shareBtnFrame = CGRectMake(0, 0, 0, 0);
+            imageViewFrame = CGRectMake(10, 10, 100, 135);
+            titleFrame = CGRectMake(140, 15, 150, 20);
+            dateFrame = CGRectMake(145, 50, 130, 20);
+            textFrame = CGRectMake(0 , 0, 0, 0);
+            readBtnFrame = CGRectMake(145, 75, 100, 30);
+            buyIssueBtnFrame = CGRectMake(145, 115, 100, 30);
+            shareBtnFrame = CGRectMake(0, 0, 0, 0);
             //} else {
-                
+            
             //}
         } else {
             imageViewFrame = CGRectMake(10, 10, 150, 180);
@@ -106,9 +106,14 @@
         self.readBtn.frame = readBtnFrame;
         self.buyIssueBtn.frame = buyIssueBtnFrame;
         self.shareBtn.frame = shareBtnFrame;
-
+        
     }
     return self;
+}
+
+- (void)readButtonTap {
+    NSLog(@"read");
+    [self.delegate readHandler];
 }
 
 @end
