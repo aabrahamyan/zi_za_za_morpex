@@ -29,6 +29,12 @@
     
     self.view.backgroundColor = RGBA(43, 43, 44, 1);
     
+    //-------------------------------- Top Bar ------------------------------------
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
+    topBar.backgroundColor = [UIColor grayColor];
+    
+    [self.view addSubview: topBar];
+    
     //---------------------------- Page Control ------------------------------------
     pageControl = [[UIPageControl alloc] init];
     pageControl.currentPage = 0;
@@ -40,7 +46,6 @@
     
     
     //---------------------------- Scroll View ------------------------------------
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 50, 320, 390)];
         pageControl.numberOfPages = 3;
@@ -48,7 +53,7 @@
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 110, 720, 450)];
         pageControl.numberOfPages = 2;
     }
-        
+    
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
@@ -65,10 +70,8 @@
     [self.view addSubview:titleLabels];
 }
 
-
 - (UIView *)titleLabelsWithBorder {
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
-    //container.backgroundColor = [UIColor lightGrayColor];
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(92, 0, 80, 20)]; label2.text = @"POPULAR";
@@ -83,19 +86,14 @@
     
     for (int i = 0; i < labelArr.count; i ++) {
         [container addSubview:[labelArr objectAtIndex:i]];
+        
         ((UILabel *)[labelArr objectAtIndex:i]).backgroundColor = [UIColor clearColor];
         ((UILabel *)[labelArr objectAtIndex:i]).textColor = [UIColor whiteColor];
         ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:14.0];
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
-        ((UILabel *)[labelArr objectAtIndex:i]).lineBreakMode = NSLineBreakByWordWrapping;
-        
-        // ((UILabel *)[labelArr objectAtIndex:i]).shadowColor = [UIColor grayColor];
-        // ((UILabel *)[labelArr objectAtIndex:i]).shadowOffset = CGSizeMake(0, 1);
-        // ((UILabel *)[labelArr objectAtIndex:i]).autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        
         ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
-        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
+        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         
         // Add Gesture Recognizer To Label
         ((UITapGestureRecognizer *)[gestureArr objectAtIndex:i]).numberOfTapsRequired = 1;

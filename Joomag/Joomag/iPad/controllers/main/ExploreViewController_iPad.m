@@ -12,7 +12,7 @@
 
 @interface ExploreViewController_iPad () {
     DataHolder *dataHolder;
-    CGRect titleLabelsViewFrame, pageControlFrame, scrollViewFrame;
+    CGRect topBarFrame, titleLabelsViewFrame, pageControlFrame, scrollViewFrame;
     NSArray *data;
 }
 
@@ -45,20 +45,17 @@
     {
         case UIDeviceOrientationPortrait:
             
-            //titleLabelsViewFrame = CGRectMake(0, 30, 768, 30);
-            //pageControlFrame = CGRectMake(0, 30, 768, 30);
-            
             break;
             
         case UIDeviceOrientationLandscapeLeft:
-            scrollViewFrame = CGRectMake(70, 80, 660, 520);
-            titleLabelsViewFrame = CGRectMake(70, 30, 300, 30);
-            pageControlFrame = CGRectMake(70, 600, 610, 30);
+            topBarFrame = CGRectMake(0, 0, 1024, 44);
+            scrollViewFrame = CGRectMake(70, 110, 660, 520);
+            titleLabelsViewFrame = CGRectMake(70, 60, 300, 30);
+            pageControlFrame = CGRectMake(70, 630, 610, 30);
             break;
             
         case UIDeviceOrientationLandscapeRight:
             
-            //pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
             
         default:
@@ -66,10 +63,11 @@
     };
     CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
     self.view.frame = frm;
+    topBar.frame = topBarFrame;
     titleLabels.frame = titleLabelsViewFrame;
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
-    settingsTable.frame = CGRectMake(self.view.frame.size.width-260, 0, 260, self.view.frame.size.height);
+    settingsTable.frame = CGRectMake(self.view.frame.size.width-260, 44, 260, self.view.frame.size.height);
 }
 
 

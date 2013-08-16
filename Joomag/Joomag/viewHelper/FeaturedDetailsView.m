@@ -46,6 +46,7 @@
         self.text.backgroundColor = [UIColor clearColor];
         self.text.font = [UIFont systemFontOfSize:12];
         self.text.textColor = [UIColor whiteColor];
+        self.text.editable = NO;
         [self addSubview: self.text];
         
         self.readBtn = [[UIButton alloc] init];

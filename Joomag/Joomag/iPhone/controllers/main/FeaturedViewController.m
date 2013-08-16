@@ -153,7 +153,7 @@
 #pragma Explore Buttons Handlers
 
 -(void)readHandler {
-        
+    
     UIView *loaderContainer = [[UIView alloc] initWithFrame:CGRectMake(0, -20, 1024, 768)]; //TODO
     loaderContainer.backgroundColor = RGBA(43, 43, 44, 1);
     //Create and add the Activity Indicator to first view
@@ -171,8 +171,10 @@
     NSLog(@"current: %i", scrollView.currentPage);
     
     [readVC startDownloadMagazine: scrollView.currentPage];
+    
     [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
-    [self.navigationController pushViewController:readVC animated:YES];
+    
+    [self.navigationController pushViewController:readVC animated: NO];
 }
 
 - (void)buyIssueHandler {

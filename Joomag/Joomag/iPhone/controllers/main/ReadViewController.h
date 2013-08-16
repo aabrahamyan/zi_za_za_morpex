@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReadViewController : UIViewController {
-    @protected
+@interface ReadViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate> {
+@protected
     UIView       *topView;
     UIButton     *backButtonView;
     UILabel      *titleLabelWithDate;
     UIScrollView *pageScrollView;
-    UIScrollView *navScrollView;
+    UIView       *navScrollViewContainer;
+    UIView       *buyView;
 }
 
 - (void)startDownloadMagazine: (NSInteger)number;

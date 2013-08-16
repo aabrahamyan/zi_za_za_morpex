@@ -62,8 +62,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
-    data = [NSArray arrayWithObjects: @"Sub Categories",@"Sub Art",@"Sub Automotive",
-            @"Sub Entertainment",@"Sub Home", nil];
+    
+    /*
+     data = [NSArray arrayWithObjects: @"Sub Categories",@"Sub Art",@"Sub Automotive",
+     @"Sub Entertainment",@"Sub Home", nil];
+     */
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTitles" object:nil];
     
