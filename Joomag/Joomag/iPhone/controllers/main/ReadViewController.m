@@ -29,9 +29,9 @@
 
 @implementation ReadViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
         self.view.backgroundColor = [UIColor clearColor];
@@ -40,9 +40,9 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];  //TODO
+    [super loadView];  //TODO
 	// Do any additional setup after loading the view.
     UITapGestureRecognizer *tapOnScreen = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnScreenHandler)];
     self.view.userInteractionEnabled = YES;

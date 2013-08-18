@@ -96,6 +96,167 @@
         
         <detailsText>detais text</detailsText>
     </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 8</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/8.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/8.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 8  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 9</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/9.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/9.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 9  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 10</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/10.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/10.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 10 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 11</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/11.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
+        
+        <detailsText>detais text</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 8</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/8.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/8.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 8  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 9</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/9.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/9.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 9  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 10</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/10.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/10.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 10 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 11</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/11.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
+        
+        <detailsText>detais text</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 8</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/8.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/8.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 8  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 9</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/9.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/9.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 9  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 10</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/10.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/10.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 10 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 11</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/11.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
+        
+        <detailsText>detais text</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 8</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/8.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/8.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 8  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 9</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/9.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/9.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 9  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 10</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/10.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/10.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 10 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 11</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/11.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
+        
+        <detailsText>detais text</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 8</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/8.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/8.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 8  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 9</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/9.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/9.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 9  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 10</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/10.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/imagesDetails/10.jpg</detailsImageUrl>
+        
+        <detailsText>detais text 10 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</detailsText>
+    </magazine>
+    <magazine category="COOKING">
+        <title lang="en">Title 11</title>
+        <date>Jun 01 Jul-07-2013</date>
+        <imageUrl>http://78.47.194.157/ads/tracking/images/11.png</imageUrl>
+        <detailsImageUrl>http://78.47.194.157/ads/tracking/images/11.png</detailsImageUrl>
+        
+        <detailsText>detais text</detailsText>
+    </magazine>
+    
     <!--  <magazine category="COOKING">
      <title lang="en">Title 12</title>
      <author>Autor 12</author>

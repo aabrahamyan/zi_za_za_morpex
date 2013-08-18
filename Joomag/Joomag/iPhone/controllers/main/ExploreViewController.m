@@ -9,6 +9,7 @@
 #import "ExploreViewController.h"
 #import "Util.h"
 #import "DataHolder.h"
+#import "SearchViewController.h"
 
 @interface ExploreViewController () {
     DataHolder *dataHolder;
@@ -46,8 +47,9 @@
     
     //-------------------------------- Search Botton ------------------------------------
     searchBtn = [[UIButton alloc] init];
-    [searchBtn addTarget:self  action:@selector(shareHandler) forControlEvents:UIControlEventTouchDown];
+    [searchBtn addTarget:self  action:@selector(searchHandler) forControlEvents:UIControlEventTouchDown];
     [searchBtn setBackgroundImage: [Util imageNamedSmart:@"serachIconTopBar"] forState:UIControlStateNormal];
+    searchBtn.showsTouchWhenHighlighted = YES;
     [topBar addSubview: searchBtn];
     
     //---------------------------- Page Control ------------------------------------
@@ -169,6 +171,14 @@
     [result setDuration:duration];
     
     return  result;
+}
+
+-(void)searchHandler {
+    SearchViewController *serachVC = [[SearchViewController  alloc] init];
+    
+    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
+    
+    [self.navigationController pushViewController:serachVC animated: NO];
 }
 
 // -------------------------------------------------------------------------------
