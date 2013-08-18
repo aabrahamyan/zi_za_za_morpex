@@ -45,7 +45,7 @@
             //NSLog(@" IGRIK %f", scrollView.frame.origin.y);
             //NSLog(@" HEIGHT %f", scrollView.frame.size.height);
             
-            detailsViewFrame = CGRectMake(500, 450, 500, 200);
+            detailsViewFrame = CGRectMake(490, 450, 540, 220);
             pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
             

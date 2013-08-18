@@ -71,6 +71,7 @@
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
+		5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
 		5ABDDBCC179BF75D002F23AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBC179BF75D002F23AD /* AFImageRequestOperation.m */; };
@@ -192,6 +193,7 @@
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableView.h; sourceTree = "<group>"; };
 		5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableView.m; sourceTree = "<group>"; };
+		5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ABDDBB9179BF75D002F23AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */,
 				5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */,
 				2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */,
 				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
@@ -673,6 +676,7 @@
 				2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */,
 				2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */,
 				5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */,
+				5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,7 +61,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
     } else {
-        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(250, 700, 500, 200)];
+        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(0, 0, 520, 220)];
     }
     detailsView.alpha = 0;
     detailsView.delegate = self;
