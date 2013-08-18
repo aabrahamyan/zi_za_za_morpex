@@ -27,13 +27,28 @@
     
     dataHolder = [DataHolder sharedData];
     
-    self.view.backgroundColor = RGBA(43, 43, 44, 1);
+    self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
     //-------------------------------- Top Bar ------------------------------------
     topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
-    topBar.backgroundColor = [UIColor grayColor];
-    
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
+    [topBar addSubview:backgroundView];
+    [topBar sendSubviewToBack: backgroundView];
     [self.view addSubview: topBar];
+    
+    //-------------------------------- Top Bar Title ------------------------------------
+    topBarTitleLabel = [[UILabel alloc] init];
+    topBarTitleLabel.backgroundColor = [UIColor clearColor];
+    topBarTitleLabel.textColor = [UIColor whiteColor];
+    topBarTitleLabel.text = @"Magazines";
+    
+    [topBar addSubview: topBarTitleLabel];
+    
+    //-------------------------------- Search Botton ------------------------------------
+    searchBtn = [[UIButton alloc] init];
+    [searchBtn addTarget:self  action:@selector(shareHandler) forControlEvents:UIControlEventTouchDown];
+    [searchBtn setBackgroundImage: [Util imageNamedSmart:@"serachIconTopBar"] forState:UIControlStateNormal];
+    [topBar addSubview: searchBtn];
     
     //---------------------------- Page Control ------------------------------------
     pageControl = [[UIPageControl alloc] init];

@@ -67,7 +67,6 @@
         [self addSubview: self.buyIssueBtn];
         
         self.shareBtn = [[UIButton alloc] init];
-        self.shareBtn.backgroundColor = [UIColor clearColor];
         [self.shareBtn addTarget:self  action:@selector(shareHandler) forControlEvents:UIControlEventTouchDown];
         [self.shareBtn setBackgroundImage: [Util imageNamedSmart:@"shareBtn"] forState:UIControlStateNormal];
         [self.shareBtn setTitle:@"     SHARE" forState:UIControlStateNormal];
@@ -107,6 +106,7 @@
         self.shareBtn.frame = shareBtnFrame;
         
     }
+    
     return self;
 }
 
