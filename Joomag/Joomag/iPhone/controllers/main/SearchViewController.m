@@ -9,31 +9,48 @@
 #import "SearchViewController.h"
 #import "DataHolder.h"
 #import "Util.h"
-
-#define TILE_WIDTH_IPHONE 160
-#define TILE_HEIGHT_IPHONE 200
-#define TILE_WIDTH_IPAD 240
-#define TILE_HEIGHT_IPAD 280
+#import "MagazinRecord.h"
+#import "ImageDownloader.h"
 
 @interface SearchViewController () {
     DataHolder *dataHolder;
     NSInteger entriesLength;
+    UITextField *searchTextField;
+    NSArray *arrSerach;
     int tileW;
     int tileH;
-    int index;
 }
+
+@property (nonatomic, strong) NSArray *entries;
+@property (nonatomic, strong) NSArray *searchResult;
+// the set of ImageDownloader objects for each magazine
+@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
+@property (nonatomic, strong) NSMutableArray *workingArray;
+
 
 @end
 
 @implementation SearchViewController
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Custom initialization
+        dataHolder = [[DataHolder alloc] init];
+        self.entries = dataHolder.testData;
+        entriesLength = self.entries.count;
+        self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
+        self.view.backgroundColor = RGBA(64, 64, 65, 1);
+        arrSerach = [[NSArray alloc] init];
+        self.workingArray = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (void)loadView {
     [super loadView];
-    dataHolder = [[DataHolder alloc] init];
-    entriesLength = dataHolder.testData.count;
-    
-    self.view.backgroundColor = RGBA(64, 64, 65, 1);
-    
+
     //-------------------------------- Top Bar ------------------------------------
     topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
@@ -53,22 +70,12 @@
     //searchScrollView.pagingEnabled = YES;
     searchScrollView.backgroundColor = [UIColor clearColor];
     searchScrollView.delegate = self;
-    searchScrollView.contentSize = CGSizeMake(884, 4000);
     
     [self.view addSubview: searchScrollView];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    {
-        //NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0], @[@0, @1], @[@1, @1] ];
-        //tileH = 170; tileW = 130;
-        //[self setTilesWithArray: arrayIPhone tileWidth: TILE_WIDTH_IPHONE andHeight: TILE_HEIGHT_IPHONE];
-    }
-    else
-    {
-        NSArray *arrayIPad = @[ @[@0, @0], @[@1, @0], @[@2, @0], @[@0, @1], @[@1, @1], @[@2, @1] ];
-        tileH = 220; tileW = 170;
-        [self setTilesWithArray: arrayIPad tileWidth: TILE_WIDTH_IPAD andHeight: TILE_HEIGHT_IPAD];
-    }
+    
+    tileH = 220; tileW = 170; //TODO
+    [self setTiles: self.entries];
     
     searchBarView = [[UIView alloc] initWithFrame:CGRectMake(277, 90, 470, 53)];
     UIImageView *searchBarbackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchBarBg.png"]];
@@ -77,38 +84,37 @@
     [self.view addSubview: searchBarView];
     
     CGRect frame = CGRectMake(70, 13, 340, 30);
-    UITextField *textField = [[UITextField alloc] initWithFrame:frame];
-    textField.textColor = [UIColor blackColor];
-    textField.font = [UIFont systemFontOfSize:17.0];
-    textField.placeholder = @"Search Joomag Store";
-    textField.backgroundColor = [UIColor clearColor];
-    textField.autocorrectionType = UITextAutocorrectionTypeYes;
-    textField.keyboardType = UIKeyboardTypeDefault;
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.delegate = self;
+    searchTextField = [[UITextField alloc] initWithFrame:frame];
+    searchTextField.textColor = [UIColor whiteColor];
+    searchTextField.font = [UIFont systemFontOfSize:17.0];
+    searchTextField.placeholder = @"Search Joomag Store";
+    searchTextField.backgroundColor = [UIColor clearColor];
+    searchTextField.autocorrectionType = UITextAutocorrectionTypeYes;
+    searchTextField.keyboardType = UIKeyboardTypeDefault;
+    searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    searchTextField.delegate = self;
     
-    [searchBarView addSubview:textField];
+    [searchBarView addSubview:searchTextField];
     
     UIButton *closeSearchBarBtn =  [[UIButton alloc] initWithFrame:CGRectMake(470-53, 0, 53, 53)];
     [closeSearchBarBtn addTarget:self  action:@selector(closeSearchBar) forControlEvents:UIControlEventTouchDown];
     [closeSearchBarBtn setBackgroundImage: [Util imageNamedSmart:@"searchBarClose"] forState:UIControlStateNormal];
     
     [searchBarView addSubview: closeSearchBarBtn];
+    
+    [self loadMagazines: self.entries];
 }
 
 // -------------------------------------------------------------------------------
 // setTilesWithArray: tileWidth: andHeight:
 // Set the images in scroll view
 // -------------------------------------------------------------------------------
-- (void)setTilesWithArray: (NSArray *)arr tileWidth: (int)width andHeight: (int)height {
+- (void)setTiles: (NSArray *)arr {
     
     int xPosition = 0;
     int yPosition = 10;
     
-    for (int i = 1; i < entriesLength; i++) {
-        
-        //NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
-        
+    for (int i = 0; i < arr.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
         imageView.image = [UIImage imageNamed:@"placeholder.png"];
         imageView.tag = i+1;
@@ -116,8 +122,7 @@
         [searchScrollView addSubview:imageView];
         
         xPosition = xPosition + tileW + 70;
-        NSLog(@"xpos: %i",xPosition);
-        
+                
         if(xPosition >= 800){
             xPosition = 0;
             yPosition = yPosition + tileH + 50;
@@ -125,9 +130,210 @@
     }
     
     // Set up the content size of the scroll view for IPHONE
-    // searchScrollView.contentSize = CGSizeMake(2*660, searchScrollView.frame.size.height); //TODO
+    searchScrollView.contentSize = CGSizeMake(searchScrollView.frame.size.width, yPosition+tileH);
 }
 
+// -------------------------------------------------------------------------------
+// loadPage:
+// Load an individual page
+// -------------------------------------------------------------------------------
+- (void)loadMagazines: (NSArray *)arr {
+    for (UIImageView *subview in [searchScrollView subviews]) {
+        if (subview.tag != 0) {
+            // Load an individual page, first seeing if we've already loaded it
+            MagazinRecord *mRecord = [arr objectAtIndex:subview.tag-1];
+            if (!mRecord.magazinTESTIcon) {
+                // NSLog(@"index: %i",subview.tag);
+                [self startIconDownload:mRecord forIndexPath:subview.tag-1];
+            } else {
+                subview.image = mRecord.magazinTESTIcon;
+            }
+        }
+    }
+}
+
+// -------------------------------------------------------------------------------
+//	startIconDownload:forIndexPath:
+// -------------------------------------------------------------------------------
+- (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
+    NSNumber *indexP = [NSNumber numberWithInteger:page];
+    
+    //NSLog(@"imageview: %i",page);
+    
+    ImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexP];
+    
+    if (imageDownloader == nil) {
+        
+        imageDownloader = [[ImageDownloader alloc] init];
+        imageDownloader.magazinRecord = magazinRecord;
+        
+        [imageDownloader setCompletionHandler:^{
+            //NSLog(@"Download Image: %i",page);
+            ((UIImageView *)[[searchScrollView subviews] objectAtIndex:page]).image = magazinRecord.magazinTESTIcon;
+            [self setShadow:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
+        }];
+        
+        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
+        [imageDownloader startDownloadTEST:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    [self reloadScroll];
+    NSArray *arr = [self searchMagazineByText: textField.text];
+    //NSLog(@"arr: %@", arr);
+    
+    [self setTiles: arr];
+    [self loadMagazines: arr];
+
+    return YES;
+}
+
+- (NSArray *)searchMagazineByText: (NSString *)textStr {
+    
+    for (int i = 0; i < entriesLength; i++) {
+        // [textStr isEqualToString: ((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle]
+        
+        if ([textStr rangeOfString: ((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle options:NSCaseInsensitiveSearch].location != NSNotFound)
+        {
+           [self.workingArray addObject: ((MagazinRecord *)[self.entries objectAtIndex: i])];
+        }
+    }
+    NSArray *result = [NSArray arrayWithArray: self.workingArray];
+        
+    [self.workingArray removeAllObjects];
+    
+    return result;
+}
+
+// -------------------------------------------------------------------------------
+//	reloadScroll
+// -------------------------------------------------------------------------------
+- (void)reloadScroll {
+    for (UIImageView *subview in [searchScrollView subviews]) {
+        if([subview isKindOfClass:[UIImageView class]]) {
+            [subview removeFromSuperview];
+        }
+    }
+}
+
+
+// -------------------------------------------------------------------------------
+//	currentPage:
+//  return current page by offset x
+// -------------------------------------------------------------------------------
+- (int)currentPage: (float)offsetX {
+    return (int)floor((offsetX * 2.0f + searchScrollView.frame.size.width) / (searchScrollView.frame.size.width * 2.0f));
+}
+
+// -------------------------------------------------------------------------------
+//	currentPage:
+//  return frame by current page
+// -------------------------------------------------------------------------------
+- (CGRect)currentFrame: (NSInteger)page {
+    CGRect frame = searchScrollView.bounds;
+    frame.size.width = 80.0f;
+    frame.origin.x = frame.size.width * page +10;
+    frame.origin.y = 10.0f;
+    
+    return frame;
+}
+
+- (void)setShadow: (UIImageView *)imageView {
+    imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    imageView.layer.shadowOffset = CGSizeMake(3, 3);
+    imageView.layer.shadowOpacity = 0.7;
+    imageView.layer.shadowRadius = 1.0;
+    imageView.clipsToBounds = NO;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+// -------------------------------------------------------------------------------
+//	scrollViewDidEndDecelerating:
+// -------------------------------------------------------------------------------
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+
+}
+
+// -------------------------------------------------------------------------------
+// scrollViewDidScroll:
+// any offset changes. Load the pages which are now on screen
+// -------------------------------------------------------------------------------
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //self.currentPage = [self currentPage:self.contentOffset.x];
+}
+
+// any zoom scale changes
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView NS_AVAILABLE_IOS(3_2)
+{
+    
+}
+
+// called on start of dragging (may require some time and or distance to move)
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    
+}
+
+// called on finger up if the user dragged. velocity is in points/second. targetContentOffset may be changed to adjust where the scroll view comes to rest. not called when pagingEnabled is YES
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0)
+{
+    
+}
+
+// called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+}
+
+// called on finger up as we are moving
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    
+}
+
+// called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    
+}
+
+// return a view that will be scaled. if delegate returns nil, nothing happens
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return scrollView;
+}
+
+// called before the scroll view begins zooming its content
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view NS_AVAILABLE_IOS(3_2)
+{
+    
+}
+
+// scale between minimum and maximum. called after any 'bounce' animations
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    
+}
+
+// return a yes if you want to scroll to the top. if not defined, assumes YES
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+{
+    return 0;
+}
+
+// called when scrolling animation finished. may be called immediately if already at top
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    
+}
 
 - (void)closeSearch {
     [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];

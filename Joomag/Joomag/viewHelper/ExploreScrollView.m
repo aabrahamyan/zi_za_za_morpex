@@ -23,7 +23,7 @@
     int index;
 }
 
-// the set of ImageDownloader objects for each app
+// the set of ImageDownloader objects for each magazine
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
