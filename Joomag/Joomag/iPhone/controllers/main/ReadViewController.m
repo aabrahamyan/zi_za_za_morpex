@@ -23,6 +23,10 @@
     UIScrollView *navScrollView;
     int pageCount;
     bool isNavigationVisible;
+    int loadedPercentage;
+    UILabel *progresLabel;
+    UIView *progressBgView;
+    UIView *progressView;
 }
 
 @end
@@ -35,7 +39,6 @@
     if (self) {
         // Custom initialization
         self.view.backgroundColor = [UIColor clearColor];
-        dataHolder = [[DataHolder alloc] init];
     }
     return self;
 }
@@ -43,21 +46,23 @@
 - (void)loadView
 {
     [super loadView];  //TODO
-	// Do any additional setup after loading the view.
-    UITapGestureRecognizer *tapOnScreen = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnScreenHandler)];
-    self.view.userInteractionEnabled = YES;
-    [self.view addGestureRecognizer:tapOnScreen];
+    dataHolder = [[DataHolder alloc] init];
     
     isNavigationVisible = YES;
+    loadedPercentage = 0;
     
     pageScrollView = [[UIScrollView alloc] init];
     pageScrollView.frame = CGRectMake(0, 0, 1024, 768-TOP_VIEW_HEIGHT); // TODO
-    pageScrollView.pagingEnabled = YES;
+    // pageScrollView.pagingEnabled = YES;
     pageScrollView.backgroundColor = [UIColor clearColor];
-    pageScrollView.delegate = self;
+    //pageScrollView.delegate = self;
     
     [self.view addSubview: pageScrollView];
     
+    // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tapOnScreen = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnScreenHandler)];
+    pageScrollView.userInteractionEnabled = YES;
+    [pageScrollView addGestureRecognizer:tapOnScreen];
     
     topView = [[UIView alloc] init];
     CGRect frame = CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT);
@@ -85,6 +90,15 @@
     
     [topView addSubview: titleLabelWithDate];
     
+    progresLabel = [[UILabel alloc] init];
+    progresLabel.frame = CGRectMake(370, 0, 60, 44);
+    progresLabel.backgroundColor = [UIColor clearColor];
+    progresLabel.font = [UIFont systemFontOfSize:20.0];
+    progresLabel.textColor = [UIColor whiteColor];
+    progresLabel.numberOfLines = 1;
+    
+    [topView addSubview: progresLabel];
+    
     int scrollViewHeight = 130;
     
     navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-130, 1024, scrollViewHeight)];
@@ -96,6 +110,7 @@
     [navScrollViewContainer addSubview: navScrollViewBG];
     
     navScrollView = [[UIScrollView alloc] init];
+    // navScrollView.pagingEnabled = YES;
     navScrollView.frame = CGRectMake(0, 0, 1024, scrollViewHeight); // TODO
     navScrollView.tag = 1111;
     navScrollView.backgroundColor = [UIColor clearColor];
@@ -104,12 +119,26 @@
     
     [self.view addSubview: navScrollViewContainer];
     
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(tapOnScreenHandler) userInfo:nil repeats:NO];
+    [navScrollViewContainer bringSubviewToFront: self.view];
+    
+    // [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(tapOnScreenHandler) userInfo:nil repeats:NO];
     
     buyView = [[UIView alloc] initWithFrame:CGRectMake(1024-150, 0, 150, 768)];
     buyView.backgroundColor = [UIColor blackColor];
     buyView.alpha = 0;
     [self.view addSubview: buyView];
+    
+    progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-130-2, 1024, 2)]; // TODO
+    progressBgView.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview: progressBgView];
+    
+    progressView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-130-2, 1, 2)]; // TODO
+    progressView.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview: progressView];
+    
+    // [self startDownloadMagazine: 0]; //TODO set scroll View current page
 }
 
 - (void)tapOnScreenHandler {
@@ -146,13 +175,13 @@
 
 - (void)startDownloadMagazine: (NSInteger)number {
     
-    mRecord = [dataHolder.testData objectAtIndex: number];
+    mRecord = [dataHolder.testData objectAtIndex: number]; NSLog(@"startDownloadMagazine: %@", mRecord);
     
     titleLabelWithDate.text = [NSString stringWithFormat:@"%@ | %@", mRecord.magazinTitle, mRecord.magazinDate];
     [titleLabelWithDate sizeToFit];
     
     pageCount = [mRecord.pageImageURLsArray count];
-    
+    // NSLog(@"pageCount: %i",pageCount);
     
     int xItemPos = 0;
     int pagXPos = 0;
@@ -237,9 +266,9 @@
                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
      {
-         //NSLog(@"img: %@",image);
          page.image = image;
          item.image = image;
+         [self showingDownloadProgress];
      }
                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
      {
@@ -248,46 +277,26 @@
     
 }
 
--(void)downloadShowingProgress
+-(void)showingDownloadProgress
 {
-    /*
-     NSMutableArray *opArr = [[NSMutableArray alloc] init];
-     NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-     
-     for (NSInteger i = 0; i <= 3; i++)
-     {
-     NSLog(@"i --- : %i", i);
-     
-     __block int x = i;
-     
-     NSURL *url = [[NSURL alloc] initWithString: [mRecord.pageImageURLsArray objectAtIndex:i]];
-     NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
-     
-     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-     
-     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-     NSLog(@"success");
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-     NSLog(@"failure");
-     }];
-     
-     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-     NSLog(@"item: %i progres: %f",x, (float)totalBytesRead / (float)totalBytesExpectedToRead);
-     }];
-     
-     [opArr addObject: operation];
-     // [operation2 addDependency:operation1];
-     // Add the operation to a queue
-     // It will start once added
-     // [operationQueue addOperation: operation];
-     }
-     
-     //NSLog(@"opArr: %@", opArr);
-     [operationQueue setMaxConcurrentOperationCount:3];
-     [operationQueue addOperations: opArr waitUntilFinished:NO];
-     */
+    loadedPercentage++;
+    
+    // NSLog(@"count: --------------------------- %i -----------------------------", (loadPercentage*100/pageCount));
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        // NSLog(@"width: %i", (loadPercentage*100/pageCount)*1024/100);
+        progresLabel.text = [NSString stringWithFormat: @"%i %%", loadedPercentage*100/pageCount];
+        CGRect theFrame = progressView.frame;
+        theFrame.size.width = (loadedPercentage*100/pageCount)*1024/100; // TODO screen width
+        progressView.frame = theFrame;
+    }];
+    
+    if( (loadedPercentage*100/pageCount) == 100) {
+        progresLabel.hidden = YES;
+        progressView.hidden = YES;
+        progressBgView.hidden = YES;
+    }
 }
-
 
 - (void)didReceiveMemoryWarning
 {
