@@ -11,12 +11,17 @@
 @interface MagazinRecord : NSObject
 
 @property (nonatomic, strong) NSString *magazinTitle;
-@property (nonatomic, strong) NSString *magazinAutor;
+@property (nonatomic, strong) NSString *magazinDate;
 @property (nonatomic, strong) UIImage  *magazinIcon;
 @property (nonatomic, strong) NSString *magazinImageURL;
 @property (nonatomic, strong) NSString *magazinDetailsText;
 @property (nonatomic, strong) NSString *magazinDetailsImageURL;
 @property (nonatomic, strong) UIImage  *magazinDetailsIcon;
+
+@property (nonatomic, strong) NSMutableArray  *pageImageURLsArray;
+@property (nonatomic, strong) UIImage         *magazinPageIcon;
+
+
 
 @property (nonatomic, strong) NSString *magazinTESTImageURL;
 @property (nonatomic, strong) UIImage  *magazinTESTIcon;

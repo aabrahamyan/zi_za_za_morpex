@@ -23,7 +23,7 @@
     int index;
 }
 
-// the set of ImageDownloader objects for each app
+// the set of ImageDownloader objects for each magazine
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
@@ -124,7 +124,7 @@
             // Load an individual page, first seeing if we've already loaded it
             MagazinRecord *mRecord = [self.entries objectAtIndex:subview.tag-1];
             if (!mRecord.magazinTESTIcon) {
-                NSLog(@"index: %i",subview.tag);
+                //NSLog(@"index: %i",subview.tag);
                 [self startIconDownload:mRecord forIndexPath:subview.tag-1];
             } else {
                 NSLog(@"exist");
@@ -169,11 +169,10 @@
         imageDownloader.magazinRecord = magazinRecord;
         
         [imageDownloader setCompletionHandler:^{
-            NSLog(@"Download Image: %i",page);
+            //NSLog(@"Download Image: %i",page);
             ((UIImageView *)[[self subviews] objectAtIndex:page]).image = magazinRecord.magazinTESTIcon;
             [self setShadow:((UIImageView *)[[self subviews] objectAtIndex:page])];
         }];
-        
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
         [imageDownloader startDownloadTEST:((UIImageView *)[[self subviews] objectAtIndex:page])];

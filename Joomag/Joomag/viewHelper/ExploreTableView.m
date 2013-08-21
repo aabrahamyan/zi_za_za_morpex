@@ -28,7 +28,7 @@
         
         self.delegate = self;
         self.dataSource = self;
-        self.backgroundColor = RGBA(35, 35, 35, 1);
+        self.backgroundColor = RGBA(41, 41, 42, 1);
         self.separatorColor = RGBA(65, 65, 65, 1);;
     }
     return self;
@@ -62,8 +62,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
-    data = [NSArray arrayWithObjects: @"Sub Categories",@"Sub Art",@"Sub Automotive",
-            @"Sub Entertainment",@"Sub Home", nil];
+    
+    /*
+     data = [NSArray arrayWithObjects: @"Sub Categories",@"Sub Art",@"Sub Automotive",
+     @"Sub Entertainment",@"Sub Home", nil];
+     */
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideTitles" object:nil];
     

@@ -8,6 +8,17 @@
 
 #import "MagazinRecord.h"
 
+
 @implementation MagazinRecord
 
+- (id)init {
+    if (self = [super init]) {
+        self.pageImageURLsArray = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
 @end
+
+

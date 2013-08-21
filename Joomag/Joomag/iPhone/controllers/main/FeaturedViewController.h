@@ -14,13 +14,15 @@
 @class FeaturedScrollView;
 @class FeaturedDetailsView;
 
-@interface FeaturedViewController : UIViewController <ResponseTrackerDelegate>  {
+@interface FeaturedViewController : UIViewController <ResponseTrackerDelegate, FeaturedDetailsButtonsDelegate>  {
     
 @protected
-    FeaturedScrollView    *scrollView;
-    UIPageControl *pageControl;
+    FeaturedScrollView  *scrollView;
+    UIPageControl       *pageControl;
     FeaturedDetailsView *detailsView;
 }
+
+@property (nonatomic, strong) UIProgressView *progressView;
 
 - (void)showDetailsView: (NSInteger)page;
 

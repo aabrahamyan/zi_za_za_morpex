@@ -9,6 +9,7 @@
 #import "ExploreViewController.h"
 #import "Util.h"
 #import "DataHolder.h"
+#import "SearchViewController.h"
 
 @interface ExploreViewController () {
     DataHolder *dataHolder;
@@ -27,7 +28,29 @@
     
     dataHolder = [DataHolder sharedData];
     
-    self.view.backgroundColor = RGBA(43, 43, 44, 1);
+    self.view.backgroundColor = RGBA(49, 49, 49, 1);
+    
+    //-------------------------------- Top Bar ------------------------------------
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
+    [topBar addSubview:backgroundView];
+    [topBar sendSubviewToBack: backgroundView];
+    [self.view addSubview: topBar];
+    
+    //-------------------------------- Top Bar Title ------------------------------------
+    topBarTitleLabel = [[UILabel alloc] init];
+    topBarTitleLabel.backgroundColor = [UIColor clearColor];
+    topBarTitleLabel.textColor = [UIColor whiteColor];
+    topBarTitleLabel.text = @"Magazines";
+    
+    [topBar addSubview: topBarTitleLabel];
+    
+    //-------------------------------- Search Botton ------------------------------------
+    searchBtn = [[UIButton alloc] init];
+    [searchBtn addTarget:self  action:@selector(searchHandler) forControlEvents:UIControlEventTouchDown];
+    [searchBtn setBackgroundImage: [Util imageNamedSmart:@"serachIconTopBar"] forState:UIControlStateNormal];
+    searchBtn.showsTouchWhenHighlighted = YES;
+    [topBar addSubview: searchBtn];
     
     //---------------------------- Page Control ------------------------------------
     pageControl = [[UIPageControl alloc] init];
@@ -40,7 +63,6 @@
     
     
     //---------------------------- Scroll View ------------------------------------
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 50, 320, 390)];
         pageControl.numberOfPages = 3;
@@ -48,7 +70,7 @@
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 110, 720, 450)];
         pageControl.numberOfPages = 2;
     }
-        
+    
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
@@ -65,10 +87,8 @@
     [self.view addSubview:titleLabels];
 }
 
-
 - (UIView *)titleLabelsWithBorder {
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
-    //container.backgroundColor = [UIColor lightGrayColor];
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(92, 0, 80, 20)]; label2.text = @"POPULAR";
@@ -83,19 +103,14 @@
     
     for (int i = 0; i < labelArr.count; i ++) {
         [container addSubview:[labelArr objectAtIndex:i]];
+        
         ((UILabel *)[labelArr objectAtIndex:i]).backgroundColor = [UIColor clearColor];
         ((UILabel *)[labelArr objectAtIndex:i]).textColor = [UIColor whiteColor];
         ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:14.0];
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
-        ((UILabel *)[labelArr objectAtIndex:i]).lineBreakMode = NSLineBreakByWordWrapping;
-        
-        // ((UILabel *)[labelArr objectAtIndex:i]).shadowColor = [UIColor grayColor];
-        // ((UILabel *)[labelArr objectAtIndex:i]).shadowOffset = CGSizeMake(0, 1);
-        // ((UILabel *)[labelArr objectAtIndex:i]).autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        
         ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
-        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
+        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         
         // Add Gesture Recognizer To Label
         ((UITapGestureRecognizer *)[gestureArr objectAtIndex:i]).numberOfTapsRequired = 1;
@@ -156,6 +171,14 @@
     [result setDuration:duration];
     
     return  result;
+}
+
+-(void)searchHandler {
+    SearchViewController *serachVC = [[SearchViewController  alloc] init];
+    
+    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
+    
+    [self.navigationController pushViewController:serachVC animated: NO];
 }
 
 // -------------------------------------------------------------------------------

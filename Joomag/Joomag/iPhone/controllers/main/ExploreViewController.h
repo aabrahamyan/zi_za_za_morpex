@@ -14,6 +14,9 @@
 @interface ExploreViewController : UIViewController {
     
 @protected
+    UIView *topBar;
+    UILabel *topBarTitleLabel;
+    UIButton *searchBtn;
     UIView *titleLabels;
     UIPageControl *pageControl;
     ExploreScrollView *scrollView;

@@ -71,6 +71,16 @@
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
+		5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */; };
+		5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB517C0D91700380CBD /* placeholder.png */; };
+		5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */; };
+		5A7AFCBA17C0E14500380CBD /* serachIconTopBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB917C0E14500380CBD /* serachIconTopBar@2x.png */; };
+		5A7AFCBD17C0E79B00380CBD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */; };
+		5A7AFCC017C0E7C600380CBD /* SearchViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */; };
+		5A7AFCC217C0EEAA00380CBD /* searchTopBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */; };
+		5A7AFCC417C0F0FF00380CBD /* searchTabBarClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */; };
+		5A7AFCC617C0FC6B00380CBD /* searchBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg@2x.png */; };
+		5A7AFCC817C0FE7600380CBD /* searchBarClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
 		5ABDDBCC179BF75D002F23AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBC179BF75D002F23AD /* AFImageRequestOperation.m */; };
@@ -87,9 +97,11 @@
 		5AC6FFED179B32AF0062736F /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEA179B32AF0062736F /* ImageDownloader.m */; };
 		5AC6FFEE179B32AF0062736F /* MagazinRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFEC179B32AF0062736F /* MagazinRecord.m */; };
 		5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF3179B33AF0062736F /* DataHolder.m */; };
-		5AC6FFF9179B392D0062736F /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF8179B392D0062736F /* placeholder.png */; };
 		5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC1951799836F0029A07F /* MobileCoreServices.framework */; };
 		5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC197179983760029A07F /* SystemConfiguration.framework */; };
+		5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EEE17BBC006008E4865 /* ReadViewController.m */; };
+		5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */; };
+		5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +201,18 @@
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableView.h; sourceTree = "<group>"; };
 		5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableView.m; sourceTree = "<group>"; };
+		5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
+		5A7AFCB517C0D91700380CBD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topTabBarBg@2x.png"; sourceTree = "<group>"; };
+		5A7AFCB917C0E14500380CBD /* serachIconTopBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "serachIconTopBar@2x.png"; sourceTree = "<group>"; };
+		5A7AFCBB17C0E79A00380CBD /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		5A7AFCBE17C0E7C600380CBD /* SearchViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController_iPad.h; sourceTree = "<group>"; };
+		5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController_iPad.m; sourceTree = "<group>"; };
+		5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTopBarBg@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTabBarClose@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC517C0FC6A00380CBD /* searchBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose@2x.png"; sourceTree = "<group>"; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ABDDBB9179BF75D002F23AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -221,9 +245,13 @@
 		5AC6FFEC179B32AF0062736F /* MagazinRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MagazinRecord.m; path = ../../Class/MagazinRecord.m; sourceTree = "<group>"; };
 		5AC6FFF2179B33AF0062736F /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataHolder.h; path = Joomag/DataHolder.h; sourceTree = SOURCE_ROOT; };
 		5AC6FFF3179B33AF0062736F /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataHolder.m; path = Joomag/DataHolder.m; sourceTree = SOURCE_ROOT; };
-		5AC6FFF8179B392D0062736F /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5ACAC1951799836F0029A07F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5ACAC197179983760029A07F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5AD69EED17BBC006008E4865 /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController.h; sourceTree = "<group>"; };
+		5AD69EEE17BBC006008E4865 /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController.m; sourceTree = "<group>"; };
+		5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController_iPad.h; sourceTree = "<group>"; };
+		5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController_iPad.m; sourceTree = "<group>"; };
+		5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +356,14 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */,
+				5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */,
+				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */,
+				5A7AFCC517C0FC6A00380CBD /* searchBarBg@2x.png */,
+				5A7AFCB917C0E14500380CBD /* serachIconTopBar@2x.png */,
+				5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */,
+				5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */,
+				5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */,
 				2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */,
 				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
 				2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */,
@@ -361,7 +397,7 @@
 		2C0B75BE179723AD00735AD3 /* Resources-iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				5AC6FFF8179B392D0062736F /* placeholder.png */,
+				5A7AFCB517C0D91700380CBD /* placeholder.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
 			);
 			path = "Resources-iPhone";
@@ -469,6 +505,10 @@
 				2CADE38117993D68002202D5 /* LibraryViewController_iPad.m */,
 				2CADE38C179942BA002202D5 /* SettingsViewController_iPad.h */,
 				2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */,
+				5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */,
+				5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */,
+				5A7AFCBE17C0E7C600380CBD /* SearchViewController_iPad.h */,
+				5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -484,6 +524,10 @@
 				2CADE37E17993D56002202D5 /* LibraryViewController.m */,
 				2CADE3891799429E002202D5 /* SettingsViewController.h */,
 				2CADE38A1799429E002202D5 /* SettingsViewController.m */,
+				5AD69EED17BBC006008E4865 /* ReadViewController.h */,
+				5AD69EEE17BBC006008E4865 /* ReadViewController.m */,
+				5A7AFCBB17C0E79A00380CBD /* SearchViewController.h */,
+				5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -633,7 +677,6 @@
 				2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */,
 				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
 				5AC6FFE7179B31F70062736F /* testData.xml in Resources */,
-				5AC6FFF9179B392D0062736F /* placeholder.png in Resources */,
 				2CB788F717B2EA26009ECE98 /* barExplore.png in Resources */,
 				2CB788F817B2EA26009ECE98 /* barFeatured.png in Resources */,
 				2CB788F917B2EA26009ECE98 /* barMyLib.png in Resources */,
@@ -659,6 +702,15 @@
 				2CA13BC517B3C3BD00D0257F /* restoreDescription@2x.png in Resources */,
 				2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */,
 				2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */,
+				5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */,
+				5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */,
+				5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */,
+				5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */,
+				5A7AFCBA17C0E14500380CBD /* serachIconTopBar@2x.png in Resources */,
+				5A7AFCC217C0EEAA00380CBD /* searchTopBarBg@2x.png in Resources */,
+				5A7AFCC417C0F0FF00380CBD /* searchTabBarClose@2x.png in Resources */,
+				5A7AFCC617C0FC6B00380CBD /* searchBarBg@2x.png in Resources */,
+				5A7AFCC817C0FE7600380CBD /* searchBarClose@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +765,10 @@
 				2CC450B517BADC2A00DE806E /* MainDataHolder.m in Sources */,
 				2CC450B817BAE31B00DE806E /* CategoriesParser.m in Sources */,
 				2CC450BB17BAE54600DE806E /* ImageBlocksParser.m in Sources */,
+				5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */,
+				5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */,
+				5A7AFCBD17C0E79B00380CBD /* SearchViewController.m in Sources */,
+				5A7AFCC017C0E7C600380CBD /* SearchViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
