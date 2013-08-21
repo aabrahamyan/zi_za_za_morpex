@@ -14,10 +14,19 @@
     
     [super parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qualifiedName attributes:attributeDict];
     
-    if([currentElement isEqualToString:@"GETPAGEMOBILE"]) {
-        upperPageElem = currentElement;
-        elems = [[NSMutableDictionary alloc] init];
+    if([currentElement isEqualToString:@"GetPageMobile"]) {
+        pageMobileLevel = currentElement;
+    } else if ([currentElement isEqualToString:@"block_tokens"]) {
+        blockTokensLevel = currentElement;
+    } else if ([currentElement isEqualToString:@"active_data"]) {
+        activeDataLevel = currentElement;
+    } else if ([currentElement isEqualToString:@"block"]) {
+        innerBLockLevel = currentElement;
+    } else if ([currentElement isEqualToString:@"hotspot"]) {
+        hotSpotLevel = currentElement;
     }
+    
+    
     
 }
 

@@ -12,6 +12,14 @@
 @interface PageParser : BaseParser {
     NSString * upperPageElem;
     NSMutableDictionary * elems;
+    
+    //---------- Elems --------------//
+    NSString * pageMobileLevel;
+    NSString * blockTokensLevel;
+    NSString * activeDataLevel;
+    
+    NSString * innerBLockLevel;
+    NSString * hotSpotLevel;
 }
 
 @end
