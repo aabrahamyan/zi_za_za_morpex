@@ -7,13 +7,13 @@
 //
 
 #import "SearchViewController.h"
-#import "DataHolder.h"
+#import "MainDataHolder.h"
 #import "Util.h"
 #import "MagazinRecord.h"
 #import "ImageDownloader.h"
 
 @interface SearchViewController () {
-    DataHolder *dataHolder;
+    MainDataHolder *dataHolder;
     NSInteger entriesLength;
     UITextField *searchTextField;
     NSArray *arrSerach;
@@ -37,7 +37,7 @@
     self = [super init];
     if (self) {
         // Custom initialization
-        dataHolder = [[DataHolder alloc] init];
+        dataHolder = [MainDataHolder getInstance];
         self.entries = dataHolder.testData;
         entriesLength = self.entries.count;
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
@@ -52,7 +52,7 @@
     [super loadView];
     
     //-------------------------------- Top Bar ------------------------------------
-    topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
+    topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 44)]; //TODO
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
     [topView addSubview:backgroundView];
     [topView sendSubviewToBack: backgroundView];
@@ -250,6 +250,20 @@
     imageView.clipsToBounds = NO;
 }
 
+
+- (void)closeSearch {
+    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];
+    [self.navigationController popViewControllerAnimated: NO];
+}
+
+
+- (void)closeSearchBar {
+    [self reloadScroll];
+    [self setTiles: dataHolder.testData];
+    [self loadMagazines: dataHolder.testData];
+    searchTextField.text = @"";
+}
+
 #pragma mark - UIScrollViewDelegate
 
 // -------------------------------------------------------------------------------
@@ -333,15 +347,6 @@
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {
     
-}
-
-- (void)closeSearch {
-    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];
-    [self.navigationController popViewControllerAnimated: NO];
-}
-
-- (void)closeSearchBar {
-    NSLog(@"close search bar");
 }
 
 @end

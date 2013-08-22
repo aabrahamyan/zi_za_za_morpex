@@ -36,12 +36,12 @@
     if (self) {
         // Initialization code
         
-        //Init DataHolder
-        MainDataHolder *dataHolder = [MainDataHolder getInstance];
-        self.entries = dataHolder.testData;
-        entriesLength = self.entries.count;
+        // Init DataHolder
+        // MainDataHolder *dataHolder = [MainDataHolder getInstance];
+        // self.entries = dataHolder.testData;
+        // entriesLength = self.entries.count;
         
-        //Set BackGround Color
+        // Set BackGround Color
         self.backgroundColor = [UIColor clearColor];
         self.delegate = self;
         self.pagingEnabled = YES;
@@ -50,6 +50,7 @@
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
         self.pageViews = [[NSMutableArray alloc] init];
         
+        /*
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         {
             NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0], @[@0, @1], @[@1, @1] ];
@@ -62,6 +63,7 @@
             tileH = 220; tileW = 170;
             [self setTilesWithArray: arrayIPad tileWidth: TILE_WIDTH_IPAD andHeight: TILE_HEIGHT_IPAD];
         }
+        */
         
         // Load the initial set of pages that are on screen
         [self loadVisibleImages];

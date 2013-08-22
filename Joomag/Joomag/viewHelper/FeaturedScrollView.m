@@ -34,8 +34,8 @@
         counter = 1;
         
         //Init DataHolder
-        MainDataHolder *dataHolder = [MainDataHolder getInstance];
-        self.entries = dataHolder.testData;
+        //MainDataHolder *dataHolder = [MainDataHolder getInstance];
+        //self.entries = dataHolder.testData;
         
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
         
@@ -45,22 +45,39 @@
         self.delegate = self;
         self.pagingEnabled = YES;
         
-        entriesLength = self.entries.count;
+        //entriesLength = self.entries.count;
         
-        CGSize pagesScrollViewSize = self.frame.size;
-        pageWidth = pagesScrollViewSize.width;
-        NSLog(@"pagesScrollViewSize.height: %f", pagesScrollViewSize.height);
+        //CGSize pagesScrollViewSize = self.frame.size;
+        //pageWidth = pagesScrollViewSize.width;
+        //NSLog(@"pagesScrollViewSize.height: %f", pagesScrollViewSize.height);
         
         // Set up the content size of the scroll view
-        self.contentSize = CGSizeMake(pageWidth * [self.entries count], pagesScrollViewSize.height);
+        //self.contentSize = CGSizeMake(pageWidth * [self.entries count], pagesScrollViewSize.height);
         
         // Set up the array to hold the views for each page
         self.pageViews = [[NSMutableArray alloc] init];
         
         // Load the initial set of pages that are on screen
-        [self loadVisiblePage];
+        // [self loadVisiblePage];
     }
+    
     return self;
+}
+
+
+- (void) redrawData {
+    self.entries = [MainDataHolder getInstance].testData;
+    entriesLength = self.entries.count;
+    
+    CGSize pagesScrollViewSize = self.frame.size;
+    pageWidth = pagesScrollViewSize.width;
+    NSLog(@"pagesScrollViewSize.height: %f", pagesScrollViewSize.height);
+    
+    // Set up the content size of the scroll view
+    self.contentSize = CGSizeMake(pageWidth * entriesLength, pagesScrollViewSize.height);
+    
+    // Load the initial set of pages that are on screen
+    [self loadVisiblePage];
 }
 
 #pragma mark -

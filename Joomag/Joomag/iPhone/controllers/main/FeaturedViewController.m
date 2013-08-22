@@ -39,6 +39,40 @@
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self];
     
+    //---------------------------- Scroll View ------------------------------------
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)]; // TODO
+    //scrollView.entries = dataHolder.testData;
+    
+    [self.view addSubview: scrollView];
+    
+    
+    //---------------------------- Page Control ------------------------------------
+    CGRect pageControlFrame = CGRectMake(0, 30, 320, 30);
+    pageControl = [[UIPageControl alloc] init];
+    pageControl.frame = pageControlFrame;
+    pageControl.currentPage = 0;
+    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    pageControl.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview: pageControl];
+    
+    //Notify When Page Changes
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl) name:@"updatePageControl" object:nil];
+    
+    //---------------------------- Details View ------------------------------------
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+    } else {
+        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(0, 0, 520, 220)];
+    }
+    detailsView.alpha = 0;
+    detailsView.delegate = self;
+    
+    [self.view addSubview: detailsView];
+    
+    // Hide Details view when start dragging
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,43 +193,9 @@
 
 - (void) didFinishResponse: (id) responseObject {
     dataHolder = [MainDataHolder getInstance];
-    
-    //---------------------------- Scroll View ------------------------------------
-    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)]; // TODO
-    scrollView.entries = dataHolder.testData;
-    
-    [self.view addSubview: scrollView];
-    
-    //---------------------------- Page Control ------------------------------------
-    CGRect pageControlFrame = CGRectMake(0, 30, 320, 30);
-    pageControl = [[UIPageControl alloc] init];
-    pageControl.frame = pageControlFrame;
-    pageControl.currentPage = 0;
-    pageControl.numberOfPages = dataHolder.testData.count;
-    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    pageControl.backgroundColor = [UIColor clearColor];
-    
-    [self.view addSubview: pageControl];
-    
-    //Notify When Page Changes
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl) name:@"updatePageControl" object:nil];
-    
-    //---------------------------- Details View ------------------------------------
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
-    } else {
-        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(0, 0, 520, 220)];
-    }
-    detailsView.alpha = 0;
-    detailsView.delegate = self;
-    
-    [self.view addSubview: detailsView];
-    
-    // Hide Details view when start dragging
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
-    
+    [scrollView redrawData];
     [self showDetailsView: scrollView.currentPage];
+    pageControl.numberOfPages = dataHolder.testData.count;
 }
 
 @end

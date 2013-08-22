@@ -127,15 +127,15 @@
     buyView.alpha = 0;
     [self.view addSubview: buyView];
     
-    progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT-2, 1024, 2)]; // TODO
+    progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1024, 2)]; // TODO
     progressBgView.backgroundColor = [UIColor whiteColor];
     
-    [self.view addSubview: progressBgView];
+    [navScrollViewContainer addSubview: progressBgView];
     
-    progressView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT-2, 1, 2)]; // TODO
+    progressView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1, 2)]; // TODO
     progressView.backgroundColor = [UIColor redColor];
     
-    [self.view addSubview: progressView];
+    [navScrollViewContainer addSubview: progressView];
     
     // [self startDownloadMagazine: 0]; //TODO set scroll View current page
 }
