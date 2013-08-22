@@ -10,6 +10,8 @@
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
 
+#import "ExploreViewController.h"
+
 @interface CustomTabBarController ()
 
 @end
@@ -119,25 +121,30 @@ static CustomTabBarController * customTabBarController;
     NSInteger targetId = ((UIButton *)target).tag;
     
     switch (targetId) {
-        case 11111:
+        case 11111: {
+            
             self.featuredNavigationController.view.hidden = NO;
-            self.exploreNavigationController.view.hidden = YES;
+            self.exploreNavigationController.view.hidden = YES;            
             self.myBookshelfNavigationController.view.hidden = YES;
             
             break;
-        case 22222:
+        }
+        case 22222: {
             self.featuredNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = NO;
+            ExploreViewController * vc =  (ExploreViewController *)self.exploreNavigationController.visibleViewController;
+            [vc redrawData];
             self.myBookshelfNavigationController.view.hidden = YES;
             
             break;
-        case 33333:
+        }
+        case 33333: {
             self.featuredNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = YES;
             self.myBookshelfNavigationController.view.hidden = NO;
             
             break;
-            
+        }
         default:
             break;
     }

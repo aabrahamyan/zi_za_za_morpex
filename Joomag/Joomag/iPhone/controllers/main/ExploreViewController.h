@@ -22,4 +22,6 @@
     ExploreScrollView *scrollView;
 }
 
+- (void) redrawData;
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ExploreScrollView.h"
-#import "DataHolder.h"
+#import "MainDataHolder.h"
 #import "ImageDownloader.h"
 #import "MagazinRecord.h"
 
@@ -37,7 +37,7 @@
         // Initialization code
         
         //Init DataHolder
-        DataHolder *dataHolder = [DataHolder sharedData];
+        MainDataHolder *dataHolder = [MainDataHolder getInstance];
         self.entries = dataHolder.testData;
         entriesLength = self.entries.count;
         
@@ -67,6 +67,27 @@
         [self loadVisibleImages];
     }
     return self;
+}
+
+- (void) redrawData {
+    self.entries = [MainDataHolder getInstance].testData;
+    entriesLength = self.entries.count;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0], @[@0, @1], @[@1, @1] ];
+        tileH = 170; tileW = 130;
+        [self setTilesWithArray: arrayIPhone tileWidth: TILE_WIDTH_IPHONE andHeight: TILE_HEIGHT_IPHONE];
+    }
+    else
+    {
+        NSArray *arrayIPad = @[ @[@0, @0], @[@1, @0], @[@2, @0], @[@0, @1], @[@1, @1], @[@2, @1] ];
+        tileH = 220; tileW = 170;
+        [self setTilesWithArray: arrayIPad tileWidth: TILE_WIDTH_IPAD andHeight: TILE_HEIGHT_IPAD];
+    }
+    
+    // Load the initial set of pages that are on screen
+    [self loadVisibleImages];
 }
 
 // -------------------------------------------------------------------------------

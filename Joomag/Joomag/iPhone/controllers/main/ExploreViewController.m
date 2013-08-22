@@ -8,11 +8,11 @@
 
 #import "ExploreViewController.h"
 #import "Util.h"
-#import "DataHolder.h"
+#import "MainDataHolder.h"
 #import "SearchViewController.h"
 
 @interface ExploreViewController () {
-    DataHolder *dataHolder;
+    MainDataHolder *dataHolder;
     UILabel *label1;
     UILabel *label2;
     UILabel *label3;
@@ -26,12 +26,12 @@
 - (void)loadView {
     [super loadView];
     
-    dataHolder = [DataHolder sharedData];
+    dataHolder = [MainDataHolder getInstance];
     
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
     //-------------------------------- Top Bar ------------------------------------
-    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 44)];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
     [topBar addSubview:backgroundView];
     [topBar sendSubviewToBack: backgroundView];
@@ -85,6 +85,15 @@
     titleLabels = [self titleLabelsWithBorder];
     
     [self.view addSubview:titleLabels];
+}
+
+
+
+- (void) redrawData {
+    if([dataHolder.testData count] != 0) {
+        scrollView.entries = dataHolder.testData;
+        [scrollView redrawData];
+    }
 }
 
 - (UIView *)titleLabelsWithBorder {
