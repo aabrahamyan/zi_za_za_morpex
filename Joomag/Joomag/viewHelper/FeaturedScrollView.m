@@ -49,6 +49,7 @@
         
         CGSize pagesScrollViewSize = self.frame.size;
         pageWidth = pagesScrollViewSize.width;
+        NSLog(@"pagesScrollViewSize.height: %f", pagesScrollViewSize.height);
         
         // Set up the content size of the scroll view
         self.contentSize = CGSizeMake(pageWidth * [self.entries count], pagesScrollViewSize.height);

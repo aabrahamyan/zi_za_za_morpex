@@ -15,6 +15,7 @@
 #import "DataHolder.h"
 
 #define TOP_VIEW_HEIGHT 44
+#define NAV_SCROLL_HEIGHT 130
 
 @interface ReadViewController () {
     MagazinRecord *mRecord;
@@ -53,7 +54,7 @@
     
     pageScrollView = [[UIScrollView alloc] init];
     pageScrollView.frame = CGRectMake(0, 0, 1024, 768-TOP_VIEW_HEIGHT); // TODO
-    // pageScrollView.pagingEnabled = YES;
+    pageScrollView.pagingEnabled = YES;
     pageScrollView.backgroundColor = [UIColor clearColor];
     //pageScrollView.delegate = self;
     
@@ -62,7 +63,7 @@
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tapOnScreen = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnScreenHandler)];
     pageScrollView.userInteractionEnabled = YES;
-    [pageScrollView addGestureRecognizer:tapOnScreen];
+    [pageScrollView addGestureRecognizer: tapOnScreen];
     
     topView = [[UIView alloc] init];
     CGRect frame = CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT);
@@ -99,19 +100,19 @@
     
     [topView addSubview: progresLabel];
     
-    int scrollViewHeight = 130;
+    navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)]; //TODO
+    navScrollViewContainer.userInteractionEnabled = YES;
     
-    navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-130, 1024, scrollViewHeight)];
-    
-    UIView *navScrollViewBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, scrollViewHeight)]; //TODO
+    UIView *navScrollViewBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, NAV_SCROLL_HEIGHT)]; //TODO
     navScrollViewBG.backgroundColor = [UIColor blackColor];
     navScrollViewBG.alpha = 0.7;
+    navScrollViewBG.userInteractionEnabled = YES;
     
     [navScrollViewContainer addSubview: navScrollViewBG];
     
     navScrollView = [[UIScrollView alloc] init];
-    // navScrollView.pagingEnabled = YES;
-    navScrollView.frame = CGRectMake(0, 0, 1024, scrollViewHeight); // TODO
+    navScrollView.userInteractionEnabled = YES;
+    navScrollView.frame = CGRectMake(0, 0, 1024, NAV_SCROLL_HEIGHT); // TODO
     navScrollView.tag = 1111;
     navScrollView.backgroundColor = [UIColor clearColor];
     
@@ -119,21 +120,19 @@
     
     [self.view addSubview: navScrollViewContainer];
     
-    [navScrollViewContainer bringSubviewToFront: self.view];
-    
-    // [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(tapOnScreenHandler) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(tapOnScreenHandler) userInfo:nil repeats:NO];
     
     buyView = [[UIView alloc] initWithFrame:CGRectMake(1024-150, 0, 150, 768)];
     buyView.backgroundColor = [UIColor blackColor];
     buyView.alpha = 0;
     [self.view addSubview: buyView];
     
-    progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-130-2, 1024, 2)]; // TODO
+    progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT-2, 1024, 2)]; // TODO
     progressBgView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview: progressBgView];
     
-    progressView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-130-2, 1, 2)]; // TODO
+    progressView = [[UIView alloc] initWithFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT-2, 1, 2)]; // TODO
     progressView.backgroundColor = [UIColor redColor];
     
     [self.view addSubview: progressView];
@@ -152,19 +151,19 @@
 }
 
 - (void)hideTopAndBottomView {
-    [self animateView: topView toPos: -TOP_VIEW_HEIGHT];
-    [self animateView: navScrollViewContainer toPos: 768];
+    [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 1024, TOP_VIEW_HEIGHT)];
+    [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768, 1024, NAV_SCROLL_HEIGHT)];
 }
 
 - (void)showTopAndBottomView {
-    [self animateView: topView toPos: 0];
-    [self animateView: navScrollViewContainer toPos: 768-TOP_VIEW_HEIGHT-130];
+    [self animateView: topView withFrame: CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT)];
+    [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)];
 }
 
-- (void)animateView: (UIView *)view toPos: (int)pos {
+- (void)animateView: (UIView *)view withFrame: (CGRect)frm {
     [UIView animateWithDuration: 0.3
                      animations:^{
-                         view.frame = CGRectMake(0, pos, 1024, TOP_VIEW_HEIGHT);
+                         view.frame = frm;
                      }];
 }
 
@@ -219,6 +218,11 @@
         pagXPos += pageWidth;
         
         itemImage.frame = itemFrm;
+        UITapGestureRecognizer *tapOnNav = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnNavigation:)];
+        tapOnNav.numberOfTapsRequired = 1;
+        [itemImage addGestureRecognizer: tapOnNav];
+        itemImage.userInteractionEnabled = YES;
+        
         [navScrollView addSubview: itemImage];
         
         [self startDownloadItems: [mRecord.pageImageURLsArray objectAtIndex:i] pageImage: pageImage andItem: itemImage];
@@ -228,6 +232,17 @@
     navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
 }
 
+- (void)tapOnNavigation: (UITapGestureRecognizer *)gesture {
+    NSLog(@"gesture.view: %i", gesture.view.tag);
+    //[pageScrollView setContentOffset:CGPointMake(768*gesture.view.tag, 0) animated:YES];
+    if (gesture.view.tag % 2) {
+        //ODD
+        NSLog(@"odd: %i", gesture.view.tag % 2);
+    } else {
+        //EVEN
+        NSLog(@"even: %i", gesture.view.tag % 2);
+    }
+}
 
 #pragma mark - UIScrollViewDelegate
 

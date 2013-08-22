@@ -89,8 +89,8 @@
             //}
         } else {
             imageViewFrame = CGRectMake(20, 20, 140, 180);
-            titleFrame = CGRectMake(180, 50, 200, 20);
-            dateFrame = CGRectMake(180, 20, 200, 20);
+            titleFrame = CGRectMake(180, 50, 320, 20);
+            dateFrame = CGRectMake(180, 20, 320, 20);
             textFrame = CGRectMake(173 , 70, 320, 90);
             readBtnFrame = CGRectMake(180, 170, 90, 30);
             buyIssueBtnFrame = CGRectMake(290, 170, 90, 30);
