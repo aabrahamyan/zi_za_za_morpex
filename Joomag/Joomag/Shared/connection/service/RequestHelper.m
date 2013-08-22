@@ -212,6 +212,15 @@
     requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINESLIST];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    //---------------------- Featured Spread ------------------------------//
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",FEATURED_SPREAD];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+    requestString = [requestString stringByAppendingFormat:@"%@",FEATURED_SPREAD];
+    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    
     requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
     requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINESLIST];

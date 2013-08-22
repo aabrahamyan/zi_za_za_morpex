@@ -38,6 +38,7 @@ NSString * const PAGE_NUMABER = @"PAGE_NUM";
 
 //-------------- GETMAGAZINES LIST Request/Response handling ---------------//
 NSString * const GETMAGAZINESLIST = @"GETMAGAZINELIST";
+NSString * const FEATURED_SPREAD  = @"featured";
 //-------------- GET CATEGORIES LIST Request/Response handling ---------------//
 NSString * const GETTYPESWITHCATEGORIES = @"GETTYPESWITHCATEGORIES";
 

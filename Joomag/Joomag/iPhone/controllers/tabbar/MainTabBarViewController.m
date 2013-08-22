@@ -109,7 +109,7 @@
 }
 
 - (CustomTabBarController *) createAndGetTabbar {
-    return [CustomTabBarController getInstance:[UIImage imageNamed:@"tabbar.png"] withWidth:1024 withHeight:768];
+    return [CustomTabBarController getInstance:[UIImage imageNamed:@"tabbar.png"] withWidth:768 withHeight:1024];
 }
 
 - (void) setupTabBar {

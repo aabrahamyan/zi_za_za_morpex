@@ -46,8 +46,6 @@
     featuredVcIPad = [[FeaturedViewController_iPad alloc] init];
     explorVcIPad = [[ExploreViewController_iPad alloc] init];
     libraryVcIPad = [[LibraryViewController_iPad alloc] init];
-    
-    
 }
 
 - (CustomTabBarController *) createAndGetTabbar {

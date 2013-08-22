@@ -33,24 +33,20 @@
     switch(iOrientation) {
             
         case UIDeviceOrientationPortrait:
-            //scrollViewFrame = CGRectMake(0, -20, dataHolder.screenWidth, dataHolder.screenHeight);
-            //detailsViewFrame = CGRectMake(250, 700, 500, 200);
-            //pageControlFrame = CGRectMake(0, 30, 768, 30);
+            scrollViewFrame = CGRectMake(0, -20, 768, 959);
+            detailsViewFrame = CGRectMake(230, 700, 500, 200);
+            pageControlFrame = CGRectMake(0, 30, 768, 30);
             break;
             
         case UIDeviceOrientationLandscapeLeft:
-            scrollViewFrame = CGRectMake(0, -20, dataHolder.screenHeight, dataHolder.screenWidth);
+            scrollViewFrame = CGRectMake(0, -20, 1024, 704);
             //[scrollView setContentSize:CGSizeMake(scrollViewFrame.size.width*11, dataHolder.screenWidth)];
-            
-            //NSLog(@" IGRIK %f", scrollView.frame.origin.y);
-            //NSLog(@" HEIGHT %f", scrollView.frame.size.height);
-            
             detailsViewFrame = CGRectMake(490, 450, 540, 220);
             pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
             
         case UIDeviceOrientationLandscapeRight:
-            //scrollViewFrame = CGRectMake(0, -20, dataHolder.screenHeight, dataHolder.screenWidth);
+            //scrollViewFrame = CGRectMake(0, 0, dataHolder.screenHeight, dataHolder.screenWidth);
             //[scrollView setContentSize:CGSizeMake(scrollViewFrame.size.width*11, dataHolder.screenWidth)];
             //detailsViewFrame = CGRectMake(500, 430, 500, 200);
             //pageControlFrame = CGRectMake(0, 30, 1024, 30);
@@ -64,6 +60,7 @@
     pageControl.frame = pageControlFrame;
     detailsView.frame = detailsViewFrame;
     
+    [scrollView redrawData];
 }
 
 

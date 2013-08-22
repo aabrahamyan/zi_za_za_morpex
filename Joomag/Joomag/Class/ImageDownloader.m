@@ -9,6 +9,8 @@
 #import "ImageDownloader.h"
 #import "MagazinRecord.h"
 #import "UIImageView+AFNetworking.h"
+#import "AFNetworking.h"
+#import "AFImageRequestOperation.h"
 
 @interface ImageDownloader ()
 

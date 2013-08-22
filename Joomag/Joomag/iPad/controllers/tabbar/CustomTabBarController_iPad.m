@@ -37,10 +37,7 @@ static CustomTabBarController_iPad * customTabBar_iPad;
 
 - (void) loadView {
     [super loadView];
-    
-    self.view.frame = CGRectMake(0, 0, 768, 1024);
-    self.backGroundView.frame = CGRectMake(0, 703, self.width, self.height); 
-    
+        
     self.featuredButton.frame = CGRectMake(50, 10, 99, 24);
     self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
     self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
@@ -69,7 +66,31 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     [self.view addSubview:self.myBookshelfNavigationController.view];
     
     [self.view bringSubviewToFront:self.backGroundView];
+}
+
+- (void)viewDidLayoutSubviews {
+ 
+    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
+    switch(iOrientation) {
+            
+        case UIDeviceOrientationPortrait:
+            self.view.frame = CGRectMake(0, 0, 768, 1024);
+            self.backGroundView.frame = CGRectMake(0, 959, self.width, self.height);
+            break;
+            
+        case UIDeviceOrientationLandscapeLeft:
+            self.view.frame = CGRectMake(0, 0, 1024, 768);
+            self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
+            break;
+            
+        case UIDeviceOrientationLandscapeRight:
+
+            break;
+            
+        default:
+            break;
+    };
 }
 
 - (SettingsViewController *) getSettingsViewController {

@@ -112,8 +112,6 @@ static CustomTabBarController * customTabBarController;
     self.noteButton.showsTouchWhenHighlighted = YES;
     
     [self.backGroundView addSubview:self.noteButton];
-    
-    
 }
 
 - (void) toggleTabs: (id) target {

@@ -66,18 +66,22 @@
 
 
 - (void) redrawData {
-    self.entries = [MainDataHolder getInstance].testData;
-    entriesLength = self.entries.count;
-    
-    CGSize pagesScrollViewSize = self.frame.size;
-    pageWidth = pagesScrollViewSize.width;
-    NSLog(@"pagesScrollViewSize.height: %f", pagesScrollViewSize.height);
-    
-    // Set up the content size of the scroll view
-    self.contentSize = CGSizeMake(pageWidth * entriesLength, pagesScrollViewSize.height);
-    
-    // Load the initial set of pages that are on screen
-    [self loadVisiblePage];
+    if([[MainDataHolder getInstance].testData count] != 0) {
+        self.entries = [MainDataHolder getInstance].testData;
+        entriesLength = self.entries.count;
+        
+        CGSize pagesScrollViewSize = self.frame.size;
+        pageWidth = pagesScrollViewSize.width;
+        //NSLog(@"pagesScrollViewSize.height: %f w: %f", pagesScrollViewSize.height, pagesScrollViewSize.width);
+        
+        // Set up the content size of the scroll view
+        self.contentSize = CGSizeMake(pageWidth * entriesLength, pagesScrollViewSize.height);
+        
+        NSLog(@"come");
+        
+        // Load the initial set of pages that are on screen
+        [self loadVisiblePage];
+    }
 }
 
 #pragma mark -

@@ -22,7 +22,6 @@
     if([elementName isEqualToString:@"magazine"]) {
         magazinesDictionary = [[NSMutableDictionary alloc] init];
     }
-    
 }
 
 - (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
@@ -38,7 +37,6 @@
     [super parser:parser foundCharacters:string];
     
     //if([upperLeverElem isEqualToString:@"magazine"]) {
-    
         if(![currentElement isEqualToString:@"magazine"]) {
             
             if([currentElement isEqualToString:@"firstpage_hr"]) {
@@ -50,7 +48,6 @@
             if(![string isEqualToString:@"&"] && ![string isEqualToString:@"si=1"]) {
                 [magazinesDictionary setObject:string forKey:currentElement];
             }
-            
         }
     //}
 }
