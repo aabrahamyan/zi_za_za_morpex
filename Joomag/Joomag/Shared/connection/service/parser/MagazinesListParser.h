@@ -15,4 +15,7 @@
     NSMutableDictionary * magazinesDictionary;
 }
 
+
+- (void) bindArrayToMappingObject;
+
 @end

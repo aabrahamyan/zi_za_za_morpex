@@ -7,15 +7,19 @@
 //
 
 #import "MagazinesListParser.h"
+#import "MainDataHolder.h"
+#import "MagazinRecord.h"
+
 
 @implementation MagazinesListParser
 
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
     
     [super parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qualifiedName attributes:attributeDict];
+
+    upperLeverElem = elementName;
     
     if([elementName isEqualToString:@"magazine"]) {
-        upperLeverElem = elementName;        
         magazinesDictionary = [[NSMutableDictionary alloc] init];
     }
     
@@ -24,7 +28,7 @@
 - (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	[super parser:parser didEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
     
-    if([upperLeverElem isEqualToString:@"magazine"]) {
+    if([elementName isEqualToString:@"magazine"]) {
         [arrayData addObject:magazinesDictionary];
     }
     
@@ -33,23 +37,40 @@
 - (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     [super parser:parser foundCharacters:string];
     
-    if([upperLeverElem isEqualToString:@"magazine"]) {
-//        if([currentElement isEqualToString:@"title"]) {
-//            [magazinesDictionary setObject:string forKey:@"title"];
-//        } else if([currentElement isEqualToString:@"name"]) {
-//            [magazinesDictionary setObject:string forKey:@"name"];
-//        } else if([currentElement isEqualToString:@"UID"]) {
-//            [magazinesDictionary setObject:string forKey:@"UID"];
-//        } else if([currentElement isEqualToString:@"date"]) {
-//            [magazinesDictionary setObject:string forKey:@"date"];
-//        } else if([currentElement isEqualToString:@"desc"]) {
-//            [magazinesDictionary setObject:string forKey:@"desc"];
-//        } else if([currentElement isEqualToString:@"pages"]) {
-//            [magazinesDictionary setObject:string forKey:@"pages"];
-//        }
+    //if([upperLeverElem isEqualToString:@"magazine"]) {
+    
+        if(![currentElement isEqualToString:@"magazine"]) {
+            
+            if([currentElement isEqualToString:@"firstpage_hr"]) {
+                if(![string isEqualToString:@"&"] && ![string isEqualToString:@"si=1"]) {
+                    string = [string stringByAppendingFormat:@"%@",@"&si=1"];
+                }
+            }
+            
+            if(![string isEqualToString:@"&"] && ![string isEqualToString:@"si=1"]) {
+                [magazinesDictionary setObject:string forKey:currentElement];
+            }
+            
+        }
+    //}
+}
+
+
+- (void) bindArrayToMappingObject {
+    NSArray * list = [MainDataHolder getInstance].magazinesList;
+    
+    for (int counter = 0; counter < [list count]; counter ++) {
+        NSDictionary * currentMagazine = [list objectAtIndex:counter];
         
-        if(currentElement) {
-            [magazinesDictionary setObject:string forKey:currentElement];
+        if(currentMagazine) {
+            MagazinRecord * mgRecord = [[MagazinRecord alloc] init];
+            mgRecord.magazinTitle = [currentMagazine objectForKey:@"title"];
+            mgRecord.magazinDate = [currentMagazine objectForKey:@"date"];
+            mgRecord.magazinImageURL = [currentMagazine objectForKey:@"firstpage_hr"];
+            mgRecord.magazinDetailsImageURL = [currentMagazine objectForKey:@"firstpage"];
+            mgRecord.magazinDetailsText = [currentMagazine objectForKey:@"desc"];
+            
+            [[MainDataHolder getInstance].testData addObject:mgRecord];
         }
     }
 }

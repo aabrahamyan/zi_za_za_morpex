@@ -16,6 +16,7 @@
 #import "PageParser.h"
 #import "MagazinesListParser.h"
 #import "CategoriesParser.h"
+#import "MainDataHolder.h"
 
 @implementation ConnectionManager
 
@@ -106,7 +107,7 @@
                             
                             NSArray * resultArray = [pageResponseParser parserData:responseObject];
                             [callback didFinishResponse:resultArray];
-                            NSLog(@"RORE !");
+                           
                         }
          
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -129,8 +130,10 @@
         
         [requestClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             MagazinesListParser * magListParser = [[MagazinesListParser alloc] init];
-            NSArray * resultArray = [magListParser parserData:responseObject];
-
+            [MainDataHolder getInstance].magazinesList = [magListParser parserData:responseObject];
+            [magListParser bindArrayToMappingObject];
+            NSLog(@"[MainDataHolder getInstance].magazinesList = %@",[MainDataHolder getInstance].magazinesList);
+            [callback didFinishResponse:nil];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             //TODO: Parser call for failure
         }];

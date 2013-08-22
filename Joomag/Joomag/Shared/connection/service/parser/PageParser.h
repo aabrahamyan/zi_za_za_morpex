@@ -14,12 +14,15 @@
     NSMutableDictionary * elems;
     
     //---------- Elems --------------//
-    NSString * pageMobileLevel;
-    NSString * blockTokensLevel;
+    NSString * blockTokensActiveData;
     NSString * activeDataLevel;
     
-    NSString * innerBLockLevel;
-    NSString * hotSpotLevel;
+    NSString * blockOrHotspotLevel;
+    //---------- Collections -------//
+    NSMutableArray * blockTokens;
+    NSMutableDictionary * blocks;
+    NSMutableArray * activeData;
+    NSMutableDictionary * hotSpots;
 }
 
 @end

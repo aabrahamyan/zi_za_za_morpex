@@ -7,7 +7,7 @@
 //
 
 #import "FeaturedScrollView.h"
-#import "DataHolder.h"
+#import "MainDataHolder.h"
 #import "ImageDownloader.h"
 #import "MagazinRecord.h"
 
@@ -34,7 +34,7 @@
         counter = 1;
         
         //Init DataHolder
-        DataHolder *dataHolder = [DataHolder sharedData];
+        MainDataHolder *dataHolder = [MainDataHolder getInstance];
         self.entries = dataHolder.testData;
         
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
