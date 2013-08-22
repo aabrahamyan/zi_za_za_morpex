@@ -168,13 +168,13 @@
     //[self.view addSubview: loaderContainer];
     
     ReadViewController *readVC = [[ReadViewController alloc] init];
-    NSLog(@"current: %i", scrollView.currentPage);
+    // NSLog(@"current: %i", scrollView.currentPage);
     
     [readVC startDownloadMagazine: scrollView.currentPage];
     
     [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
     
-    [self.navigationController pushViewController:readVC animated: NO];
+    [self.navigationController pushViewController: readVC animated: NO];
 }
 
 - (void)buyIssueHandler {

@@ -50,7 +50,7 @@
         case UIDeviceOrientationLandscapeLeft:
             topBarFrame = CGRectMake(0, 0, 1024, 44);
             topBarTitleLabelFrame = CGRectMake(20, 0, 150, 44);
-            searchBtnFrame = CGRectMake(1024-145, 7, 122, 25);
+            searchBtnFrame = CGRectMake(1024-145, 0, 122, 44);
             scrollViewFrame = CGRectMake(70, 110, 660, 520);
             titleLabelsViewFrame = CGRectMake(70, 60, 300, 30);
             pageControlFrame = CGRectMake(70, 630, 610, 30);

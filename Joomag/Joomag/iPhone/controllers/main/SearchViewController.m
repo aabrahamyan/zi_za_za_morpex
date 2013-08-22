@@ -50,7 +50,7 @@
 
 - (void)loadView {
     [super loadView];
-
+    
     //-------------------------------- Top Bar ------------------------------------
     topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dataHolder.screenWidth, 44)];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
@@ -122,7 +122,7 @@
         [searchScrollView addSubview:imageView];
         
         xPosition = xPosition + tileW + 70;
-                
+        
         if(xPosition >= 800){
             xPosition = 0;
             yPosition = yPosition + tileH + 50;
@@ -142,11 +142,11 @@
         if (subview.tag != 0) {
             // Load an individual page, first seeing if we've already loaded it
             MagazinRecord *mRecord = [arr objectAtIndex:subview.tag-1];
-            if (!mRecord.magazinTESTIcon) {
+            if (!mRecord.magazinDetailsIcon) {
                 // NSLog(@"index: %i",subview.tag);
                 [self startIconDownload:mRecord forIndexPath:subview.tag-1];
             } else {
-                subview.image = mRecord.magazinTESTIcon;
+                subview.image = mRecord.magazinDetailsIcon;
             }
         }
     }
@@ -169,12 +169,12 @@
         
         [imageDownloader setCompletionHandler:^{
             //NSLog(@"Download Image: %i",page);
-            ((UIImageView *)[[searchScrollView subviews] objectAtIndex:page]).image = magazinRecord.magazinTESTIcon;
+            ((UIImageView *)[[searchScrollView subviews] objectAtIndex:page]).image = magazinRecord.magazinDetailsIcon;
             [self setShadow:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
         }];
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
-        [imageDownloader startDownloadTEST:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
+        [imageDownloader startDownloadDetailsImageWithImageView:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
     }
 }
 
@@ -188,7 +188,7 @@
     
     [self setTiles: arr];
     [self loadMagazines: arr];
-
+    
     return YES;
 }
 
@@ -199,11 +199,11 @@
         
         if ([textStr rangeOfString: ((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle options:NSCaseInsensitiveSearch].location != NSNotFound)
         {
-           [self.workingArray addObject: ((MagazinRecord *)[self.entries objectAtIndex: i])];
+            [self.workingArray addObject: ((MagazinRecord *)[self.entries objectAtIndex: i])];
         }
     }
     NSArray *result = [NSArray arrayWithArray: self.workingArray];
-        
+    
     [self.workingArray removeAllObjects];
     
     return result;
@@ -257,7 +257,7 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-
+    
 }
 
 // -------------------------------------------------------------------------------
