@@ -154,7 +154,7 @@
         
         [self.imageDownloadsInProgress setObject: imageDownloader forKey:index];
         [self.pageViews insertObject:imageView atIndex: page];
-        [imageDownloader startDownloadWithImageView: imageView];
+        [imageDownloader startDownloadWithImageView:imageView withURL:magazinRecord.magazinImageURL andSetIcon:magazinRecord.magazinIcon];
     }
 }
 

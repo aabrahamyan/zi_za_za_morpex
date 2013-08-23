@@ -16,7 +16,7 @@
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
     
     [super parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qualifiedName attributes:attributeDict];
-
+    
     upperLeverElem = elementName;
     
     if([elementName isEqualToString:@"magazine"]) {
@@ -37,18 +37,18 @@
     [super parser:parser foundCharacters:string];
     
     //if([upperLeverElem isEqualToString:@"magazine"]) {
-        if(![currentElement isEqualToString:@"magazine"]) {
-            
-            if([currentElement isEqualToString:@"firstpage_hr"]) {
-                if(![string isEqualToString:@"&"] && ![string isEqualToString:@"si=1"]) {
-                    string = [string stringByAppendingFormat:@"%@",@"&si=1"];
-                }
-            }
-            
+    if(![currentElement isEqualToString:@"magazine"]) {
+        
+        if([currentElement isEqualToString:@"firstpage_hr"]) {
             if(![string isEqualToString:@"&"] && ![string isEqualToString:@"si=1"]) {
-                [magazinesDictionary setObject:string forKey:currentElement];
+                string = [string stringByAppendingFormat:@"%@",@"&si=1"];
             }
         }
+        
+        if(![string isEqualToString:@"&"] && ![string isEqualToString:@"si=1"]) {
+            [magazinesDictionary setObject:string forKey:currentElement];
+        }
+    }
     //}
 }
 

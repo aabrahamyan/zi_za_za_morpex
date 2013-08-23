@@ -10,7 +10,7 @@
 #import "MagazinRecord.h"
 #import "UIImageView+AFNetworking.h"
 #import "AFNetworking.h"
-#import "AFImageRequestOperation.h"
+#import "UIImageView+WebCache.h"
 
 @interface ImageDownloader ()
 
@@ -20,26 +20,18 @@
 
 #pragma mark
 
-//TODO
+//TODO Create blocks 
 
-- (void)startDownloadWithImageView:(UIImageView *)imageView
+- (void)startDownloadWithImageView:(UIImageView *)imageView withURL:(NSString *)urlStr andSetIcon: (UIImage *)icon
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.magazinRecord.magazinImageURL]];
-    [imageView setImageWithURLRequest:request
-                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]
-                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
-     {
-         self.magazinRecord.magazinIcon = image;
-         
-         // call our delegate and tell it that our icon is ready for display
-         if (self.completionHandler)
-             self.completionHandler();
-         
-     }
-                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
-     {
-         NSLog(@"ImageDownloader failure");
-     }];
+    [imageView setImageWithURL: [NSURL URLWithString: urlStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    
+    icon = imageView.image;
+    
+    // call our delegate and tell it that our icon is ready for display
+    if (self.completionHandler)
+        self.completionHandler();
+    
 }
 
 - (void)startDownloadDetailsImageWithImageView:(UIImageView *)imageView
