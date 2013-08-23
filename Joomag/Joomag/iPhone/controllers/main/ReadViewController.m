@@ -13,6 +13,7 @@
 #import "ImageDownloader.h"
 #import "UIImageView+AFNetworking.h"
 #import "DataHolder.h"
+#import "UIImageView+WebCache.h"
 
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
@@ -174,59 +175,50 @@
 
 - (void)startDownloadMagazine: (NSInteger)number {
     
-    mRecord = [dataHolder.testData objectAtIndex: number]; NSLog(@"startDownloadMagazine: %@", mRecord);
+    mRecord = [dataHolder.testData objectAtIndex: number];
     
     titleLabelWithDate.text = [NSString stringWithFormat:@"%@ | %@", mRecord.magazinTitle, mRecord.magazinDate];
     [titleLabelWithDate sizeToFit];
     
     pageCount = [mRecord.pageImageURLsArray count];
-    // NSLog(@"pageCount: %i",pageCount);
+    NSLog(@"pageCount: %i",pageCount);
     
     int xItemPos = 0;
     int pagXPos = 0;
-    bool changePos = YES;
-    int width = 0;
-    int pageWidth = 512;
-    CGRect itemFrm;
+    int pageWidth = 1024;
+    int itemWidth = 200;
     int itemContentWidth = 0;
     int pageContentWidth = 0;
     
     for (int i = 0; i < pageCount; i++) {
-        UIImageView *pageImage = [[UIImageView alloc] init];
+        UIImageView *pageImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         UIImageView *itemImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         
         itemImage.tag = i;
         pageImage.tag = i;
         
-        if (changePos == YES) {
-            xItemPos = xItemPos + width + 20;
-            width = 70;
-            itemFrm = CGRectMake(xItemPos, 10, width, 90);
-            changePos = NO;
-        } else {
-            xItemPos = xItemPos + width;
-            itemFrm = CGRectMake(xItemPos, 10, width, 90);
-            changePos = YES;
-        }
-        
-        itemContentWidth = xItemPos + width;
-        pageContentWidth = pagXPos + pageWidth;
+        xItemPos += 20;
         
         pageImage.frame = CGRectMake(pagXPos, 0, pageWidth, 768);;
         [pageScrollView addSubview: pageImage];
         
-        pagXPos += pageWidth;
-        
-        itemImage.frame = itemFrm;
+        itemImage.frame = CGRectMake(xItemPos, 10, itemWidth, 90);;
         UITapGestureRecognizer *tapOnNav = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnNavigation:)];
         tapOnNav.numberOfTapsRequired = 1;
         [itemImage addGestureRecognizer: tapOnNav];
         itemImage.userInteractionEnabled = YES;
         
+        itemContentWidth = xItemPos + itemWidth;
+        pageContentWidth = pagXPos + pageWidth;
+        
         [navScrollView addSubview: itemImage];
         
         [self startDownloadItems: [mRecord.pageImageURLsArray objectAtIndex:i] pageImage: pageImage andItem: itemImage];
+        
+        pagXPos += pageWidth;
+        xItemPos += itemWidth;
     }
+    
     
     pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
     navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
@@ -234,14 +226,7 @@
 
 - (void)tapOnNavigation: (UITapGestureRecognizer *)gesture {
     NSLog(@"gesture.view: %i", gesture.view.tag);
-    //[pageScrollView setContentOffset:CGPointMake(768*gesture.view.tag, 0) animated:YES];
-    if (gesture.view.tag % 2) {
-        //ODD
-        NSLog(@"odd: %i", gesture.view.tag % 2);
-    } else {
-        //EVEN
-        NSLog(@"even: %i", gesture.view.tag % 2);
-    }
+    [pageScrollView setContentOffset:CGPointMake(1024*gesture.view.tag, 0) animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -289,6 +274,12 @@
      {
          NSLog(@"ImageDownloader READ failure");
      }];
+    
+    //    [pageImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    //    [itemImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    //    pageImage.image = pageImage.image;
+    //    itemImage.image = itemImage.image;
+    //    [self showingDownloadProgress];
     
 }
 
