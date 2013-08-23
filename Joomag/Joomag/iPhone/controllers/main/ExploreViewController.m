@@ -103,12 +103,7 @@
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(92, 0, 80, 20)]; label2.text = @"POPULAR";
     label3 = [[UILabel alloc] initWithFrame:CGRectMake(175, 0, 81, 20)]; label3.text = @"NEW ARRIVALS";
     
-    UITapGestureRecognizer *labelTap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
-    UITapGestureRecognizer *labelTap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
-    UITapGestureRecognizer *labelTap3 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
-    
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, label3, nil];
-    NSArray *gestureArr = [NSArray arrayWithObjects:labelTap1, labelTap2, labelTap3, nil];
     
     for (int i = 0; i < labelArr.count; i ++) {
         [container addSubview:[labelArr objectAtIndex:i]];
@@ -122,8 +117,8 @@
         [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         
         // Add Gesture Recognizer To Label
-        ((UITapGestureRecognizer *)[gestureArr objectAtIndex:i]).numberOfTapsRequired = 1;
-        [((UILabel *)[labelArr objectAtIndex:i]) addGestureRecognizer: ((UITapGestureRecognizer *)[gestureArr objectAtIndex:i])];
+        UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
+        [((UILabel *)[labelArr objectAtIndex:i]) addGestureRecognizer: labelTap];
     }
     
     border = [[UIView alloc] initWithFrame:CGRectMake(0, 20, label1.frame.size.width, 2)];
@@ -141,16 +136,10 @@
     
     if (gesture.view.tag == 0) {
         [self animateLabelBorder: label1];
-        // Do stuff here
-        [scrollView reloadScroll];
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];
-        // Do stuff here
-        [scrollView reloadScroll];
     } else if(gesture.view.tag == 2) {
         [self animateLabelBorder: label3];
-        // Do stuff here
-        [scrollView reloadScroll];
     }
 }
 

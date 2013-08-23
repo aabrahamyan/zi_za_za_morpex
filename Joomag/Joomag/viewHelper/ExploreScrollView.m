@@ -36,11 +36,6 @@
     if (self) {
         // Initialization code
         
-        // Init DataHolder
-        // MainDataHolder *dataHolder = [MainDataHolder getInstance];
-        // self.entries = dataHolder.testData;
-        // entriesLength = self.entries.count;
-        
         // Set BackGround Color
         self.backgroundColor = [UIColor clearColor];
         self.delegate = self;
@@ -50,20 +45,6 @@
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
         self.pageViews = [[NSMutableArray alloc] init];
         
-        /*
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        {
-            NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0], @[@0, @1], @[@1, @1] ];
-            tileH = 170; tileW = 130;
-            [self setTilesWithArray: arrayIPhone tileWidth: TILE_WIDTH_IPHONE andHeight: TILE_HEIGHT_IPHONE];
-        }
-        else
-        {
-            NSArray *arrayIPad = @[ @[@0, @0], @[@1, @0], @[@2, @0], @[@0, @1], @[@1, @1], @[@2, @1] ];
-            tileH = 220; tileW = 170;
-            [self setTilesWithArray: arrayIPad tileWidth: TILE_WIDTH_IPAD andHeight: TILE_HEIGHT_IPAD];
-        }
-        */
         
         // Load the initial set of pages that are on screen
         [self loadVisibleImages];
@@ -155,25 +136,6 @@
             }
         }
     }
-}
-
-// -------------------------------------------------------------------------------
-//	reloadScroll
-// -------------------------------------------------------------------------------
-- (void)reloadScroll {
-    for (UIImageView *subview in [self subviews]) {
-        if([subview isKindOfClass:[UIImageView class]]) {
-            if (subview.tag != 0) {
-                subview.image = [UIImage imageNamed:@"placeholder.png"];
-            }
-        }
-    }
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(showTiles) userInfo:nil repeats:NO];
-}
-
-- (void)showTiles {
-    [self loadVisibleImages];
 }
 
 // -------------------------------------------------------------------------------
