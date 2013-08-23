@@ -127,7 +127,7 @@
         UIImageView *newPageView = [[UIImageView alloc] init];
         
         [imageDownloader setCompletionHandler:^{
-            // NSLog(@"Details Download Image: %i",page);
+            NSLog(@"Details Download Image: %i",page);
             
             // Display the newly loaded image
             detailsView.imageView.image = magazinRecord.magazinDetailsIcon;
@@ -138,7 +138,8 @@
         }];
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:index];
-        [imageDownloader startDownloadWithImageView:newPageView withURL:magazinRecord.magazinDetailsImageURL andSetIcon:magazinRecord.magazinDetailsIcon];
+        //[imageDownloader startDownloadWithImageView:newPageView withURL:magazinRecord.magazinDetailsImageURL andSetIcon:magazinRecord.magazinDetailsIcon];
+        [imageDownloader startDownloadDetailsImageWithImageView: newPageView];
     }
 }
 

@@ -41,6 +41,7 @@
                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
      {
+         NSLog(@"details");
          self.magazinRecord.magazinDetailsIcon = image;
          
          // call our delegate and tell it that our icon is ready for display
