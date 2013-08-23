@@ -63,7 +63,7 @@
             MagazinRecord * mgRecord = [[MagazinRecord alloc] init];
             mgRecord.magazinTitle = [currentMagazine objectForKey:@"title"];
             mgRecord.magazinDate = [currentMagazine objectForKey:@"date"];
-            mgRecord.magazinImageURL = [currentMagazine objectForKey:@"firstpage_hr"];
+            mgRecord.magazinImageURL = [currentMagazine objectForKey:@"featured_spread"];
             mgRecord.magazinDetailsImageURL = [currentMagazine objectForKey:@"firstpage"];
             mgRecord.magazinDetailsText = [currentMagazine objectForKey:@"desc"];
             
