@@ -148,7 +148,9 @@
 // hideDetailsView
 // -------------------------------------------------------------------------------
 - (void)hideDetailsView {
-    detailsView.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^() {
+        detailsView.alpha = 0;
+    }];
 }
 
 #pragma Explore Buttons Handlers
