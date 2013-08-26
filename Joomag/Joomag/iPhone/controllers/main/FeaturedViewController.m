@@ -138,8 +138,8 @@
         }];
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:index];
-        //[imageDownloader startDownloadWithImageView:newPageView withURL:magazinRecord.magazinDetailsImageURL andSetIcon:magazinRecord.magazinDetailsIcon];
         [imageDownloader startDownloadDetailsImageWithImageView: newPageView];
+        // [imageDownloader startDownloadWithImageView:newPageView withURL:magazinRecord.magazinDetailsImageURL andSetIcon:magazinRecord.magazinDetailsIcon];
     }
 }
 

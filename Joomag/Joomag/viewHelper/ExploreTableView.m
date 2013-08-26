@@ -29,7 +29,7 @@
         self.delegate = self;
         self.dataSource = self;
         self.backgroundColor = RGBA(41, 41, 42, 1);
-        self.separatorColor = RGBA(65, 65, 65, 1);;
+        self.separatorColor = RGBA(65, 65, 65, 1);
     }
     return self;
 }
