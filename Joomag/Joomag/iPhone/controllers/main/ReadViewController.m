@@ -22,6 +22,7 @@
     MagazinRecord *mRecord;
     DataHolder *dataHolder;
     ImageDownloader *imageDownloader;
+    // SDWebImageManager *imageManager;
     UIScrollView *navScrollView;
     int pageCount;
     bool isNavigationVisible;
@@ -49,6 +50,7 @@
 {
     [super loadView];  //TODO
     dataHolder = [[DataHolder alloc] init];
+    // imageManager = [SDWebImageManager sharedManager];
     
     isNavigationVisible = YES;
     loadedPercentage = 0;
@@ -219,7 +221,6 @@
         xItemPos += itemWidth;
     }
     
-    
     pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
     navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
 }
@@ -256,31 +257,36 @@
 //	startIconDownload:forIndexPath:
 // -------------------------------------------------------------------------------
 - (void)startDownloadItems: (NSString *)imageStr  pageImage: (UIImageView *)pageImage andItem: (UIImageView *)itemImage {
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: imageStr]];
-    
-    __block UIImageView *page = pageImage;
+    // request image
     __block UIImageView *item = itemImage;
+    __block UIImageView *page = pageImage;
     
-    [pageImage setImageWithURLRequest:request
-                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]
-                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+    [itemImage setImageWithURL:[NSURL URLWithString:[imageStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+              placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                       success:^(UIImage *image, BOOL cached)
      {
-         page.image = image;
          item.image = image;
+         item.alpha = 0.0;
+         [UIView transitionWithView: item duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve
+                         animations:^{
+                             [item setImage:image];
+                             item.alpha = 1.0;
+                         } completion:NULL];
+         
+         page.image = image;
+         page.alpha = 0.0;
+         [UIView transitionWithView: item duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve
+                         animations:^{
+                             [page setImage:image];
+                             page.alpha = 1.0;
+                         } completion:NULL];
+         
          [self showingDownloadProgress];
      }
-                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
+                       failure:^(NSError *error)
      {
-         NSLog(@"ImageDownloader READ failure");
+         NSLog(@"failure download read view images");
      }];
-    
-    //    [pageImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
-    //    [itemImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
-    //    pageImage.image = pageImage.image;
-    //    itemImage.image = itemImage.image;
-    //    [self showingDownloadProgress];
-    
 }
 
 -(void)showingDownloadProgress
@@ -311,3 +317,57 @@
 }
 
 @end
+
+//NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: imageStr]];
+
+//__block UIImageView *page = pageImage;
+//__block UIImageView *item = itemImage;
+
+// request image
+/*
+ [imageManager downloadWithURL: [NSURL URLWithString: imageStr]
+ delegate:self
+ options:0
+ success:^(UIImage *image, BOOL cached) {
+ 
+ itemImage.alpha = 0.0;
+ //pageImage.alpha = 0.0;
+ 
+ [UIView transitionWithView:itemImage
+ duration:1.0
+ options:UIViewAnimationOptionTransitionCrossDissolve
+ animations:^{
+ [itemImage setImage:image];
+ [pageImage setImage:image];
+ 
+ itemImage.alpha = 1.0;
+ //pageImage.alpha = 1.0;
+ } completion:NULL];
+ 
+ 
+ }
+ failure:^(NSError *str) {
+ NSLog(@"doenload failure");
+ 
+ }];
+ 
+ [pageImage setImageWithURLRequest:request
+ placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+ success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+ {
+ page.image = image;
+ item.image = image;
+ [self showingDownloadProgress];
+ }
+ failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
+ {
+ NSLog(@"ImageDownloader READ failure");
+ }];
+ */
+//    [pageImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
+//    [itemImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
+//    pageImage.image = pageImage.image;
+//    itemImage.image = itemImage.image;
+//    [self showingDownloadProgress];
+
+

@@ -18,12 +18,11 @@
 @property (nonatomic, strong) NSString *magazinDetailsImageURL;
 @property (nonatomic, strong) UIImage  *magazinDetailsIcon;
 
+
+
+
+
 @property (nonatomic, strong) NSMutableArray  *pageImageURLsArray;
 @property (nonatomic, strong) UIImage         *magazinPageIcon;
-
-
-
-@property (nonatomic, strong) NSString *magazinTESTImageURL;
-@property (nonatomic, strong) UIImage  *magazinTESTIcon;
 
 @end

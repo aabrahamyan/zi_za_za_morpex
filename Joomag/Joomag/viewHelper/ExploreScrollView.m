@@ -127,12 +127,12 @@
         if (subview.tag < len+1 && subview.tag != 0) {
             // Load an individual page, first seeing if we've already loaded it
             MagazinRecord *mRecord = [self.entries objectAtIndex:subview.tag-1];
-            if (!mRecord.magazinTESTIcon) {
+            if (!mRecord.magazinDetailsIcon) {
                 //NSLog(@"index: %i",subview.tag);
                 [self startIconDownload:mRecord forIndexPath:subview.tag-1];
             } else {
                 NSLog(@"exist");
-                subview.image = mRecord.magazinTESTIcon;
+                subview.image = mRecord.magazinDetailsIcon;
             }
         }
     }
@@ -155,12 +155,15 @@
         
         [imageDownloader setCompletionHandler:^{
             //NSLog(@"Download Image: %i",page);
-            ((UIImageView *)[[self subviews] objectAtIndex:page]).image = magazinRecord.magazinTESTIcon;
+            ((UIImageView *)[[self subviews] objectAtIndex:page]).image = magazinRecord.magazinDetailsIcon;
             [self setShadow:((UIImageView *)[[self subviews] objectAtIndex:page])];
         }];
         
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
-        [imageDownloader startDownloadTEST:((UIImageView *)[[self subviews] objectAtIndex:page])];
+        
+        [imageDownloader startDownloadWithImageView: ((UIImageView *)[[self subviews] objectAtIndex:page])
+                                            withURL: magazinRecord.magazinDetailsImageURL
+                                         andSetIcon: magazinRecord.magazinDetailsIcon];
     }
 }
 
