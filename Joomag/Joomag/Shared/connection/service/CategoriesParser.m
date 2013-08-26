@@ -7,6 +7,7 @@
 //
 
 #import "CategoriesParser.h"
+#import "MainDataHolder.h"
 
 @implementation CategoriesParser
 

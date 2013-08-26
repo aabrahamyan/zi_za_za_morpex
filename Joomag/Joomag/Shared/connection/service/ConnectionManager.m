@@ -151,9 +151,10 @@
         [requestClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             CategoriesParser * catsParser = [[CategoriesParser alloc] init];
-            NSArray * resultSet = [catsParser parserData:responseObject];
-            NSLog(@"HERE");
-            
+            [MainDataHolder getInstance].categoriesList = [catsParser parserData:responseObject];
+            //NSArray * resultSet = [catsParser parserData:responseObject];
+            //NSLog(@"HERE");
+            [callback didFinishResponse:nil];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             //TODO: Call in case of failure
         }];

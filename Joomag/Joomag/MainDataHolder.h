@@ -13,7 +13,9 @@
 
 
 @property (nonatomic, strong) NSArray * magazinesList;
-@property (strong, nonatomic) NSMutableArray * testData; 
+@property (strong, nonatomic) NSMutableArray * testData;
+
+@property (nonatomic, strong) NSArray *categoriesList;
 
 
 + (MainDataHolder *) getInstance;

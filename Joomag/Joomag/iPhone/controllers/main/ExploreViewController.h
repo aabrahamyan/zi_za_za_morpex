@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ExploreScrollView.h"
+#import "ResponseTrackerDelegate.h"
+#import "ExploreTableView.h"
 
 @class ExploreScrollView;
+@class ExploreTableView;
 
-@interface ExploreViewController : UIViewController {
+@interface ExploreViewController : UIViewController <ResponseTrackerDelegate> {
     
 @protected
     UIView *topBar;
@@ -20,6 +23,7 @@
     UIView *titleLabels;
     UIPageControl *pageControl;
     ExploreScrollView *scrollView;
+    ExploreTableView *categoriesTable;
 }
 
 - (void) redrawData;

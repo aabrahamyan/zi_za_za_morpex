@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ExploreViewController.h"
-#import "ExploreTableView.h"
-
-@class ExploreTableView;
 
 @interface ExploreViewController_iPad : ExploreViewController {
-    ExploreTableView *settingsTable;
+    
 }
 
 @end

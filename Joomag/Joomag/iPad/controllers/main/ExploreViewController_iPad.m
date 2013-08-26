@@ -30,11 +30,6 @@
             @"Business",@"Sports",@"Travel", @"Women", nil];
     
     dataHolder = [DataHolder sharedData];
-    
-    //--------------------- Settings --------------------
-    settingsTable = [[ExploreTableView alloc] init];
-    
-    [self.view addSubview:settingsTable];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -71,7 +66,6 @@
     titleLabels.frame = titleLabelsViewFrame;
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
-    settingsTable.frame = CGRectMake(self.view.frame.size.width-260, 46, 240, self.view.frame.size.height);
 }
 
 

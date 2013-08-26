@@ -10,4 +10,6 @@
 
 @interface ExploreTableView : UITableView  <UITableViewDelegate, UITableViewDataSource>
 
+- (void)reloadExploreTable;
+
 @end

@@ -10,13 +10,14 @@
 #import "Util.h"
 #import "MainDataHolder.h"
 #import "SearchViewController.h"
+#import "ConnectionManager.h"
 
 @interface ExploreViewController () {
     MainDataHolder *dataHolder;
-    UILabel *label1;
-    UILabel *label2;
-    UILabel *label3;
-    UIView  *border;
+    UILabel        *label1;
+    UILabel        *label2;
+    UILabel        *label3;
+    UIView         *border;
 }
 
 @end
@@ -27,6 +28,9 @@
     [super loadView];
     
     dataHolder = [MainDataHolder getInstance];
+    
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
+    [connManager constrcutAndGetCategoriesTypesRequest: self];
     
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
@@ -85,6 +89,13 @@
     titleLabels = [self titleLabelsWithBorder];
     
     [self.view addSubview:titleLabels];
+    
+    
+    //--------------------- Settings --------------------
+    categoriesTable = [[ExploreTableView alloc] init];
+    categoriesTable.frame = CGRectMake(1024-260, 46, 240, self.view.frame.size.height);
+    
+    [self.view addSubview: categoriesTable];
 }
 
 
@@ -189,6 +200,18 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma Response Tracker Delegates ---
+
+- (void) didFailResponse: (id) responseObject {
+    
+}
+
+- (void) didFinishResponse: (id) responseObject {
+    dataHolder = [MainDataHolder getInstance];
+    [categoriesTable reloadExploreTable];
+    // NSLog(@"dataHolder: %@", dataHolder.categoriesList);
 }
 
 @end
