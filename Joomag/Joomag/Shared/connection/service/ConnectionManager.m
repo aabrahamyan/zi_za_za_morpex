@@ -152,6 +152,7 @@
             
             CategoriesParser * catsParser = [[CategoriesParser alloc] init];
             [MainDataHolder getInstance].categoriesList = [catsParser parserData:responseObject];
+            NSLog(@"[MainDataHolder getInstance].categoriesList = %@",[MainDataHolder getInstance].categoriesList);
             //NSArray * resultSet = [catsParser parserData:responseObject];
             //NSLog(@"HERE");
             [callback didFinishResponse:nil];

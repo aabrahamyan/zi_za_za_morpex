@@ -17,6 +17,8 @@
     NSMutableDictionary * inTypes;
     NSMutableArray * categories;
     NSMutableDictionary * category;
+    
+    BOOL typeChanged;
 
 }
 
