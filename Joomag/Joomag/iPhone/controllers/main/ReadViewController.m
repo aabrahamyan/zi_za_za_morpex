@@ -11,9 +11,14 @@
 #import "DataHolder.h"
 #import "Util.h"
 #import "ImageDownloader.h"
-#import "UIImageView+AFNetworking.h"
 #import "DataHolder.h"
+#import "ConnectionManager.h"
+#import "MainDataHolder.h"
 #import "UIImageView+WebCache.h"
+//#import "AFImageRequestOperation.h"
+#import "ReaderView.h"  
+
+
 
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
@@ -30,27 +35,125 @@
     UILabel *progresLabel;
     UIView *progressBgView;
     UIView *progressView;
+    
+    int xItemPos;
+    int pagXPos;
+    int pageWidth;
+    int itemWidth;
+    int itemContentWidth;
+    int pageContentWidth;
+    int firstPageIndex;
+    int secondPageIndex;
+
 }
 
 @end
 
 @implementation ReadViewController
 
-- (id)init
-{
+
+- (id) init {
     self = [super init];
     if (self) {
-        // Custom initialization
+
         self.view.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
 
-- (void)loadView
-{
-    [super loadView];  //TODO
-    dataHolder = [[DataHolder alloc] init];
-    // imageManager = [SDWebImageManager sharedManager];
+#pragma mark requests part--
+
+- (void) didFailResponse:(id)responseObject {
+
+}
+
+- (void) didFinishResponse: (id)responseObject {
+    @autoreleasepool {
+        
+    
+    
+    NSArray * pageData = (NSArray*) responseObject;
+    
+    if([pageData count] == 1) {
+      NSInteger counter = [[[pageData objectAtIndex:0] objectForKey:@"page_count"] intValue];                
+        
+        
+        if(counter > 0) {
+            pageCount = counter;
+            
+            xItemPos = 0;
+            pagXPos = 0;
+            pageWidth = 1024;
+            itemWidth = 200;
+            itemContentWidth = 0;
+            pageContentWidth = 0;
+            firstPageIndex = 0;
+            secondPageIndex = 1;
+            
+            NSLog(@"Number of Pages = = = = = = = = %d",counter);
+            
+            [self generatePageStringAndHit:counter];
+            
+            for (int i = 0; i < counter; i++) {
+                
+                //ConnectionManager * conManager = [[ConnectionManager alloc] init];
+                //[conManager constructGetMapagzinePage:self.currentMagazineId withPageNumber:i andWithDelegate:self];
+            }
+        }
+        
+    } else {
+        
+        
+    }
+    }
+}
+
+- (void) generatePageStringAndHit: (NSInteger) numberOfPages {
+    NSString * page = @"";
+    
+    @autoreleasepool {
+    for (int i = 0;i < numberOfPages; i++) {
+    
+        NSString * currentNumberString = [NSString stringWithFormat:@"%d", i];
+        if([currentNumberString length] == 1) {
+            page = [NSString stringWithFormat:@"0%@",currentNumberString];
+        } else {
+            page = [NSString stringWithFormat:@"%@", currentNumberString];
+        }
+        
+        
+        
+        NSString * queryUri = [Util generateRequestBlock:page withMagazineId:self.currentMagazineId];
+        queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
+        
+        NSLog(@"QUERY URI + %@", queryUri);
+        
+        [self startDownloadMagazine:i withImageUrl:queryUri];
+         
+    }}
+    
+        
+}
+
+- (void) hitPageDescription : (NSInteger) magazineId {
+    MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex:magazineId];
+    
+    if(currentMagazine) {
+        NSInteger magId = currentMagazine.magazineID;
+        self.currentMagazineId = magId;
+        ConnectionManager * conManager = [[ConnectionManager alloc] init];
+        [conManager constructGetMagazineRequest:magId withCallback:self];
+    }
+    
+}
+
+- (void) startDownloadingPages {
+    
+        
+}
+
+- (void) drawAllBorshesHere {
+    dataHolder = [[DataHolder alloc] init];   
     
     isNavigationVisible = YES;
     loadedPercentage = 0;
@@ -59,7 +162,7 @@
     pageScrollView.frame = CGRectMake(0, 0, 1024, 768-TOP_VIEW_HEIGHT); // TODO
     pageScrollView.pagingEnabled = YES;
     pageScrollView.backgroundColor = [UIColor clearColor];
-    //pageScrollView.delegate = self;
+    pageScrollView.delegate = self;
     
     [self.view addSubview: pageScrollView];
     
@@ -143,6 +246,17 @@
     // [self startDownloadMagazine: 0]; //TODO set scroll View current page
 }
 
+- (void)loadView {
+    [super loadView];
+    
+    pageImages = [[NSMutableArray alloc] init];
+    pageViews = [[NSMutableArray alloc] init];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    [self drawAllBorshesHere];
+}
+
 - (void)tapOnScreenHandler {
     if(isNavigationVisible){
         [self hideTopAndBottomView];
@@ -175,54 +289,15 @@
     [self.navigationController popViewControllerAnimated: NO];
 }
 
-- (void)startDownloadMagazine: (NSInteger)number {
+
+- (void)startDownloadMagazine: (NSInteger)number withImageUrl : (NSString *) imgUrl {
     
-    mRecord = [dataHolder.testData objectAtIndex: number];
-    
-    titleLabelWithDate.text = [NSString stringWithFormat:@"%@ | %@", mRecord.magazinTitle, mRecord.magazinDate];
-    [titleLabelWithDate sizeToFit];
-    
-    pageCount = [mRecord.pageImageURLsArray count];
-    NSLog(@"pageCount: %i",pageCount);
-    
-    int xItemPos = 0;
-    int pagXPos = 0;
-    int pageWidth = 1024;
-    int itemWidth = 200;
-    int itemContentWidth = 0;
-    int pageContentWidth = 0;
-    
-    for (int i = 0; i < pageCount; i++) {
         UIImageView *pageImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         UIImageView *itemImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         
-        itemImage.tag = i;
-        pageImage.tag = i;
+        [self startDownloadItems: imgUrl pageImage: pageImage andItem: itemImage];
         
-        xItemPos += 20;
-        
-        pageImage.frame = CGRectMake(pagXPos, 0, pageWidth, 768);;
-        [pageScrollView addSubview: pageImage];
-        
-        itemImage.frame = CGRectMake(xItemPos, 10, itemWidth, 90);;
-        UITapGestureRecognizer *tapOnNav = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnNavigation:)];
-        tapOnNav.numberOfTapsRequired = 1;
-        [itemImage addGestureRecognizer: tapOnNav];
-        itemImage.userInteractionEnabled = YES;
-        
-        itemContentWidth = xItemPos + itemWidth;
-        pageContentWidth = pagXPos + pageWidth;
-        
-        [navScrollView addSubview: itemImage];
-        
-        [self startDownloadItems: [mRecord.pageImageURLsArray objectAtIndex:i] pageImage: pageImage andItem: itemImage];
-        
-        pagXPos += pageWidth;
-        xItemPos += itemWidth;
-    }
     
-    pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
-    navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
 }
 
 - (void)tapOnNavigation: (UITapGestureRecognizer *)gesture {
@@ -236,6 +311,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self hideTopAndBottomView];
+    [self loadVisiblePages];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -258,35 +334,80 @@
 // -------------------------------------------------------------------------------
 - (void)startDownloadItems: (NSString *)imageStr  pageImage: (UIImageView *)pageImage andItem: (UIImageView *)itemImage {
     // request image
-    __block UIImageView *item = itemImage;
-    __block UIImageView *page = pageImage;
+
     
-    [itemImage setImageWithURL:[NSURL URLWithString:[imageStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
-              placeholderImage:[UIImage imageNamed:@"placeholder.png"]
-                       success:^(UIImage *image, BOOL cached)
-     {
-         item.image = image;
-         item.alpha = 0.0;
-         [UIView transitionWithView: item duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve
-                         animations:^{
-                             [item setImage:image];
-                             item.alpha = 1.0;
-                         } completion:NULL];
-         
-         page.image = image;
-         page.alpha = 0.0;
-         [UIView transitionWithView: item duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve
-                         animations:^{
-                             [page setImage:image];
-                             page.alpha = 1.0;
-                         } completion:NULL];
-         
-         [self showingDownloadProgress];
-     }
-                       failure:^(NSError *error)
-     {
-         NSLog(@"failure download read view images");
-     }];
+    //__block UIImageView *item = itemImage;
+    //__block UIImageView *page = pageImage;
+    
+    //SDWebImageManager *sharedManager = [SDWebImageManager sharedManager];
+
+    //[sharedManager.imageDownloader setMaxConcurrentDownloads:1];
+    //[sharedManager cancelAll]; //cancel all current queue
+
+    
+    [itemImage setImageWithURL:[NSURL URLWithString: imageStr] placeholderImage:nil options: 0 success:^(UIImage *image, BOOL cached) {
+        @autoreleasepool {
+            
+        
+            [self showingDownloadProgress];
+            //item.image = image;
+            //page.image = image;
+        
+            [pageImages addObject:image];
+            [pageViews addObject:[NSNull null]];
+        
+            pageContentWidth += image.size.width;
+            pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
+        
+            if([pageImages count] > 2) {
+                [self loadVisiblePages];
+            }
+        }
+        
+        } failure:^(NSError *error) {
+            NSLog(@"Failure = %@",[error localizedDescription]);
+        }];
+
+     
+    //NSURLRequest * req = [NSURLRequest requestWithURL:[NSURL URLWithString:imageStr]];
+
+    
+/*[AFImageRequestOperation imageRequestOperationWithRequest:req
+                                                  success:^(UIImage *image) {
+                            [pageImages addObject:image];
+                            [pageViews addObject:[NSNull null]];
+                                                      
+                            pageContentWidth += image.size.width;
+                            pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
+                                                      
+                            if([pageImages count] > 2) {
+                                [self loadVisiblePages];
+                            }
+
+}]; */
+    
+/*AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:req success:^(UIImage *image) {
+    @autoreleasepool {
+        [self showingDownloadProgress];
+    
+        [pageImages addObject:image];
+        [pageViews addObject:[NSNull null]];
+    
+        pageContentWidth += image.size.width;
+        pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
+    
+        if([pageImages count] > 2) {
+            [self loadVisiblePages];
+        }
+    }
+    
+    }];
+    
+
+    [operation start];*/
+    
+
+
 }
 
 -(void)showingDownloadProgress
@@ -316,58 +437,94 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+
+- (void)loadVisiblePages {
+    // First, determine which page is currently visible
+    CGFloat pageWidth1 = pageScrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((pageScrollView.contentOffset.x * 2.0f + pageWidth1) / (pageWidth1 * 2.0f));
+    //pageWidth = pageWidth1;
+    
+    // Work out which pages we want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // Purge anything before the first page
+
+        for (NSInteger i=0; i<firstPage; i++) {
+            [self purgePage:i];
+        }
+    
+    @autoreleasepool {
+    
+        for (NSInteger i=firstPage; i<=lastPage; i++) {
+            [self loadPage:i];
+        }
+    }
+
+        for (NSInteger i=lastPage+1; i < pageImages.count; i++) {
+            [self purgePage:i];
+        }
+
+}
+
+- (void)loadPage:(NSInteger)page {
+    if (page < 0 || page >= pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    if(firstPageIndex >= pageImages.count || secondPageIndex >= pageImages.count) {
+        return;
+    }
+    
+    // Load an individual page, first seeing if we've already loaded it
+    UIView *pageView = [pageViews objectAtIndex:page];
+    if ((NSNull*)pageView == [NSNull null]) {
+        CGRect frame = pageScrollView.bounds;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0.0f;
+        
+        //UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+        
+        
+        
+        //ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:[pageImages objectAtIndex:page] withRightImageView:[pageImages objectAtIndex:page]];
+
+        ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:[pageImages objectAtIndex:firstPageIndex] withRightImageView:[pageImages objectAtIndex:secondPageIndex] withLeftFrame:CGRectMake(0, 0, pageWidth/2, 723) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 723)];
+        
+        newPageView.contentMode = UIViewContentModeScaleAspectFit;
+        newPageView.frame = frame;
+        
+        [pageScrollView addSubview:newPageView];
+        [pageViews replaceObjectAtIndex:page withObject:newPageView];
+        
+        pagXPos += pageWidth;
+        
+        firstPageIndex+=2;
+        secondPageIndex+=2;
+    }
+}
+
+- (void)purgePage:(NSInteger)page {
+    if (page < 0 || page >= pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    if(firstPageIndex >= pageImages.count || secondPageIndex >= pageImages.count) {
+        return;
+    }
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview]; 
+        [pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+    }
+}
+
+
 @end
-
-//NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: imageStr]];
-
-//__block UIImageView *page = pageImage;
-//__block UIImageView *item = itemImage;
-
-// request image
-/*
- [imageManager downloadWithURL: [NSURL URLWithString: imageStr]
- delegate:self
- options:0
- success:^(UIImage *image, BOOL cached) {
- 
- itemImage.alpha = 0.0;
- //pageImage.alpha = 0.0;
- 
- [UIView transitionWithView:itemImage
- duration:1.0
- options:UIViewAnimationOptionTransitionCrossDissolve
- animations:^{
- [itemImage setImage:image];
- [pageImage setImage:image];
- 
- itemImage.alpha = 1.0;
- //pageImage.alpha = 1.0;
- } completion:NULL];
- 
- 
- }
- failure:^(NSError *str) {
- NSLog(@"doenload failure");
- 
- }];
- 
- [pageImage setImageWithURLRequest:request
- placeholderImage:[UIImage imageNamed:@"placeholder.png"]
- success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
- {
- page.image = image;
- item.image = image;
- [self showingDownloadProgress];
- }
- failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
- {
- NSLog(@"ImageDownloader READ failure");
- }];
- */
-//    [pageImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
-//    [itemImage setImageWithURL: [NSURL URLWithString: imageStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
-//    pageImage.image = pageImage.image;
-//    itemImage.image = itemImage.image;
-//    [self showingDownloadProgress];
 
 

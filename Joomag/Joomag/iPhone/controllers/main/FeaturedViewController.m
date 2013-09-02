@@ -17,6 +17,7 @@
 #import "ConnectionManager.h"
 
 
+
 @interface FeaturedViewController (){
     MainDataHolder *dataHolder;
     MagazinRecord *mRecord;
@@ -155,6 +156,7 @@
 
 #pragma Explore Buttons Handlers
 
+
 -(void)readHandler {
     
     UIView *loaderContainer = [[UIView alloc] initWithFrame:CGRectMake(0, -20, 1024, 768)]; //TODO
@@ -168,17 +170,17 @@
     [loaderContainer bringSubviewToFront:activityIndicator];
     [activityIndicator startAnimating];
     
-    //[self.view addSubview: loaderContainer];
     
     ReadViewController *readVC = [[ReadViewController alloc] init];
-    // NSLog(@"current: %i", scrollView.currentPage);
-    
-    [readVC startDownloadMagazine: scrollView.currentPage];
+
+    //[readVC startDownloadMagazine: scrollView.currentPage];
+    [readVC hitPageDescription:scrollView.currentPage];
     
     [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
     
     [self.navigationController pushViewController: readVC animated: NO];
 }
+
 
 - (void)buyIssueHandler {
     NSLog(@"buy Issue");

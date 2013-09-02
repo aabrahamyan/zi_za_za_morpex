@@ -15,4 +15,6 @@
 
 + (UIImage *) imageNamedSmart:(NSString *) name;
 
++ (NSString *) generateRequestBlock: (NSString *) pageNumber withMagazineId: (NSInteger) magazineId;
+
 @end

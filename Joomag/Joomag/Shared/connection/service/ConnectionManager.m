@@ -71,8 +71,9 @@
          
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             MagazineParser * magazineResponseParser = [[MagazineParser alloc] init];
-                            
-                            NSArray * resultArray = [magazineResponseParser parserData:responseObject];
+                            NSString * str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                            NSData * data = [str dataUsingEncoding:NSUTF8StringEncoding];
+                            NSArray * resultArray = [magazineResponseParser parserData:data];
                             [callback didFinishResponse:resultArray];
                         }
          
@@ -105,7 +106,12 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             PageParser * pageResponseParser = [[PageParser alloc] init];
                             
-                            NSArray * resultArray = [pageResponseParser parserData:responseObject];
+                            //&amp
+                            NSString * str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                            str = [str stringByReplacingOccurrencesOfString:@"&" withString:@"amp;" ];
+                            NSData * data = [str dataUsingEncoding:NSUTF8StringEncoding];
+                            
+                            NSArray * resultArray = [pageResponseParser parserData:data];
                             [callback didFinishResponse:resultArray];
                            
                         }
@@ -132,7 +138,7 @@
             MagazinesListParser * magListParser = [[MagazinesListParser alloc] init];
             [MainDataHolder getInstance].magazinesList = [magListParser parserData:responseObject];
             [magListParser bindArrayToMappingObject];
-            NSLog(@"[MainDataHolder getInstance].magazinesList = %@",[MainDataHolder getInstance].magazinesList);
+            //NSLog(@"[MainDataHolder getInstance].magazinesList = %@",[MainDataHolder getInstance].magazinesList);
             [callback didFinishResponse:nil];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             //TODO: Parser call for failure
@@ -152,15 +158,12 @@
             
             CategoriesParser * catsParser = [[CategoriesParser alloc] init];
             [MainDataHolder getInstance].categoriesList = [catsParser parserData:responseObject];
-            NSLog(@"[MainDataHolder getInstance].categoriesList = %@",[MainDataHolder getInstance].categoriesList);
-            //NSArray * resultSet = [catsParser parserData:responseObject];
-            //NSLog(@"HERE");
+
             [callback didFinishResponse:nil];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             //TODO: Call in case of failure
         }];
     }
-    
 }
 
 

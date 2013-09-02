@@ -7,6 +7,7 @@
 //
 
 #import "Util.h"
+#import "Constants.h"
 
 @implementation Util
 
@@ -18,6 +19,12 @@
     } else {
         return [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", name]];
     }
+}
+
++ (NSString *) generateRequestBlock: (NSString *) pageNumber withMagazineId: (NSInteger) magazineId {
+    NSString * queryUri = [RANDOM_BLOCK_NUMBER stringByAppendingFormat:@"%@%@%d", pageNumber,GK,magazineId];
+    
+    return queryUri;
 }
 
 @end

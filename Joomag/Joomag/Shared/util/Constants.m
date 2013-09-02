@@ -41,6 +41,9 @@ NSString * const GETMAGAZINESLIST = @"GETMAGAZINELIST";
 NSString * const FEATURED_SPREAD  = @"featured";
 //-------------- GET CATEGORIES LIST Request/Response handling ---------------//
 NSString * const GETTYPESWITHCATEGORIES = @"GETTYPESWITHCATEGORIES";
+//-------------- Constant Value -----------------//
+NSString * const RANDOM_BLOCK_NUMBER = @"4tMb0";
+NSString * const GK = @"gk";
 
 
 @implementation Constants

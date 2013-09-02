@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *magazinDetailsText;
 @property (nonatomic, strong) NSString *magazinDetailsImageURL;
 @property (nonatomic, strong) UIImage  *magazinDetailsIcon;
+@property (nonatomic, assign) NSInteger magazineID;
 
 
 

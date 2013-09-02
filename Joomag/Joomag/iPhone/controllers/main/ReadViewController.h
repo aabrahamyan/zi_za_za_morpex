@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResponseTrackerDelegate.h" 
+#import "SDImageCacheDelegate.h"
 
-@interface ReadViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate> {
+@interface ReadViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate, ResponseTrackerDelegate, SDImageCacheDelegate> {
+
+    NSMutableArray * pageImages;
+    NSMutableArray * pageViews;
+    
 @protected
     UIView       *topView;
     UIButton     *backButtonView;
@@ -16,8 +22,13 @@
     UIScrollView *pageScrollView;
     UIView       *navScrollViewContainer;
     UIView       *buyView;
+    
 }
 
-- (void)startDownloadMagazine: (NSInteger)number;
+@property (nonatomic, assign) NSInteger currentMagazineId;
+
+- (void)startDownloadMagazine: (NSInteger)number withImageUrl : (NSString *) imgUrl;
+
+- (void) hitPageDescription : (NSInteger) magazineId;
 
 @end

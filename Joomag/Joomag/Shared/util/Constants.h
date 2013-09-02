@@ -41,7 +41,9 @@ extern NSString * const GETMAGAZINESLIST;
 extern NSString * const FEATURED_SPREAD;
 //-------------- GET CATEGORIES LIST Request/Response handling ---------------//
 extern NSString * const GETTYPESWITHCATEGORIES;
-//--------------
+//-------------- Constant Value -----------------//
+extern NSString * const RANDOM_BLOCK_NUMBER;
+extern NSString * const GK;
 
 @interface Constants : NSObject
 

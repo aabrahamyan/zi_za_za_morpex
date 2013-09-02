@@ -66,6 +66,7 @@
             mgRecord.magazinImageURL = [currentMagazine objectForKey:@"featured_spread"];
             mgRecord.magazinDetailsImageURL = [currentMagazine objectForKey:@"firstpage"];
             mgRecord.magazinDetailsText = [currentMagazine objectForKey:@"desc"];
+            mgRecord.magazineID = [[currentMagazine objectForKey:@"ID"] intValue];
             
             [[MainDataHolder getInstance].testData addObject:mgRecord];
         }
