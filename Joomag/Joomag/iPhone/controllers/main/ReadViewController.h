@@ -12,7 +12,7 @@
 
 @interface ReadViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate, ResponseTrackerDelegate, SDImageCacheDelegate> {
 
-    NSMutableArray * pageImages;
+    NSMutableDictionary * pageImages;
     NSMutableArray * pageViews;
     
 @protected

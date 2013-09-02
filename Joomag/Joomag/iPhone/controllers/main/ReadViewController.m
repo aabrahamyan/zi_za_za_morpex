@@ -44,6 +44,7 @@
     int pageContentWidth;
     int firstPageIndex;
     int secondPageIndex;
+    int scrollViewIndex;
 
 }
 
@@ -87,8 +88,9 @@
             itemWidth = 200;
             itemContentWidth = 0;
             pageContentWidth = 0;
-            firstPageIndex = 0;
-            secondPageIndex = 1;
+            firstPageIndex = 1;
+            secondPageIndex = 2;
+            scrollViewIndex = 0;
             
             NSLog(@"Number of Pages = = = = = = = = %d",counter);
             
@@ -112,6 +114,7 @@
     NSString * page = @"";
     
     @autoreleasepool {
+        pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, 768-2*44);
     for (int i = 0;i < numberOfPages; i++) {
     
         NSString * currentNumberString = [NSString stringWithFormat:@"%d", i];
@@ -121,7 +124,7 @@
             page = [NSString stringWithFormat:@"%@", currentNumberString];
         }
         
-        
+        [pageImages setObject:[NSNull null] forKey:currentNumberString]; 
         
         NSString * queryUri = [Util generateRequestBlock:page withMagazineId:self.currentMagazineId];
         queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
@@ -163,6 +166,8 @@
     pageScrollView.pagingEnabled = YES;
     pageScrollView.backgroundColor = [UIColor clearColor];
     pageScrollView.delegate = self;
+    pageScrollView.minimumZoomScale = 1.0;
+    pageScrollView.maximumZoomScale = 2.0;
     
     [self.view addSubview: pageScrollView];
     
@@ -249,7 +254,7 @@
 - (void)loadView {
     [super loadView];
     
-    pageImages = [[NSMutableArray alloc] init];
+    pageImages = [[NSMutableDictionary alloc] init];
     pageViews = [[NSMutableArray alloc] init];
     
     self.view.backgroundColor = [UIColor clearColor];
@@ -295,23 +300,32 @@
         UIImageView *pageImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         UIImageView *itemImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         
-        [self startDownloadItems: imgUrl pageImage: pageImage andItem: itemImage];
+    [self startDownloadItems: number: imgUrl pageImage: pageImage andItem: itemImage];
         
     
 }
 
-- (void)tapOnNavigation: (UITapGestureRecognizer *)gesture {
+- (void) tapOnNavigation: (UITapGestureRecognizer *) gesture {
     NSLog(@"gesture.view: %i", gesture.view.tag);
     [pageScrollView setContentOffset:CGPointMake(1024*gesture.view.tag, 0) animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
 
+
+- (UIView*) viewForZoomingInScrollView: (UIScrollView *) scrollView {
+    
+  return (UIView*) [pageViews objectAtIndex:scrollViewIndex];
+    
+}
+
+
+
 // any offset changes
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self hideTopAndBottomView];
-    [self loadVisiblePages];
+    
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -327,17 +341,22 @@
             buyView.alpha = 0;
         }];
     }
+    
+    scrollViewIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
+    [self loadVisiblePages];
 }
 
 // -------------------------------------------------------------------------------
 //	startIconDownload:forIndexPath:
 // -------------------------------------------------------------------------------
-- (void)startDownloadItems: (NSString *)imageStr  pageImage: (UIImageView *)pageImage andItem: (UIImageView *)itemImage {
+- (void)startDownloadItems: (int) number : (NSString *)imageStr  pageImage: (UIImageView *)pageImage andItem: (UIImageView *)itemImage {
     // request image
 
     
     //__block UIImageView *item = itemImage;
     //__block UIImageView *page = pageImage;
+    
+    __block int numberito = number;
     
     //SDWebImageManager *sharedManager = [SDWebImageManager sharedManager];
 
@@ -353,15 +372,16 @@
             //item.image = image;
             //page.image = image;
         
-            [pageImages addObject:image];
+            //[pageImages addObject:image];
+            
+            [pageImages setValue:image forKey:[NSString stringWithFormat:@"%d",numberito]]; 
             [pageViews addObject:[NSNull null]];
         
-            pageContentWidth += image.size.width;
-            pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
+            //pageContentWidth += image.size.width;
         
-            if([pageImages count] > 2) {
+            //if([pageImages count] > 2) {
                 [self loadVisiblePages];
-            }
+           // }
         }
         
         } failure:^(NSError *error) {
@@ -462,22 +482,31 @@
         }
     }
 
-        for (NSInteger i=lastPage+1; i < pageImages.count; i++) {
+        for (NSInteger i=lastPage+1; i < [self getPageImagesCount]; i++) {
             [self purgePage:i];
         }
 
 }
 
+- (int) getPageImagesCount {
+    int count = 0;
+    for (int i = 0; i < pageImages.count; i++) {
+        id current = [pageImages objectForKey:[NSString stringWithFormat:@"%d",i]];
+        
+        if([current isKindOfClass:[UIImage class]]) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
 - (void)loadPage:(NSInteger)page {
-    if (page < 0 || page >= pageImages.count) {
+    if (page < 0 || page >= [self getPageImagesCount]) {
         // If it's outside the range of what we have to display, then do nothing
         return;
     }
-    
-    if(firstPageIndex >= pageImages.count || secondPageIndex >= pageImages.count) {
-        return;
-    }
-    
+                        
     // Load an individual page, first seeing if we've already loaded it
     UIView *pageView = [pageViews objectAtIndex:page];
     if ((NSNull*)pageView == [NSNull null]) {
@@ -489,9 +518,33 @@
         
         
         
-        //ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:[pageImages objectAtIndex:page] withRightImageView:[pageImages objectAtIndex:page]];
+        if(page == 0) {
+            firstPageIndex = 1;
+            secondPageIndex = 2;
+        } else if (page == 1) {
+            firstPageIndex = 3;
+            secondPageIndex = 4;
+        } else {
+            firstPageIndex = page + page + 1;
+            secondPageIndex = page + page + 2;
+        }
 
-        ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:[pageImages objectAtIndex:firstPageIndex] withRightImageView:[pageImages objectAtIndex:secondPageIndex] withLeftFrame:CGRectMake(0, 0, pageWidth/2, 723) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 723)];
+        
+        if([pageImages objectForKey:[NSString stringWithFormat:@"%d",firstPageIndex]] == [NSNull null]
+           || [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]] == [NSNull null]) {
+            
+            return;
+            
+        }
+        
+
+        UIImage * firstImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",firstPageIndex]];
+        UIImage * secondImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]]; 
+        
+        ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 723) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 723)];
+        
+        //pageContentWidth += newPageView.frame.size.width;
+        
         
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
@@ -501,27 +554,34 @@
         
         pagXPos += pageWidth;
         
-        firstPageIndex+=2;
-        secondPageIndex+=2;
+
     }
 }
 
 - (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= pageImages.count) {
+    if (page < 0 || page >= [self getPageImagesCount]) {
         // If it's outside the range of what we have to display, then do nothing
         return;
     }
     
-    if(firstPageIndex >= pageImages.count || secondPageIndex >= pageImages.count) {
+
+    
+    if([pageImages objectForKey:[NSString stringWithFormat:@"%d",firstPageIndex]] == [NSNull null]
+       || [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]] == [NSNull null]) {
+        
         return;
+        
     }
     
     // Remove a page from the scroll view and reset the container array
     UIView *pageView = [pageViews objectAtIndex:page];
     if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview]; 
+        [pageView removeFromSuperview];
         [pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+        
+//        pageContentWidth -= pageView.frame.size.width;
     }
+    
 }
 
 
