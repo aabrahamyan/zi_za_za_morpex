@@ -15,7 +15,7 @@
 @property (nonatomic, strong) MagazinRecord *magazinRecord;
 @property (nonatomic, copy) void (^completionHandler)(void);
 
-- (void)startDownloadWithImageView:(UIImageView *)imageView withURL:(NSString *)urlStr andSetIcon: (UIImage *)icon;
+- (void)startDownloadWithImageView:(UIImageView *)imageView withURL:(NSString *)urlStr;
 
 - (void)startDownloadDetailsImageWithImageView:(UIImageView *)imageView;
 

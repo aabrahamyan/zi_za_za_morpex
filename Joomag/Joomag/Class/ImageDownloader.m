@@ -20,18 +20,15 @@
 
 #pragma mark
 
-//TODO Create blocks
-
-- (void)startDownloadWithImageView:(UIImageView *)imageView withURL:(NSString *)urlStr andSetIcon: (UIImage *)icon
+- (void)startDownloadWithImageView:(UIImageView *)imageView withURL:(NSString *)urlStr
 {
-    [imageView setImageWithURL: [NSURL URLWithString: urlStr] placeholderImage:nil options:SDWebImageProgressiveDownload];
+    [imageView setImageWithURL: [NSURL URLWithString: urlStr] placeholderImage: nil options:SDWebImageProgressiveDownload];
     
-    icon = imageView.image;
+    self.magazinRecord.magazinIcon = imageView.image;
     
     // call our delegate and tell it that our icon is ready for display
     if (self.completionHandler)
         self.completionHandler();
-    
 }
 
 - (void)startDownloadDetailsImageWithImageView:(UIImageView *)imageView
@@ -41,7 +38,6 @@
                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
      {
-         NSLog(@"details");
          self.magazinRecord.magazinDetailsIcon = image;
          
          // call our delegate and tell it that our icon is ready for display

@@ -162,8 +162,7 @@
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
         
         [imageDownloader startDownloadWithImageView: ((UIImageView *)[[self subviews] objectAtIndex:page])
-                                            withURL: magazinRecord.magazinDetailsImageURL
-                                         andSetIcon: magazinRecord.magazinDetailsIcon];
+                                            withURL: magazinRecord.magazinDetailsImageURL];
     }
 }
 
