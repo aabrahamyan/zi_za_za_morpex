@@ -8,13 +8,13 @@
 
 #import "FeaturedScrollView.h"
 #import "MainDataHolder.h"
-#import "ImageDownloader.h"
+//#import "ImageDownloader.h"
 #import "MagazinRecord.h"
+#import "UIImageView+WebCache.h"
 
 @interface FeaturedScrollView () {
     CGFloat pageWidth;
     NSInteger entriesLength;
-    int counter;
 }
 
 // the set of ImageDownloader objects for each app
@@ -26,60 +26,78 @@
 
 @implementation FeaturedScrollView
 
-- (id)initWithFrame:(CGRect) frame {
+- (id)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        counter = 1;
         
-        //Init DataHolder
-        //MainDataHolder *dataHolder = [MainDataHolder getInstance];
-        //self.entries = dataHolder.testData;
-        
-        self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-        
-        //Set BackGround Color
         self.backgroundColor = [UIColor blackColor];
-        
-        self.delegate = self;
         self.pagingEnabled = YES;
-        
-        //entriesLength = self.entries.count;
-        
-        //CGSize pagesScrollViewSize = self.frame.size;
-        //pageWidth = pagesScrollViewSize.width;
-        //NSLog(@"pagesScrollViewSize.height: %f", pagesScrollViewSize.height);
-        
-        // Set up the content size of the scroll view
-        //self.contentSize = CGSizeMake(pageWidth * [self.entries count], pagesScrollViewSize.height);
+        //self.showsVerticalScrollIndicator = NO;
+        //self.showsHorizontalScrollIndicator = NO;
+        //self.bouncesZoom = YES;
+        self.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.contentMode = UIViewContentModeTopRight;
+        self.autoresizingMask =(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        self.delegate = self;
         
         // Set up the array to hold the views for each page
         self.pageViews = [[NSMutableArray alloc] init];
         
-        // Load the initial set of pages that are on screen
-        // [self loadVisiblePage];
+        // Populate Array With NSNull
+        for (NSInteger i = 0; i < 10; ++i) { // TODO: entriesLength
+            [self.pageViews addObject:[NSNull null]];
+        }
+        
+        self.currentPage = 0;
     }
     
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    //NSLog(@"layoutSubviews");
+}
 
 - (void) redrawData {
+    NSLog(@"redrawData");
     if([[MainDataHolder getInstance].testData count] != 0) {
+        
+        // Get Data
         self.entries = [MainDataHolder getInstance].testData;
         entriesLength = self.entries.count;
         
+        // Get Scroll View Size
         CGSize pagesScrollViewSize = self.frame.size;
         pageWidth = pagesScrollViewSize.width;
-        //NSLog(@"pagesScrollViewSize.height: %f w: %f", pagesScrollViewSize.height, pagesScrollViewSize.width);
         
         // Set up the content size of the scroll view
         self.contentSize = CGSizeMake(pageWidth * entriesLength, pagesScrollViewSize.height);
         
-        NSLog(@"come");
+        [self loadVisiblePage: self.currentPage];
         
-        // Load the initial set of pages that are on screen
-        [self loadVisiblePage];
+        UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        
+        for (UIImageView *subview in [self subviews]) {
+            
+            if ([subview isKindOfClass:[UIImageView class]] && subview.tag > 0) {
+                CGRect frame = self.frame;
+                
+                if (iOrientation == UIDeviceOrientationLandscapeLeft) {
+                    self.contentOffset = CGPointMake(self.currentPage*1024, 0);
+                    frame.origin.x = 1024 * (subview.tag-1);
+                } else if (UIDeviceOrientationPortrait) {
+                    self.contentOffset = CGPointMake(self.currentPage*768, 0);
+                    frame.origin.x = 768 * (subview.tag-1);
+                }
+                
+                frame.origin.y = 0.0f;
+                subview.frame = frame;
+            }
+        }
     }
 }
 
@@ -89,17 +107,25 @@
 // loadVisiblePages
 // Load the pages which are now on screen
 // -------------------------------------------------------------------------------
-
-- (void)loadVisiblePage {
-    // First, determine which page is currently visible
-    NSInteger page = [self currentPage:self.contentOffset.x];
+- (void)loadVisiblePage: (NSInteger)page {
     
     // Work out which pages we want to load
     NSInteger firstPage = page - 1;
     NSInteger lastPage = page + 1;
     
+    // Purge anything before the first page
+    for (NSInteger i = 0; i < firstPage; i++) {
+        [self purgePage:i];
+    }
+    
+    // Load an individual pages
     for (NSInteger i = firstPage; i <= lastPage; i++) {
         [self loadPage:i];
+    }
+    
+    // Purge anything after the last page
+    for (NSInteger i = lastPage+1; i < entriesLength; i++) {
+        [self purgePage:i];
     }
 }
 
@@ -108,18 +134,32 @@
 // Load an individual page
 // -------------------------------------------------------------------------------
 - (void)loadPage:(NSInteger)page {
+    
     if (page < 0 || page >= entriesLength) {
         // If it's outside the range of what we have to display, then do nothing
         return;
     }
     
     // Load an individual page, first seeing if we've already loaded it
+    UIView *pageView = [self.pageViews objectAtIndex:page];
     MagazinRecord *mRecord = [self.entries objectAtIndex:page];
-    if (!mRecord.magazinIcon) {
-        [self startIconDownload:mRecord forIndexPath:page];
-    } else {
-        NSLog(@"exist: %i",page);
-        ((UIImageView *)[self.pageViews objectAtIndex: page]).image = mRecord.magazinIcon;
+    
+    if ((NSNull*)pageView == [NSNull null]) {
+        [self startIconDownload: mRecord forIndexPath: page];
+    }
+}
+
+- (void)purgePage:(NSInteger)page {
+    if (page < 0 || page >= entriesLength) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
     }
 }
 
@@ -127,67 +167,67 @@
 //	startIconDownload:forIndexPath:
 // -------------------------------------------------------------------------------
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
-    NSNumber *index = [NSNumber numberWithInteger:page];
     
-    ImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:index];
-    if (imageDownloader == nil) {
-        imageDownloader = [[ImageDownloader alloc] init];
-        imageDownloader.magazinRecord = magazinRecord;
-        
-        UIImageView *imageView = [[UIImageView alloc] init];
-        
-        [imageDownloader setCompletionHandler:^{
-            //NSLog(@"Download Featured Image: %i",page);
-            
-            // Display the newly loaded image
-            imageView.image = magazinRecord.magazinIcon;
-            imageView.frame = [self currentFrame: page];
-            imageView.tag = counter; counter++;
-            
-            [self addSubview: imageView];
-            
-            // Remove the IconDownloader from the in progress list.
-            // This will result in it being deallocated.
-            [self.imageDownloadsInProgress removeObjectForKey:index];
-        }];
-        
-        [self.imageDownloadsInProgress setObject: imageDownloader forKey:index];
-        [self.pageViews insertObject:imageView atIndex: page];
-        [imageDownloader startDownloadWithImageView:imageView withURL:magazinRecord.magazinImageURL andSetIcon:magazinRecord.magazinIcon];
-    }
-}
-
-// -------------------------------------------------------------------------------
-//	currentPage:
-//  return current page by offset x
-// -------------------------------------------------------------------------------
-- (NSInteger)currentPage: (float)offsetX {
-    self.currentPage = (NSInteger)floor((offsetX * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    return self.currentPage;
-}
-
-// -------------------------------------------------------------------------------
-//	currentPage:
-//  return frame by current page
-// -------------------------------------------------------------------------------
-- (CGRect)currentFrame: (NSInteger)page {
+    UIImageView *newPageView = [[UIImageView alloc] init];
+    
+    //    // Display the newly loaded image
+    //    [newPageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinImageURL]
+    //                placeholderImage: [UIImage imageNamed: @"placeholder.png"]
+    //                         options: SDWebImageProgressiveDownload];
+    
+    
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [newPageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinImageURL]
+                placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                         success:^(UIImage *image, BOOL dummy) {
+                             //                                if (image) {
+                             //
+                             //                                    CGSize imageSize = image.size;
+                             //                                    CGFloat width = imageSize.width;
+                             //                                    CGFloat height = imageSize.height;
+                             //
+                             //                                    NSLog(@"width: %f height: %f", width, height);
+                             //
+                             //                                }
+                         }
+                         failure:^(NSError *error) {
+                             
+                         }
+     ];
+    
+    //    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    //
+    //    if (iOrientation == UIDeviceOrientationLandscapeLeft) {
+    //        //crop the image
+    //        CGRect cropRect         = CGRectMake(0, 0, 1536, 900);
+    //        CGImageRef imageRef     = CGImageCreateWithImageInRect([newPageView.image CGImage], cropRect);
+    //        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
+    //        CGImageRelease(imageRef);
+    //        [newPageView setImage:croppedAvatar];
+    //
+    //    } else if (UIDeviceOrientationPortrait) {
+    //        //crop the image
+    //        CGRect cropRect         = CGRectMake(0, 0, (1536 / 2), 900);
+    //        CGImageRef imageRef     = CGImageCreateWithImageInRect([newPageView.image CGImage], cropRect);
+    //        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
+    //        CGImageRelease(imageRef);
+    //        [newPageView setImage:croppedAvatar];
+    //    }
+    
     CGRect frame = self.bounds;
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0.0f;
     
-    return frame;
+    newPageView.tag = page+1;
+    newPageView.frame = frame;
+    
+    [self addSubview: newPageView];
+    
+    
+    [self.pageViews replaceObjectAtIndex: page withObject: newPageView];
 }
 
 #pragma mark - UIScrollViewDelegate
-
-// -------------------------------------------------------------------------------
-//	scrollViewDidEndDecelerating:
-// -------------------------------------------------------------------------------
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self loadVisiblePage];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
-}
 
 // -------------------------------------------------------------------------------
 // scrollViewDidScroll:
@@ -195,13 +235,19 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    self.currentPage = [self currentPage:self.contentOffset.x];
+    
 }
 
-// any zoom scale changes
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView NS_AVAILABLE_IOS(3_2)
+// -------------------------------------------------------------------------------
+//	scrollViewDidEndDecelerating:
+// -------------------------------------------------------------------------------
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    self.currentPage = (NSInteger)floor(self.contentOffset.x / pageWidth);
     
+    [self loadVisiblePage: self.currentPage];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 
 // called on start of dragging (may require some time and or distance to move)
@@ -210,58 +256,5 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
 }
 
-// called on finger up if the user dragged. velocity is in points/second. targetContentOffset may be changed to adjust where the scroll view comes to rest. not called when pagingEnabled is YES
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0)
-{
-    
-}
-
-// called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    
-}
-
-// called on finger up as we are moving
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
-{
-    
-}
-
-// called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    
-}
-
-// return a view that will be scaled. if delegate returns nil, nothing happens
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return scrollView;
-}
-
-// called before the scroll view begins zooming its content
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view NS_AVAILABLE_IOS(3_2)
-{
-    
-}
-
-// scale between minimum and maximum. called after any 'bounce' animations
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-    
-}
-
-// return a yes if you want to scroll to the top. if not defined, assumes YES
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
-{
-    return 0;
-}
-
-// called when scrolling animation finished. may be called immediately if already at top
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
-{
-    
-}
 
 @end

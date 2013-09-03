@@ -40,7 +40,6 @@
             
         case UIDeviceOrientationLandscapeLeft:
             scrollViewFrame = CGRectMake(0, -20, 1024, 704);
-            //[scrollView setContentSize:CGSizeMake(scrollViewFrame.size.width*11, dataHolder.screenWidth)];
             detailsViewFrame = CGRectMake(490, 450, 540, 220);
             pageControlFrame = CGRectMake(0, 30, 1024, 30);
             break;
