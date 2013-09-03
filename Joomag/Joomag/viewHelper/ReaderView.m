@@ -22,19 +22,36 @@
 - (id) initWithFrameAndImages:(CGRect) frame withLeftImageView: (UIImage *) leftImageView withRightImageView: (UIImage *) rightImageView withLeftFrame:  (CGRect) leftFrame withRightFrame: (CGRect) rightFrame {
     self = [super initWithFrame:frame];
     
-    if(self) {
+    if(self) {                
+        
         self.backgroundColor = [UIColor clearColor];
         self.leftImageView = [[UIImageView alloc] initWithImage:leftImageView];
         self.leftImageView.frame = leftFrame;
         self.rightImageView = [[UIImageView alloc] initWithImage:rightImageView];
         self.rightImageView.frame = rightFrame;
+        self.clipsToBounds = YES;
+        
+        self.minimumZoomScale = 1.0f;
+        self.maximumZoomScale = 2.0f;
+        self.zoomScale = 1.0f;
+        self.contentSize = frame.size; 
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO; 
+        
         //self.leftImageView.frame = CGRectMake(0, 0, self.leftImageView.frame.size.width, self.leftImageView.frame.size.height);
         
         //self.rightImageView.frame = CGRectMake(self.leftImageView.frame.size.width, 0, self.rightImageView.frame.size.width, self.rightImageView.frame.size.height);
 
-        self.frame = frame;
-        [self addSubview:self.leftImageView];
-        [self addSubview:self.rightImageView];
+        self.frame = frame;        
+        
+        self.parentOfImages = [[UIView alloc] initWithFrame:frame];
+        self.parentOfImages.frame = CGRectMake(0, 0, 1024, 768);
+        self.parentOfImages.backgroundColor = [UIColor clearColor];
+        
+        [self.parentOfImages addSubview:self.leftImageView];
+        [self.parentOfImages addSubview:self.rightImageView];
+        
+        [self addSubview:self.parentOfImages];
         
     }
     

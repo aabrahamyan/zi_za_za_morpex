@@ -20,8 +20,11 @@
 
 
 
+
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
+
+#define VIEW_FOR_ZOOM_TAG (1)
 
 @interface ReadViewController () {
     MagazinRecord *mRecord;
@@ -45,7 +48,7 @@
     int firstPageIndex;
     int secondPageIndex;
     int scrollViewIndex;
-
+    int currentMagazinePageCount;
 }
 
 @end
@@ -91,6 +94,7 @@
             firstPageIndex = 1;
             secondPageIndex = 2;
             scrollViewIndex = 0;
+            currentMagazinePageCount = counter;
             
             NSLog(@"Number of Pages = = = = = = = = %d",counter);
             
@@ -161,13 +165,12 @@
     isNavigationVisible = YES;
     loadedPercentage = 0;
     
+
     pageScrollView = [[UIScrollView alloc] init];
     pageScrollView.frame = CGRectMake(0, 0, 1024, 768-TOP_VIEW_HEIGHT); // TODO
     pageScrollView.pagingEnabled = YES;
     pageScrollView.backgroundColor = [UIColor clearColor];
-    pageScrollView.delegate = self;
-    pageScrollView.minimumZoomScale = 1.0;
-    pageScrollView.maximumZoomScale = 2.0;
+
     
     [self.view addSubview: pageScrollView];
     
@@ -315,10 +318,15 @@
 
 - (UIView*) viewForZoomingInScrollView: (UIScrollView *) scrollView {
     
-  return (UIView*) [pageViews objectAtIndex:scrollViewIndex];
-    
+    return [scrollView viewWithTag:VIEW_FOR_ZOOM_TAG];
 }
 
+
+
+//- (void) scrollViewDidZoom:(UIScrollView *)scrollView {
+//    UIView * view = (UIView*) [pageViews objectAtIndex:0];
+//    pageScrollView.contentSize = view.bounds.size;
+//}
 
 
 // any offset changes
@@ -542,6 +550,9 @@
         UIImage * secondImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]]; 
         
         ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 723) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 723)];
+        
+        newPageView.delegate = self;
+        newPageView.parentOfImages.tag = VIEW_FOR_ZOOM_TAG;
         
         //pageContentWidth += newPageView.frame.size.width;
         

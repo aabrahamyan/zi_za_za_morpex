@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReaderView : UIView {
+@interface ReaderView : UIScrollView {
     
     
     
@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIImage * leftImage;
 @property (nonatomic, strong) UIImage * rightImage;
 @property (nonatomic, assign) NSInteger zoomLevel;
+@property (nonatomic, strong) UIView * parentOfImages;
 
 
 - (id) initWithFrameAndImages:(CGRect) frame withLeftImageView: (UIImage *) leftImageView withRightImageView: (UIImage *) rightImageView withLeftFrame:  (CGRect) leftFrame withRightFrame: (CGRect) rightFrame;

@@ -10,6 +10,8 @@
 #import "ResponseTrackerDelegate.h" 
 #import "SDImageCacheDelegate.h"
 
+
+
 @interface ReadViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate, ResponseTrackerDelegate, SDImageCacheDelegate> {
 
     NSMutableDictionary * pageImages;
