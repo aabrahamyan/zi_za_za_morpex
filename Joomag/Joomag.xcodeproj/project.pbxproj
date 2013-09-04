@@ -116,6 +116,9 @@
 		5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EEE17BBC006008E4865 /* ReadViewController.m */; };
 		5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */; };
 		5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */; };
+		5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton.png */; };
+		5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton.png */; };
+		5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -296,6 +299,9 @@
 		5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController_iPad.h; sourceTree = "<group>"; };
 		5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController_iPad.m; sourceTree = "<group>"; };
 		5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
+		5AF9789C17D758E2008FA0C2 /* faceBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBookButton.png; sourceTree = "<group>"; };
+		5AF9789D17D758E2008FA0C2 /* joomagButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joomagButton.png; sourceTree = "<group>"; };
+		5AF9789E17D758E2008FA0C2 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +410,9 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5AF9789C17D758E2008FA0C2 /* faceBookButton.png */,
+				5AF9789D17D758E2008FA0C2 /* joomagButton.png */,
+				5AF9789E17D758E2008FA0C2 /* twitterButton.png */,
 				5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */,
 				5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */,
 				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */,
@@ -803,6 +812,9 @@
 				5A7AFCC417C0F0FF00380CBD /* searchTabBarClose@2x.png in Resources */,
 				5A7AFCC617C0FC6B00380CBD /* searchBarBg@2x.png in Resources */,
 				5A7AFCC817C0FE7600380CBD /* searchBarClose@2x.png in Resources */,
+				5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */,
+				5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */,
+				5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

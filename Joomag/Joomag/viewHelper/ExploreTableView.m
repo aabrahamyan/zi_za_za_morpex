@@ -36,7 +36,7 @@
 - (void)reloadExploreTable {
     //NSLog(@"TABEL: %@", [MainDataHolder getInstance].categoriesList);
     data = [MainDataHolder getInstance].categoriesList;
-    NSLog(@"TABEL: %@", [[data objectAtIndex:0] objectForKey:@"cats"]);
+    //NSLog(@"TABEL: %@", [[data objectAtIndex:0] objectForKey:@"cats"]);
     [self reloadData];
 }
 

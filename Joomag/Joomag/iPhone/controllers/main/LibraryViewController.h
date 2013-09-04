@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LibraryViewController : UIViewController
-
+@interface LibraryViewController : UIViewController {
+    
+@protected
+    UIView   *topBar;
+    UILabel  *topBarTitleLabel;
+    UIView   *filterLabels;
+    UIView   *loginContainer;
+    UILabel  *loginText;
+    UIButton *joomagButton;
+    UILabel  *orLabel;
+    UIButton *fbButton;
+    UIButton *twitterButton;
+}
 @end
