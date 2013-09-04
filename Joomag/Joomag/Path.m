@@ -1,10 +1,4 @@
-//
-//  Path.m
-//  zoomdemo
-//
-//  Created by Michael Heyeck on 3/10/10.
-//  Copyright 2010 Fair Oaks Labs, Inc.. All rights reserved.
-//
+
 
 #import "Path.h"
 
