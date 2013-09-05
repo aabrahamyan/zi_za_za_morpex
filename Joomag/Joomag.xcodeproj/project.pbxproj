@@ -119,6 +119,8 @@
 		5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton.png */; };
 		5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton.png */; };
+		5AFDB71817D898420089EB37 /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71717D898420089EB37 /* DatePicker.m */; };
+		5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -302,6 +304,10 @@
 		5AF9789C17D758E2008FA0C2 /* faceBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBookButton.png; sourceTree = "<group>"; };
 		5AF9789D17D758E2008FA0C2 /* joomagButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joomagButton.png; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
+		5AFDB71617D898420089EB37 /* DatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePicker.h; sourceTree = "<group>"; };
+		5AFDB71717D898420089EB37 /* DatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePicker.m; sourceTree = "<group>"; };
+		5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLibScrollView.h; sourceTree = "<group>"; };
+		5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLibScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,6 +671,10 @@
 				5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */,
 				2CCFC1A517CF4A25007AE624 /* ReaderView.h */,
 				2CCFC1A617CF4A25007AE624 /* ReaderView.m */,
+				5AFDB71617D898420089EB37 /* DatePicker.h */,
+				5AFDB71717D898420089EB37 /* DatePicker.m */,
+				5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */,
+				5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */,
 			);
 			path = viewHelper;
 			sourceTree = "<group>";
@@ -885,6 +895,8 @@
 				2CDAAE6217D71DAF00EFF968 /* Path.m in Sources */,
 				2CDAAE6317D71DAF00EFF968 /* PathGroup.m in Sources */,
 				2CDAAE6617D71DE300EFF968 /* TiledView.m in Sources */,
+				5AFDB71817D898420089EB37 /* DatePicker.m in Sources */,
+				5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
