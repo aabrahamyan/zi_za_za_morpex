@@ -17,6 +17,7 @@
 #import "UIImageView+WebCache.h"
 //#import "AFImageRequestOperation.h"
 #import "ReaderView.h"  
+#import "TiledView.h"
 
 
 
@@ -321,6 +322,15 @@
     return [scrollView viewWithTag:VIEW_FOR_ZOOM_TAG];
 }
 
+- (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
+    
+    TiledView * tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];
+    
+// TODO: Enable for drawing bigger image
+//    [scrollView addSubview:tlView];
+//    [tlView.layer setNeedsDisplay];
+
+}
 
 
 //- (void) scrollViewDidZoom:(UIScrollView *)scrollView {

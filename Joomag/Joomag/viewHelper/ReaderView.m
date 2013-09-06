@@ -7,6 +7,7 @@
 //
 
 #import "ReaderView.h"
+#import "TiledView.h"
 
 @implementation ReaderView
 
@@ -38,9 +39,6 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO; 
         
-        //self.leftImageView.frame = CGRectMake(0, 0, self.leftImageView.frame.size.width, self.leftImageView.frame.size.height);
-        
-        //self.rightImageView.frame = CGRectMake(self.leftImageView.frame.size.width, 0, self.rightImageView.frame.size.width, self.rightImageView.frame.size.height);
 
         self.frame = frame;        
         
@@ -52,6 +50,8 @@
         [self.parentOfImages addSubview:self.rightImageView];
         
         [self addSubview:self.parentOfImages];
+        
+        
         
     }
     

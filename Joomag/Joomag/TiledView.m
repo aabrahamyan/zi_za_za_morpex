@@ -26,7 +26,11 @@
 {
     if (self = [super initWithFrame:frame])
 	{
-        // Initialization code
+        CATiledLayer * tiledLayer = (CATiledLayer *)[self layer];
+        //tiledLayer.levelsOfDetail = 4;
+        //tiledLayer.levelsOfDetailBias = 4;
+        tiledLayer.tileSize = CGSizeMake(500.0, 500.0);
+        
     }
     return self;
 }
@@ -47,9 +51,11 @@
 {
 	// Fetch clip box in *view* space; context's CTM is preconfigured for view space->tile space transform
 	CGRect box = CGContextGetClipBoundingBox(context);
-	
+	//box.size.width = 500;
+    //box.size.height = 500;
 	// Calculate tile index
 	CGFloat contentsScale = [layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
+
 	CGSize tileSize = [(CATiledLayer*)layer tileSize];
 	CGFloat x = box.origin.x * contentsScale / tileSize.width;
 	CGFloat y = box.origin.y * contentsScale / tileSize.height;
@@ -62,21 +68,7 @@
 	// Rendering the paths
 	CGContextSaveGState(context);
 	CGContextConcatCTM(context, [self transformForTile:tile]);
-	NSArray* pathGroups = [self pathGroupsForTile:tile];
-	for (PathGroup* pg in pathGroups)
-	{
-		CGContextSaveGState(context);
-		
-		CGContextConcatCTM(context, pg.modelTransform);
-		
-		for (Path* p in pg.paths)
-		{
-			[p renderToContext:context];
-		}
-		
-		CGContextRestoreGState(context);
-	}
-	CGContextRestoreGState(context);
+
 	
 	// Render label (Setup)
 	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
@@ -92,6 +84,7 @@
 							 box.origin.y + [font pointSize],
 							 [s cStringUsingEncoding:NSMacOSRomanStringEncoding],
 							 [s lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding]);
+     
 }
 
 #pragma mark Extension methods
