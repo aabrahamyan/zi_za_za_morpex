@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatePicker.h"
+#import "MyLibScrollView.h"
 
 @interface LibraryViewController : UIViewController {
     
@@ -20,5 +22,7 @@
     UILabel  *orLabel;
     UIButton *fbButton;
     UIButton *twitterButton;
+    DatePicker *datePicker;
+    MyLibScrollView *scrollView;
 }
 @end

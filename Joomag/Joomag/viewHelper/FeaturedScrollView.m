@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
+@property (nonatomic, strong) NSMutableArray *cropImages;
+
 @end
 
 
@@ -44,6 +46,8 @@
         
         // Set up the array to hold the views for each page
         self.pageViews = [[NSMutableArray alloc] init];
+        
+        self.cropImages = [[NSMutableArray alloc] init];
         
         // Populate Array With NSNull
         for (NSInteger i = 0; i < 10; ++i) { // TODO: entriesLength
@@ -84,6 +88,9 @@
         for (UIImageView *subview in [self subviews]) {
             
             if ([subview isKindOfClass:[UIImageView class]] && subview.tag > 0) {
+                
+                //NSLog(@"image: %@", [self.cropImages objectAtIndex: subview.tag]);
+                
                 CGRect frame = self.frame;
                 
                 if (iOrientation == UIDeviceOrientationLandscapeLeft) {
@@ -167,7 +174,7 @@
 //	startIconDownload:forIndexPath:
 // -------------------------------------------------------------------------------
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
-    
+
     UIImageView *newPageView = [[UIImageView alloc] init];
     
     //    // Display the newly loaded image
@@ -175,44 +182,24 @@
     //                placeholderImage: [UIImage imageNamed: @"placeholder.png"]
     //                         options: SDWebImageProgressiveDownload];
     
+//    __block int index = page;
     
     // Here we use the new provided setImageWithURL: method to load the web image
     [newPageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinImageURL]
                 placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                          success:^(UIImage *image, BOOL dummy) {
-                             //                                if (image) {
-                             //
-                             //                                    CGSize imageSize = image.size;
-                             //                                    CGFloat width = imageSize.width;
-                             //                                    CGFloat height = imageSize.height;
-                             //
-                             //                                    NSLog(@"width: %f height: %f", width, height);
-                             //
-                             //                                }
+                                if (image) {
+                                    // imageSize = image.size;
+                                    // [self cropImageWhitOriginalSize: image andImageView: imageView];
+                                    
+                                    //[self.cropImages insertObject: image atIndex: 2];
+                                    [self.cropImages addObject: image];
+                                }
                          }
                          failure:^(NSError *error) {
                              
                          }
      ];
-    
-    //    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    //
-    //    if (iOrientation == UIDeviceOrientationLandscapeLeft) {
-    //        //crop the image
-    //        CGRect cropRect         = CGRectMake(0, 0, 1536, 900);
-    //        CGImageRef imageRef     = CGImageCreateWithImageInRect([newPageView.image CGImage], cropRect);
-    //        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
-    //        CGImageRelease(imageRef);
-    //        [newPageView setImage:croppedAvatar];
-    //
-    //    } else if (UIDeviceOrientationPortrait) {
-    //        //crop the image
-    //        CGRect cropRect         = CGRectMake(0, 0, (1536 / 2), 900);
-    //        CGImageRef imageRef     = CGImageCreateWithImageInRect([newPageView.image CGImage], cropRect);
-    //        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
-    //        CGImageRelease(imageRef);
-    //        [newPageView setImage:croppedAvatar];
-    //    }
     
     CGRect frame = self.bounds;
     frame.origin.x = frame.size.width * page;
@@ -225,6 +212,46 @@
     
     
     [self.pageViews replaceObjectAtIndex: page withObject: newPageView];
+}
+
+- (void) cropImagesForPortraitMode {
+    NSLog(@"cropImagesForPortraitMode");
+    
+    
+    
+    //UIImage *image = [self.cropImages objectAtIndex:subview.tag-1];
+    
+    //if (image) {
+    //    NSLog(@"image: %@",  image);
+    //}
+    
+    //[self cropImageWhitOriginalSize: [self.cropImages objectAtIndex:subview.tag] andImageView: subview];
+}
+
+- (void)cropImageWhitOriginalSize: (UIImage *)image andImageView: (UIImageView *)imageView {
+    NSLog(@"width: %f height: %f", image.size.width, image.size.height);
+    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (iOrientation == UIDeviceOrientationLandscapeLeft) {
+        
+        [imageView setImage: image];
+        
+        //crop the image
+//        CGRect cropRect         = CGRectMake(0, 0, 1536, 900);
+//        CGImageRef imageRef     = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
+//        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
+//        CGImageRelease(imageRef);
+//        [imageView setImage:croppedAvatar];
+        
+    } else if (UIDeviceOrientationPortrait) {
+        //crop the image
+        CGRect cropRect         = CGRectMake(0, 0, (1536 / 2), 900);
+        CGImageRef imageRef     = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
+        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
+        CGImageRelease(imageRef);
+        [imageView setImage:croppedAvatar];
+    }
+
 }
 
 #pragma mark - UIScrollViewDelegate

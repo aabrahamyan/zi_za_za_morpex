@@ -103,6 +103,17 @@
     [twitterButton addTarget:self action:@selector(loginWithTwitter) forControlEvents:UIControlEventTouchUpInside];
     
     [loginContainer addSubview: twitterButton];
+    
+    
+    //---------------------------- DATE PICKER ------------------------------------
+    datePicker = [[DatePicker alloc] initWithFrame: CGRectMake(20, 160, 60, 390)];
+    
+    [self.view addSubview: datePicker];
+    
+    //---------------------------- Scroll View ------------------------------------
+    scrollView = [[MyLibScrollView alloc] init];
+    
+    [self.view addSubview: scrollView];
 }
 
 
