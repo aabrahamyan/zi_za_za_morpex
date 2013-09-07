@@ -52,7 +52,7 @@
             filterLabelsFrame = CGRectMake(800, 0, 300, 30);
             loginContainerFrame = CGRectMake(0, 44, 1024, 90);
             loginTextFrame = CGRectMake(70, 10, 350, 70);
-            joomagButtonFrame = CGRectMake(520, 30, 200, 35);
+            joomagButtonFrame = CGRectMake(510, 30, 200, 35);
             orLabelFrame = CGRectMake(720, 30, 20, 30);
             fbButtonFrame = CGRectMake(750, 5, 200, 35);
             twitterButtonFrame = CGRectMake(750, 50, 200, 35);

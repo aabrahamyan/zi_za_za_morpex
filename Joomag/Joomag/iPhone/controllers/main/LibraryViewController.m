@@ -106,7 +106,8 @@
     
     
     //---------------------------- DATE PICKER ------------------------------------
-    datePicker = [[DatePicker alloc] initWithFrame: CGRectMake(20, 160, 60, 390)];
+    datePicker = [[DatePickerView alloc] initWithFrame: CGRectMake(20, 160, 50, 520)];
+    datePicker.delegate = self;
     
     [self.view addSubview: datePicker];
     
@@ -206,6 +207,16 @@
 
 - (void)loginWithFaceBook {
     NSLog(@"Login With FaceBook");
+}
+
+#pragma mark - DatePicker
+
+- (void)didDatePckerYearChanged:(NSInteger)year {
+    NSLog(@"year: %i", year);
+}
+
+- (void)didDatePckerMonthChanged: (NSString *) month {
+    NSLog(@"month: %@", month);
 }
 
 - (void)didReceiveMemoryWarning {

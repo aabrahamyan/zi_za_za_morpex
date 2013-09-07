@@ -74,6 +74,9 @@
 		2CDAAE6617D71DE300EFF968 /* TiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDAAE6517D71DE300EFF968 /* TiledView.m */; };
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
+		5A1B583517DAA0410087214F /* YearTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583417DAA0410087214F /* YearTableView.m */; };
+		5A1B583817DAA0540087214F /* MonthTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583717DAA0540087214F /* MonthTableView.m */; };
+		5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583A17DAA1940087214F /* DatePickerView.m */; };
 		5A6C94B717C770E400B7DED0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */; };
 		5A6C94B817C770E400B7DED0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A617C770E400B7DED0 /* SDImageCache.m */; };
 		5A6C94B917C770E400B7DED0 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94AA17C770E400B7DED0 /* SDWebImageDecoder.m */; };
@@ -119,7 +122,6 @@
 		5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton.png */; };
 		5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton.png */; };
-		5AFDB71817D898420089EB37 /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71717D898420089EB37 /* DatePicker.m */; };
 		5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +228,12 @@
 		2CE40CF617B27C94000097E2 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		2CE40CF717B27C94000097E2 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A1B583317DAA0410087214F /* YearTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearTableView.h; sourceTree = "<group>"; };
+		5A1B583417DAA0410087214F /* YearTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearTableView.m; sourceTree = "<group>"; };
+		5A1B583617DAA0540087214F /* MonthTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthTableView.h; sourceTree = "<group>"; };
+		5A1B583717DAA0540087214F /* MonthTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthTableView.m; sourceTree = "<group>"; };
+		5A1B583917DAA1930087214F /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
+		5A1B583A17DAA1940087214F /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		5A6C94A317C770E400B7DED0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		5A6C94A517C770E400B7DED0 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -304,8 +312,6 @@
 		5AF9789C17D758E2008FA0C2 /* faceBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBookButton.png; sourceTree = "<group>"; };
 		5AF9789D17D758E2008FA0C2 /* joomagButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joomagButton.png; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
-		5AFDB71617D898420089EB37 /* DatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePicker.h; sourceTree = "<group>"; };
-		5AFDB71717D898420089EB37 /* DatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePicker.m; sourceTree = "<group>"; };
 		5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLibScrollView.h; sourceTree = "<group>"; };
 		5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLibScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -631,6 +637,53 @@
 			name = rendering;
 			sourceTree = "<group>";
 		};
+		5A1B582C17DA9F260087214F /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				5A1B583917DAA1930087214F /* DatePickerView.h */,
+				5A1B583A17DAA1940087214F /* DatePickerView.m */,
+				5A1B583317DAA0410087214F /* YearTableView.h */,
+				5A1B583417DAA0410087214F /* YearTableView.m */,
+				5A1B583617DAA0540087214F /* MonthTableView.h */,
+				5A1B583717DAA0540087214F /* MonthTableView.m */,
+			);
+			name = DatePicker;
+			sourceTree = "<group>";
+		};
+		5A1B582D17DA9F3A0087214F /* FeaturedView */ = {
+			isa = PBXGroup;
+			children = (
+				2CCFC1A517CF4A25007AE624 /* ReaderView.h */,
+				2CCFC1A617CF4A25007AE624 /* ReaderView.m */,
+				5ABEC45717B0016600E2EAEA /* FeaturedScrollView.h */,
+				5ABEC45817B0016600E2EAEA /* FeaturedScrollView.m */,
+				5ABEC45A17B0017C00E2EAEA /* FeaturedDetailsView.h */,
+				5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */,
+			);
+			name = FeaturedView;
+			sourceTree = "<group>";
+		};
+		5A1B582E17DA9F570087214F /* ExploreView */ = {
+			isa = PBXGroup;
+			children = (
+				5ABEC45417B0013800E2EAEA /* ExploreScrollView.h */,
+				5ABEC45517B0013800E2EAEA /* ExploreScrollView.m */,
+				5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */,
+				5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */,
+			);
+			name = ExploreView;
+			sourceTree = "<group>";
+		};
+		5A1B582F17DA9F850087214F /* MyLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				5A1B582C17DA9F260087214F /* DatePicker */,
+				5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */,
+				5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */,
+			);
+			name = MyLibrary;
+			sourceTree = "<group>";
+		};
 		5A6C94A217C770E400B7DED0 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,20 +714,9 @@
 		5AA1A73717AD45C100EADCA3 /* viewHelper */ = {
 			isa = PBXGroup;
 			children = (
-				5ABEC45717B0016600E2EAEA /* FeaturedScrollView.h */,
-				5ABEC45817B0016600E2EAEA /* FeaturedScrollView.m */,
-				5ABEC45A17B0017C00E2EAEA /* FeaturedDetailsView.h */,
-				5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */,
-				5ABEC45417B0013800E2EAEA /* ExploreScrollView.h */,
-				5ABEC45517B0013800E2EAEA /* ExploreScrollView.m */,
-				5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */,
-				5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */,
-				2CCFC1A517CF4A25007AE624 /* ReaderView.h */,
-				2CCFC1A617CF4A25007AE624 /* ReaderView.m */,
-				5AFDB71617D898420089EB37 /* DatePicker.h */,
-				5AFDB71717D898420089EB37 /* DatePicker.m */,
-				5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */,
-				5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */,
+				5A1B582D17DA9F3A0087214F /* FeaturedView */,
+				5A1B582E17DA9F570087214F /* ExploreView */,
+				5A1B582F17DA9F850087214F /* MyLibrary */,
 			);
 			path = viewHelper;
 			sourceTree = "<group>";
@@ -895,8 +937,10 @@
 				2CDAAE6217D71DAF00EFF968 /* Path.m in Sources */,
 				2CDAAE6317D71DAF00EFF968 /* PathGroup.m in Sources */,
 				2CDAAE6617D71DE300EFF968 /* TiledView.m in Sources */,
-				5AFDB71817D898420089EB37 /* DatePicker.m in Sources */,
 				5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */,
+				5A1B583517DAA0410087214F /* YearTableView.m in Sources */,
+				5A1B583817DAA0540087214F /* MonthTableView.m in Sources */,
+				5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DatePicker.h"
+#import "DatePickerView.h"
 #import "MyLibScrollView.h"
 
-@interface LibraryViewController : UIViewController {
+@interface LibraryViewController : UIViewController <DatePickerDelegate> {
     
 @protected
     UIView   *topBar;
@@ -22,7 +22,7 @@
     UILabel  *orLabel;
     UIButton *fbButton;
     UIButton *twitterButton;
-    DatePicker *datePicker;
+    DatePickerView *datePicker;
     MyLibScrollView *scrollView;
 }
 @end
