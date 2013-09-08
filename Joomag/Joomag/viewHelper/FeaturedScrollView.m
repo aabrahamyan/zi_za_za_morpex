@@ -8,19 +8,17 @@
 
 #import "FeaturedScrollView.h"
 #import "MainDataHolder.h"
-//#import "ImageDownloader.h"
 #import "MagazinRecord.h"
 #import "UIImageView+WebCache.h"
 
 @interface FeaturedScrollView () {
     CGFloat pageWidth;
     NSInteger entriesLength;
+    bool didDataExist;
 }
 
 // the set of ImageDownloader objects for each app
-@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) NSMutableArray *pageViews;
-
 @property (nonatomic, strong) NSMutableArray *cropImages;
 
 @end
@@ -49,30 +47,31 @@
         
         self.cropImages = [[NSMutableArray alloc] init];
         
-        // Populate Array With NSNull
-        for (NSInteger i = 0; i < 10; ++i) { // TODO: entriesLength
-            [self.pageViews addObject:[NSNull null]];
-        }
-        
         self.currentPage = 0;
+        
+        didDataExist = NO;
     }
     
     return self;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    //NSLog(@"layoutSubviews");
-}
-
 - (void) redrawData {
-    NSLog(@"redrawData");
+
     if([[MainDataHolder getInstance].testData count] != 0) {
         
-        // Get Data
-        self.entries = [MainDataHolder getInstance].testData;
-        entriesLength = self.entries.count;
+        if (!didDataExist) {
+            
+            // Populate Array With NSNull
+            for (NSInteger i = 0; i < [[MainDataHolder getInstance].testData count]; ++i) {
+                [self.pageViews addObject:[NSNull null]];
+            }
+            
+            // Get Data
+            self.entries = [MainDataHolder getInstance].testData;
+            entriesLength = self.entries.count;
+            
+            didDataExist = YES;
+        }
         
         // Get Scroll View Size
         CGSize pagesScrollViewSize = self.frame.size;
@@ -81,16 +80,12 @@
         // Set up the content size of the scroll view
         self.contentSize = CGSizeMake(pageWidth * entriesLength, pagesScrollViewSize.height);
         
-        [self loadVisiblePage: self.currentPage];
-        
         UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
         
         for (UIImageView *subview in [self subviews]) {
             
             if ([subview isKindOfClass:[UIImageView class]] && subview.tag > 0) {
-                
-                //NSLog(@"image: %@", [self.cropImages objectAtIndex: subview.tag]);
-                
+
                 CGRect frame = self.frame;
                 
                 if (iOrientation == UIDeviceOrientationLandscapeLeft) {
@@ -105,6 +100,8 @@
                 subview.frame = frame;
             }
         }
+        
+        [self loadVisiblePage: self.currentPage];
     }
 }
 
@@ -153,6 +150,9 @@
     
     if ((NSNull*)pageView == [NSNull null]) {
         [self startIconDownload: mRecord forIndexPath: page];
+    } else {
+        [self cropImageWhitOriginalSize: ((UIImage *)[self.cropImages objectAtIndex: page])
+                           andImageView: ((UIImageView *)[self.pageViews objectAtIndex: page])];
     }
 }
 
@@ -176,24 +176,16 @@
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
 
     UIImageView *newPageView = [[UIImageView alloc] init];
-    
-    //    // Display the newly loaded image
-    //    [newPageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinImageURL]
-    //                placeholderImage: [UIImage imageNamed: @"placeholder.png"]
-    //                         options: SDWebImageProgressiveDownload];
-    
-//    __block int index = page;
-    
+
+    __block UIImageView *imageView = newPageView;
+
     // Here we use the new provided setImageWithURL: method to load the web image
     [newPageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinImageURL]
                 placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                          success:^(UIImage *image, BOOL dummy) {
                                 if (image) {
-                                    // imageSize = image.size;
-                                    // [self cropImageWhitOriginalSize: image andImageView: imageView];
-                                    
-                                    //[self.cropImages insertObject: image atIndex: 2];
                                     [self.cropImages addObject: image];
+                                    [self cropImageWhitOriginalSize: image andImageView: imageView];
                                 }
                          }
                          failure:^(NSError *error) {
@@ -210,42 +202,17 @@
     
     [self addSubview: newPageView];
     
-    
     [self.pageViews replaceObjectAtIndex: page withObject: newPageView];
 }
 
-- (void) cropImagesForPortraitMode {
-    NSLog(@"cropImagesForPortraitMode");
-    
-    
-    
-    //UIImage *image = [self.cropImages objectAtIndex:subview.tag-1];
-    
-    //if (image) {
-    //    NSLog(@"image: %@",  image);
-    //}
-    
-    //[self cropImageWhitOriginalSize: [self.cropImages objectAtIndex:subview.tag] andImageView: subview];
-}
-
 - (void)cropImageWhitOriginalSize: (UIImage *)image andImageView: (UIImageView *)imageView {
-    NSLog(@"width: %f height: %f", image.size.width, image.size.height);
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
     if (iOrientation == UIDeviceOrientationLandscapeLeft) {
-        
         [imageView setImage: image];
-        
-        //crop the image
-//        CGRect cropRect         = CGRectMake(0, 0, 1536, 900);
-//        CGImageRef imageRef     = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
-//        UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
-//        CGImageRelease(imageRef);
-//        [imageView setImage:croppedAvatar];
-        
     } else if (UIDeviceOrientationPortrait) {
         //crop the image
-        CGRect cropRect         = CGRectMake(0, 0, (1536 / 2), 900);
+        CGRect cropRect         = CGRectMake(0, 0, image.size.width, 2*image.size.height);
         CGImageRef imageRef     = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
         UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
         CGImageRelease(imageRef);
@@ -255,15 +222,6 @@
 }
 
 #pragma mark - UIScrollViewDelegate
-
-// -------------------------------------------------------------------------------
-// scrollViewDidScroll:
-// any offset changes. Load the pages which are now on screen
-// -------------------------------------------------------------------------------
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-}
 
 // -------------------------------------------------------------------------------
 //	scrollViewDidEndDecelerating:
