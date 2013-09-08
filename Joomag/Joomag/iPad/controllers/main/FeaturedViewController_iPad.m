@@ -7,10 +7,8 @@
 //
 
 #import "FeaturedViewController_iPad.h"
-#import "DataHolder.h"
 
 @interface FeaturedViewController_iPad () {
-    DataHolder *dataHolder;
     CGRect detailsViewFrame, pageControlFrame, scrollViewFrame;
 }
 
@@ -20,8 +18,6 @@
 
 - (void)loadView {
     [super loadView];
-    
-    dataHolder = [DataHolder sharedData];
 }
 
 - (void)viewDidLayoutSubviews {

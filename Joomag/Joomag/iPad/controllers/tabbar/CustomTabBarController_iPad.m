@@ -42,9 +42,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
     self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
     
-    self.gearButton.frame = CGRectMake(900, 15, 20, 20);
-    self.noteButton.frame = CGRectMake(950, 15, 20, 20);
-    
     FeaturedViewController_iPad * featuredVC = [[FeaturedViewController_iPad alloc] init];
     ExploreViewController_iPad * exploreVC = [[ExploreViewController_iPad alloc] init];
     LibraryViewController_iPad * libraryVC = [[LibraryViewController_iPad alloc] init];
@@ -72,26 +69,18 @@ static CustomTabBarController_iPad * customTabBar_iPad;
  
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
-    switch(iOrientation) {
-            
-        case UIDeviceOrientationPortrait:
-            self.view.frame = CGRectMake(0, 0, 768, 1024);
-            self.backGroundView.frame = CGRectMake(0, 959, self.width, self.height);
-            break;
-            
-        case UIDeviceOrientationLandscapeLeft:
-            self.view.frame = CGRectMake(0, 0, 1024, 768);
-            self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
-            break;
-            
-        case UIDeviceOrientationLandscapeRight:
-            self.view.frame = CGRectMake(0, 0, 1024, 768);
-            self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
-            break;
-            
-        default:
-            break;
-    };
+    if (iOrientation == UIDeviceOrientationPortrait) {
+        self.view.frame = CGRectMake(0, 0, 768, 1024);
+        self.backGroundView.frame = CGRectMake(0, 959, self.width, self.height);
+        self.gearButton.frame = CGRectMake(680, 15, 20, 20);
+        self.noteButton.frame = CGRectMake(720, 15, 20, 20);
+    } else {
+        self.view.frame = CGRectMake(0, 0, 1024, 768);
+        self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
+        self.gearButton.frame = CGRectMake(900, 15, 20, 20);
+        self.noteButton.frame = CGRectMake(950, 15, 20, 20);
+    }
+    
 }
 
 - (SettingsViewController *) getSettingsViewController {
