@@ -35,7 +35,7 @@
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
     //-------------------------------- Top Bar ------------------------------------
-    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 44)];
+    topBar = [[UIView alloc] init];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
     [topBar addSubview:backgroundView];
     [topBar sendSubviewToBack: backgroundView];
@@ -52,7 +52,7 @@
     //-------------------------------- Search Botton ------------------------------------
     searchBtn = [[UIButton alloc] init];
     [searchBtn addTarget:self  action:@selector(searchHandler) forControlEvents:UIControlEventTouchDown];
-    [searchBtn setBackgroundImage: [Util imageNamedSmart:@"serachIconTopBar"] forState:UIControlStateNormal];
+    [searchBtn setBackgroundImage: [Util imageNamedSmart:@"searchIconeTopBar"] forState:UIControlStateNormal];
     searchBtn.showsTouchWhenHighlighted = YES;
     [topBar addSubview: searchBtn];
     
@@ -91,9 +91,8 @@
     [self.view addSubview:titleLabels];
     
     
-    //--------------------- Settings --------------------
+    //--------------------------- Categories Table -----------------------------
     categoriesTable = [[ExploreTableView alloc] init];
-    categoriesTable.frame = CGRectMake(1024-260, 46, 240, self.view.frame.size.height);
     
     [self.view addSubview: categoriesTable];
 }

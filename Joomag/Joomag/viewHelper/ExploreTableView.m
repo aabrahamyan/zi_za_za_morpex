@@ -67,12 +67,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    for (int i = 0; i < [self numberOfRowsInSection:0]; i++) {
+        UITableViewCell* cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    }
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
-    
+
     NSLog(@"SELECTED ROW ID : %@", [[[[data objectAtIndex:0] objectForKey:@"cats"] objectAtIndex: indexPath.row] objectForKey:@"ID"]);
-    
-    //[tableView reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
