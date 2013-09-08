@@ -85,7 +85,8 @@ static CustomTabBarController_iPad * customTabBar_iPad;
             break;
             
         case UIDeviceOrientationLandscapeRight:
-
+            self.view.frame = CGRectMake(0, 0, 1024, 768);
+            self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
             break;
             
         default:

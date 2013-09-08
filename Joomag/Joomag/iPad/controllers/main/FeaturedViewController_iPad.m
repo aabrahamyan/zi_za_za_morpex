@@ -18,10 +18,8 @@
 
 @implementation FeaturedViewController_iPad
 
-- (void)loadView { // TODO landscape
+- (void)loadView {
     [super loadView];
-    
-    //NSLog(@"FeaturedViewController_iPad:");
     
     dataHolder = [DataHolder sharedData];
 }
@@ -29,31 +27,16 @@
 - (void)viewDidLayoutSubviews {
     
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    switch(iOrientation) {
-            
-        case UIDeviceOrientationPortrait:
-            scrollViewFrame = CGRectMake(0, -20, 768, 959);
-            detailsViewFrame = CGRectMake(230, 700, 500, 200);
-            pageControlFrame = CGRectMake(0, 30, 768, 30);
-            break;
-            
-        case UIDeviceOrientationLandscapeLeft:
-            scrollViewFrame = CGRectMake(0, -20, 1024, 704);
-            detailsViewFrame = CGRectMake(490, 450, 540, 220);
-            pageControlFrame = CGRectMake(0, 30, 1024, 30);
-            break;
-            
-        case UIDeviceOrientationLandscapeRight:
-            //scrollViewFrame = CGRectMake(0, 0, dataHolder.screenHeight, dataHolder.screenWidth);
-            //[scrollView setContentSize:CGSizeMake(scrollViewFrame.size.width*11, dataHolder.screenWidth)];
-            //detailsViewFrame = CGRectMake(500, 430, 500, 200);
-            //pageControlFrame = CGRectMake(0, 30, 1024, 30);
-            break;
-            
-        default:
-            break;
-    };
+
+    if (iOrientation == UIDeviceOrientationPortrait) {
+        scrollViewFrame = CGRectMake(0, -20, 768, 959);
+        detailsViewFrame = CGRectMake(230, 700, 500, 200);
+        pageControlFrame = CGRectMake(0, 30, 768, 30);
+    } else {
+        scrollViewFrame = CGRectMake(0, -20, 1024, 704);
+        detailsViewFrame = CGRectMake(490, 450, 540, 220);
+        pageControlFrame = CGRectMake(0, 30, 1024, 30);
+    }
     
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;

@@ -88,12 +88,12 @@
 
                 CGRect frame = self.frame;
                 
-                if (iOrientation == UIDeviceOrientationLandscapeLeft) {
-                    self.contentOffset = CGPointMake(self.currentPage*1024, 0);
-                    frame.origin.x = 1024 * (subview.tag-1);
-                } else if (UIDeviceOrientationPortrait) {
+                if (iOrientation == UIDeviceOrientationPortrait) {
                     self.contentOffset = CGPointMake(self.currentPage*768, 0);
                     frame.origin.x = 768 * (subview.tag-1);
+                } else {
+                    self.contentOffset = CGPointMake(self.currentPage*1024, 0);
+                    frame.origin.x = 1024 * (subview.tag-1);
                 }
                 
                 frame.origin.y = 0.0f;
@@ -208,15 +208,15 @@
 - (void)cropImageWhitOriginalSize: (UIImage *)image andImageView: (UIImageView *)imageView {
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
-    if (iOrientation == UIDeviceOrientationLandscapeLeft) {
-        [imageView setImage: image];
-    } else if (UIDeviceOrientationPortrait) {
+    if (iOrientation == UIDeviceOrientationPortrait) {
         //crop the image
         CGRect cropRect         = CGRectMake(0, 0, image.size.width, 2*image.size.height);
         CGImageRef imageRef     = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
         UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
         CGImageRelease(imageRef);
         [imageView setImage:croppedAvatar];
+    } else {
+        [imageView setImage: image];
     }
 
 }
