@@ -50,6 +50,12 @@
     int secondPageIndex;
     int scrollViewIndex;
     int currentMagazinePageCount;
+    int globalPage;
+    int scrollViewInd1;
+    int scrollViewInd2;
+    int oldScrollViewIndex;
+    
+    TiledView * tlView;
 }
 
 @end
@@ -254,8 +260,10 @@
     
     [navScrollViewContainer addSubview: progressView];
     
+  
     // [self startDownloadMagazine: 0]; //TODO set scroll View current page
 }
+
 
 - (void)loadView {
     [super loadView];
@@ -327,24 +335,52 @@
 
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
-    if(scrollView.tag != 7658943) {
-        TiledView * tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];
-        tlView.pageIdLeft = scrollViewIndex+1;
-        tlView.pageIdRight = scrollViewIndex+2;
+    if(scrollView.tag != 7658943 && scale > 1.0) {
+        tlView = [[TiledView alloc] initWithFrame:CGRectMake(10, -16, 3000, 2000)];
+        
+        /*if(globalPage == 0) {
+            scrollViewInd1 = 1;
+            scrollViewInd2 = 2;
+        } else if (globalPage == 1) {
+            scrollViewInd1 = 3;
+            scrollViewInd2 = 4;
+        } else {
+            scrollViewInd1 = globalPage + globalPage + 1;
+            scrollViewInd2 = globalPage + globalPage + 2;
+        } */
+        
+        if(scrollViewIndex == 0) {
+            scrollViewInd1 = 1;
+            scrollViewInd2 = 2;
+        }
+        
+        oldScrollViewIndex = scrollViewIndex;
+        
+        scrollViewInd1 = scrollViewIndex + scrollViewIndex + 1;
+        scrollViewInd2 = scrollViewIndex + scrollViewIndex + 2;
+        
+        tlView.pageIdLeft = scrollViewInd1;
+        tlView.pageIdRight = scrollViewInd2;
+        
+        //tlView.pageIdLeft = scrollViewIndex+1;
+        //tlView.pageIdRight = scrollViewIndex+2;
         tlView.magazineId = self.currentMagazineId;
     
         // TODO: Enable for drawing bigger image
         [scrollView addSubview:tlView];
         [tlView.layer setNeedsDisplay];
+    } else if (scale == 1.0) {
+        [tlView removeFromSuperview];
+        scrollViewIndex = oldScrollViewIndex;
     }
-
 }
 
 
-//- (void) scrollViewDidZoom:(UIScrollView *)scrollView {
+- (void) scrollViewDidZoom:(UIScrollView *)scrollView {
 //    UIView * view = (UIView*) [pageViews objectAtIndex:0];
 //    pageScrollView.contentSize = view.bounds.size;
-//}
+    tlView.hidden = YES;
+}
 
 
 // any offset changes
@@ -544,7 +580,7 @@
         //UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
         
         
-        
+        globalPage = page;
         if(page == 0) {
             firstPageIndex = 1;
             secondPageIndex = 2;

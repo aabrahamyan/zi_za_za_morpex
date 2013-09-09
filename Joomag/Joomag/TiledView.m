@@ -35,10 +35,25 @@
         mappingMatrix = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"00", @"40",
                          @"10", @"50", @"20",@"60",@"01",@"41",@"11",@"51",@"21",@"61",@"31",@"71",@"02",@"42",@"12",@"52",@"22",@"62",@"32",@"72",@"03",@"43",@"13",@"53",@"23",@"63",@"33",@"73",@"04",@"44",@"14",@"54",@"24",@"64",@"34",@"74",@"05",@"45",@"15",@"55",@"25",@"65",@"35",@"75",nil];
         
+        //UIPinchGestureRecognizer * pincher = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didZoom:)];
+        
+        //[self addGestureRecognizer:pincher];
+        
     }
     return self;
 }
 
+- (void) didZoom:(UIPinchGestureRecognizer *)recognizer { 
+    
+    //NSLog(@"Pinch scale: %f", recognizer.scale);
+    //CGAffineTransform transform = CGAffineTransformMakeScale(recognizer.scale, recognizer.scale);
+
+    //self.transform = transform;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
 
 
 
@@ -54,8 +69,11 @@
 	CGFloat contentsScale = [layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
 
 	CGSize tileSize = [(CATiledLayer*)layer tileSize];
+
 	CGFloat x = box.origin.x * contentsScale / tileSize.width;
 	CGFloat y = box.origin.y * contentsScale / tileSize.height;
+    
+    
     
     if(x == 8 || y == 6) {
         return;
