@@ -86,12 +86,13 @@
     [self.view addSubview: noBookMarksContainer];
     
     //------------------------ Text Labels In Login Container -------------------------
-    UILabel *noBookMarksText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 768, 50)];
+    UILabel *noBookMarksText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 50)];
     noBookMarksText.backgroundColor = [UIColor clearColor];
     noBookMarksText.textColor = [UIColor whiteColor];
     noBookMarksText.font = [UIFont systemFontOfSize:14.0];
     noBookMarksText.numberOfLines = 2;
     noBookMarksText.textAlignment = NSTextAlignmentCenter;
+    
     noBookMarksText.text = @"Looks you don't have any bookmarks. Open an issue and tap on to create one"; // TODO set bookMark Image
     
     [noBookMarksContainer addSubview: noBookMarksText];
@@ -104,7 +105,7 @@
     }
     
     //---------------------------- Scroll View ------------------------
-    bookMarksScrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(114, 100, BM_WIDTH, 850)];
+    bookMarksScrollView = [[UIScrollView alloc] init];
     bookMarksScrollView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview: bookMarksScrollView];
@@ -116,9 +117,7 @@
     MainDataHolder *dataHolder = [MainDataHolder getInstance]; // TODO: Set bookMarks Data
     
     for (int i = 0; i < dataHolder.testData.count; i++) {
-        
-        // BookMarkView *bookMark = [[BookMarkView alloc] initWithFrame: CGRectMake(0, yPos, BM_WIDTH, BM_HEIGHT)];
-        
+
         MagazinRecord *mRec = [dataHolder.testData objectAtIndex: i];
         
         BookMarkView *bookMark = [[BookMarkView alloc] initWithFrame: CGRectMake(0, yPos, BM_WIDTH, BM_HEIGHT)
@@ -137,18 +136,21 @@
     }
     
     bookMarksScrollView.contentSize = CGSizeMake(BM_WIDTH, yPos);
-
+    
+    isOpen = NO;
 }
 
 - (void) animateUpAndDown: (BOOL) isUP {
     
     if(isUP) {
+        isOpen = YES;
         [UIView beginAnimations:@"popingUP" context:nil];
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         [UIView setAnimationDuration:1.0];
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
     } else {
+        isOpen = NO;
         [UIView beginAnimations:@"popingUP" context:nil];
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView setAnimationDuration:1.0];
