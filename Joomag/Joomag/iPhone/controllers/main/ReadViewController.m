@@ -379,7 +379,7 @@
 - (void) scrollViewDidZoom:(UIScrollView *)scrollView {
 //    UIView * view = (UIView*) [pageViews objectAtIndex:0];
 //    pageScrollView.contentSize = view.bounds.size;
-    tlView.hidden = YES;
+      tlView.hidden = YES;
 }
 
 
@@ -416,7 +416,7 @@
     // request image
 
     
-    //__block UIImageView *item = itemImage;
+    __block UIImageView *item = itemImage;
     //__block UIImageView *page = pageImage;
     
     __block int numberito = number;
@@ -445,6 +445,16 @@
             //if([pageImages count] > 2) {
                 [self loadVisiblePages];
            // }
+            
+            item.image = image;
+            item.frame = CGRectMake(xItemPos, 10, itemWidth, 90);
+            itemContentWidth = xItemPos + itemWidth;
+            
+            [navScrollView addSubview: item];
+            
+             xItemPos += itemWidth;
+            
+            navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
         }
         
         } failure:^(NSError *error) {
