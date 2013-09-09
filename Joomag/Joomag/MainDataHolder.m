@@ -16,6 +16,7 @@ static MainDataHolder * mainDataHolder;
     if((self = [super init])) {
         // Init data here
         self.testData = [[NSMutableArray alloc] init];
+        self.bookMarkData =[[NSMutableArray alloc] init];
     }
     
     return self;

@@ -16,6 +16,7 @@
     UIView   *filterLabels;
     UIButton *closeButtonView;
     UIView   *noBookMarksContainer;
+    UIScrollView *bookMarksScrollView;
 }
 
 - (void) animateUpAndDown: (BOOL) isUP;

@@ -8,6 +8,12 @@
 
 #import "BookMarkViewController.h"
 #import "Util.h"
+#import "BookMarkView.h"
+#import "MainDataHolder.h"
+#import "MagazinRecord.h"
+
+#define BM_WIDTH 540
+#define BM_HEIGHT 140
 
 @interface BookMarkViewController () {
     UILabel        *label1;
@@ -90,7 +96,6 @@
     
     [noBookMarksContainer addSubview: noBookMarksText];
     
-    
     // TODO: Check If BookMarks Exist
     if (!isBookMarksExist) {
         noBookMarksContainer.hidden = NO;
@@ -98,7 +103,41 @@
         noBookMarksContainer.hidden = YES;
     }
     
+    //---------------------------- Scroll View ------------------------
+    bookMarksScrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(114, 100, BM_WIDTH, 850)];
+    bookMarksScrollView.backgroundColor = [UIColor clearColor];
     
+    [self.view addSubview: bookMarksScrollView];
+    
+    //---------------------------- BookMarks ------------------------
+    
+    int yPos = 0;
+    
+    MainDataHolder *dataHolder = [MainDataHolder getInstance]; // TODO: Set bookMarks Data
+    
+    for (int i = 0; i < dataHolder.testData.count; i++) {
+        
+        // BookMarkView *bookMark = [[BookMarkView alloc] initWithFrame: CGRectMake(0, yPos, BM_WIDTH, BM_HEIGHT)];
+        
+        MagazinRecord *mRec = [dataHolder.testData objectAtIndex: i];
+        
+        BookMarkView *bookMark = [[BookMarkView alloc] initWithFrame: CGRectMake(0, yPos, BM_WIDTH, BM_HEIGHT)
+                                                           withImage: mRec.magazinIcon
+                                                               title: mRec.magazinTitle
+                                                                date: mRec.magazinDate
+                                                                desc: mRec.magazinDetailsText
+                                                          bookMarkId: i
+                                  ];
+        
+        bookMark.backgroundColor = [UIColor redColor];
+        
+        [bookMarksScrollView addSubview: bookMark];
+        
+        yPos += BM_HEIGHT;
+    }
+    
+    bookMarksScrollView.contentSize = CGSizeMake(BM_WIDTH, yPos);
+
 }
 
 - (void) animateUpAndDown: (BOOL) isUP {

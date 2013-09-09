@@ -39,7 +39,7 @@
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
     if (iOrientation == UIDeviceOrientationPortrait) {
-        self.view.frame = CGRectMake(0, 0, 768, 1024-65);
+        self.view.frame = CGRectMake(0, 0, 768, 1024);
         topBarFrame = CGRectMake(0, 0, 768, 44);
         filterLabelsFrame = CGRectMake(620, 0, 300, 30);
         noBookMarksContainerFrame = CGRectMake(0, 80, 768, 100);

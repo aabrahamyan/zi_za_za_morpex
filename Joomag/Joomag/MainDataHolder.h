@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSArray *categoriesList;
 
+@property (strong, nonatomic) NSMutableArray * bookMarkData;
 
 + (MainDataHolder *) getInstance;
 
