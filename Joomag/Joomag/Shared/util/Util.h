@@ -17,4 +17,6 @@
 
 + (NSString *) generateRequestBlock: (NSString *) pageNumber withMagazineId: (NSInteger) magazineId;
 
++ (NSString *) generatePageRequestBlock: (NSString *) pageNumber pagePortion: (NSString *) portion withMagazineId: (NSInteger) magazineId;
+
 @end

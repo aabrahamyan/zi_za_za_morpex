@@ -95,7 +95,7 @@
             firstPageIndex = 1;
             secondPageIndex = 2;
             scrollViewIndex = 0;
-            currentMagazinePageCount = counter;
+            //currentMagazinePageCount = counter;
             
             NSLog(@"Number of Pages = = = = = = = = %d",counter);
             
@@ -169,6 +169,8 @@
 
     pageScrollView = [[UIScrollView alloc] init];
     pageScrollView.frame = CGRectMake(0, 0, 1024, 768-TOP_VIEW_HEIGHT); // TODO
+    pageScrollView.tag = 7658943;
+    pageScrollView.delegate = self;
     pageScrollView.pagingEnabled = YES;
     pageScrollView.backgroundColor = [UIColor clearColor];
 
@@ -322,13 +324,19 @@
     return [scrollView viewWithTag:VIEW_FOR_ZOOM_TAG];
 }
 
+
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
-    TiledView * tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];
+    if(scrollView.tag != 7658943) {
+        TiledView * tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];
+        tlView.pageIdLeft = scrollViewIndex+1;
+        tlView.pageIdRight = scrollViewIndex+2;
+        tlView.magazineId = self.currentMagazineId;
     
-// TODO: Enable for drawing bigger image
-//    [scrollView addSubview:tlView];
-//    [tlView.layer setNeedsDisplay];
+        // TODO: Enable for drawing bigger image
+        [scrollView addSubview:tlView];
+        [tlView.layer setNeedsDisplay];
+    }
 
 }
 
@@ -362,6 +370,7 @@
     
     scrollViewIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
     [self loadVisiblePages];
+    
 }
 
 // -------------------------------------------------------------------------------

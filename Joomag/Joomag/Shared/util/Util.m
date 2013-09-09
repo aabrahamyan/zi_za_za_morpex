@@ -27,4 +27,13 @@
     return queryUri;
 }
 
++ (NSString *) generatePageRequestBlock: (NSString *) pageNumber pagePortion: (NSString *) portion withMagazineId: (NSInteger) magazineId {
+    NSString * queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@",RANDOM_BLOCK_NUMBER];
+    
+    queryUri = [queryUri stringByAppendingFormat:@"%@%@%d", pageNumber, portion,magazineId];
+    queryUri = [queryUri stringByAppendingFormat:@"%@",@"&si=2"];
+    
+    return queryUri;
+}
+
 @end

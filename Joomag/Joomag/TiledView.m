@@ -4,6 +4,7 @@
 #import "PathGroup.h"
 #import "TiledView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Util.h"
 
 
 @interface TiledView ()
@@ -31,18 +32,15 @@
         //tiledLayer.levelsOfDetailBias = 4;
         tiledLayer.tileSize = CGSizeMake(500.0, 500.0);
         
+        mappingMatrix = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"00", @"40",
+                         @"10", @"50", @"20",@"60",@"01",@"41",@"11",@"51",@"21",@"61",@"31",@"71",@"02",@"42",@"12",@"52",@"22",@"62",@"32",@"72",@"03",@"43",@"13",@"53",@"23",@"63",@"33",@"73",@"04",@"44",@"14",@"54",@"24",@"64",@"34",@"74",@"05",@"45",@"15",@"55",@"25",@"65",@"35",@"75",nil];
+        
     }
     return self;
 }
 
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+
 
 
 #pragma mark Tiled layer delegate methods
@@ -51,27 +49,42 @@
 {
 	// Fetch clip box in *view* space; context's CTM is preconfigured for view space->tile space transform
 	CGRect box = CGContextGetClipBoundingBox(context);
-	//box.size.width = 500;
-    //box.size.height = 500;
+
 	// Calculate tile index
 	CGFloat contentsScale = [layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
 
 	CGSize tileSize = [(CATiledLayer*)layer tileSize];
 	CGFloat x = box.origin.x * contentsScale / tileSize.width;
 	CGFloat y = box.origin.y * contentsScale / tileSize.height;
-	CGPoint tile = CGPointMake(x, y);
+    
+    if(x == 8 || y == 6) {
+        return;
+    }
+    
+	//CGPoint tile = CGPointMake(x, y);
 	
 	// Clear background
-	CGContextSetFillColorWithColor(context, [[UIColor grayColor] CGColor]);
-	CGContextFillRect(context, box);
+	//CGContextSetFillColorWithColor(context, [[UIColor grayColor] CGColor]);
+	//CGContextFillRect(context, box);
 	
 	// Rendering the paths
-	CGContextSaveGState(context);
-	CGContextConcatCTM(context, [self transformForTile:tile]);
+	//CGContextSaveGState(context);
+	//CGContextConcatCTM(context, [self transformForTile:tile]);
+    
+    CGImageRef image = [self imageForScale:contentsScale row:x col:y coordToDdecide: box.origin.x];
 
+    
+    if(NULL != image) {
+        CGContextTranslateCTM(context, 0.0, box.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0); 
+        box = CGContextGetClipBoundingBox(context);
+        
+        CGContextDrawImage(context, box, image);
+        CGImageRelease(image);  
+    } 
 	
 	// Render label (Setup)
-	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
+	/*UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
 	CGContextSelectFont(context, [[font fontName] cStringUsingEncoding:NSASCIIStringEncoding], [font pointSize], kCGEncodingMacRoman);
 	CGContextSetTextDrawingMode(context, kCGTextFill);
 	CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1, -1));
@@ -84,7 +97,61 @@
 							 box.origin.y + [font pointSize],
 							 [s cStringUsingEncoding:NSMacOSRomanStringEncoding],
 							 [s lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding]);
+     */
      
+}
+
+-(CGImageRef) imageForScale:(CGFloat)scale row:(int)row col:(int)col coordToDdecide: (CGFloat) ider {
+    
+    CGImageRef image = NULL;
+    CGDataProviderRef provider = NULL;
+    //NSString *filename = [NSString stringWithFormat:@"img_name_here%0.0f_%d_%d",ceilf(scale * 100),col,row];
+    //NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"png"];
+    
+    //if(path != nil) {
+    NSString * imageURLString = @"";
+    
+    
+    
+        NSString * numString = @"";
+        
+        NSString * valueToSend = [mappingMatrix objectForKey:[NSString stringWithFormat:@"%d%d",row,col]];
+        
+        if(valueToSend) {
+            NSString * currentNumberString = [NSString stringWithFormat:@"%d", self.pageIdRight];
+            if([currentNumberString length] == 1) {
+                numString = [NSString stringWithFormat:@"0%@",currentNumberString];
+            } else {
+                numString = [NSString stringWithFormat:@"%@", currentNumberString];
+            }
+            
+            imageURLString = [Util generatePageRequestBlock:numString pagePortion: valueToSend withMagazineId:self.magazineId];
+        } else {
+            
+            NSString * currentNumberString = [NSString stringWithFormat:@"%d", self.pageIdLeft];
+            
+            if([currentNumberString length] == 1) {
+                numString = [NSString stringWithFormat:@"0%@",currentNumberString];
+            } else {
+                numString = [NSString stringWithFormat:@"%@", currentNumberString];
+            }
+
+            
+            imageURLString = [Util generatePageRequestBlock:numString pagePortion: [NSString stringWithFormat:@"%d%d",row,col] withMagazineId:self.magazineId];
+        }
+        
+        
+         
+        NSURL *imageURL = [NSURL URLWithString:imageURLString];
+        
+        provider = CGDataProviderCreateWithURL((CFURLRef)CFBridgingRetain(imageURL));
+        
+        image = CGImageCreateWithPNGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
+        CFRelease(provider);
+    //}
+    
+    return image; 
+    
 }
 
 #pragma mark Extension methods

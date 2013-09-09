@@ -34,12 +34,11 @@
         
         self.minimumZoomScale = 1.0f;
         self.maximumZoomScale = 2.0f;
-        self.zoomScale = 1.0f;
+        self.zoomScale = 2.0f;
         self.contentSize = frame.size; 
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO; 
         
-
         self.frame = frame;        
         
         self.parentOfImages = [[UIView alloc] initWithFrame:frame];
