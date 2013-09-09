@@ -11,6 +11,7 @@
 #import "ExploreViewController_iPad.h"
 #import "LibraryViewController_iPad.h"
 #import "SettingsViewController_iPad.h"
+#import "BookMarkViewController_iPad.h"
 
 @implementation CustomTabBarController_iPad
 
@@ -87,5 +88,8 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     return [[SettingsViewController_iPad alloc] init];
 }
 
+- (BookMarkViewController *) getBookMarksViewController {
+    return [[BookMarkViewController_iPad alloc] init];
+}
 
 @end

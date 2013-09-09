@@ -88,6 +88,8 @@
 		5A6C94C017C7717400B7DED0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6C94BF17C7717400B7DED0 /* MapKit.framework */; };
 		5A6C94C217C7718300B7DED0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6C94C117C7718300B7DED0 /* ImageIO.framework */; };
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
+		5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E92F17DD33210039FD17 /* BookMarkViewController.m */; };
+		5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */; };
 		5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */; };
 		5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB517C0D91700380CBD /* placeholder.png */; };
 		5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */; };
@@ -258,6 +260,10 @@
 		5A6C94C117C7718300B7DED0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		5A6EF5C217B2D70D00E597DA /* ExploreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableView.h; sourceTree = "<group>"; };
 		5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableView.m; sourceTree = "<group>"; };
+		5A75E92E17DD33210039FD17 /* BookMarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkViewController.h; sourceTree = "<group>"; };
+		5A75E92F17DD33210039FD17 /* BookMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController.m; sourceTree = "<group>"; };
+		5A75E93117DD334C0039FD17 /* BookMarkViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkViewController_iPad.h; sourceTree = "<group>"; };
+		5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController_iPad.m; sourceTree = "<group>"; };
 		5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
 		5A7AFCB517C0D91700380CBD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topTabBarBg@2x.png"; sourceTree = "<group>"; };
@@ -578,6 +584,8 @@
 				5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */,
 				5A7AFCBE17C0E7C600380CBD /* SearchViewController_iPad.h */,
 				5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */,
+				5A75E93117DD334C0039FD17 /* BookMarkViewController_iPad.h */,
+				5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -597,6 +605,8 @@
 				5AD69EEE17BBC006008E4865 /* ReadViewController.m */,
 				5A7AFCBB17C0E79A00380CBD /* SearchViewController.h */,
 				5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */,
+				5A75E92E17DD33210039FD17 /* BookMarkViewController.h */,
+				5A75E92F17DD33210039FD17 /* BookMarkViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -941,6 +951,8 @@
 				5A1B583517DAA0410087214F /* YearTableView.m in Sources */,
 				5A1B583817DAA0540087214F /* MonthTableView.m in Sources */,
 				5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */,
+				5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */,
+				5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

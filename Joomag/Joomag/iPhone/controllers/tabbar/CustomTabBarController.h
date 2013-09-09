@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class SettingsViewController;
+@class BookMarkViewController;
 
 @interface CustomTabBarController : UIViewController {
 
@@ -41,6 +42,7 @@
 
 //----------------------- Mixed Attributes --------------------------//
 @property (nonatomic, strong) SettingsViewController * settingsVC;
+@property (nonatomic, strong) BookMarkViewController * bookMarksVC;
 
 //----------------------- Instance Methods --------------------------//
 - (id) initWithSpecifics: (UIImage * ) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height;

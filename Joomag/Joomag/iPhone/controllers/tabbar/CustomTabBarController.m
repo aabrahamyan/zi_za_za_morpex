@@ -8,6 +8,7 @@
 
 #import "CustomTabBarController.h"
 #import "SettingsViewController.h"
+#import "BookMarkViewController.h"
 #import "AppDelegate.h"
 
 #import "ExploreViewController.h"
@@ -51,6 +52,10 @@ static CustomTabBarController * customTabBarController;
     return [[SettingsViewController alloc] init];
 }
 
+- (BookMarkViewController *) getBookMarksViewController {
+    return [[BookMarkViewController alloc] init];
+}
+
 - (void) loadView {
     [super loadView];
     
@@ -91,7 +96,7 @@ static CustomTabBarController * customTabBarController;
     self.myLibButton.showsTouchWhenHighlighted = YES;
     self.myLibButton.tag = 33333;
     
-        [self.myLibButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
+    [self.myLibButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.backGroundView addSubview:self.myLibButton];
     
@@ -110,6 +115,7 @@ static CustomTabBarController * customTabBarController;
     [self.noteButton setImage:[UIImage imageNamed:@"tabBarXuyEgo.png"] forState:UIControlStateSelected];
     [self.noteButton setImage:[UIImage imageNamed:@"tabBarXuyEgo.png"] forState:UIControlStateHighlighted];
     self.noteButton.showsTouchWhenHighlighted = YES;
+    [self.noteButton addTarget:self action:@selector(showBookMarks) forControlEvents:UIControlEventTouchUpInside];
     
     [self.backGroundView addSubview:self.noteButton];
 }
@@ -151,12 +157,20 @@ static CustomTabBarController * customTabBarController;
 - (void) showSettings {
     self.settingsVC = [self getSettingsViewController];
 
-    //[del.window addSubview:self.settingsVC.view];
-    [self.view addSubview:self.settingsVC.view];
+    [self.view addSubview: self.settingsVC.view];
     
     [self.settingsVC animateUpAndDown:YES];
    
 }
+
+- (void) showBookMarks {
+    self.bookMarksVC = [self getBookMarksViewController];
+    
+    [self.view addSubview: self.bookMarksVC.view];
+    
+    [self.bookMarksVC animateUpAndDown:YES];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
