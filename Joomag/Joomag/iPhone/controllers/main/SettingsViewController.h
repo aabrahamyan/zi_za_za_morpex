@@ -34,8 +34,7 @@
     
     UILabel * descriptionLabel;
     
-    //--------- Tabs Container ---------------//
-    UIView * tabsView;
+
     //--------- Registration View ------------//
     UIView * registrationView;
     UITextField * emailTextField;
@@ -44,13 +43,21 @@
     UITextField * passwordTextField;
     UITextField * passwordTextFieldRepeat;
     
-    UIImageView * tmpDesc;
     UIImageView * tmpAbout;
 
+    
 }
 
-@property (nonatomic, strong) UIImageView * backgroundImageView;
+@property bool isOpen;
 
+//--------- Tabs Container ---------------//
+@property (nonatomic, strong) UIView * tabsView;
+
+@property (nonatomic, strong) UIImageView * backgroundImageView;
+@property (nonatomic, strong) UIImageView * tmpDesc;
+
+@property int animH;
+@property int animW;
 
 
 - (void) animateUpAndDown: (BOOL) isUP;

@@ -127,6 +127,7 @@
 		5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF3179B33AF0062736F /* DataHolder.m */; };
 		5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC1951799836F0029A07F /* MobileCoreServices.framework */; };
 		5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC197179983760029A07F /* SystemConfiguration.framework */; };
+		5AD4207317DF4D6F00E0C212 /* settingsPortBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */; };
 		5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EEE17BBC006008E4865 /* ReadViewController.m */; };
 		5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */; };
 		5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */; };
@@ -330,6 +331,7 @@
 		5AC6FFF3179B33AF0062736F /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataHolder.m; path = Joomag/DataHolder.m; sourceTree = SOURCE_ROOT; };
 		5ACAC1951799836F0029A07F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5ACAC197179983760029A07F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsPortBg.png; sourceTree = "<group>"; };
 		5AD69EED17BBC006008E4865 /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController.h; sourceTree = "<group>"; };
 		5AD69EEE17BBC006008E4865 /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController.m; sourceTree = "<group>"; };
 		5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController_iPad.h; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */,
 				5AB0F68F17DD5F7D00671C24 /* editIcone.png */,
 				5AF9789C17D758E2008FA0C2 /* faceBookButton.png */,
 				5AF9789D17D758E2008FA0C2 /* joomagButton.png */,
@@ -926,6 +929,7 @@
 				2C7F71C717DF16DC000D492B /* proximanovaregular.ttf in Resources */,
 				2C7F71C817DF16DC000D492B /* proximanovasemibold.ttf in Resources */,
 				2C7F71C917DF16DC000D492B /* proximanovathin.ttf in Resources */,
+				5AD4207317DF4D6F00E0C212 /* settingsPortBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
