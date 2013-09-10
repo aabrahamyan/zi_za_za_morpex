@@ -38,7 +38,7 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
-    [connManager constructGetMagazinesListRequest:self];
+    [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     
     //---------------------------- Scroll View ------------------------------------
     scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)]; // TODO

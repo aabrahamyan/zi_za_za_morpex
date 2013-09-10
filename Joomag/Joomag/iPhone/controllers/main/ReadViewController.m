@@ -384,8 +384,7 @@
 
 
 // any offset changes
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self hideTopAndBottomView];
     
 }

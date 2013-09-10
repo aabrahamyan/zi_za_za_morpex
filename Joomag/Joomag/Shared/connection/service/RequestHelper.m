@@ -189,14 +189,14 @@
     
 }
 
-+ (NSString *) constructAndGetMagazinesListRequestString {
++ (NSString *) constructAndGetMagazinesListRequestString: (NSString *) magazineTypes : (NSString *) searchKeyWord : (NSString *) categoryId : (NSString *) categoryName {
     
     //---------------------- Open Envelope ---------------------------------//
     NSString * requestString = [NSString stringWithFormat:@"%@", SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",ENVELOPE];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
     //---------------------- Open Header ---------------------------------//
-    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET]; 
     requestString = [requestString stringByAppendingFormat:@"%@",HEADER];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
     //---------------------- Close Header ---------------------------------//
@@ -214,12 +214,43 @@
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
     //---------------------- Featured Spread ------------------------------//
     requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
-    requestString = [requestString stringByAppendingFormat:@"%@",FEATURED_SPREAD];
+    requestString = [requestString stringByAppendingFormat:@"%@",magazineTypes];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
-    requestString = [requestString stringByAppendingFormat:@"%@",FEATURED_SPREAD];
+    requestString = [requestString stringByAppendingFormat:@"%@",magazineTypes];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    
+    if(searchKeyWord) {
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",@"keywords"];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",searchKeyWord];
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+        requestString = [requestString stringByAppendingFormat:@"%@",@"keywords"];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    }
+    
+    if(categoryId) {
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",@"cat_ID"];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",categoryId];
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+        requestString = [requestString stringByAppendingFormat:@"%@",@"cat_ID"];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    } else if (categoryName) {
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",@"category"];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",categoryName];
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH]; 
+        requestString = [requestString stringByAppendingFormat:@"%@",@"category"];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    }
     
     requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];

@@ -17,6 +17,9 @@ static MainDataHolder * mainDataHolder;
         // Init data here
         self.testData = [[NSMutableArray alloc] init];
         self.bookMarkData =[[NSMutableArray alloc] init];
+        
+        self.popularMagList = [[NSMutableArray alloc] init];
+        self.highlightedMagList = [[NSMutableArray alloc] init];
     }
     
     return self;

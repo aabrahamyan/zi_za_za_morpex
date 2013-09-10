@@ -18,7 +18,7 @@
 
 - (void) constructGetMapagzinePage: (NSInteger) magazineId withPageNumber : (NSInteger) pageNumber andWithDelegate : (id<ResponseTrackerDelegate>) callback;
 
-- (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback;
+- (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback : (NSString *) magazinesType : (NSString *) searchKeyword : (NSString *) categoryId : (NSString *) categoryName ;
 
 - (void) constrcutAndGetCategoriesTypesRequest: (id<ResponseTrackerDelegate>) callback;
 

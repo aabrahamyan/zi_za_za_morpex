@@ -17,7 +17,7 @@
 
 + (NSString *) constructGetMagazinePageString : (NSInteger) magazineId withPageNumber : (NSInteger) pageNumber;
 
-+ (NSString *) constructAndGetMagazinesListRequestString;
++ (NSString *) constructAndGetMagazinesListRequestString: (NSString *) magazineTypes : (NSString *) searchKeyWord : (NSString *) categoryId : (NSString *) categoryName;
 
 + (NSString *) constructAndGetCategoriesRequestString;
 

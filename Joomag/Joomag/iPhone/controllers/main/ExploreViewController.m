@@ -144,7 +144,12 @@
 {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
+    
     if (gesture.view.tag == 0) {
+        [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
+        
+        
         [self animateLabelBorder: label1];
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];

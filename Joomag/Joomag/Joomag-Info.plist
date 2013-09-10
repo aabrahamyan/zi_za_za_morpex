@@ -28,6 +28,16 @@
 	<string>MainWindow_iPad</string>
 	<key>NSMainNibFile~iphone</key>
 	<string>MainWindow_iPhone</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>proximanovaextrabold.ttf</string>
+		<string>proximanovablack.ttf</string>
+		<string>proximanovabold.ttf</string>
+		<string>proximanovalight.ttf</string>
+		<string>proximanovaregular.ttf</string>
+		<string>proximanovasemibold.ttf</string>
+		<string>proximanovathin.ttf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -126,10 +126,11 @@
 
 }
 
-- (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback {
+- (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback : (NSString *) magazinesType : (NSString *) searchKeyword : (NSString *) categoryId : (NSString *) categoryName {
+    
     AFHTTPClient * requestClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:SERVICE_URL]];
     
-    NSString * magazinesListReqString = [RequestHelper constructAndGetMagazinesListRequestString];
+    NSString * magazinesListReqString = [RequestHelper constructAndGetMagazinesListRequestString:magazinesType:searchKeyword:categoryId:categoryName]; 
     
     if(magazinesListReqString) {
         NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:magazinesListReqString,MAIN_POST_PARAM, nil];
