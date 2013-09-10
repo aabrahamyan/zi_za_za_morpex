@@ -39,7 +39,7 @@
         orLabelFrame = CGRectMake(520, 30, 20, 30);
         fbButtonFrame = CGRectMake(550, 5, 200, 35);
         twitterButtonFrame = CGRectMake(550, 50, 200, 35);
-        scrollViewFrame = CGRectMake(100, 160, 600, 500);
+        scrollViewFrame = CGRectMake(120, 160, 600, 700);
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
         filterLabelsFrame = CGRectMake(800, 0, 300, 30);
@@ -49,7 +49,7 @@
         orLabelFrame = CGRectMake(720, 30, 20, 30);
         fbButtonFrame = CGRectMake(750, 5, 200, 35);
         twitterButtonFrame = CGRectMake(750, 50, 200, 35);
-        scrollViewFrame = CGRectMake(100, 160, 850, 500);
+        scrollViewFrame = CGRectMake(130, 160, 830, 500);
     }
 
     CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
@@ -63,6 +63,8 @@
     fbButton.frame = fbButtonFrame;
     twitterButton.frame = twitterButtonFrame;
     scrollView.frame = scrollViewFrame;
+    
+    [scrollView redrawData];
     
 }
 

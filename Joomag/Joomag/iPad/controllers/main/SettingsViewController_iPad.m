@@ -22,7 +22,7 @@
     closeButtonView.frame = CGRectMake(15, 15, 18, 16);
     gearView.frame = CGRectMake(60, 13, 20, 18);
     settingsLabel.frame = CGRectMake(93, 13, 100, 20);
-    signInButton.frame = CGRectMake(900, 10, 88, 27);
+    
     
     accountSettingsButton.frame = CGRectMake(0, 0, 180, 20);
     accountSettingsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -65,7 +65,5 @@
     
 
 }
-
-
 
 @end

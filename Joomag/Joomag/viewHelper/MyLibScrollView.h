@@ -13,4 +13,6 @@
 // the main data model for our UIScrollView
 @property (nonatomic, strong) NSArray *entries;
 
+- (void) redrawData;
+
 @end

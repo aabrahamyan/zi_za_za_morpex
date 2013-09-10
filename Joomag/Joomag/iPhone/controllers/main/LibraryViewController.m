@@ -9,6 +9,7 @@
 #import "LibraryViewController.h"
 #import "Util.h"
 #import "MainDataHolder.h"
+#import "ConnectionManager.h"
 
 #define TOP_BAR_HEIGHT 44
 
@@ -33,6 +34,9 @@
     [super loadView];
     
     dataHolder = [MainDataHolder getInstance];
+    
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
+    [connManager constrcutAndGetCategoriesTypesRequest: self];
 
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
@@ -104,7 +108,6 @@
     
     [loginContainer addSubview: twitterButton];
     
-    
     //---------------------------- DATE PICKER ------------------------------------
     datePicker = [[DatePickerView alloc] initWithFrame: CGRectMake(20, 160, 50, 520)];
     datePicker.delegate = self;
@@ -114,9 +117,10 @@
     //---------------------------- Scroll View ------------------------------------
     scrollView = [[MyLibScrollView alloc] init];
     
+    scrollView.entries = dataHolder.testData;
+    
     [self.view addSubview: scrollView];
 }
-
 
 - (UIView *)titleLabelsWithBorder {
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 10, 280, 30)];
@@ -217,6 +221,19 @@
 
 - (void)didDatePckerMonthChanged: (NSString *) month {
     NSLog(@"month: %@", month);
+}
+
+#pragma Response Tracker Delegates ---
+
+- (void) didFailResponse: (id) responseObject {
+    
+}
+
+- (void) didFinishResponse: (id) responseObject {
+    if([dataHolder.testData count] != 0) {
+        scrollView.entries = dataHolder.testData;
+        [scrollView redrawData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

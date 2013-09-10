@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DatePickerView.h"
 #import "MyLibScrollView.h"
+#import "ResponseTrackerDelegate.h"
 
-@interface LibraryViewController : UIViewController <DatePickerDelegate> {
+@interface LibraryViewController : UIViewController <ResponseTrackerDelegate, DatePickerDelegate> {
     
 @protected
     UIView   *topBar;
