@@ -53,9 +53,17 @@
 }
 
 
-- (void) bindArrayToMappingObject {
-    NSArray * list = [MainDataHolder getInstance].magazinesList;
+- (void) bindArrayToMappingObject: (NSString *) magType {
+    NSArray * list = nil;
     
+    if([magType isEqualToString:@"featured"]) {
+       list = [MainDataHolder getInstance].magazinesList;
+    } else if ([magType isEqualToString:@"Popular"]) {
+       list =  [MainDataHolder getInstance].popularMagList;
+    } else if ([magType isEqualToString:@"Highlighted"]) {
+        list =  [MainDataHolder getInstance].highlightedMagList;
+    }
+    [[MainDataHolder getInstance].testData removeAllObjects];
     for (int counter = 0; counter < [list count]; counter ++) {
         NSDictionary * currentMagazine = [list objectAtIndex:counter];
         

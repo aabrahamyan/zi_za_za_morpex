@@ -154,6 +154,12 @@ static CustomTabBarController * customTabBarController;
     }
 }
 
+
+
+- (void)viewDidLayoutSubviews {
+    NSLog(@"LAYOUT ORIENTATION CHANGED");
+}
+
 - (void) showSettings {
     self.settingsVC = [self getSettingsViewController];
 

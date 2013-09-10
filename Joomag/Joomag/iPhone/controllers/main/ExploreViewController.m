@@ -11,6 +11,7 @@
 #import "MainDataHolder.h"
 #import "SearchViewController.h"
 #import "ConnectionManager.h"
+#import "MagazinRecord.h"
 
 @interface ExploreViewController () {
     MainDataHolder *dataHolder;
@@ -111,7 +112,7 @@
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(92, 0, 80, 20)]; label2.text = @"POPULAR";
-    label3 = [[UILabel alloc] initWithFrame:CGRectMake(175, 0, 81, 20)]; label3.text = @"NEW ARRIVALS";
+    label3 = [[UILabel alloc] initWithFrame:CGRectMake(175, 0, 81, 20)]; label3.text = @"HIGHLIGHTED";
     
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, label3, nil];
     
@@ -139,6 +140,36 @@
     return container;
 }
 
+- (void) bindArrayToMappingObject: (NSString *) magType {
+    NSArray * list = nil;
+    
+    [[MainDataHolder getInstance].testData removeAllObjects];
+    
+    if([magType isEqualToString:@"featured"]) {
+        list = [MainDataHolder getInstance].magazinesList;
+    } else if ([magType isEqualToString:@"Popular"]) {
+        list =  [MainDataHolder getInstance].popularMagList;
+    } else if ([magType isEqualToString:@"Highlighted"]) {
+        list =  [MainDataHolder getInstance].highlightedMagList;
+    }
+    
+    for (int counter = 0; counter < [list count]; counter ++) {
+        NSDictionary * currentMagazine = [list objectAtIndex:counter];
+        
+        if(currentMagazine) {
+            MagazinRecord * mgRecord = [[MagazinRecord alloc] init];
+            mgRecord.magazinTitle = [currentMagazine objectForKey:@"title"];
+            mgRecord.magazinDate = [currentMagazine objectForKey:@"date"];
+            mgRecord.magazinImageURL = [currentMagazine objectForKey:@"featured_spread"];
+            mgRecord.magazinDetailsImageURL = [currentMagazine objectForKey:@"firstpage"];
+            mgRecord.magazinDetailsText = [currentMagazine objectForKey:@"desc"];
+            mgRecord.magazineID = [[currentMagazine objectForKey:@"ID"] intValue];
+            
+            [[MainDataHolder getInstance].testData addObject:mgRecord];
+        }
+    }
+}
+
 
 -(void)titleLabelTapHandler :(id) sender
 {
@@ -147,13 +178,34 @@
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     
     if (gesture.view.tag == 0) {
-        [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
         
+        if([[MainDataHolder getInstance].magazinesList count] == 0) {
+            [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
+        } else {
+            [self bindArrayToMappingObject:@"featured"];
+            scrollView.entries = [MainDataHolder getInstance].testData;
+        }
         
         [self animateLabelBorder: label1];
     } else if(gesture.view.tag == 1){
+        
+        if([[MainDataHolder getInstance].popularMagList count] == 0) {
+            [connManager constructGetMagazinesListRequest:self:@"Popular":nil:nil:nil];
+        } else {
+            [self bindArrayToMappingObject:@"Popular"];
+            scrollView.entries = [MainDataHolder getInstance].testData;
+        }
+        
         [self animateLabelBorder: label2];
     } else if(gesture.view.tag == 2) {
+        
+        if([[MainDataHolder getInstance].highlightedMagList count] == 0) {
+            [connManager constructGetMagazinesListRequest:self:@"Highlighted":nil:nil:nil];
+        } else {
+            [self bindArrayToMappingObject:@"Highlighted"];
+            scrollView.entries = [MainDataHolder getInstance].testData;
+        }
+        
         [self animateLabelBorder: label3];
     }
 }
@@ -214,6 +266,20 @@
 
 - (void) didFinishResponse: (id) responseObject {
     dataHolder = [MainDataHolder getInstance];
+    
+//    NSString * magType = (NSString *) responseObject;
+    
+//    if([magType isEqualToString:@"featured"]) {
+//        list = [MainDataHolder getInstance].magazinesList;
+//    } else if ([magType isEqualToString:@"Popular"]) {
+//        list =  [MainDataHolder getInstance].popularMagList;
+//    } else if ([magType isEqualToString:@"Highlighted"]) {
+//        list =  [MainDataHolder getInstance].highlightedMagList;
+//    }
+    
+    scrollView.entries = dataHolder.testData;
+    [scrollView setNeedsDisplay];
+    
     [categoriesTable reloadExploreTable];
     // NSLog(@"dataHolder: %@", dataHolder.categoriesList);
 }

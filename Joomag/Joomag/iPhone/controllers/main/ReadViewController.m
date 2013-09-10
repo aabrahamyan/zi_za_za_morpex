@@ -336,7 +336,7 @@
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
     if(scrollView.tag != 7658943 && scale > 1.0) {
-        tlView = [[TiledView alloc] initWithFrame:CGRectMake(10, -16, 3000, 2000)];
+        tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];
         
         /*if(globalPage == 0) {
             scrollViewInd1 = 1;
@@ -446,12 +446,12 @@
            // }
             
             item.image = image;
-            item.frame = CGRectMake(xItemPos, 10, itemWidth, 90);
-            itemContentWidth = xItemPos + itemWidth;
+            item.frame = CGRectMake(xItemPos, 5, itemWidth/2, 100);
+            itemContentWidth = xItemPos + itemWidth/2;
             
             [navScrollView addSubview: item];
             
-             xItemPos += itemWidth;
+             xItemPos += itemWidth/2+5;
             
             navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
         }

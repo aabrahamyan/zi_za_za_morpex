@@ -66,8 +66,10 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     [self.view bringSubviewToFront:self.backGroundView];
 }
 
+
+
 - (void)viewDidLayoutSubviews {
- 
+    //TODO: Handle Settings VC Orientation Change
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
     if (iOrientation == UIDeviceOrientationPortrait) {

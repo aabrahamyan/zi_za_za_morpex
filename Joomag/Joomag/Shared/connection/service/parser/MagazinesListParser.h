@@ -16,6 +16,6 @@
 }
 
 
-- (void) bindArrayToMappingObject;
+- (void) bindArrayToMappingObject: (NSString *) magType;
 
 @end

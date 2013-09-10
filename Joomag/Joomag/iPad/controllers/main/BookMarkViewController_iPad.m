@@ -62,7 +62,7 @@
         topBarFrame = CGRectMake(0, 0, 1024, 44);
         filterLabelsFrame = CGRectMake(880, 0, 300, 30);
         noBookMarksContainerFrame = CGRectMake(387, 80, 250, 100);
-        bookMarksScrollViewFrame = CGRectMake(242, 100, 540, 700);
+        bookMarksScrollViewFrame = CGRectMake(242, 100, 540, 590);
     }
     
     topBar.frame = topBarFrame;

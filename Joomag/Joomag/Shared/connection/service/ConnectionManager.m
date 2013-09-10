@@ -128,6 +128,8 @@
 
 - (void) constructGetMagazinesListRequest : (id<ResponseTrackerDelegate>) callback : (NSString *) magazinesType : (NSString *) searchKeyword : (NSString *) categoryId : (NSString *) categoryName {
     
+    __block NSString * magType = magazinesType;
+    
     AFHTTPClient * requestClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:SERVICE_URL]];
     
     NSString * magazinesListReqString = [RequestHelper constructAndGetMagazinesListRequestString:magazinesType:searchKeyword:categoryId:categoryName]; 
@@ -137,10 +139,19 @@
         
         [requestClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             MagazinesListParser * magListParser = [[MagazinesListParser alloc] init];
-            [MainDataHolder getInstance].magazinesList = [magListParser parserData:responseObject];
-            [magListParser bindArrayToMappingObject];
+            
+            if([magType isEqualToString:@"featured"]) {
+                [MainDataHolder getInstance].magazinesList = [magListParser parserData:responseObject];
+            } else if ([magType isEqualToString:@"Popular"]) {
+                [MainDataHolder getInstance].popularMagList = [magListParser parserData:responseObject];
+            } else if ([magType isEqualToString:@"Highlighted"]) {
+                [MainDataHolder getInstance].highlightedMagList = [magListParser parserData:responseObject];
+            }
+            
+            
+            [magListParser bindArrayToMappingObject:magType];
             //NSLog(@"[MainDataHolder getInstance].magazinesList = %@",[MainDataHolder getInstance].magazinesList);
-            [callback didFinishResponse:nil];
+            [callback didFinishResponse:magType];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             //TODO: Parser call for failure
         }];
