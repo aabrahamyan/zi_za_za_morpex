@@ -12,6 +12,7 @@
 #import "LibraryViewController_iPad.h"
 #import "SettingsViewController_iPad.h"
 #import "BookMarkViewController_iPad.h"
+#import "Util.h"
 
 @implementation CustomTabBarController_iPad
 
@@ -71,17 +72,39 @@ static CustomTabBarController_iPad * customTabBar_iPad;
 - (void)viewDidLayoutSubviews {
     //TODO: Handle Settings VC Orientation Change
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
+   
     if (iOrientation == UIDeviceOrientationPortrait) {
         self.view.frame = CGRectMake(0, 0, 768, 1024);
         self.backGroundView.frame = CGRectMake(0, 959, self.width, self.height);
         self.gearButton.frame = CGRectMake(680, 15, 20, 20);
         self.noteButton.frame = CGRectMake(720, 15, 20, 20);
+        
+        
+        if (self.settingsVC.isOpen) {
+            self.settingsVC.view.frame = CGRectMake(0, 0, 768, 1024);
+        } else {
+            self.settingsVC.view.frame = CGRectMake(1024, 0, 768, 1024);
+        }
+        
+        self.settingsVC.backgroundImageView.image = [UIImage imageNamed:@"settingsPortBg.png"];
+        self.settingsVC.tabsView.frame = CGRectMake(30, 120, 186, 247);
+        self.settingsVC.tmpDesc.frame = CGRectMake(0, 330, 323, 101);
     } else {
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
         self.gearButton.frame = CGRectMake(900, 15, 20, 20);
         self.noteButton.frame = CGRectMake(950, 15, 20, 20);
+        
+        
+        if (self.settingsVC.isOpen) {
+            self.settingsVC.view.frame = CGRectMake(0, 0, 1024, 768);
+        } else {
+            self.settingsVC.view.frame = CGRectMake(0, 1024, 1024, 768);
+        }
+        
+        self.settingsVC.tabsView.frame = CGRectMake(50, 122, 186, 247);
+        self.settingsVC.backgroundImageView.image = [Util imageNamedSmart:@"realSettingsBG"];
+        self.settingsVC.tmpDesc.frame = CGRectMake(358, 54, 323, 101);
     }
     
 }

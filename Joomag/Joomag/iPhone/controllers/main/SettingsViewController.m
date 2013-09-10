@@ -22,13 +22,12 @@
 - (void) loadView {
     [super loadView];
     
-    self.backgroundImageView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"realSettingsBG"]];
+    self.backgroundImageView = [[UIImageView alloc] init];
     self.view.userInteractionEnabled = YES;
     self.backgroundImageView.userInteractionEnabled = YES;    
     self.view = self.backgroundImageView;
     
-    tabsView = [[UIView alloc] init];
-    tabsView.frame = CGRectMake(50, 122, 186, 247);
+    self.tabsView = [[UIView alloc] init];
     
     //--------------- Draw Here -----------------//
 
@@ -74,7 +73,7 @@
     
     [accountSettingsButton setSelected:YES];
  
-    [tabsView addSubview:accountSettingsButton];
+    [self.tabsView addSubview:accountSettingsButton];
     
     
     notificationSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -92,7 +91,7 @@
     [notificationSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [notificationSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
-    [tabsView addSubview:notificationSettingsButton];
+    [self.tabsView addSubview:notificationSettingsButton];
     
     
     aboutJoomagButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -110,7 +109,7 @@
     [aboutJoomagButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [aboutJoomagButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
-    [tabsView addSubview:aboutJoomagButton];
+    [self.tabsView addSubview:aboutJoomagButton];
     
     helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     helpButton.backgroundColor = [UIColor clearColor];
@@ -126,7 +125,7 @@
     [helpButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [helpButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
-    [tabsView addSubview:helpButton];
+    [self.tabsView addSubview:helpButton];
     
     restoreItunes = [UIButton buttonWithType:UIButtonTypeCustom];
     restoreItunes.backgroundColor = [UIColor clearColor];
@@ -144,9 +143,9 @@
     [restoreItunes setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [restoreItunes setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
-    [tabsView addSubview:restoreItunes];
+    [self.tabsView addSubview:restoreItunes];
     
-    [self.view addSubview:tabsView];
+    [self.view addSubview:self.tabsView];
     
     [self constructRegistrationView];
 }
@@ -253,18 +252,21 @@
     
     [registrationView addSubview:termsOfService];
     
-    tmpDesc = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"desc"]];
+    self.tmpDesc = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"desc"]];
     
-    [registrationView addSubview:tmpDesc];
+    [registrationView addSubview: self.tmpDesc];
     
     [self.view addSubview:registrationView];
     
+    self.isOpen = NO;
 }
 
 
 - (void) animateUpAndDown: (BOOL) isUP {
     
     if(isUP) {
+        self.isOpen = YES;
+        
         [UIView beginAnimations:@"popingUP" context:nil];
         self.view.frame = CGRectMake(0, 1024, 1024, 768);
         
@@ -273,6 +275,8 @@
         
         [UIView commitAnimations];
     } else {
+        self.isOpen = NO;
+        
         [UIView beginAnimations:@"popingUP" context:nil];
 
         self.view.frame = CGRectMake(0, 0, 1024, 768);
@@ -324,7 +328,6 @@
     
     submitButton.frame = CGRectMake(0, 242, 175, 44);
     
-    tmpDesc.frame = CGRectMake(358, 54, 323, 101);
 }
 
 - (void) createAboutView {

@@ -60,10 +60,6 @@
     
     submitButton.frame = CGRectMake(0, 242, 175, 44);
     
-    tmpDesc.frame = CGRectMake(358, 54, 323, 101);
-    
-    
-
 }
 
 @end
