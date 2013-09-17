@@ -89,6 +89,9 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         self.settingsVC.backgroundImageView.image = [UIImage imageNamed:@"settingsPortBg.png"];
         self.settingsVC.tabsView.frame = CGRectMake(30, 120, 186, 247);
         self.settingsVC.tmpDesc.frame = CGRectMake(0, 330, 323, 101);
+        
+        NSLog(@"settings port w: %f h: %f", self.settingsVC.view.frame.size.width, self.settingsVC.view.frame.size.height);
+        
     } else {
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
@@ -105,6 +108,8 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         self.settingsVC.tabsView.frame = CGRectMake(50, 122, 186, 247);
         self.settingsVC.backgroundImageView.image = [Util imageNamedSmart:@"realSettingsBG"];
         self.settingsVC.tmpDesc.frame = CGRectMake(358, 54, 323, 101);
+        
+        NSLog(@"settings land w: %f h: %f", self.settingsVC.view.frame.size.width, self.settingsVC.view.frame.size.height);
     }
     
 }
