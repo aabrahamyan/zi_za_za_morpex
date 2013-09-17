@@ -12,7 +12,11 @@
 
 @end
 
-@implementation SettingsViewController_iPad
+@implementation SettingsViewController_iPad {
+    CGRect closeButtonFrame,
+           gearViewFrame,
+           settingsLabelFrame;
+}
 
 - (void)loadView {
     [super loadView];
@@ -22,7 +26,23 @@
     closeButtonView.frame = CGRectMake(15, 15, 18, 16);
     gearView.frame = CGRectMake(60, 13, 20, 18);
     settingsLabel.frame = CGRectMake(93, 13, 100, 20);
+
+}
+
+
+- (void)viewDidLayoutSubviews {
+
+    NSLog(@"settings");
     
+    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (iOrientation == UIDeviceOrientationPortrait) {
+        self.tmpDesc.frame = CGRectMake(0, 330, 323, 101);
+        tmpAbout.frame = CGRectMake(250, 105, 500, 520);
+    } else {
+        self.tmpDesc.frame = CGRectMake(358, 54, 323, 101);
+        tmpAbout.frame = CGRectMake(336, 105, 584, 470);
+    }
     
     accountSettingsButton.frame = CGRectMake(0, 0, 180, 20);
     accountSettingsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

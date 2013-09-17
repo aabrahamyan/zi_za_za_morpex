@@ -258,7 +258,7 @@
     
     [self.view addSubview:registrationView];
     
-    self.isOpen = NO;
+    //self.isOpen = NO;
 }
 
 
@@ -326,12 +326,11 @@
     termsOfService.frame = CGRectMake(200, 270, 120, 20);
     
     submitButton.frame = CGRectMake(0, 242, 175, 44);
-    
 }
 
 - (void) createAboutView {
     tmpAbout = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"aboutJoomag"]];
-    tmpAbout.frame = CGRectMake(336, 105, 584, 470);
+    
     [self.view addSubview:tmpAbout];
 }
 
@@ -352,7 +351,7 @@
             }
             
             [self constructRegistrationView];
-            [self updateFramesForiPad];
+            //[self updateFramesForiPad];
             
             break;
         case 8765431:
@@ -374,6 +373,7 @@
             if(registrationView) {
                 [registrationView removeFromSuperview];
                 registrationView = nil;
+                self.tmpDesc = nil;
             }
             [self createAboutView];
             break;

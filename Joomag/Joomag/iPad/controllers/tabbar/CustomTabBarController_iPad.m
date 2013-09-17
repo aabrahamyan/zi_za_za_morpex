@@ -85,8 +85,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         
         self.settingsVC.backgroundImageView.image = [UIImage imageNamed:@"settingsPortBg.png"];
         self.settingsVC.tabsView.frame = CGRectMake(30, 120, 186, 247);
-        self.settingsVC.tmpDesc.frame = CGRectMake(0, 330, 323, 101);
-        
         
         if (self.bookMarksVC.isOpen) {
             self.bookMarksVC.view.frame = CGRectMake(0, 0, 768, 1024);
@@ -108,7 +106,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         
         self.settingsVC.tabsView.frame = CGRectMake(50, 122, 186, 247);
         self.settingsVC.backgroundImageView.image = [Util imageNamedSmart:@"realSettingsBG"];
-        self.settingsVC.tmpDesc.frame = CGRectMake(358, 54, 323, 101);
 
         if (self.bookMarksVC.isOpen) {
             self.bookMarksVC.view.frame = CGRectMake(0, 0, 1024, 768);
