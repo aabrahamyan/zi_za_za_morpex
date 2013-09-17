@@ -30,7 +30,7 @@
 
 - (void)loadView {
     [super loadView];
-    
+    self.view.frame = CGRectMake(0, 1024, 1024, 768);
     closeButtonView.frame = CGRectMake(0, 0, 46, 44);
 }
 
@@ -39,25 +39,11 @@
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
     if (iOrientation == UIDeviceOrientationPortrait) {
-        
-        if (isOpen) {
-           self.view.frame = CGRectMake(0, 0, 768, 1024); 
-        } else {
-            self.view.frame = CGRectMake(0, 1024, 768, 1024);
-        }
-        
         topBarFrame = CGRectMake(0, 0, 768, 44);
         filterLabelsFrame = CGRectMake(620, 0, 300, 30);
         noBookMarksContainerFrame = CGRectMake(259, 80, 250, 100);
         bookMarksScrollViewFrame = CGRectMake(114, 100, 540, 850);
     } else {
-        
-        
-        if (isOpen) {
-            self.view.frame = CGRectMake(0, 0, 1024, 768);
-        } else {
-            self.view.frame = CGRectMake(0, 768, 1024, 768);
-        }
         
         topBarFrame = CGRectMake(0, 0, 1024, 44);
         filterLabelsFrame = CGRectMake(880, 0, 300, 30);

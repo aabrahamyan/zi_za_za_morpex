@@ -79,7 +79,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         self.gearButton.frame = CGRectMake(680, 15, 20, 20);
         self.noteButton.frame = CGRectMake(720, 15, 20, 20);
         
-        
         if (self.settingsVC.isOpen) {
             self.settingsVC.view.frame = CGRectMake(0, 0, 768, 1024);
         } else {
@@ -90,15 +89,20 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         self.settingsVC.tabsView.frame = CGRectMake(30, 120, 186, 247);
         self.settingsVC.tmpDesc.frame = CGRectMake(0, 330, 323, 101);
         
-        NSLog(@"settings port w: %f h: %f", self.settingsVC.view.frame.size.width, self.settingsVC.view.frame.size.height);
         
+        if (self.bookMarksVC.isOpen) {
+            self.bookMarksVC.view.frame = CGRectMake(0, 0, 768, 1024);
+        } else {
+            self.bookMarksVC.view.frame = CGRectMake(0, 1024, 768, 1024);
+        }
+    
+
     } else {
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
         self.gearButton.frame = CGRectMake(900, 15, 20, 20);
         self.noteButton.frame = CGRectMake(950, 15, 20, 20);
-        
-        
+
         if (self.settingsVC.isOpen) {
             self.settingsVC.view.frame = CGRectMake(0, 0, 1024, 768);
         } else {
@@ -108,8 +112,14 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         self.settingsVC.tabsView.frame = CGRectMake(50, 122, 186, 247);
         self.settingsVC.backgroundImageView.image = [Util imageNamedSmart:@"realSettingsBG"];
         self.settingsVC.tmpDesc.frame = CGRectMake(358, 54, 323, 101);
+
+        if (self.bookMarksVC.isOpen) {
+            self.bookMarksVC.view.frame = CGRectMake(0, 0, 1024, 768);
+        } else {
+            self.bookMarksVC.view.frame = CGRectMake(0, 1024, 1024, 768);
+        }
         
-        NSLog(@"settings land w: %f h: %f", self.settingsVC.view.frame.size.width, self.settingsVC.view.frame.size.height);
+        NSLog(@"land w: %f h: %f", self.bookMarksVC.view.frame.size.width, self.bookMarksVC.view.frame.size.height);
     }
     
 }

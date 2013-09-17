@@ -137,24 +137,35 @@
     
     bookMarksScrollView.contentSize = CGSizeMake(BM_WIDTH, yPos);
     
-    isOpen = NO;
+    self.isOpen = NO;
 }
 
 - (void) animateUpAndDown: (BOOL) isUP {
     
     if(isUP) {
-        isOpen = YES;
+        self.isOpen = YES;
+        
+        NSLog(@"open land w: %f h: %f", self.view.frame.size.width, self.view.frame.size.height);
+        
         [UIView beginAnimations:@"popingUP" context:nil];
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        
         [UIView setAnimationDuration:1.0];
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        
         [UIView commitAnimations];
+        
     } else {
-        isOpen = NO;
+        self.isOpen = NO;
+        
+        NSLog(@"close land w: %f h: %f", self.view.frame.size.width, self.view.frame.size.height);
+        
         [UIView beginAnimations:@"popingUP" context:nil];
+        
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView setAnimationDuration:1.0];
-        self.view.frame = CGRectMake(0, self.view.frame.size.height+45, self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(0, 1024, self.view.frame.size.width, self.view.frame.size.height);
+        
         [UIView commitAnimations];
     }
     

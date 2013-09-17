@@ -17,8 +17,9 @@
     UIButton *closeButtonView;
     UIView   *noBookMarksContainer;
     UIScrollView *bookMarksScrollView;
-    bool isOpen;
 }
+
+@property bool isOpen;
 
 - (void) animateUpAndDown: (BOOL) isUP;
 

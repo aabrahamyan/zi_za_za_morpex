@@ -266,9 +266,7 @@
     
     if(isUP) {
         self.isOpen = YES;
-        
-        NSLog(@"settings isOpen animate w: %f h: %f", self.view.frame.size.width, self.view.frame.size.height);
-        
+
         [UIView beginAnimations:@"popingUP" context:nil];
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         
@@ -277,13 +275,8 @@
         
         [UIView commitAnimations];
         
-        
-        
-        
     } else {
         self.isOpen = NO;
-        
-        NSLog(@"settings close animate w: %f h: %f", self.view.frame.size.width, self.view.frame.size.height);
         
         [UIView beginAnimations:@"popingUP" context:nil];
 
