@@ -144,9 +144,7 @@
     
     if(isUP) {
         self.isOpen = YES;
-        
-        NSLog(@"open land w: %f h: %f", self.view.frame.size.width, self.view.frame.size.height);
-        
+
         [UIView beginAnimations:@"popingUP" context:nil];
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         
@@ -157,8 +155,6 @@
         
     } else {
         self.isOpen = NO;
-        
-        NSLog(@"close land w: %f h: %f", self.view.frame.size.width, self.view.frame.size.height);
         
         [UIView beginAnimations:@"popingUP" context:nil];
         

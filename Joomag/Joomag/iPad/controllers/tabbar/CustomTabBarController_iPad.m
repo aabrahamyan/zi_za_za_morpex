@@ -67,12 +67,10 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     [self.view bringSubviewToFront:self.backGroundView];
 }
 
-
-
 - (void)viewDidLayoutSubviews {
     //TODO: Handle Settings VC Orientation Change
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-   
+
     if (iOrientation == UIDeviceOrientationPortrait) {
         self.view.frame = CGRectMake(0, 0, 768, 1024);
         self.backGroundView.frame = CGRectMake(0, 959, self.width, self.height);
@@ -96,7 +94,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
             self.bookMarksVC.view.frame = CGRectMake(0, 1024, 768, 1024);
         }
     
-
     } else {
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
@@ -118,8 +115,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         } else {
             self.bookMarksVC.view.frame = CGRectMake(0, 1024, 1024, 768);
         }
-        
-        NSLog(@"land w: %f h: %f", self.bookMarksVC.view.frame.size.width, self.bookMarksVC.view.frame.size.height);
     }
     
 }

@@ -26,8 +26,6 @@
     return self;
 }
 
-
-
 - (void)loadView {
     [super loadView];
     self.view.frame = CGRectMake(0, 1024, 1024, 768);

@@ -9,6 +9,7 @@
 #import "FeaturedDetailsView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Util.h"
+#import "BuyIssueViewController.h"
 
 @implementation FeaturedDetailsView {
     CGRect imageViewFrame, titleFrame, dateFrame, backGroundFrame,
@@ -61,7 +62,7 @@
         
         self.buyIssueBtn = [[UIButton alloc] init];
         self.buyIssueBtn.backgroundColor = RGBA(214, 77, 76, 1);
-        [self.buyIssueBtn addTarget:self  action:@selector(readHandler) forControlEvents:UIControlEventTouchDown];
+        [self.buyIssueBtn addTarget:self  action:@selector(buyIssueButtonTap) forControlEvents:UIControlEventTouchDown];
         [self.buyIssueBtn setTitle:@"BUY ISSUE" forState:UIControlStateNormal];
         self.buyIssueBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [self addSubview: self.buyIssueBtn];
@@ -111,8 +112,12 @@
 }
 
 - (void)readButtonTap {
-    NSLog(@"read");
     [self.delegate readHandler];
 }
+
+- (void)buyIssueButtonTap {
+    [self.delegate buyIssueHandler];
+}
+
 
 @end

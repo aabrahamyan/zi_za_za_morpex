@@ -15,7 +15,7 @@
 #import "AFNetworking.h"
 #import "MainDataHolder.h"
 #import "ConnectionManager.h"
-
+#import "BuyIssueViewController.h"
 
 
 @interface FeaturedViewController (){
@@ -154,8 +154,7 @@
     }];
 }
 
-#pragma Explore Buttons Handlers
-
+#pragma Featured Buttons Handlers
 
 -(void)readHandler {
     
@@ -181,9 +180,21 @@
     [self.navigationController pushViewController: readVC animated: NO];
 }
 
+- (BuyIssueViewController *) getBuyIssueViewController {
+    return [[BuyIssueViewController alloc] init];
+}
+
+- (void) showBuyIssue {
+    self.buyIssueVC = [self getBuyIssueViewController];
+    
+    [self.view addSubview: self.buyIssueVC.view];
+    
+    [self.buyIssueVC animateUpAndDown:YES];
+}
 
 - (void)buyIssueHandler {
     NSLog(@"buy Issue");
+    [self showBuyIssue];
 }
 
 - (void)shareHandler {

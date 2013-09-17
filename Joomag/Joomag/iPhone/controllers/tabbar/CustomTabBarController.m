@@ -10,7 +10,6 @@
 #import "SettingsViewController.h"
 #import "BookMarkViewController.h"
 #import "AppDelegate.h"
-
 #import "ExploreViewController.h"
 
 @interface CustomTabBarController ()
@@ -176,8 +175,6 @@ static CustomTabBarController * customTabBarController;
     
     [self.bookMarksVC animateUpAndDown:YES];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

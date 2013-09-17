@@ -131,6 +131,8 @@
 		5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EEE17BBC006008E4865 /* ReadViewController.m */; };
 		5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */; };
 		5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */; };
+		5AE5E85617E87909002EECE4 /* BuyIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */; };
+		5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */; };
 		5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton.png */; };
 		5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton.png */; };
@@ -337,6 +339,10 @@
 		5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController_iPad.h; sourceTree = "<group>"; };
 		5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController_iPad.m; sourceTree = "<group>"; };
 		5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
+		5AE5E85417E87909002EECE4 /* BuyIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyIssueViewController.h; sourceTree = "<group>"; };
+		5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueViewController.m; sourceTree = "<group>"; };
+		5AE5E85717E87920002EECE4 /* BuyIssueViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyIssueViewController_iPad.h; sourceTree = "<group>"; };
+		5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueViewController_iPad.m; sourceTree = "<group>"; };
 		5AF9789C17D758E2008FA0C2 /* faceBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBookButton.png; sourceTree = "<group>"; };
 		5AF9789D17D758E2008FA0C2 /* joomagButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joomagButton.png; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
@@ -619,6 +625,8 @@
 				5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */,
 				5A75E93117DD334C0039FD17 /* BookMarkViewController_iPad.h */,
 				5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */,
+				5AE5E85717E87920002EECE4 /* BuyIssueViewController_iPad.h */,
+				5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -640,6 +648,8 @@
 				5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */,
 				5A75E92E17DD33210039FD17 /* BookMarkViewController.h */,
 				5A75E92F17DD33210039FD17 /* BookMarkViewController.m */,
+				5AE5E85417E87909002EECE4 /* BuyIssueViewController.h */,
+				5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -1007,6 +1017,8 @@
 				5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */,
 				5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */,
 				5A75E93717DD4B470039FD17 /* BookMarkView.m in Sources */,
+				5AE5E85617E87909002EECE4 /* BuyIssueViewController.m in Sources */,
+				5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

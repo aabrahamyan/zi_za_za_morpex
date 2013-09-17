@@ -7,6 +7,7 @@
 //
 
 #import "FeaturedViewController_iPad.h"
+#import "BuyIssueViewController_iPad.h"
 
 @interface FeaturedViewController_iPad () {
     CGRect detailsViewFrame, pageControlFrame, scrollViewFrame;
@@ -39,6 +40,10 @@
     detailsView.frame = detailsViewFrame;
     
     [scrollView redrawData];
+}
+
+- (BuyIssueViewController_iPad *) getBuyIssueViewController {
+    return [[BuyIssueViewController_iPad alloc] init];
 }
 
 

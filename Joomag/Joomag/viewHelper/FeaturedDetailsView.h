@@ -11,6 +11,7 @@
 @protocol FeaturedDetailsButtonsDelegate <NSObject>
 @optional
 - (void)readHandler;
+- (void)buyIssueHandler;
 @end
 
 @interface FeaturedDetailsView : UIView <FeaturedDetailsButtonsDelegate>
