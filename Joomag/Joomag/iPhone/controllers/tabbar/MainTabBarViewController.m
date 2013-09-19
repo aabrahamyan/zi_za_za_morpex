@@ -109,7 +109,7 @@
 }
 
 - (CustomTabBarController *) createAndGetTabbar {
-    return [CustomTabBarController getInstance:[UIImage imageNamed:@"tabbar.png"] withWidth:768 withHeight:1024];
+    return [CustomTabBarController getInstance:[UIImage imageNamed:@"Tabich.png"] withWidth:220 withHeight:45];
 }
 
 - (void) setupTabBar {
@@ -119,15 +119,19 @@
 }
 
 - (void) loadView {
-    [super loadView];
+    [super loadView];    
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        
+        [self setupTabBar];
+        
         if (screenBounds.size.height == 568) {
             self.view.frame = CGRectMake(0, 0, 320, 568);
         } else {
             self.view.frame = CGRectMake(0, 0, 320, 480);
         }
+        
         
         //[self setupTabBar: [self setupIPhoneTabBarViewControllers]];
         

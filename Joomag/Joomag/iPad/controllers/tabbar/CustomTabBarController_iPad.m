@@ -37,16 +37,23 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     
 }
 
-- (void) loadView {
-    [super loadView];
-        
-    self.featuredButton.frame = CGRectMake(50, 10, 99, 24);
-    self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
-    self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
-    
-    FeaturedViewController_iPad * featuredVC = [[FeaturedViewController_iPad alloc] init];
-    ExploreViewController_iPad * exploreVC = [[ExploreViewController_iPad alloc] init];
-    LibraryViewController_iPad * libraryVC = [[LibraryViewController_iPad alloc] init];
+- (FeaturedViewController *) getFeaturedViewController {
+    return [[FeaturedViewController_iPad alloc] init];
+}
+
+- (ExploreViewController *) getExploreViewController {
+    return [[ExploreViewController_iPad alloc] init];
+}
+
+- (LibraryViewController *) getLibraryViewController {
+    return [[LibraryViewController_iPad alloc] init];  
+}
+
+
+- (void) createTabBarContent {
+    FeaturedViewController * featuredVC = [self getFeaturedViewController]; 
+    ExploreViewController * exploreVC = [self getExploreViewController];
+    LibraryViewController * libraryVC = [self getLibraryViewController];
     
     self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
     self.featuredNavigationController.navigationBarHidden = YES;
@@ -63,6 +70,16 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     [self.view addSubview:self.featuredNavigationController.view];
     [self.view addSubview:self.exploreNavigationController.view];
     [self.view addSubview:self.myBookshelfNavigationController.view];
+}
+
+- (void) loadView {
+    [super loadView];
+        
+    self.featuredButton.frame = CGRectMake(50, 10, 99, 24);
+    self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
+    self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
+    
+    //[self createTabBarContent];
     
     [self.view bringSubviewToFront:self.backGroundView];
 }

@@ -11,6 +11,8 @@
 #import "BookMarkViewController.h"
 #import "AppDelegate.h"
 #import "ExploreViewController.h"
+#import "FeaturedViewController.h"
+#import "LibraryViewController.h"
 
 @interface CustomTabBarController ()
 
@@ -39,9 +41,8 @@ static CustomTabBarController * customTabBarController;
 + (CustomTabBarController *) getInstance:(UIImage *) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height {
 
     if(customTabBarController == nil) {
-        customTabBarController = [[CustomTabBarController alloc] initWithSpecifics:bgImage withWidth:width withHeight:height];
-        
-    }
+        customTabBarController = [[CustomTabBarController alloc] initWithSpecifics:bgImage withWidth:width withHeight:height];        
+    } 
     
     return customTabBarController;
     
@@ -55,14 +56,51 @@ static CustomTabBarController * customTabBarController;
     return [[BookMarkViewController alloc] init];
 }
 
+- (FeaturedViewController *) getFeaturedViewController {
+    return [[FeaturedViewController alloc] init];
+}
+
+- (ExploreViewController *) getExploreViewController {
+    return [[ExploreViewController alloc] init];
+}
+
+- (LibraryViewController *) getLibraryViewController {
+    return [[LibraryViewController alloc] init];
+}
+
+- (void) createTabBarContent {
+    FeaturedViewController * featuredVC = [self getFeaturedViewController];
+    ExploreViewController * exploreVC = [self getExploreViewController];
+    LibraryViewController * libraryVC = [self getLibraryViewController];
+    
+    self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
+    self.featuredNavigationController.navigationBarHidden = YES;
+    
+    self.exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
+    self.exploreNavigationController.navigationBarHidden = YES;
+    
+    self.exploreNavigationController.view.hidden = YES;
+    self.myBookshelfNavigationController = [[UINavigationController alloc] initWithRootViewController:libraryVC];
+    
+    self.myBookshelfNavigationController.navigationBarHidden = YES;
+    self.myBookshelfNavigationController.view.hidden = YES;
+    
+    [self.view addSubview:self.featuredNavigationController.view];
+    [self.view addSubview:self.exploreNavigationController.view];
+    [self.view addSubview:self.myBookshelfNavigationController.view];
+}
+
 - (void) loadView {
     [super loadView];
     
     self.backGroundView = [[UIImageView alloc] initWithImage:self.bgImage];
     self.view.userInteractionEnabled = YES;
     self.backGroundView.userInteractionEnabled = YES;
+    self.backGroundView.frame = CGRectMake(0, 400, 320, 45);
     
     [self.view addSubview:self.backGroundView];
+    
+    [self createTabBarContent];
     
     self.featuredButton = [[UIButton alloc] init];
     [self.featuredButton setImage:[UIImage imageNamed:@"barFeatured.png"] forState:UIControlStateNormal];
@@ -117,6 +155,8 @@ static CustomTabBarController * customTabBarController;
     [self.noteButton addTarget:self action:@selector(showBookMarks) forControlEvents:UIControlEventTouchUpInside];
     
     [self.backGroundView addSubview:self.noteButton];
+    
+    [self.view bringSubviewToFront:self.backGroundView];
 }
 
 - (void) toggleTabs: (id) target {
