@@ -62,7 +62,11 @@
        list =  [MainDataHolder getInstance].popularMagList;
     } else if ([magType isEqualToString:@"Highlighted"]) {
         list =  [MainDataHolder getInstance].highlightedMagList;
+    } else if (!magType) {
+        list =  [MainDataHolder getInstance].filteredCategories; 
     }
+        
+    
     [[MainDataHolder getInstance].testData removeAllObjects];
     for (int counter = 0; counter < [list count]; counter ++) {
         NSDictionary * currentMagazine = [list objectAtIndex:counter];
@@ -76,9 +80,12 @@
             mgRecord.magazinDetailsText = [currentMagazine objectForKey:@"desc"];
             mgRecord.magazineID = [[currentMagazine objectForKey:@"ID"] intValue];
             
+            
+            
             [[MainDataHolder getInstance].testData addObject:mgRecord];
         }
     }
+       
 }
 
 @end

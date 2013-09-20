@@ -212,14 +212,17 @@
     requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
     requestString = [requestString stringByAppendingFormat:@"%@",GETMAGAZINESLIST];
     requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
-    //---------------------- Featured Spread ------------------------------//
-    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
-    requestString = [requestString stringByAppendingFormat:@"%@",magazineTypes];
-    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
-    requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
-    requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
-    requestString = [requestString stringByAppendingFormat:@"%@",magazineTypes];
-    requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+
+    if(magazineTypes) {
+        //---------------------- Magazine Spread ------------------------------//
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",magazineTypes];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];
+        requestString = [requestString stringByAppendingFormat:@"%@",RIGHT_SLASH];
+        requestString = [requestString stringByAppendingFormat:@"%@",magazineTypes];
+        requestString = [requestString stringByAppendingFormat:@"%@",BIG_BRACKET];
+    }
     
     if(searchKeyWord) {
         requestString = [requestString stringByAppendingFormat:@"%@",SMALL_BRACKET];

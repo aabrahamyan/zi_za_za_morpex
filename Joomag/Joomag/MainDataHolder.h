@@ -17,6 +17,10 @@
 @property (nonatomic, strong) NSArray * highlightedMagList;
 
 @property (strong, nonatomic) NSMutableArray * testData;
+@property (strong, nonatomic) NSMutableArray * popularsData;
+@property (strong, nonatomic) NSMutableArray * highlightedData;
+
+@property (strong, nonatomic) NSMutableArray * filteredCategories;
 
 @property (nonatomic, strong) NSArray *categoriesList;
 

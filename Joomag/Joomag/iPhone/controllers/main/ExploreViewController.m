@@ -94,6 +94,7 @@
     
     //--------------------------- Categories Table -----------------------------
     categoriesTable = [[ExploreTableView alloc] init];
+    categoriesTable.callbacker = self; 
     
     [self.view addSubview: categoriesTable];
 }
@@ -171,8 +172,7 @@
 }
 
 
--(void)titleLabelTapHandler :(id) sender
-{
+-(void)titleLabelTapHandler :(id) sender {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
@@ -261,26 +261,17 @@
 #pragma Response Tracker Delegates ---
 
 - (void) didFailResponse: (id) responseObject {
-    
+    NSLog(@"Failed getting Response !");
 }
 
 - (void) didFinishResponse: (id) responseObject {
     dataHolder = [MainDataHolder getInstance];
     
-//    NSString * magType = (NSString *) responseObject;
-    
-//    if([magType isEqualToString:@"featured"]) {
-//        list = [MainDataHolder getInstance].magazinesList;
-//    } else if ([magType isEqualToString:@"Popular"]) {
-//        list =  [MainDataHolder getInstance].popularMagList;
-//    } else if ([magType isEqualToString:@"Highlighted"]) {
-//        list =  [MainDataHolder getInstance].highlightedMagList;
-//    }
-    
     scrollView.entries = dataHolder.testData;
     [scrollView setNeedsDisplay];
     
     [categoriesTable reloadExploreTable];
+    [self redrawData];
     // NSLog(@"dataHolder: %@", dataHolder.categoriesList);
 }
 

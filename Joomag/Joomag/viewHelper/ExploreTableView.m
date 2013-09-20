@@ -9,6 +9,9 @@
 #import "ExploreTableView.h"
 #import "MainDataHolder.h"
 #import "Util.h"
+#import "ConnectionManager.h"
+#import "ExploreViewController.h"
+
 
 @interface ExploreTableView () {
     NSArray *data;
@@ -29,14 +32,22 @@
         self.dataSource = self;
         self.backgroundColor = RGBA(41, 41, 42, 1);
         self.separatorColor = RGBA(65, 65, 65, 1);
+        
+        reloadFromDidSelect = NO;
     }
     return self;
 }
 
 - (void)reloadExploreTable {
-    //NSLog(@"TABEL: %@", [MainDataHolder getInstance].categoriesList);
+
     data = [MainDataHolder getInstance].categoriesList;
-    //NSLog(@"TABEL: %@", [[data objectAtIndex:0] objectForKey:@"cats"]);
+   
+    [self reloadData];
+}
+
+- (void) didSelectedRowAt : (NSInteger) ider {
+    data = [[data objectAtIndex:ider] objectForKey:@"cats"];
+    
     [self reloadData];
 }
 
@@ -56,8 +67,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
     }
     
-    // cell.textLabel.text = [[data objectAtIndex: indexPath.row] objectForKey:@"name"]; // !!!!!!!! TODO !!!!!!!!!!!
-    cell.textLabel.text = [[[[data objectAtIndex:0] objectForKey:@"cats"] objectAtIndex: indexPath.row] objectForKey:@"name"];
+    cell.textLabel.text = [[data objectAtIndex: indexPath.row] objectForKey:@"name"]; 
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
     cell.textLabel.highlightedTextColor = [UIColor redColor];
@@ -76,7 +86,24 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
 
-    NSLog(@"SELECTED ROW ID : %@", [[[[data objectAtIndex:0] objectForKey:@"cats"] objectAtIndex: indexPath.row] objectForKey:@"ID"]);
+   // NSLog(@"SELECTED ROW ID : %@", [[[[data objectAtIndex:0] objectForKey:@"cats"] objectAtIndex: indexPath.row] objectForKey:@"ID"]);
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
+    [connManager constructGetMagazinesListRequest:self:nil:nil:nil:[[data objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    
+    [self didSelectedRowAt:indexPath.row];  
+    
+    
+}
+
+#pragma Response Tracker Delegates ---
+ 
+- (void) didFailResponse: (id) responseObject {
+    NSLog(@"Failed getting Response !"); 
+}
+
+
+- (void) didFinishResponse: (id) responseObject {
+    [self.callbacker redrawData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,6 +10,7 @@
 #import "MainDataHolder.h"
 #import "ImageDownloader.h"
 #import "MagazinRecord.h"
+#import "UIImageView+WebCache.h"
 
 #define TILE_WIDTH_IPHONE 160
 #define TILE_HEIGHT_IPHONE 200
@@ -127,44 +128,47 @@
         if (subview.tag < len+1 && subview.tag != 0) {
             // Load an individual page, first seeing if we've already loaded it
             MagazinRecord *mRecord = [self.entries objectAtIndex:subview.tag-1];
-            if (!mRecord.magazinDetailsIcon) {
-                //NSLog(@"index: %i",subview.tag);
-                [self startIconDownload:mRecord forIndexPath:subview.tag-1];
-            } else {
-                NSLog(@"exist");
+            if(!mRecord.magazinDetailsIcon)
+                [self startIconDownload:mRecord:subview];
+            else
                 subview.image = mRecord.magazinDetailsIcon;
-            }
         }
     }
 }
 
 // -------------------------------------------------------------------------------
-//	startIconDownload:forIndexPath:
+//	startIconDownload:ImageView:
 // -------------------------------------------------------------------------------
-- (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
-    NSNumber *indexP = [NSNumber numberWithInteger:page];
+
+- (void) startIconDownload: (MagazinRecord *) magazinRecord : (UIImageView *) view {
     
-    //NSLog(@"imageview: %i",page);
+    //[view setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
     
-    ImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexP];
-    
-    if (imageDownloader == nil) {
-        
-        imageDownloader = [[ImageDownloader alloc] init];
-        imageDownloader.magazinRecord = magazinRecord;
-        
-        [imageDownloader setCompletionHandler:^{
-            //NSLog(@"Download Image: %i",page);
-            ((UIImageView *)[[self subviews] objectAtIndex:page]).image = magazinRecord.magazinDetailsIcon;
-            [self setShadow:((UIImageView *)[[self subviews] objectAtIndex:page])];
-        }];
-        
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
-        
-        [imageDownloader startDownloadWithImageView: ((UIImageView *)[[self subviews] objectAtIndex:page])
-                                            withURL: magazinRecord.magazinDetailsImageURL];
-    }
+    __block UIImageView *imageView = view;
+    imageView.alpha = 0.0f;
+    // Here we use the new provided setImageWithURL: method to load the web image
+
+    [view setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL]
+                placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                         success:^(UIImage *image, BOOL dummy) {
+                             if (image) {
+                                 imageView.image = image;
+                                 
+                                 [UIView animateWithDuration:0.3 animations:^{
+                                        imageView.alpha = 1.0f;
+                                 }];
+                                 
+                                 
+                             } else {
+                                 NSLog(@"NO IMAGE");
+                             }
+                         }
+                         failure:^(NSError *error) {
+                             NSLog(@"FAILED DOWNLOADING IMAGE !!!");
+                         }
+     ];
 }
+
 
 // -------------------------------------------------------------------------------
 //	currentPage:
@@ -200,8 +204,7 @@
 // -------------------------------------------------------------------------------
 //	scrollViewDidEndDecelerating:
 // -------------------------------------------------------------------------------
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self loadVisibleImages];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl2" object:nil];
 }

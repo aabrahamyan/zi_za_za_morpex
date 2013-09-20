@@ -20,6 +20,9 @@ static MainDataHolder * mainDataHolder;
         
         self.popularMagList = [[NSMutableArray alloc] init];
         self.highlightedMagList = [[NSMutableArray alloc] init];
+        
+        self.popularsData = [[NSMutableArray alloc] init];
+        self.highlightedData = [[NSMutableArray alloc] init];
     }
     
     return self;

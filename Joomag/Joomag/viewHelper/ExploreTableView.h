@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResponseTrackerDelegate.h"
 
-@interface ExploreTableView : UITableView  <UITableViewDelegate, UITableViewDataSource>
+@class ExploreViewController;
+
+@interface ExploreTableView : UITableView  <UITableViewDelegate, UITableViewDataSource, ResponseTrackerDelegate> { 
+
+    BOOL reloadFromDidSelect;
+}
+
+@property (nonatomic, strong) ExploreViewController * callbacker;
 
 - (void)reloadExploreTable;
 

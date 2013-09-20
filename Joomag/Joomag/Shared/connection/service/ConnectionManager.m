@@ -146,6 +146,9 @@
                 [MainDataHolder getInstance].popularMagList = [magListParser parserData:responseObject];
             } else if ([magType isEqualToString:@"Highlighted"]) {
                 [MainDataHolder getInstance].highlightedMagList = [magListParser parserData:responseObject];
+            } else if(categoryId || categoryName) {
+                [MainDataHolder getInstance].filteredCategories = [magListParser parserData:responseObject];
+
             }
             
             
@@ -170,6 +173,9 @@
             
             CategoriesParser * catsParser = [[CategoriesParser alloc] init];
             [MainDataHolder getInstance].categoriesList = [catsParser parserData:responseObject];
+            
+            NSLog(@"[MainDataHolder getInstance].categoriesList = %@",[MainDataHolder getInstance].categoriesList);
+            
 
             [callback didFinishResponse:nil];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
