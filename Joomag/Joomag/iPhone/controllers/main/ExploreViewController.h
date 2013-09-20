@@ -17,15 +17,22 @@
 @interface ExploreViewController : UIViewController <ResponseTrackerDelegate> {
     
 @protected
-    UIView *topBar;
-    UILabel *topBarTitleLabel;
+    UIView * topBar;
+    UILabel * topBarTitleLabel;
+    UILabel * firstBreadCrumb;
+    UILabel * secondBreadCrumb;
+    
     UIButton *searchBtn;
     UIView *titleLabels;
     UIPageControl *pageControl;
     ExploreScrollView *scrollView;
     ExploreTableView *categoriesTable;
+    
+
 }
 
 - (void) redrawData;
+
+- (void) redrawDataAndTopBar: (NSString *) breadcrumb withHierarchy : (NSInteger) hierarchy;
 
 @end

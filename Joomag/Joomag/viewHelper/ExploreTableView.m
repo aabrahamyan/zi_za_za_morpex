@@ -34,6 +34,7 @@
         self.separatorColor = RGBA(65, 65, 65, 1);
         
         reloadFromDidSelect = NO;
+        hierarchy = 0;
     }
     return self;
 }
@@ -47,6 +48,12 @@
 
 - (void) didSelectedRowAt : (NSInteger) ider {
     data = [[data objectAtIndex:ider] objectForKey:@"cats"];
+    
+    if([data count] == 0) {
+        self.hidden = YES;
+    } else {
+        self.hidden = NO;
+    }
     
     [self reloadData];
 }
@@ -86,13 +93,17 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
 
-   // NSLog(@"SELECTED ROW ID : %@", [[[[data objectAtIndex:0] objectForKey:@"cats"] objectAtIndex: indexPath.row] objectForKey:@"ID"]);
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:nil:nil:nil:[[data objectAtIndex:indexPath.row] objectForKey:@"name"]];
     
-    [self didSelectedRowAt:indexPath.row];  
+    NSLog(@"[[data objectAtIndex:indexPath.row] objectForKey: = %@",  [[data objectAtIndex:indexPath.row] objectForKey:@"name"]);
     
+    NSLog(@"hierarchy = %d",hierarchy);
+    [self.callbacker redrawDataAndTopBar:[[data objectAtIndex:indexPath.row] objectForKey:@"name"] withHierarchy:hierarchy];
     
+    [self didSelectedRowAt:indexPath.row];
+    
+    hierarchy++;
 }
 
 #pragma Response Tracker Delegates ---

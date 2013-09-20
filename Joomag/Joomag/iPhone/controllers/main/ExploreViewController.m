@@ -50,6 +50,20 @@
     
     [topBar addSubview: topBarTitleLabel];
     
+    firstBreadCrumb = [[UILabel alloc] init];
+    firstBreadCrumb.backgroundColor = [UIColor clearColor];
+    firstBreadCrumb.textColor = [UIColor whiteColor];
+    firstBreadCrumb.text = @"";
+    
+    [topBar addSubview: firstBreadCrumb];
+    
+    secondBreadCrumb = [[UILabel alloc] init];
+    secondBreadCrumb.backgroundColor = [UIColor clearColor];
+    secondBreadCrumb.textColor = [UIColor whiteColor];
+    secondBreadCrumb.text = @"";
+    
+    [topBar addSubview: secondBreadCrumb];
+    
     //-------------------------------- Search Botton ------------------------------------
     searchBtn = [[UIButton alloc] init];
     [searchBtn addTarget:self  action:@selector(searchHandler) forControlEvents:UIControlEventTouchDown];
@@ -99,7 +113,15 @@
     [self.view addSubview: categoriesTable];
 }
 
-
+- (void) redrawDataAndTopBar: (NSString *) breadcrumb withHierarchy : (NSInteger) hierarchy {
+    if([dataHolder.testData count] != 0) {
+        if (hierarchy == 0) {
+            firstBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
+        } else if (hierarchy > 0) {
+            secondBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
+        }
+    }
+}
 
 - (void) redrawData {
     if([dataHolder.testData count] != 0) {

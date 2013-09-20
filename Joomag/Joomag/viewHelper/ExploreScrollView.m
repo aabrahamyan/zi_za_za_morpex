@@ -78,7 +78,7 @@
 // setTilesWithArray: tileWidth: andHeight:
 // Set the images in scroll view
 // -------------------------------------------------------------------------------
-- (void)setTilesWithArray: (NSArray *)arr tileWidth: (int)width andHeight: (int)height {
+- (void)setTilesWithArray: (NSArray *)arr tileWidth: (int) width andHeight: (int)height {
     
     int xPosition = 0;
     int yPosition = 0;

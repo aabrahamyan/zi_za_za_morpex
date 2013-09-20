@@ -39,6 +39,8 @@
     if (iOrientation == UIDeviceOrientationPortrait) {
         topBarFrame = CGRectMake(0, 0, 768, 44);
         topBarTitleLabelFrame = CGRectMake(20, 0, 150, 44);
+        firstBreadCrumb.frame = CGRectMake(190, 0, 150, 44);
+        secondBreadCrumb.frame = CGRectMake(360, 0, 150, 44);
         searchBtnFrame = CGRectMake(768-145, 0, 122, 44);
         scrollViewFrame = CGRectMake(70, 130, 660, 520);
         titleLabelsViewFrame = CGRectMake(70, 80, 300, 30);
@@ -47,6 +49,8 @@
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
         topBarTitleLabelFrame = CGRectMake(20, 0, 150, 44);
+        firstBreadCrumb.frame = CGRectMake(190, 0, 150, 44);
+        secondBreadCrumb.frame = CGRectMake(360, 0, 150, 44);
         searchBtnFrame = CGRectMake(1024-145, 0, 122, 44);
         scrollViewFrame = CGRectMake(70, 110, 660, 520);
         titleLabelsViewFrame = CGRectMake(70, 60, 300, 30);

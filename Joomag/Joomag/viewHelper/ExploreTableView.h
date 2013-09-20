@@ -14,9 +14,10 @@
 @interface ExploreTableView : UITableView  <UITableViewDelegate, UITableViewDataSource, ResponseTrackerDelegate> { 
 
     BOOL reloadFromDidSelect;
+    NSInteger hierarchy;
 }
 
-@property (nonatomic, strong) ExploreViewController * callbacker;
+@property (nonatomic, strong) ExploreViewController * callbacker;   
 
 - (void)reloadExploreTable;
 
