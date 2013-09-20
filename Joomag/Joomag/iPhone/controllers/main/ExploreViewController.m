@@ -27,7 +27,7 @@
 
 - (void)loadView {
     [super loadView];
-    
+ 
     dataHolder = [MainDataHolder getInstance];
     
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
@@ -70,32 +70,18 @@
     [searchBtn setBackgroundImage: [Util imageNamedSmart:@"searchIconeTopBar"] forState:UIControlStateNormal];
     searchBtn.showsTouchWhenHighlighted = YES;
     [topBar addSubview: searchBtn];
-    
-    //---------------------------- Page Control ------------------------------------
-    pageControl = [[UIPageControl alloc] init];
-    pageControl.currentPage = 0;
-    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    pageControl.backgroundColor = [UIColor clearColor];
-    
-    [self.view addSubview: pageControl];
-    
+
     
     //---------------------------- Scroll View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 100, 320, 180)];
-        pageControl.numberOfPages = 5;
     } else {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 130, 720, 450)];
-        pageControl.numberOfPages = 2;
     }
     
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
-    
-    CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
-    pageControl.frame = pageControlFrame;
     
     //Notify When Page Changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl2) name:@"updatePageControl2" object:nil];
@@ -107,7 +93,7 @@
     
     
     //--------------------------- Categories Table -----------------------------
-    categoriesTable = [[ExploreTableView alloc] init];//]WithFrame: CGRectMake(0, 0, 320, 200)];
+    categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-245, 320, 200)];
     categoriesTable.callbacker = self; 
     
     [self.view addSubview: categoriesTable];
@@ -134,7 +120,7 @@
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 60, 280, 30)];
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
-    label2 = [[UILabel alloc] initWithFrame:CGRectMake(105, 0, 80, 20)]; label2.text = @"POPULAR";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 80, 20)]; label2.text = @"POPULAR";
     label3 = [[UILabel alloc] initWithFrame:CGRectMake(185, 0, 81, 20)]; label3.text = @"HIGHLIGHTED";
     
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, label3, nil];
@@ -296,8 +282,34 @@
     [categoriesTable reloadExploreTable];
     [self redrawData];
     
-    NSLog(@"scrollView.entries: %i", dataHolder.testData.count);
-    // NSLog(@"dataHolder: %@", dataHolder.categoriesList);
+    NSLog(@"entries: %i", dataHolder.testData.count);
+    
+    //---------------------------- Page Control ------------------------------------
+    pageControl = [[UIPageControl alloc] init];
+    pageControl.currentPage = 0;
+    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    pageControl.backgroundColor = [UIColor clearColor];
+    CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
+    pageControl.frame = pageControlFrame;
+    
+    if (IS_IPAD) {
+        pageControl.numberOfPages = 2;
+    } else {
+        
+        NSInteger numberOfItems = [dataHolder.testData count];
+        
+        if (numberOfItems % 2) { //odd
+            NSLog(@"pagecontroll odd: %i", numberOfItems/2);
+        } else {
+            NSLog(@"pagecontroll even: %i", numberOfItems/2);
+            numberOfItems = numberOfItems/2;
+        }
+        
+        pageControl.numberOfPages = 4;
+    }
+    
+    [self.view addSubview: pageControl];
 }
 
 @end

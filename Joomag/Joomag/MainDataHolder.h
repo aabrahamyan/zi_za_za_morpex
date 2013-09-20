@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) NSMutableArray * filteredCategories;
 
-@property (nonatomic, strong) NSArray *categoriesList;
+@property (nonatomic, strong) NSMutableArray *categoriesList;
 
 @property (strong, nonatomic) NSMutableArray * bookMarkData;
 

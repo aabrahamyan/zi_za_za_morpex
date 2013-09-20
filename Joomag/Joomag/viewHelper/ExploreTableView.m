@@ -14,7 +14,7 @@
 
 
 @interface ExploreTableView () {
-    NSArray *data;
+    NSMutableArray *data;
 }
 
 @end
@@ -31,7 +31,7 @@
         self.delegate = self;
         self.dataSource = self;
         self.backgroundColor = RGBA(41, 41, 42, 1);
-        self.separatorColor = [UIColor clearColor];//RGBA(65, 65, 65, 1);
+        self.separatorColor = [UIColor clearColor];
         
         reloadFromDidSelect = NO;
         hierarchy = 0;
@@ -64,7 +64,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
-    return [data count];
+    
+    NSInteger numberOfRows = [data count];
+    
+    if (numberOfRows % 2) { //odd
+        //NSLog(@"odd: %i", numberOfRows/2);
+    } else {
+        //NSLog(@"even: %i", numberOfRows/2);
+        numberOfRows = numberOfRows/2;
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,12 +83,31 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
     }
+
+    UIImageView *cellBg = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"exploreCell.png"]];
+    cellBg.frame = CGRectMake(0, 0, 320, 50);
     
-    //cell.backgroundView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"exploreCell.png"]];
-    cell.textLabel.text = [[data objectAtIndex: indexPath.row] objectForKey:@"name"]; 
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
-    cell.textLabel.highlightedTextColor = [UIColor redColor];
+    [cell.contentView addSubview: cellBg];
+    
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 140, 50)];
+    label1.text = [[data objectAtIndex: indexPath.row] objectForKey:@"name"];
+    label1.textColor = [UIColor whiteColor];
+    label1.backgroundColor = [UIColor clearColor];
+    label1.font = [UIFont boldSystemFontOfSize:16.0];
+    label1.highlightedTextColor = [UIColor redColor];
+    
+    [cell.contentView addSubview: label1];
+    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(180, 0, 140, 50)];
+    label2.text = [[data objectAtIndex: indexPath.row+1] objectForKey:@"name"];
+    label2.textColor = [UIColor whiteColor];
+    label2.backgroundColor = [UIColor clearColor];
+    label2.font = [UIFont boldSystemFontOfSize:16.0];
+    label2.highlightedTextColor = [UIColor redColor];
+    
+    [cell.contentView addSubview: label2];
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //cell.
     
