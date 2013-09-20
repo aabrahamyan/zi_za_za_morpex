@@ -33,22 +33,21 @@
 
 - (void) loadView {
     [super loadView];
-    
-    //NSLog(@"FeaturedViewController:");
-    self.view.backgroundColor = [UIColor blackColor];
-    
+    self.view.frame = CGRectMake(0, 0, 320, 568);    
+    NSLog(@"view y: %f",self.view.frame.origin.y);
+
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)]; // TODO
-    //scrollView.entries = dataHolder.testData;
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width,
+                                                                      self.view.frame.size.height-69)]; // TODO frmae size
     
     [self.view addSubview: scrollView];
     
     
     //---------------------------- Page Control ------------------------------------
-    CGRect pageControlFrame = CGRectMake(0, 30, 320, 30);
+    CGRect pageControlFrame = CGRectMake(0, 50, 320, 30);
     pageControl = [[UIPageControl alloc] init];
     pageControl.frame = pageControlFrame;
     pageControl.currentPage = 0;
@@ -63,7 +62,13 @@
     
     //---------------------------- Details View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+        
+        if (IS_IPHONE_5) {
+            detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 325, 305, 160)];
+        } else {
+            detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+        }
+        
     } else {
         detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(0, 0, 520, 220)];
     }
@@ -74,6 +79,23 @@
     
     // Hide Details view when start dragging
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
+    
+    //-------------------------------- Top Bar ------------------------------------
+    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
+    [topBar addSubview:backgroundView];
+    [topBar sendSubviewToBack: backgroundView];
+    
+    [self.view addSubview: topBar];
+    
+    
+    UILabel *topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 44)];
+    topBarTitleLabel.backgroundColor = [UIColor clearColor];
+    topBarTitleLabel.textColor = [UIColor whiteColor];
+    topBarTitleLabel.text = @"Featured Magazines";
+    
+    [topBar addSubview: topBarTitleLabel];
+
 }
 
 - (void)didReceiveMemoryWarning {

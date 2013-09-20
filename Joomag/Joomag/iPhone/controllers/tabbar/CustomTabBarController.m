@@ -13,6 +13,8 @@
 #import "ExploreViewController.h"
 #import "FeaturedViewController.h"
 #import "LibraryViewController.h"
+#import "MoreViewController.h"
+#import "Util.h"
 
 @interface CustomTabBarController ()
 
@@ -68,14 +70,19 @@ static CustomTabBarController * customTabBarController;
     return [[LibraryViewController alloc] init];
 }
 
+
 - (void) createTabBarContent {
     FeaturedViewController * featuredVC = [self getFeaturedViewController];
     ExploreViewController * exploreVC = [self getExploreViewController];
     LibraryViewController * libraryVC = [self getLibraryViewController];
     
     self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
-    self.featuredNavigationController.navigationBarHidden = YES;
+    self.featuredNavigationController.view.frame = CGRectMake(0, -20, 320, 568);
     
+    NSLog(@"nav y: %f",self.featuredNavigationController.view.frame.origin.y);
+    
+    self.featuredNavigationController.navigationBarHidden = YES;
+
     self.exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
     self.exploreNavigationController.navigationBarHidden = YES;
     
@@ -93,19 +100,27 @@ static CustomTabBarController * customTabBarController;
 - (void) loadView {
     [super loadView];
     
+    self.view.frame = CGRectMake(0, 0, 320, 568);
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+    
+    
     self.backGroundView = [[UIImageView alloc] initWithImage:self.bgImage];
     self.view.userInteractionEnabled = YES;
     self.backGroundView.userInteractionEnabled = YES;
-    self.backGroundView.frame = CGRectMake(0, 400, 320, 45);
+    
+    if (IS_IPHONE_5)
+        self.backGroundView.frame = CGRectMake(0, 503, 320, 45);
+    else
+        self.backGroundView.frame = CGRectMake(0, 400, 320, 45);
     
     [self.view addSubview:self.backGroundView];
     
     [self createTabBarContent];
     
-    self.featuredButton = [[UIButton alloc] init];
-    [self.featuredButton setImage:[UIImage imageNamed:@"barFeatured.png"] forState:UIControlStateNormal];
-    [self.featuredButton setImage:[UIImage imageNamed:@"barFeatured.png"] forState:UIControlStateSelected];
-    [self.featuredButton setImage:[UIImage imageNamed:@"barFeatured.png"] forState:UIControlStateHighlighted];
+    self.featuredButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 1, 73, 45)];
+    [self.featuredButton setImage: [Util imageNamedSmart:@"barFeatured"] forState:UIControlStateNormal];
+    [self.featuredButton setImage: [Util imageNamedSmart:@"barFeatured"] forState:UIControlStateSelected];
+    [self.featuredButton setImage: [Util imageNamedSmart:@"barFeatured"] forState:UIControlStateHighlighted];
     self.featuredButton.showsTouchWhenHighlighted = YES;
     self.featuredButton.tag = 11111;
     
@@ -114,10 +129,10 @@ static CustomTabBarController * customTabBarController;
     [self.backGroundView addSubview:self.featuredButton];
     
     
-    self.exploreButton = [[UIButton alloc] init];
-    [self.exploreButton setImage:[UIImage imageNamed:@"barExplore.png"] forState:UIControlStateNormal];
-    [self.exploreButton setImage:[UIImage imageNamed:@"barExplore.png"] forState:UIControlStateSelected];
-    [self.exploreButton setImage:[UIImage imageNamed:@"barExplore.png"] forState:UIControlStateHighlighted];
+    self.exploreButton = [[UIButton alloc] initWithFrame:CGRectMake(85, 2, 73, 45)];
+    [self.exploreButton setImage: [Util imageNamedSmart:@"barExplore"] forState:UIControlStateNormal];
+    [self.exploreButton setImage: [Util imageNamedSmart:@"barExplore"] forState:UIControlStateSelected];
+    [self.exploreButton setImage: [Util imageNamedSmart:@"barExplore"] forState:UIControlStateHighlighted];
     self.exploreButton.showsTouchWhenHighlighted = YES;
     self.exploreButton.tag = 22222;
     
@@ -126,10 +141,10 @@ static CustomTabBarController * customTabBarController;
     [self.backGroundView addSubview:self.exploreButton];
     
     
-    self.myLibButton = [[UIButton alloc] init];
-    [self.myLibButton setImage:[UIImage imageNamed:@"barMyLib.png"] forState:UIControlStateNormal];
-    [self.myLibButton setImage:[UIImage imageNamed:@"barMyLib.png"] forState:UIControlStateSelected];
-    [self.myLibButton setImage:[UIImage imageNamed:@"barMyLib.png"] forState:UIControlStateHighlighted];
+    self.myLibButton = [[UIButton alloc] initWithFrame:CGRectMake(170, 2, 73, 45)];
+    [self.myLibButton setImage: [Util imageNamedSmart:@"barMyLib"] forState:UIControlStateNormal];
+    [self.myLibButton setImage: [Util imageNamedSmart:@"barMyLib"] forState:UIControlStateSelected];
+    [self.myLibButton setImage: [Util imageNamedSmart:@"barMyLib"] forState:UIControlStateHighlighted];
     self.myLibButton.showsTouchWhenHighlighted = YES;
     self.myLibButton.tag = 33333;
     
@@ -137,10 +152,20 @@ static CustomTabBarController * customTabBarController;
     
     [self.backGroundView addSubview:self.myLibButton];
     
+    self.moreButton = [[UIButton alloc] initWithFrame:CGRectMake(240, 3, 73, 45)];
+    [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateNormal];
+    [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateSelected];
+    [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateHighlighted];
+    self.moreButton.showsTouchWhenHighlighted = YES;
+    
+    [self.moreButton addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.backGroundView addSubview:self.moreButton];
+    
     self.gearButton = [[UIButton alloc] init];
-    [self.gearButton setImage:[UIImage imageNamed:@"tabBarGear.png"] forState:UIControlStateNormal];
-    [self.gearButton setImage:[UIImage imageNamed:@"tabBarGear.png"] forState:UIControlStateSelected];
-    [self.gearButton setImage:[UIImage imageNamed:@"tabBarGear.png"] forState:UIControlStateHighlighted];
+    [self.gearButton setImage: [Util imageNamedSmart:@"barGear"] forState:UIControlStateNormal];
+    [self.gearButton setImage: [Util imageNamedSmart:@"barGear"] forState:UIControlStateSelected];
+    [self.gearButton setImage: [Util imageNamedSmart:@"barGear"] forState:UIControlStateHighlighted];
     self.gearButton.showsTouchWhenHighlighted = YES;
     [self.gearButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
     
@@ -148,9 +173,9 @@ static CustomTabBarController * customTabBarController;
     
     
     self.noteButton = [[UIButton alloc] init];
-    [self.noteButton setImage:[UIImage imageNamed:@"tabBarXuyEgo.png"] forState:UIControlStateNormal];
-    [self.noteButton setImage:[UIImage imageNamed:@"tabBarXuyEgo.png"] forState:UIControlStateSelected];
-    [self.noteButton setImage:[UIImage imageNamed:@"tabBarXuyEgo.png"] forState:UIControlStateHighlighted];
+    [self.noteButton setImage:[UIImage imageNamed:@"barBookMark"] forState:UIControlStateNormal];
+    [self.noteButton setImage:[UIImage imageNamed:@"barBookMark"] forState:UIControlStateSelected];
+    [self.noteButton setImage:[UIImage imageNamed:@"barBookMark"] forState:UIControlStateHighlighted];
     self.noteButton.showsTouchWhenHighlighted = YES;
     [self.noteButton addTarget:self action:@selector(showBookMarks) forControlEvents:UIControlEventTouchUpInside];
     
@@ -193,10 +218,21 @@ static CustomTabBarController * customTabBarController;
     }
 }
 
-
-
 - (void)viewDidLayoutSubviews {
-    NSLog(@"LAYOUT ORIENTATION CHANGED");
+    // NSLog(@"LAYOUT ORIENTATION CHANGED");
+}
+
+- (void) showMore {
+    self.moreVC = [[MoreViewController alloc] init];
+    
+    if (IS_IPHONE_5)
+        self.moreVC.view.frame = CGRectMake(0, 0, 320, 483);
+    else
+        self.moreVC.view.frame = CGRectMake(0, 0, 320, 400);
+    
+    [self.view addSubview: self.moreVC.view];
+    
+    [self.moreVC animateUpAndDown:YES];
 }
 
 - (void) showSettings {

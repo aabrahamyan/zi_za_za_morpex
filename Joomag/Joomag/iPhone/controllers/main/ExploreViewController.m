@@ -36,14 +36,14 @@
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
     //-------------------------------- Top Bar ------------------------------------
-    topBar = [[UIView alloc] init];
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
     [topBar addSubview:backgroundView];
     [topBar sendSubviewToBack: backgroundView];
     [self.view addSubview: topBar];
     
     //-------------------------------- Top Bar Title ------------------------------------
-    topBarTitleLabel = [[UILabel alloc] init];
+    topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 44)];
     topBarTitleLabel.backgroundColor = [UIColor clearColor];
     topBarTitleLabel.textColor = [UIColor whiteColor];
     topBarTitleLabel.text = @"Magazines";
@@ -83,10 +83,10 @@
     
     //---------------------------- Scroll View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 50, 320, 390)];
-        pageControl.numberOfPages = 3;
+        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 100, 320, 180)];
+        pageControl.numberOfPages = 5;
     } else {
-        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 110, 720, 450)];
+        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 130, 720, 450)];
         pageControl.numberOfPages = 2;
     }
     
@@ -94,7 +94,7 @@
     
     [self.view addSubview: scrollView];
     
-    CGRect pageControlFrame = CGRectMake(0, scrollView.frame.size.height+30, 320, 30);
+    CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
     pageControl.frame = pageControlFrame;
     
     //Notify When Page Changes
@@ -107,7 +107,7 @@
     
     
     //--------------------------- Categories Table -----------------------------
-    categoriesTable = [[ExploreTableView alloc] init];
+    categoriesTable = [[ExploreTableView alloc] init];//]WithFrame: CGRectMake(0, 0, 320, 200)];
     categoriesTable.callbacker = self; 
     
     [self.view addSubview: categoriesTable];
@@ -131,11 +131,11 @@
 }
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 60, 280, 30)];
     
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
-    label2 = [[UILabel alloc] initWithFrame:CGRectMake(92, 0, 80, 20)]; label2.text = @"POPULAR";
-    label3 = [[UILabel alloc] initWithFrame:CGRectMake(175, 0, 81, 20)]; label3.text = @"HIGHLIGHTED";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(105, 0, 80, 20)]; label2.text = @"POPULAR";
+    label3 = [[UILabel alloc] initWithFrame:CGRectMake(185, 0, 81, 20)]; label3.text = @"HIGHLIGHTED";
     
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, label3, nil];
     
@@ -290,10 +290,13 @@
     dataHolder = [MainDataHolder getInstance];
     
     scrollView.entries = dataHolder.testData;
+    
     [scrollView setNeedsDisplay];
     
     [categoriesTable reloadExploreTable];
     [self redrawData];
+    
+    NSLog(@"scrollView.entries: %i", dataHolder.testData.count);
     // NSLog(@"dataHolder: %@", dataHolder.categoriesList);
 }
 
