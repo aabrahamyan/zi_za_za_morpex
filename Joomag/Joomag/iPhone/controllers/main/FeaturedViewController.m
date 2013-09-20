@@ -76,6 +76,23 @@
     
     // Hide Details view when start dragging
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
+    
+    //-------------------------------- Top Bar ------------------------------------
+    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
+    [topBar addSubview:backgroundView];
+    [topBar sendSubviewToBack: backgroundView];
+    
+    [self.view addSubview: topBar];
+    
+    
+    UILabel *topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 44)];
+    topBarTitleLabel.backgroundColor = [UIColor clearColor];
+    topBarTitleLabel.textColor = [UIColor whiteColor];
+    topBarTitleLabel.text = @"Featured Magazines";
+    
+    [topBar addSubview: topBarTitleLabel];
+
 }
 
 - (void)didReceiveMemoryWarning {
