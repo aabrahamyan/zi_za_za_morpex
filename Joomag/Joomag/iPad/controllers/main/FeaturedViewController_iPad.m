@@ -26,18 +26,21 @@
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
 
     if (iOrientation == UIDeviceOrientationPortrait) {
-        scrollViewFrame = CGRectMake(0, -20, 768, 959);
+        scrollViewFrame = CGRectMake(0, 0, 768, 959);
         detailsViewFrame = CGRectMake(230, 700, 500, 200);
-        pageControlFrame = CGRectMake(0, 30, 768, 30);
+        pageControlFrame = CGRectMake(0, 50, 768, 30);
     } else {
-        scrollViewFrame = CGRectMake(0, -20, 1024, 704);
+        scrollViewFrame = CGRectMake(0, 0, 1024, 704);
         detailsViewFrame = CGRectMake(490, 450, 540, 220);
-        pageControlFrame = CGRectMake(0, 30, 1024, 30);
+        pageControlFrame = CGRectMake(0, 50, 1024, 30);
     }
     
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
     detailsView.frame = detailsViewFrame;
+    
+    CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.view.frame = frm;
     
     [scrollView redrawData];
 }

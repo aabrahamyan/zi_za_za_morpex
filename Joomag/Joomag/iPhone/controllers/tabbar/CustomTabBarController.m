@@ -239,8 +239,7 @@ static CustomTabBarController * customTabBarController;
 - (void) showSettings {
     self.settingsVC = [self getSettingsViewController];
 
-    [self.view addSubview: self.settingsVC.view];
-    
+    [self.view addSubview: self.settingsVC.view];    
     [self.settingsVC animateUpAndDown:YES];
    
 }
@@ -249,8 +248,8 @@ static CustomTabBarController * customTabBarController;
     self.bookMarksVC = [self getBookMarksViewController];
     
     [self.view addSubview: self.bookMarksVC.view];
-    
     [self.bookMarksVC animateUpAndDown:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
