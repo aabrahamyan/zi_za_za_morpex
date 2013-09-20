@@ -33,24 +33,21 @@
 
 - (void) loadView {
     [super loadView];
-
-    //NSLog(@"FeaturedViewController:");
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.frame = CGRectMake(0, 0, 320, 568);    
+    NSLog(@"view y: %f",self.view.frame.origin.y);
 
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     
     //---------------------------- Scroll View ------------------------------------
-    NSLog(@"view: %f",self.view.frame.origin.y);
-    
-    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, // TODO: -40
-                                                                      self.view.frame.size.height)];
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width,
+                                                                      self.view.frame.size.height-69)]; // TODO frmae size
     
     [self.view addSubview: scrollView];
     
     
     //---------------------------- Page Control ------------------------------------
-    CGRect pageControlFrame = CGRectMake(0, 30, 320, 30);
+    CGRect pageControlFrame = CGRectMake(0, 50, 320, 30);
     pageControl = [[UIPageControl alloc] init];
     pageControl.frame = pageControlFrame;
     pageControl.currentPage = 0;
@@ -65,7 +62,13 @@
     
     //---------------------------- Details View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+        
+        if (IS_IPHONE_5) {
+            detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 325, 305, 160)];
+        } else {
+            detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+        }
+        
     } else {
         detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(0, 0, 520, 220)];
     }

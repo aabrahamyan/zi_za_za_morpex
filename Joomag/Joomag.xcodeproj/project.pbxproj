@@ -90,6 +90,7 @@
 		5A4D503517EC4CEA007E6BDB /* barMyLib@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503417EC4CEA007E6BDB /* barMyLib@2x.png */; };
 		5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503617EC4DE7007E6BDB /* barMore@2x.png */; };
 		5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D503917EC4FF2007E6BDB /* MoreViewController.m */; };
+		5A4D503C17EC8B36007E6BDB /* exploreCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503B17EC8B36007E6BDB /* exploreCell.png */; };
 		5A6C94B717C770E400B7DED0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */; };
 		5A6C94B817C770E400B7DED0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A617C770E400B7DED0 /* SDImageCache.m */; };
 		5A6C94B917C770E400B7DED0 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94AA17C770E400B7DED0 /* SDWebImageDecoder.m */; };
@@ -269,6 +270,7 @@
 		5A4D503617EC4DE7007E6BDB /* barMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barMore@2x.png"; sourceTree = "<group>"; };
 		5A4D503817EC4FF2007E6BDB /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		5A4D503917EC4FF2007E6BDB /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		5A4D503B17EC8B36007E6BDB /* exploreCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exploreCell.png; sourceTree = "<group>"; };
 		5A6C94A317C770E400B7DED0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		5A6C94A517C770E400B7DED0 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 			children = (
 				5A4D503217EC4C6A007E6BDB /* tabBar */,
 				5A7AFCB517C0D91700380CBD /* placeholder.png */,
+				5A4D503B17EC8B36007E6BDB /* exploreCell.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
 			);
 			path = "Resources-iPhone";
@@ -981,6 +984,7 @@
 				5A4D503117EC4C2F007E6BDB /* barExplore@2x.png in Resources */,
 				5A4D503517EC4CEA007E6BDB /* barMyLib@2x.png in Resources */,
 				5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */,
+				5A4D503C17EC8B36007E6BDB /* exploreCell.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

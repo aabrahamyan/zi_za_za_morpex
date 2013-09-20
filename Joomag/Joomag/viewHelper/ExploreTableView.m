@@ -31,7 +31,7 @@
         self.delegate = self;
         self.dataSource = self;
         self.backgroundColor = RGBA(41, 41, 42, 1);
-        self.separatorColor = RGBA(65, 65, 65, 1);
+        self.separatorColor = [UIColor clearColor];//RGBA(65, 65, 65, 1);
         
         reloadFromDidSelect = NO;
     }
@@ -67,11 +67,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
     }
     
+    //cell.backgroundView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"exploreCell.png"]];
     cell.textLabel.text = [[data objectAtIndex: indexPath.row] objectForKey:@"name"]; 
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
     cell.textLabel.highlightedTextColor = [UIColor redColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //cell.
     
     return cell;
 }

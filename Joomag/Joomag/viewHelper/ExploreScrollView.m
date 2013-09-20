@@ -59,7 +59,7 @@
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
-        NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0], @[@0, @1], @[@1, @1] ];
+        NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0]];
         tileH = 170; tileW = 130;
         [self setTilesWithArray: arrayIPhone tileWidth: TILE_WIDTH_IPHONE andHeight: TILE_HEIGHT_IPHONE];
     }

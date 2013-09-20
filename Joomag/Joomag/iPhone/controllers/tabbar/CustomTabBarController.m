@@ -77,6 +77,10 @@ static CustomTabBarController * customTabBarController;
     LibraryViewController * libraryVC = [self getLibraryViewController];
     
     self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
+    self.featuredNavigationController.view.frame = CGRectMake(0, -20, 320, 568);
+    
+    NSLog(@"nav y: %f",self.featuredNavigationController.view.frame.origin.y);
+    
     self.featuredNavigationController.navigationBarHidden = YES;
 
     self.exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
@@ -96,12 +100,16 @@ static CustomTabBarController * customTabBarController;
 - (void) loadView {
     [super loadView];
     
+    self.view.frame = CGRectMake(0, 0, 320, 568);
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+    
+    
     self.backGroundView = [[UIImageView alloc] initWithImage:self.bgImage];
     self.view.userInteractionEnabled = YES;
     self.backGroundView.userInteractionEnabled = YES;
     
     if (IS_IPHONE_5)
-        self.backGroundView.frame = CGRectMake(0, 483, 320, 45);
+        self.backGroundView.frame = CGRectMake(0, 503, 320, 45);
     else
         self.backGroundView.frame = CGRectMake(0, 400, 320, 45);
     

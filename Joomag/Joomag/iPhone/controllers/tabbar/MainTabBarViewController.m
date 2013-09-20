@@ -120,7 +120,7 @@
 
 - (void) loadView {
     [super loadView];    
-    
+    self.view.backgroundColor = [UIColor redColor];
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
         
