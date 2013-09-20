@@ -76,6 +76,8 @@
 		2CC450B817BAE31B00DE806E /* CategoriesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B717BAE31B00DE806E /* CategoriesParser.m */; };
 		2CC450BB17BAE54600DE806E /* ImageBlocksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450BA17BAE54500DE806E /* ImageBlocksParser.m */; };
 		2CCC217717EC7649001DABD3 /* DetailsExploreScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC217617EC7649001DABD3 /* DetailsExploreScrollView.m */; };
+		2CCC217A17ECBBA5001DABD3 /* ExploreCatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC217917ECBBA5001DABD3 /* ExploreCatsTableViewCell.m */; };
+		2CCC217D17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC217C17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m */; };
 		2CCFC1A717CF4A25007AE624 /* ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCFC1A617CF4A25007AE624 /* ReaderView.m */; };
 		2CDAAE6217D71DAF00EFF968 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDAAE5F17D71DAF00EFF968 /* Path.m */; };
 		2CDAAE6317D71DAF00EFF968 /* PathGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDAAE6117D71DAF00EFF968 /* PathGroup.m */; };
@@ -249,6 +251,10 @@
 		2CC450BA17BAE54500DE806E /* ImageBlocksParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBlocksParser.m; sourceTree = "<group>"; };
 		2CCC217517EC7649001DABD3 /* DetailsExploreScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsExploreScrollView.h; sourceTree = "<group>"; };
 		2CCC217617EC7649001DABD3 /* DetailsExploreScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsExploreScrollView.m; sourceTree = "<group>"; };
+		2CCC217817ECBBA5001DABD3 /* ExploreCatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreCatsTableViewCell.h; sourceTree = "<group>"; };
+		2CCC217917ECBBA5001DABD3 /* ExploreCatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreCatsTableViewCell.m; sourceTree = "<group>"; };
+		2CCC217B17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreCatsLandscapeCell.h; sourceTree = "<group>"; };
+		2CCC217C17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreCatsLandscapeCell.m; sourceTree = "<group>"; };
 		2CCFC1A517CF4A25007AE624 /* ReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderView.h; sourceTree = "<group>"; };
 		2CCFC1A617CF4A25007AE624 /* ReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderView.m; sourceTree = "<group>"; };
 		2CDAAE5E17D71DAF00EFF968 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
@@ -742,6 +748,10 @@
 				5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */,
 				2CCC217517EC7649001DABD3 /* DetailsExploreScrollView.h */,
 				2CCC217617EC7649001DABD3 /* DetailsExploreScrollView.m */,
+				2CCC217817ECBBA5001DABD3 /* ExploreCatsTableViewCell.h */,
+				2CCC217917ECBBA5001DABD3 /* ExploreCatsTableViewCell.m */,
+				2CCC217B17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.h */,
+				2CCC217C17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m */,
 			);
 			name = ExploreView;
 			sourceTree = "<group>";
@@ -1071,6 +1081,8 @@
 				5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */,
 				2CCC217717EC7649001DABD3 /* DetailsExploreScrollView.m in Sources */,
 				5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */,
+				2CCC217A17ECBBA5001DABD3 /* ExploreCatsTableViewCell.m in Sources */,
+				2CCC217D17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

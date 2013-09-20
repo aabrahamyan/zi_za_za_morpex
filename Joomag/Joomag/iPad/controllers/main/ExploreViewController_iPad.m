@@ -9,6 +9,7 @@
 #import "ExploreViewController_iPad.h"
 #import "DataHolder.h"
 #import "Util.h"
+#import "MainDataHolder.h"
 
 @interface ExploreViewController_iPad () {
     DataHolder *dataHolder;
@@ -33,7 +34,7 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    
+    [super viewDidLayoutSubviews];
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
     if (iOrientation == UIDeviceOrientationPortrait) {
@@ -45,7 +46,8 @@
         scrollViewFrame = CGRectMake(70, 130, 660, 520);
         titleLabelsViewFrame = CGRectMake(70, 80, 300, 30);
         pageControlFrame = CGRectMake(70, 650, 610, 30);
-        categoriesTableFrame = CGRectMake(0, 1024-315, 768, 250);
+        categoriesTableFrame = CGRectMake(0, 1024-315, 768, 250);               
+        
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
         topBarTitleLabelFrame = CGRectMake(20, 0, 150, 44);

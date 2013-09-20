@@ -93,8 +93,12 @@
     
     
     //--------------------------- Categories Table -----------------------------
-    categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-245, 320, 200)];
-    categoriesTable.callbacker = self; 
+    if(IS_IPHONE_5) {
+        categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-245, 320, 200)];
+    } else {
+        categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-157, 320, 112)];
+    }
+    categoriesTable.callbacker = self;
     
     [self.view addSubview: categoriesTable];
 }
@@ -310,6 +314,24 @@
     }
     
     [self.view addSubview: pageControl];
+}
+
+- (void) viewWillLayoutSubviews {    
+    
+    if (IS_IPAD) {
+        if([categoriesTable.data count] > 0) {
+            [categoriesTable removeFromSuperview];
+            categoriesTable = nil;
+            categoriesTable = [[ExploreTableView alloc] init];
+            
+            categoriesTable.callbacker = self;
+            [self.view addSubview: categoriesTable];
+            
+            categoriesTable.data = [MainDataHolder getInstance].categoriesList;
+            
+            [categoriesTable reloadData];
+        }
+    }
 }
 
 @end

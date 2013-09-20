@@ -11,10 +11,11 @@
 #import "Util.h"
 #import "ConnectionManager.h"
 #import "ExploreViewController.h"
+#import "ExploreCatsTableViewCell.h"
 
 
 @interface ExploreTableView () {
-    NSMutableArray *data;
+    
 }
 
 @end
@@ -26,7 +27,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        data = [NSArray array];
+        self.data = [NSMutableArray array];
 
         self.delegate = self;
         self.dataSource = self;
@@ -35,21 +36,23 @@
         
         reloadFromDidSelect = NO;
         hierarchy = 0;
+        self.orientationChanged = NO;
+        
     }
     return self;
 }
 
 - (void)reloadExploreTable {
 
-    data = [MainDataHolder getInstance].categoriesList;
+    self.data = [MainDataHolder getInstance].categoriesList;
    
     [self reloadData];
 }
 
 - (void) didSelectedRowAt : (NSInteger) ider {
-    data = [[data objectAtIndex:ider] objectForKey:@"cats"];
+    self.data = [[self.data objectAtIndex:ider] objectForKey:@"cats"];
     
-    if([data count] == 0) {
+    if([self.data count] == 0) {
         self.hidden = YES;
     } else {
         self.hidden = NO;
@@ -65,53 +68,68 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
     
-    NSInteger numberOfRows = [data count];
+    NSInteger numberOfRows = [self.data count];
+
     
-    if (numberOfRows % 2) { //odd
-        //NSLog(@"odd: %i", numberOfRows/2);
+    /*if (numberOfRows % 2 != 0) { //odd
+        [data addObject:@""];
+        numberOfRows = [data count];
     } else {
-        //NSLog(@"even: %i", numberOfRows/2);
         numberOfRows = numberOfRows/2;
-    }
+    } */
     
-    return numberOfRows;
+    
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) 
+        return numberOfRows / 2;
+    else
+        return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *MyIdentifier = @"MyReuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
-    }
+    static NSString *MyIdentifier = @"MyReuseIdentifier";   
+    NSLog(@"[UIApplication sharedApplication].statusBarOrientation = %d",[UIApplication sharedApplication].statusBarOrientation); 
 
-    UIImageView *cellBg = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"exploreCell.png"]];
-    cellBg.frame = CGRectMake(0, 0, 320, 50);
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        ExploreCatsTableViewCell * cell = (ExploreCatsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        NSInteger firstIndex = indexPath.row + indexPath.row;
+        NSInteger secondIndex = indexPath.row + indexPath.row + 1;
+        
+        NSDictionary * current1 = [self.data objectAtIndex:firstIndex];
+        NSDictionary * current2 = [self.data objectAtIndex:secondIndex];
+        
+        if (cell == nil) {
+            cell = [[ExploreCatsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+        
+            [cell constructStructure:(self.center.x / 2.0f - 50.0f) :(self.center.x + self.center.x / 2 + 50)];
+            
+        }
     
-    [cell.contentView addSubview: cellBg];
+        [cell setData:current1:current2];
+        
+        return cell;
+        
+    } else { 
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+            }
+            
+
+            cell.textLabel.text = [[self.data objectAtIndex: indexPath.row] objectForKey:@"name"];
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
+            cell.textLabel.highlightedTextColor = [UIColor redColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone; 
+            
+        }
+        
+        return cell;
+    }
+  
+     
     
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 140, 50)];
-    label1.text = [[data objectAtIndex: indexPath.row] objectForKey:@"name"];
-    label1.textColor = [UIColor whiteColor];
-    label1.backgroundColor = [UIColor clearColor];
-    label1.font = [UIFont boldSystemFontOfSize:16.0];
-    label1.highlightedTextColor = [UIColor redColor];
-    
-    [cell.contentView addSubview: label1];
-    
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(180, 0, 140, 50)];
-    label2.text = [[data objectAtIndex: indexPath.row+1] objectForKey:@"name"];
-    label2.textColor = [UIColor whiteColor];
-    label2.backgroundColor = [UIColor clearColor];
-    label2.font = [UIFont boldSystemFontOfSize:16.0];
-    label2.highlightedTextColor = [UIColor redColor];
-    
-    [cell.contentView addSubview: label2];
-    
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //cell.
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,12 +143,12 @@
     cell.textLabel.textColor = [UIColor redColor];
 
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
-    [connManager constructGetMagazinesListRequest:self:nil:nil:nil:[[data objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    [connManager constructGetMagazinesListRequest:self:nil:nil:nil:[[self.data objectAtIndex:indexPath.row] objectForKey:@"name"]];
     
-    NSLog(@"[[data objectAtIndex:indexPath.row] objectForKey: = %@",  [[data objectAtIndex:indexPath.row] objectForKey:@"name"]);
+    NSLog(@"[[data objectAtIndex:indexPath.row] objectForKey: = %@",  [[self.data objectAtIndex:indexPath.row] objectForKey:@"name"]);
     
     NSLog(@"hierarchy = %d",hierarchy);
-    [self.callbacker redrawDataAndTopBar:[[data objectAtIndex:indexPath.row] objectForKey:@"name"] withHierarchy:hierarchy];
+    [self.callbacker redrawDataAndTopBar:[[self.data objectAtIndex:indexPath.row] objectForKey:@"name"] withHierarchy:hierarchy];
     
     [self didSelectedRowAt:indexPath.row];
     

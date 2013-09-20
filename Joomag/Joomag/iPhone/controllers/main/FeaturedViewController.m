@@ -64,7 +64,7 @@
         if (IS_IPHONE_5) {
             detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 325, 305, 160)];
         } else {
-            detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 285, 305, 160)];
+            detailsView = [[FeaturedDetailsView alloc] initWithFrame:CGRectMake(5, 245, 305, 160)];
         }
         
     } else {

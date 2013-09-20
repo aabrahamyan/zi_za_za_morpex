@@ -107,7 +107,7 @@ static CustomTabBarController * customTabBarController;
     if (IS_IPHONE_5)
         self.backGroundView.frame = CGRectMake(0, 503, 320, 45);
     else
-        self.backGroundView.frame = CGRectMake(0, 400, 320, 45);
+        self.backGroundView.frame = CGRectMake(0, 420, 320, 45);
     
     [self.view addSubview:self.backGroundView];
     

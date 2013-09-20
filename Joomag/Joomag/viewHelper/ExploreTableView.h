@@ -17,7 +17,9 @@
     NSInteger hierarchy;
 }
 
-@property (nonatomic, strong) ExploreViewController * callbacker;   
+@property (nonatomic, strong) ExploreViewController * callbacker;
+@property (nonatomic, assign) BOOL orientationChanged;
+@property (nonatomic, strong) NSMutableArray *data; 
 
 - (void)reloadExploreTable;
 
