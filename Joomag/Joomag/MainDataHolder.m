@@ -23,6 +23,8 @@ static MainDataHolder * mainDataHolder;
         
         self.popularsData = [[NSMutableArray alloc] init];
         self.highlightedData = [[NSMutableArray alloc] init];
+        
+        self.categoriesList = [[NSMutableArray alloc] init];
     }
     
     return self;

@@ -33,9 +33,7 @@
 
 - (void) loadView {
     [super loadView];
-    self.view.frame = CGRectMake(0, 0, 320, 568);    
-    NSLog(@"view y: %f",self.view.frame.origin.y);
-
+    
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     

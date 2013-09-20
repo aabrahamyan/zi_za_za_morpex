@@ -77,18 +77,16 @@ static CustomTabBarController * customTabBarController;
     LibraryViewController * libraryVC = [self getLibraryViewController];
     
     self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
-    self.featuredNavigationController.view.frame = CGRectMake(0, -20, 320, 568);
-    
-    NSLog(@"nav y: %f",self.featuredNavigationController.view.frame.origin.y);
-    
+    self.featuredNavigationController.view.frame = CGRectMake(0, -20, 320, (IS_IPHONE_5 ? 568 : 480));
     self.featuredNavigationController.navigationBarHidden = YES;
 
     self.exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
+    self.exploreNavigationController.view.frame = CGRectMake(0, -20, 320, (IS_IPHONE_5 ? 568 : 480));
     self.exploreNavigationController.navigationBarHidden = YES;
     
     self.exploreNavigationController.view.hidden = YES;
     self.myBookshelfNavigationController = [[UINavigationController alloc] initWithRootViewController:libraryVC];
-    
+    self.myBookshelfNavigationController.view.frame = CGRectMake(0, -20, 320, (IS_IPHONE_5 ? 568 : 480));
     self.myBookshelfNavigationController.navigationBarHidden = YES;
     self.myBookshelfNavigationController.view.hidden = YES;
     
@@ -101,8 +99,6 @@ static CustomTabBarController * customTabBarController;
     [super loadView];
     
     self.view.frame = CGRectMake(0, 0, 320, 568);
-    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
-    
     
     self.backGroundView = [[UIImageView alloc] initWithImage:self.bgImage];
     self.view.userInteractionEnabled = YES;
