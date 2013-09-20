@@ -50,7 +50,7 @@
     topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(83, 0, 150, 44)];
     topBarTitleLabel.backgroundColor = [UIColor clearColor];
     topBarTitleLabel.textColor = [UIColor whiteColor];
-    topBarTitleLabel.text = @"BookMarks";
+    topBarTitleLabel.text = @"Buy Issue";
     
     [topBar addSubview: topBarTitleLabel];
 }

@@ -78,7 +78,7 @@ static CustomTabBarController * customTabBarController;
     
     self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
     self.featuredNavigationController.navigationBarHidden = YES;
-    
+
     self.exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
     self.exploreNavigationController.navigationBarHidden = YES;
     

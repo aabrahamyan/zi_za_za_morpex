@@ -33,14 +33,16 @@
 
 - (void) loadView {
     [super loadView];
-    
+
     //NSLog(@"FeaturedViewController:");
-    self.view.backgroundColor = [UIColor blackColor];
-    
+    self.view.backgroundColor = [UIColor yellowColor];
+
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     
     //---------------------------- Scroll View ------------------------------------
+    NSLog(@"view: %f",self.view.frame.origin.y);
+    
     scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, // TODO: -40
                                                                       self.view.frame.size.height)];
     

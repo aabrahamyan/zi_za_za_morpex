@@ -34,14 +34,14 @@
         
         self.title = [[UILabel alloc] init];
         self.title.backgroundColor = [UIColor clearColor];
-        self.title.font = [UIFont systemFontOfSize:19];
+        self.title.font = [UIFont systemFontOfSize:16];
         self.title.textColor = [UIColor whiteColor];
         [self.title sizeToFit];
         [self addSubview: self.title];
         
         self.date = [[UILabel alloc] init];
         self.date.backgroundColor = [UIColor clearColor];
-        self.date.font = [UIFont systemFontOfSize:14];
+        self.date.font = [UIFont systemFontOfSize:12];
         self.date.textColor = [UIColor grayColor];
         [self.date sizeToFit];
         [self addSubview: self.date];
@@ -78,13 +78,13 @@
         //CGRect screenBounds = [[UIScreen mainScreen] bounds];
         if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){ //TODO
             //if (screenBounds.size.height == 568) {
-            imageViewFrame = CGRectMake(10, 10, 100, 135);
-            titleFrame = CGRectMake(145, 50, 130, 20);
-            dateFrame = CGRectMake(140, 15, 150, 20);
+            imageViewFrame = CGRectMake(10, 10, 100, 140);
+            titleFrame = CGRectMake(140, 10, 150, 20);
+            dateFrame = CGRectMake(140, 30, 150, 20);
             textFrame = CGRectMake(0 , 0, 0, 0);
-            readBtnFrame = CGRectMake(145, 75, 100, 30);
-            buyIssueBtnFrame = CGRectMake(145, 115, 100, 30);
-            shareBtnFrame = CGRectMake(0, 0, 0, 0);
+            readBtnFrame = CGRectMake(145, 55, 80, 25);
+            buyIssueBtnFrame = CGRectMake(145, 90, 80, 25);
+            shareBtnFrame = CGRectMake(145, 125, 80, 25);
             //} else {
             
             //}
@@ -117,6 +117,10 @@
 
 - (void)buyIssueButtonTap {
     [self.delegate buyIssueHandler];
+}
+
+- (void)shareHandler{
+    NSLog(@"shareHandler");
 }
 
 

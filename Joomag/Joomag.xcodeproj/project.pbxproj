@@ -812,8 +812,8 @@
 		5AA1A73717AD45C100EADCA3 /* viewHelper */ = {
 			isa = PBXGroup;
 			children = (
-				5A75E93417DD4B2A0039FD17 /* BookMark */,
 				5A1B582D17DA9F3A0087214F /* FeaturedView */,
+				5A75E93417DD4B2A0039FD17 /* BookMark */,
 				5A1B582E17DA9F570087214F /* ExploreView */,
 				5A1B582F17DA9F850087214F /* MyLibrary */,
 			);
