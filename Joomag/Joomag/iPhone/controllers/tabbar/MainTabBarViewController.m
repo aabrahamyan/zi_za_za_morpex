@@ -109,7 +109,7 @@
 }
 
 - (CustomTabBarController *) createAndGetTabbar {
-    return [CustomTabBarController getInstance:[UIImage imageNamed:@"Tabich.png"] withWidth:220 withHeight:45];
+    return [CustomTabBarController getInstance: [Util imageNamedSmart:@"tabBg"] withWidth:220 withHeight:45];
 }
 
 - (void) setupTabBar {

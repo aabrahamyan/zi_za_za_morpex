@@ -48,9 +48,9 @@
 		2CADE38B1799429E002202D5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38A1799429E002202D5 /* SettingsViewController.m */; };
 		2CADE38E179942BB002202D5 /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */; };
 		2CB788E717B2DA4C009ECE98 /* CustomTabBarController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB788E617B2DA4C009ECE98 /* CustomTabBarController_iPad.m */; };
-		2CB788F717B2EA26009ECE98 /* barExplore.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788E817B2EA25009ECE98 /* barExplore.png */; };
-		2CB788F817B2EA26009ECE98 /* barFeatured.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788E917B2EA25009ECE98 /* barFeatured.png */; };
-		2CB788F917B2EA26009ECE98 /* barMyLib.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EA17B2EA25009ECE98 /* barMyLib.png */; };
+		2CB788F717B2EA26009ECE98 /* barExplore_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788E817B2EA25009ECE98 /* barExplore_iPad@2x.png */; };
+		2CB788F817B2EA26009ECE98 /* barFeatured_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788E917B2EA25009ECE98 /* barFeatured_iPad@2x.png */; };
+		2CB788F917B2EA26009ECE98 /* barMyLib_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EA17B2EA25009ECE98 /* barMyLib_iPad@2x.png */; };
 		2CB788FA17B2EA26009ECE98 /* bigSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EB17B2EA25009ECE98 /* bigSeparator.png */; };
 		2CB788FB17B2EA26009ECE98 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EC17B2EA25009ECE98 /* closeButton@2x.png */; };
 		2CB788FC17B2EA26009ECE98 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788ED17B2EA25009ECE98 /* gear@2x.png */; };
@@ -58,11 +58,11 @@
 		2CB788FE17B2EA26009ECE98 /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788EF17B2EA25009ECE98 /* separator.png */; };
 		2CB7890117B2EA26009ECE98 /* tabBarBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F217B2EA26009ECE98 /* tabBarBook.png */; };
 		2CB7890217B2EA26009ECE98 /* tabBarEye.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F317B2EA26009ECE98 /* tabBarEye.png */; };
-		2CB7890317B2EA26009ECE98 /* tabBarGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F417B2EA26009ECE98 /* tabBarGear.png */; };
+		2CB7890317B2EA26009ECE98 /* barGear_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F417B2EA26009ECE98 /* barGear_iPad@2x.png */; };
 		2CB7890417B2EA26009ECE98 /* tabBarStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F517B2EA26009ECE98 /* tabBarStar.png */; };
-		2CB7890517B2EA26009ECE98 /* tabBarXuyEgo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F617B2EA26009ECE98 /* tabBarXuyEgo.png */; };
+		2CB7890517B2EA26009ECE98 /* barBookMark_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F617B2EA26009ECE98 /* barBookMark_iPad.png */; };
 		2CB7890917B2F56A009ECE98 /* tabbarSmbatich@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */; };
-		2CB7890B17B2F66A009ECE98 /* Tabich@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */; };
+		2CB7890B17B2F66A009ECE98 /* tabBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */; };
 		2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890C17B30496009ECE98 /* Settings@2x.png */; };
 		2CB7891217B30499009ECE98 /* settingsLabelsBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */; };
 		2CB7891317B30499009ECE98 /* settingsLandBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */; };
@@ -84,6 +84,12 @@
 		5A1B583517DAA0410087214F /* YearTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583417DAA0410087214F /* YearTableView.m */; };
 		5A1B583817DAA0540087214F /* MonthTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583717DAA0540087214F /* MonthTableView.m */; };
 		5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583A17DAA1940087214F /* DatePickerView.m */; };
+		5A4D502D17EC31FD007E6BDB /* barFeatured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D502C17EC31FD007E6BDB /* barFeatured@2x.png */; };
+		5A4D502F17EC49D7007E6BDB /* tabBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D502E17EC49D7007E6BDB /* tabBg@2x.png */; };
+		5A4D503117EC4C2F007E6BDB /* barExplore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503017EC4C2F007E6BDB /* barExplore@2x.png */; };
+		5A4D503517EC4CEA007E6BDB /* barMyLib@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503417EC4CEA007E6BDB /* barMyLib@2x.png */; };
+		5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503617EC4DE7007E6BDB /* barMore@2x.png */; };
+		5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D503917EC4FF2007E6BDB /* MoreViewController.m */; };
 		5A6C94B717C770E400B7DED0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */; };
 		5A6C94B817C770E400B7DED0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A617C770E400B7DED0 /* SDImageCache.m */; };
 		5A6C94B917C770E400B7DED0 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94AA17C770E400B7DED0 /* SDWebImageDecoder.m */; };
@@ -206,9 +212,9 @@
 		2CADE38D179942BB002202D5 /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
 		2CB788E517B2DA4C009ECE98 /* CustomTabBarController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController_iPad.h; sourceTree = "<group>"; };
 		2CB788E617B2DA4C009ECE98 /* CustomTabBarController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController_iPad.m; sourceTree = "<group>"; };
-		2CB788E817B2EA25009ECE98 /* barExplore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barExplore.png; sourceTree = "<group>"; };
-		2CB788E917B2EA25009ECE98 /* barFeatured.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barFeatured.png; sourceTree = "<group>"; };
-		2CB788EA17B2EA25009ECE98 /* barMyLib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barMyLib.png; sourceTree = "<group>"; };
+		2CB788E817B2EA25009ECE98 /* barExplore_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barExplore_iPad@2x.png"; sourceTree = "<group>"; };
+		2CB788E917B2EA25009ECE98 /* barFeatured_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barFeatured_iPad@2x.png"; sourceTree = "<group>"; };
+		2CB788EA17B2EA25009ECE98 /* barMyLib_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barMyLib_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB788EB17B2EA25009ECE98 /* bigSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigSeparator.png; sourceTree = "<group>"; };
 		2CB788EC17B2EA25009ECE98 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		2CB788ED17B2EA25009ECE98 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
@@ -216,11 +222,11 @@
 		2CB788EF17B2EA25009ECE98 /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
 		2CB788F217B2EA26009ECE98 /* tabBarBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarBook.png; sourceTree = "<group>"; };
 		2CB788F317B2EA26009ECE98 /* tabBarEye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarEye.png; sourceTree = "<group>"; };
-		2CB788F417B2EA26009ECE98 /* tabBarGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarGear.png; sourceTree = "<group>"; };
+		2CB788F417B2EA26009ECE98 /* barGear_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barGear_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB788F517B2EA26009ECE98 /* tabBarStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarStar.png; sourceTree = "<group>"; };
-		2CB788F617B2EA26009ECE98 /* tabBarXuyEgo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarXuyEgo.png; sourceTree = "<group>"; };
+		2CB788F617B2EA26009ECE98 /* barBookMark_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barBookMark_iPad.png; sourceTree = "<group>"; };
 		2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSmbatich@2x.png"; sourceTree = "<group>"; };
-		2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tabich@2x.png"; sourceTree = "<group>"; };
+		2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBg_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB7890C17B30496009ECE98 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
 		2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLabelsBG@2x.png"; sourceTree = "<group>"; };
 		2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLandBG@2x.png"; sourceTree = "<group>"; };
@@ -256,6 +262,13 @@
 		5A1B583717DAA0540087214F /* MonthTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthTableView.m; sourceTree = "<group>"; };
 		5A1B583917DAA1930087214F /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		5A1B583A17DAA1940087214F /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		5A4D502C17EC31FD007E6BDB /* barFeatured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barFeatured@2x.png"; sourceTree = "<group>"; };
+		5A4D502E17EC49D7007E6BDB /* tabBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBg@2x.png"; sourceTree = "<group>"; };
+		5A4D503017EC4C2F007E6BDB /* barExplore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barExplore@2x.png"; sourceTree = "<group>"; };
+		5A4D503417EC4CEA007E6BDB /* barMyLib@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barMyLib@2x.png"; sourceTree = "<group>"; };
+		5A4D503617EC4DE7007E6BDB /* barMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barMore@2x.png"; sourceTree = "<group>"; };
+		5A4D503817EC4FF2007E6BDB /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		5A4D503917EC4FF2007E6BDB /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		5A6C94A317C770E400B7DED0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		5A6C94A517C770E400B7DED0 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -464,6 +477,7 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5A4D503317EC4C86007E6BDB /* tabBar */,
 				5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */,
 				5AB0F68F17DD5F7D00671C24 /* editIcone.png */,
 				5AF9789C17D758E2008FA0C2 /* faceBookButton.png */,
@@ -482,16 +496,12 @@
 				2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */,
 				2CA13BC317B3C3BD00D0257F /* desc@2x.png */,
 				2CC3E45B17B388CD00801BC9 /* realSettingsBG@2x.png */,
-				2CB7890A17B2F66A009ECE98 /* Tabich@2x.png */,
 				2CB7890C17B30496009ECE98 /* Settings@2x.png */,
 				2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */,
 				2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */,
 				2CB7890F17B30498009ECE98 /* settingsTextFieldBG@2x.png */,
 				2CB7891017B30499009ECE98 /* submitSettings@2x.png */,
 				2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */,
-				2CB788E817B2EA25009ECE98 /* barExplore.png */,
-				2CB788E917B2EA25009ECE98 /* barFeatured.png */,
-				2CB788EA17B2EA25009ECE98 /* barMyLib.png */,
 				2CB788EB17B2EA25009ECE98 /* bigSeparator.png */,
 				2CB788EC17B2EA25009ECE98 /* closeButton@2x.png */,
 				2CB788ED17B2EA25009ECE98 /* gear@2x.png */,
@@ -499,9 +509,7 @@
 				2CB788EF17B2EA25009ECE98 /* separator.png */,
 				2CB788F217B2EA26009ECE98 /* tabBarBook.png */,
 				2CB788F317B2EA26009ECE98 /* tabBarEye.png */,
-				2CB788F417B2EA26009ECE98 /* tabBarGear.png */,
 				2CB788F517B2EA26009ECE98 /* tabBarStar.png */,
-				2CB788F617B2EA26009ECE98 /* tabBarXuyEgo.png */,
 				5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */,
 				2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */,
 			);
@@ -511,6 +519,7 @@
 		2C0B75BE179723AD00735AD3 /* Resources-iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				5A4D503217EC4C6A007E6BDB /* tabBar */,
 				5A7AFCB517C0D91700380CBD /* placeholder.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
 			);
@@ -640,6 +649,8 @@
 				2CADE38417994124002202D5 /* ExploreViewController.m */,
 				2CADE37D17993D56002202D5 /* LibraryViewController.h */,
 				2CADE37E17993D56002202D5 /* LibraryViewController.m */,
+				5A4D503817EC4FF2007E6BDB /* MoreViewController.h */,
+				5A4D503917EC4FF2007E6BDB /* MoreViewController.m */,
 				2CADE3891799429E002202D5 /* SettingsViewController.h */,
 				2CADE38A1799429E002202D5 /* SettingsViewController.m */,
 				5AD69EED17BBC006008E4865 /* ReadViewController.h */,
@@ -735,6 +746,31 @@
 				5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */,
 			);
 			name = MyLibrary;
+			sourceTree = "<group>";
+		};
+		5A4D503217EC4C6A007E6BDB /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D502E17EC49D7007E6BDB /* tabBg@2x.png */,
+				5A4D502C17EC31FD007E6BDB /* barFeatured@2x.png */,
+				5A4D503017EC4C2F007E6BDB /* barExplore@2x.png */,
+				5A4D503417EC4CEA007E6BDB /* barMyLib@2x.png */,
+				5A4D503617EC4DE7007E6BDB /* barMore@2x.png */,
+			);
+			name = tabBar;
+			sourceTree = "<group>";
+		};
+		5A4D503317EC4C86007E6BDB /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2CB788F617B2EA26009ECE98 /* barBookMark_iPad.png */,
+				2CB788F417B2EA26009ECE98 /* barGear_iPad@2x.png */,
+				2CB788EA17B2EA25009ECE98 /* barMyLib_iPad@2x.png */,
+				2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */,
+				2CB788E817B2EA25009ECE98 /* barExplore_iPad@2x.png */,
+				2CB788E917B2EA25009ECE98 /* barFeatured_iPad@2x.png */,
+			);
+			name = tabBar;
 			sourceTree = "<group>";
 		};
 		5A6C94A217C770E400B7DED0 /* SDWebImage */ = {
@@ -893,9 +929,9 @@
 				2C0B75DC1797426E00735AD3 /* MainWindow_iPad.xib in Resources */,
 				2C0B75DE1797427300735AD3 /* MainWindow_iPhone.xib in Resources */,
 				5AC6FFE7179B31F70062736F /* testData.xml in Resources */,
-				2CB788F717B2EA26009ECE98 /* barExplore.png in Resources */,
-				2CB788F817B2EA26009ECE98 /* barFeatured.png in Resources */,
-				2CB788F917B2EA26009ECE98 /* barMyLib.png in Resources */,
+				2CB788F717B2EA26009ECE98 /* barExplore_iPad@2x.png in Resources */,
+				2CB788F817B2EA26009ECE98 /* barFeatured_iPad@2x.png in Resources */,
+				2CB788F917B2EA26009ECE98 /* barMyLib_iPad@2x.png in Resources */,
 				2CB788FA17B2EA26009ECE98 /* bigSeparator.png in Resources */,
 				2CB788FB17B2EA26009ECE98 /* closeButton@2x.png in Resources */,
 				2CB788FC17B2EA26009ECE98 /* gear@2x.png in Resources */,
@@ -903,11 +939,11 @@
 				2CB788FE17B2EA26009ECE98 /* separator.png in Resources */,
 				2CB7890117B2EA26009ECE98 /* tabBarBook.png in Resources */,
 				2CB7890217B2EA26009ECE98 /* tabBarEye.png in Resources */,
-				2CB7890317B2EA26009ECE98 /* tabBarGear.png in Resources */,
+				2CB7890317B2EA26009ECE98 /* barGear_iPad@2x.png in Resources */,
 				2CB7890417B2EA26009ECE98 /* tabBarStar.png in Resources */,
-				2CB7890517B2EA26009ECE98 /* tabBarXuyEgo.png in Resources */,
+				2CB7890517B2EA26009ECE98 /* barBookMark_iPad.png in Resources */,
 				2CB7890917B2F56A009ECE98 /* tabbarSmbatich@2x.png in Resources */,
-				2CB7890B17B2F66A009ECE98 /* Tabich@2x.png in Resources */,
+				2CB7890B17B2F66A009ECE98 /* tabBg_iPad@2x.png in Resources */,
 				2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */,
 				2CB7891217B30499009ECE98 /* settingsLabelsBG@2x.png in Resources */,
 				2CB7891317B30499009ECE98 /* settingsLandBG@2x.png in Resources */,
@@ -940,6 +976,11 @@
 				2C7F71C817DF16DC000D492B /* proximanovasemibold.ttf in Resources */,
 				2C7F71C917DF16DC000D492B /* proximanovathin.ttf in Resources */,
 				5AD4207317DF4D6F00E0C212 /* settingsPortBg.png in Resources */,
+				5A4D502D17EC31FD007E6BDB /* barFeatured@2x.png in Resources */,
+				5A4D502F17EC49D7007E6BDB /* tabBg@2x.png in Resources */,
+				5A4D503117EC4C2F007E6BDB /* barExplore@2x.png in Resources */,
+				5A4D503517EC4CEA007E6BDB /* barMyLib@2x.png in Resources */,
+				5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1060,7 @@
 				5A75E93717DD4B470039FD17 /* BookMarkView.m in Sources */,
 				5AE5E85617E87909002EECE4 /* BuyIssueViewController.m in Sources */,
 				5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */,
+				5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class MoreViewController;
 @class SettingsViewController;
 @class BookMarkViewController;
 
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) UIButton * featuredButton;
 @property (nonatomic, strong) UIButton * exploreButton;
 @property (nonatomic, strong) UIButton * myLibButton;
+@property (nonatomic, strong) UIButton * moreButton;
 
 @property (nonatomic, strong) UIButton * gearButton;
 @property (nonatomic, strong) UIButton * noteButton;
@@ -43,6 +45,7 @@
 //----------------------- Mixed Attributes --------------------------//
 @property (nonatomic, strong) SettingsViewController * settingsVC;
 @property (nonatomic, strong) BookMarkViewController * bookMarksVC;
+@property (nonatomic, strong) MoreViewController     * moreVC;
 
 //----------------------- Instance Methods --------------------------//
 - (id) initWithSpecifics: (UIImage * ) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height;

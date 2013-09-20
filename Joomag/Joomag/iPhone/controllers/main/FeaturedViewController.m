@@ -41,8 +41,8 @@
     [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)]; // TODO
-    //scrollView.entries = dataHolder.testData;
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, // TODO: -40
+                                                                      self.view.frame.size.height)];
     
     [self.view addSubview: scrollView];
     

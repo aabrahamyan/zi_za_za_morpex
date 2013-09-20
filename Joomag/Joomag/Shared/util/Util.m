@@ -13,9 +13,7 @@
 
 + (UIImage *) imageNamedSmart:(NSString *) name {
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
-        //NSLog(@"sadsadas %@", [NSString stringWithFormat:@"%@@2x.png", name]);
-        //NSLog(@"sadsadas %@", [UIImage imageNamed:[NSString stringWithFormat:@"%@@2x.png", name]]);
-        return [UIImage imageNamed:[NSString stringWithFormat:@"%@@2x.png", name]];
+        return [UIImage imageNamed:[NSString stringWithFormat:@"%@_iPad.png", name]];
     } else {
         return [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", name]];
     }

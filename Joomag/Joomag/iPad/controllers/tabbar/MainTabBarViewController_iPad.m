@@ -49,7 +49,7 @@
 }
 
 - (CustomTabBarController *) createAndGetTabbar {
-    return [CustomTabBarController_iPad getInstance:[Util imageNamedSmart:@"Tabich"] withWidth:1024 withHeight:45];
+    return [CustomTabBarController_iPad getInstance:[Util imageNamedSmart:@"tabBg"] withWidth:1024 withHeight:45];
 }
 
 -(void) loadView {
