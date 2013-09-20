@@ -57,7 +57,7 @@
         scrollViewFrame = CGRectMake(70, 110, 660, 520);
         titleLabelsViewFrame = CGRectMake(70, 60, 300, 30);
         pageControlFrame = CGRectMake(70, 630, 610, 30);
-        categoriesTableFrame = CGRectMake(1024-260, 46, 240, 768);
+        categoriesTableFrame = CGRectMake(1024-260, 46, 240, 660);
     }
     
     CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
