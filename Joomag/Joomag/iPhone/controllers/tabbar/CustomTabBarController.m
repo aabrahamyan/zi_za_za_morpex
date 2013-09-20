@@ -173,9 +173,10 @@ static CustomTabBarController * customTabBarController;
     
     
     self.noteButton = [[UIButton alloc] init];
-    [self.noteButton setImage:[UIImage imageNamed:@"barBookMark"] forState:UIControlStateNormal];
-    [self.noteButton setImage:[UIImage imageNamed:@"barBookMark"] forState:UIControlStateSelected];
-    [self.noteButton setImage:[UIImage imageNamed:@"barBookMark"] forState:UIControlStateHighlighted];
+    [self.noteButton setImage:[Util imageNamedSmart:@"barBookMark"] forState:UIControlStateNormal];
+    [self.noteButton setImage:[Util imageNamedSmart:@"barBookMark"] forState:UIControlStateSelected];
+    [self.noteButton setImage:[Util imageNamedSmart:@"barBookMark"] forState:UIControlStateHighlighted];
+    
     self.noteButton.showsTouchWhenHighlighted = YES;
     [self.noteButton addTarget:self action:@selector(showBookMarks) forControlEvents:UIControlEventTouchUpInside];
     

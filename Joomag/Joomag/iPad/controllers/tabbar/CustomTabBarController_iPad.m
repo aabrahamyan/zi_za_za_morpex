@@ -78,6 +78,7 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     self.featuredButton.frame = CGRectMake(50, 10, 99, 24);
     self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
     self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
+    self.moreButton.hidden = YES;
     
     //[self createTabBarContent];
     

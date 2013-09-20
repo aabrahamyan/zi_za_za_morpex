@@ -60,7 +60,7 @@
 		2CB7890217B2EA26009ECE98 /* tabBarEye.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F317B2EA26009ECE98 /* tabBarEye.png */; };
 		2CB7890317B2EA26009ECE98 /* barGear_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F417B2EA26009ECE98 /* barGear_iPad@2x.png */; };
 		2CB7890417B2EA26009ECE98 /* tabBarStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F517B2EA26009ECE98 /* tabBarStar.png */; };
-		2CB7890517B2EA26009ECE98 /* barBookMark_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F617B2EA26009ECE98 /* barBookMark_iPad.png */; };
+		2CB7890517B2EA26009ECE98 /* barBookMark_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB788F617B2EA26009ECE98 /* barBookMark_iPad@2x.png */; };
 		2CB7890917B2F56A009ECE98 /* tabbarSmbatich@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */; };
 		2CB7890B17B2F66A009ECE98 /* tabBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */; };
 		2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890C17B30496009ECE98 /* Settings@2x.png */; };
@@ -226,7 +226,7 @@
 		2CB788F317B2EA26009ECE98 /* tabBarEye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarEye.png; sourceTree = "<group>"; };
 		2CB788F417B2EA26009ECE98 /* barGear_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barGear_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB788F517B2EA26009ECE98 /* tabBarStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarStar.png; sourceTree = "<group>"; };
-		2CB788F617B2EA26009ECE98 /* barBookMark_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barBookMark_iPad.png; sourceTree = "<group>"; };
+		2CB788F617B2EA26009ECE98 /* barBookMark_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barBookMark_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSmbatich@2x.png"; sourceTree = "<group>"; };
 		2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBg_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB7890C17B30496009ECE98 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
@@ -771,7 +771,7 @@
 		5A4D503317EC4C86007E6BDB /* tabBar */ = {
 			isa = PBXGroup;
 			children = (
-				2CB788F617B2EA26009ECE98 /* barBookMark_iPad.png */,
+				2CB788F617B2EA26009ECE98 /* barBookMark_iPad@2x.png */,
 				2CB788F417B2EA26009ECE98 /* barGear_iPad@2x.png */,
 				2CB788EA17B2EA25009ECE98 /* barMyLib_iPad@2x.png */,
 				2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */,
@@ -949,7 +949,7 @@
 				2CB7890217B2EA26009ECE98 /* tabBarEye.png in Resources */,
 				2CB7890317B2EA26009ECE98 /* barGear_iPad@2x.png in Resources */,
 				2CB7890417B2EA26009ECE98 /* tabBarStar.png in Resources */,
-				2CB7890517B2EA26009ECE98 /* barBookMark_iPad.png in Resources */,
+				2CB7890517B2EA26009ECE98 /* barBookMark_iPad@2x.png in Resources */,
 				2CB7890917B2F56A009ECE98 /* tabbarSmbatich@2x.png in Resources */,
 				2CB7890B17B2F66A009ECE98 /* tabBg_iPad@2x.png in Resources */,
 				2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */,
@@ -1071,7 +1071,6 @@
 				5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */,
 				2CCC217717EC7649001DABD3 /* DetailsExploreScrollView.m in Sources */,
 				5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
