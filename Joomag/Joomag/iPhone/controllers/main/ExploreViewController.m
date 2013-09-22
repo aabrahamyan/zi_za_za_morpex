@@ -13,6 +13,7 @@
 #import "ConnectionManager.h"
 #import "MagazinRecord.h"
 
+
 @interface ExploreViewController () {
     MainDataHolder *dataHolder;
     UILabel        *label1;
@@ -297,16 +298,14 @@
     CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
     pageControl.frame = pageControlFrame;
     
-    if (IS_IPAD) {
+    if (IS_IPAD) { //TODO: page numbers
         pageControl.numberOfPages = 2;
     } else {
         
         NSInteger numberOfItems = [dataHolder.testData count];
         
         if (numberOfItems % 2) { //odd
-            NSLog(@"pagecontroll odd: %i", numberOfItems/2);
         } else {
-            NSLog(@"pagecontroll even: %i", numberOfItems/2);
             numberOfItems = numberOfItems/2;
         }
         
