@@ -89,6 +89,9 @@
 		5A0FFC4017EF0A4C009B268D /* twitterButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */; };
 		5A0FFC4217EF0A56009B268D /* noInternet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4117EF0A56009B268D /* noInternet.png */; };
 		5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */; };
+		5A0FFC4817EF60A2009B268D /* NoInternetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4717EF60A2009B268D /* NoInternetView.m */; };
+		5A0FFC4A17EF6A51009B268D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4917EF6A4F009B268D /* logo@2x.png */; };
+		5A0FFC4C17EF6F2B009B268D /* retryButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */; };
 		5A1B583517DAA0410087214F /* YearTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583417DAA0410087214F /* YearTableView.m */; };
 		5A1B583817DAA0540087214F /* MonthTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583717DAA0540087214F /* MonthTableView.m */; };
 		5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583A17DAA1940087214F /* DatePickerView.m */; };
@@ -276,6 +279,10 @@
 		5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton@2x.png"; sourceTree = "<group>"; };
 		5A0FFC4117EF0A56009B268D /* noInternet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noInternet.png; sourceTree = "<group>"; };
 		5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
+		5A0FFC4617EF60A1009B268D /* NoInternetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetView.h; sourceTree = "<group>"; };
+		5A0FFC4717EF60A2009B268D /* NoInternetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetView.m; sourceTree = "<group>"; };
+		5A0FFC4917EF6A4F009B268D /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retryButton@2x.png"; sourceTree = "<group>"; };
 		5A1B583317DAA0410087214F /* YearTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearTableView.h; sourceTree = "<group>"; };
 		5A1B583417DAA0410087214F /* YearTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearTableView.m; sourceTree = "<group>"; };
 		5A1B583617DAA0540087214F /* MonthTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthTableView.h; sourceTree = "<group>"; };
@@ -542,6 +549,8 @@
 				5A4D503217EC4C6A007E6BDB /* tabBar */,
 				5A7AFCB517C0D91700380CBD /* placeholder.png */,
 				5A0FFC4117EF0A56009B268D /* noInternet.png */,
+				5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */,
+				5A0FFC4917EF6A4F009B268D /* logo@2x.png */,
 				5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */,
 				5A4D503B17EC8B36007E6BDB /* exploreCell.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
@@ -865,6 +874,8 @@
 				5A75E93417DD4B2A0039FD17 /* BookMark */,
 				5A1B582E17DA9F570087214F /* ExploreView */,
 				5A1B582F17DA9F850087214F /* MyLibrary */,
+				5A0FFC4617EF60A1009B268D /* NoInternetView.h */,
+				5A0FFC4717EF60A2009B268D /* NoInternetView.m */,
 			);
 			path = viewHelper;
 			sourceTree = "<group>";
@@ -1036,6 +1047,8 @@
 				5A0FFC4017EF0A4C009B268D /* twitterButton@2x.png in Resources */,
 				5A0FFC4217EF0A56009B268D /* noInternet.png in Resources */,
 				5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */,
+				5A0FFC4A17EF6A51009B268D /* logo@2x.png in Resources */,
+				5A0FFC4C17EF6F2B009B268D /* retryButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1119,6 +1132,7 @@
 				5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */,
 				2CCC217A17ECBBA5001DABD3 /* ExploreCatsTableViewCell.m in Sources */,
 				2CCC217D17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m in Sources */,
+				5A0FFC4817EF60A2009B268D /* NoInternetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

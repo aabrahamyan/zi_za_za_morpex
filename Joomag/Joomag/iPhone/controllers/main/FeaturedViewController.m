@@ -16,6 +16,7 @@
 #import "MainDataHolder.h"
 #import "ConnectionManager.h"
 #import "BuyIssueViewController.h"
+#import "NoInternetView.h"
 
 
 @interface FeaturedViewController (){
@@ -93,7 +94,16 @@
     topBarTitleLabel.text = @"Featured Magazines";
     
     [topBar addSubview: topBarTitleLabel];
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showAAA) userInfo:nil repeats:NO];
 
+}
+
+- (void)showAAA {
+    NoInternetView *noI = [[NoInternetView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,
+                                                                           self.view.frame.size.height)];
+    [self.view addSubview: noI];
 }
 
 - (void)didReceiveMemoryWarning {
