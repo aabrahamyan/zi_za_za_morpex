@@ -108,15 +108,15 @@
 		5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E92F17DD33210039FD17 /* BookMarkViewController.m */; };
 		5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */; };
 		5A75E93717DD4B470039FD17 /* BookMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E93617DD4B470039FD17 /* BookMarkView.m */; };
-		5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */; };
+		5A7AFCB417C0D3AC00380CBD /* shareBtn_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */; };
 		5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB517C0D91700380CBD /* placeholder.png */; };
 		5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */; };
 		5A7AFCBD17C0E79B00380CBD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */; };
 		5A7AFCC017C0E7C600380CBD /* SearchViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */; };
-		5A7AFCC217C0EEAA00380CBD /* searchTopBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */; };
-		5A7AFCC417C0F0FF00380CBD /* searchTabBarClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */; };
-		5A7AFCC617C0FC6B00380CBD /* searchBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg@2x.png */; };
-		5A7AFCC817C0FE7600380CBD /* searchBarClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */; };
+		5A7AFCC217C0EEAA00380CBD /* searchTopBarBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */; };
+		5A7AFCC417C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */; };
+		5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */; };
+		5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */; };
 		5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */; };
 		5AB0F69017DD5F7D00671C24 /* editIcone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68F17DD5F7D00671C24 /* editIcone.png */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
@@ -146,7 +146,7 @@
 		5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton.png */; };
 		5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton.png */; };
-		5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar@2x.png */; };
+		5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */; };
 		5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */; };
 /* End PBXBuildFile section */
 
@@ -310,17 +310,17 @@
 		5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController_iPad.m; sourceTree = "<group>"; };
 		5A75E93517DD4B470039FD17 /* BookMarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkView.h; sourceTree = "<group>"; };
 		5A75E93617DD4B470039FD17 /* BookMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkView.m; sourceTree = "<group>"; };
-		5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
+		5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCB517C0D91700380CBD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topTabBarBg@2x.png"; sourceTree = "<group>"; };
 		5A7AFCBB17C0E79A00380CBD /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		5A7AFCBE17C0E7C600380CBD /* SearchViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController_iPad.h; sourceTree = "<group>"; };
 		5A7AFCBF17C0E7C600380CBD /* SearchViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController_iPad.m; sourceTree = "<group>"; };
-		5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTopBarBg@2x.png"; sourceTree = "<group>"; };
-		5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTabBarClose@2x.png"; sourceTree = "<group>"; };
-		5A7AFCC517C0FC6A00380CBD /* searchBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg@2x.png"; sourceTree = "<group>"; };
-		5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTopBarBg_iPad@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTabBarClose_iPad@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg_iPad@2x.png"; sourceTree = "<group>"; };
+		5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose_iPad@2x.png"; sourceTree = "<group>"; };
 		5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookMarkSeparator.png; sourceTree = "<group>"; };
 		5AB0F68F17DD5F7D00671C24 /* editIcone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editIcone.png; sourceTree = "<group>"; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 		5AF9789C17D758E2008FA0C2 /* faceBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBookButton.png; sourceTree = "<group>"; };
 		5AF9789D17D758E2008FA0C2 /* joomagButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joomagButton.png; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
-		5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIconeTopBar@2x.png"; sourceTree = "<group>"; };
+		5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIconeTopBar_iPad@2x.png"; sourceTree = "<group>"; };
 		5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLibScrollView.h; sourceTree = "<group>"; };
 		5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLibScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -494,13 +494,13 @@
 				5AF9789C17D758E2008FA0C2 /* faceBookButton.png */,
 				5AF9789D17D758E2008FA0C2 /* joomagButton.png */,
 				5AF9789E17D758E2008FA0C2 /* twitterButton.png */,
-				5A7AFCC717C0FE7600380CBD /* searchBarClose@2x.png */,
-				5A7AFCC117C0EEA900380CBD /* searchTopBarBg@2x.png */,
-				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose@2x.png */,
-				5A7AFCC517C0FC6A00380CBD /* searchBarBg@2x.png */,
-				5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar@2x.png */,
+				5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */,
+				5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */,
+				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */,
+				5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */,
+				5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */,
 				5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */,
-				5A7AFCB317C0D3AC00380CBD /* shareBtn@2x.png */,
+				5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */,
 				5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */,
 				2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */,
 				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
@@ -973,17 +973,17 @@
 				2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */,
 				2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */,
 				5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */,
-				5A7AFCB417C0D3AC00380CBD /* shareBtn@2x.png in Resources */,
+				5A7AFCB417C0D3AC00380CBD /* shareBtn_iPad@2x.png in Resources */,
 				5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */,
 				5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */,
-				5A7AFCC217C0EEAA00380CBD /* searchTopBarBg@2x.png in Resources */,
-				5A7AFCC417C0F0FF00380CBD /* searchTabBarClose@2x.png in Resources */,
-				5A7AFCC617C0FC6B00380CBD /* searchBarBg@2x.png in Resources */,
-				5A7AFCC817C0FE7600380CBD /* searchBarClose@2x.png in Resources */,
+				5A7AFCC217C0EEAA00380CBD /* searchTopBarBg_iPad@2x.png in Resources */,
+				5A7AFCC417C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png in Resources */,
+				5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */,
+				5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */,
 				5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */,
 				5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */,
 				5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */,
-				5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar@2x.png in Resources */,
+				5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */,
 				5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */,
 				5AB0F69017DD5F7D00671C24 /* editIcone.png in Resources */,
 				2C7F71C317DF16DC000D492B /* proximanovablack.ttf in Resources */,
