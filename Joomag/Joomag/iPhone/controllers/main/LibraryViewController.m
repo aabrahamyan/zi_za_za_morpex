@@ -15,6 +15,7 @@
 
 @interface LibraryViewController (){
     MainDataHolder *dataHolder;
+
     bool noMagazines;
     
     UILabel        *label1;
@@ -41,14 +42,14 @@
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
     //-------------------------------- Top Bar ------------------------------------
-    topBar = [[UIView alloc] init];
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, TOP_BAR_HEIGHT)];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
     [topBar addSubview:backgroundView];
     [topBar sendSubviewToBack: backgroundView];
     [self.view addSubview: topBar];
     
     //-------------------------------- Top Bar Title ------------------------------------
-    topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 150, 44)];
+    topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 150, TOP_BAR_HEIGHT)];
     topBarTitleLabel.backgroundColor = [UIColor clearColor];
     topBarTitleLabel.textColor = [UIColor whiteColor];
     topBarTitleLabel.text = @"My Library";
@@ -63,47 +64,48 @@
     
     
     //---------------------------- Login Container ------------------------------------
-    loginContainer = [[UIView alloc] init];
+    loginContainer = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT+3, 320, 150)];
     loginContainer.backgroundColor = RGBA(85, 85, 85, 1);
     
     [self.view addSubview: loginContainer];
     
     //------------------------ Text Labels In Login Container -------------------------
-    loginText = [[UILabel alloc] init];
+    loginText = [[UILabel alloc] initWithFrame:CGRectMake(5, 20, 205, 100)];
     loginText.backgroundColor = [UIColor clearColor];
     loginText.textColor = [UIColor whiteColor];
-    loginText.font = [UIFont systemFontOfSize:14.0];
-    loginText.numberOfLines = 2;
-    loginText.text = @"Sign in using social network or your Joomag account.Not a member? Join Joomag.";
+    loginText.font = [UIFont systemFontOfSize:16.0];
+    loginText.numberOfLines = 5;
+    loginText.text = @"Sign in using social network or your Joomag account. \n\nNot a member?Join Joomag";
     
     [loginContainer addSubview: loginText];
     
     //---------------------------- Login Buttons ------------------------------------
     joomagButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //joomagButton.frame = CGRectMake(510, 30, 200, 35);
-    [joomagButton setImage:[UIImage imageNamed:@"joomagButton.png"] forState:UIControlStateNormal];
+    joomagButton.frame = CGRectMake(215, 5, 100, 35);
+    joomagButton.backgroundColor = [UIColor greenColor];
+    [joomagButton setBackgroundImage: [Util imageNamedSmart:@"joomagButton"] forState:UIControlStateNormal];
     [joomagButton addTarget:self action:@selector(loginWithJoomag) forControlEvents:UIControlEventTouchUpInside];
     
     [loginContainer addSubview: joomagButton];
     
-    orLabel = [[UILabel alloc] init];
+    orLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 35, 20, 30)];
     orLabel.backgroundColor = [UIColor clearColor];
     orLabel.textColor = [UIColor whiteColor];
-    orLabel.font = [UIFont systemFontOfSize:14.0];
+    orLabel.font = [UIFont systemFontOfSize:16.0];
     orLabel.text = @"or";
     
     [loginContainer addSubview: orLabel];
     
     fbButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //fbButton.frame = CGRectMake(750, 5, 200, 35);
-    [fbButton setImage:[UIImage imageNamed:@"faceBookButton.png"] forState:UIControlStateNormal];
+    fbButton.frame = CGRectMake(215, 65, 100, 35);
+    [fbButton setBackgroundImage:[Util imageNamedSmart:@"faceBookButton"] forState:UIControlStateNormal];
     [fbButton addTarget:self action:@selector(loginWithFaceBook) forControlEvents:UIControlEventTouchUpInside];
     
     [loginContainer addSubview: fbButton];
     
     twitterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //twitterButton.frame = CGRectMake(750, 50, 200, 35);
-    [twitterButton setImage:[UIImage imageNamed:@"twitterButton.png"] forState:UIControlStateNormal];
+    twitterButton.frame =  CGRectMake(215, 110, 100, 35);
+    [twitterButton setBackgroundImage:[Util imageNamedSmart:@"twitterButton"] forState:UIControlStateNormal];
     [twitterButton addTarget:self action:@selector(loginWithTwitter) forControlEvents:UIControlEventTouchUpInside];
     
     [loginContainer addSubview: twitterButton];
@@ -120,6 +122,18 @@
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
+    
+    
+    if (noMagazines) {
+        
+        filterLabels.hidden = YES;
+        datePicker.hidden = YES;
+        scrollView.hidden = YES;
+        
+    } else {
+        
+    }
+    
 }
 
 - (UIView *)titleLabelsWithBorder {

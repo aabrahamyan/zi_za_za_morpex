@@ -84,6 +84,11 @@
 		2CDAAE6617D71DE300EFF968 /* TiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDAAE6517D71DE300EFF968 /* TiledView.m */; };
 		2CE40CF817B27C94000097E2 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40CF717B27C94000097E2 /* CustomTabBarController.m */; };
 		5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0795D117A1C93B0039F705 /* QuartzCore.framework */; };
+		5A0FFC3E17EF0A4C009B268D /* faceBookButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC3B17EF0A4C009B268D /* faceBookButton@2x.png */; };
+		5A0FFC3F17EF0A4C009B268D /* joomagButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC3C17EF0A4C009B268D /* joomagButton@2x.png */; };
+		5A0FFC4017EF0A4C009B268D /* twitterButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */; };
+		5A0FFC4217EF0A56009B268D /* noInternet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4117EF0A56009B268D /* noInternet.png */; };
+		5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */; };
 		5A1B583517DAA0410087214F /* YearTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583417DAA0410087214F /* YearTableView.m */; };
 		5A1B583817DAA0540087214F /* MonthTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583717DAA0540087214F /* MonthTableView.m */; };
 		5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583A17DAA1940087214F /* DatePickerView.m */; };
@@ -143,9 +148,9 @@
 		5ADF07E817BE4B4000F0AD35 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton@2x.png */; };
 		5AE5E85617E87909002EECE4 /* BuyIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */; };
 		5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */; };
-		5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton.png */; };
-		5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton.png */; };
-		5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton.png */; };
+		5AF9789F17D758E2008FA0C2 /* faceBookButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */; };
+		5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */; };
+		5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */; };
 		5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */; };
 		5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */; };
 /* End PBXBuildFile section */
@@ -266,6 +271,11 @@
 		2CE40CF617B27C94000097E2 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		2CE40CF717B27C94000097E2 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		5A0795D117A1C93B0039F705 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A0FFC3B17EF0A4C009B268D /* faceBookButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceBookButton@2x.png"; sourceTree = "<group>"; };
+		5A0FFC3C17EF0A4C009B268D /* joomagButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton@2x.png"; sourceTree = "<group>"; };
+		5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton@2x.png"; sourceTree = "<group>"; };
+		5A0FFC4117EF0A56009B268D /* noInternet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noInternet.png; sourceTree = "<group>"; };
+		5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
 		5A1B583317DAA0410087214F /* YearTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearTableView.h; sourceTree = "<group>"; };
 		5A1B583417DAA0410087214F /* YearTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearTableView.m; sourceTree = "<group>"; };
 		5A1B583617DAA0540087214F /* MonthTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthTableView.h; sourceTree = "<group>"; };
@@ -367,9 +377,9 @@
 		5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueViewController.m; sourceTree = "<group>"; };
 		5AE5E85717E87920002EECE4 /* BuyIssueViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyIssueViewController_iPad.h; sourceTree = "<group>"; };
 		5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueViewController_iPad.m; sourceTree = "<group>"; };
-		5AF9789C17D758E2008FA0C2 /* faceBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBookButton.png; sourceTree = "<group>"; };
-		5AF9789D17D758E2008FA0C2 /* joomagButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joomagButton.png; sourceTree = "<group>"; };
-		5AF9789E17D758E2008FA0C2 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
+		5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceBookButton_iPad@2x.png"; sourceTree = "<group>"; };
+		5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton_iPad@2x.png"; sourceTree = "<group>"; };
+		5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIconeTopBar_iPad@2x.png"; sourceTree = "<group>"; };
 		5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLibScrollView.h; sourceTree = "<group>"; };
 		5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLibScrollView.m; sourceTree = "<group>"; };
@@ -488,12 +498,10 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5A0FFC4317EF0AE4009B268D /* myLib */,
 				5A4D503317EC4C86007E6BDB /* tabBar */,
 				5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */,
 				5AB0F68F17DD5F7D00671C24 /* editIcone.png */,
-				5AF9789C17D758E2008FA0C2 /* faceBookButton.png */,
-				5AF9789D17D758E2008FA0C2 /* joomagButton.png */,
-				5AF9789E17D758E2008FA0C2 /* twitterButton.png */,
 				5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */,
 				5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */,
 				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */,
@@ -530,8 +538,11 @@
 		2C0B75BE179723AD00735AD3 /* Resources-iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				5A0FFC3A17EF0A35009B268D /* myLib */,
 				5A4D503217EC4C6A007E6BDB /* tabBar */,
 				5A7AFCB517C0D91700380CBD /* placeholder.png */,
+				5A0FFC4117EF0A56009B268D /* noInternet.png */,
+				5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */,
 				5A4D503B17EC8B36007E6BDB /* exploreCell.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
 			);
@@ -711,6 +722,26 @@
 				2CDAAE6117D71DAF00EFF968 /* PathGroup.m */,
 			);
 			name = rendering;
+			sourceTree = "<group>";
+		};
+		5A0FFC3A17EF0A35009B268D /* myLib */ = {
+			isa = PBXGroup;
+			children = (
+				5A0FFC3B17EF0A4C009B268D /* faceBookButton@2x.png */,
+				5A0FFC3C17EF0A4C009B268D /* joomagButton@2x.png */,
+				5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */,
+			);
+			name = myLib;
+			sourceTree = "<group>";
+		};
+		5A0FFC4317EF0AE4009B268D /* myLib */ = {
+			isa = PBXGroup;
+			children = (
+				5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */,
+				5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */,
+				5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */,
+			);
+			name = myLib;
 			sourceTree = "<group>";
 		};
 		5A1B582C17DA9F260087214F /* DatePicker */ = {
@@ -980,9 +1011,9 @@
 				5A7AFCC417C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png in Resources */,
 				5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */,
 				5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */,
-				5AF9789F17D758E2008FA0C2 /* faceBookButton.png in Resources */,
-				5AF978A017D758E2008FA0C2 /* joomagButton.png in Resources */,
-				5AF978A117D758E2008FA0C2 /* twitterButton.png in Resources */,
+				5AF9789F17D758E2008FA0C2 /* faceBookButton_iPad@2x.png in Resources */,
+				5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */,
+				5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */,
 				5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */,
 				5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */,
 				5AB0F69017DD5F7D00671C24 /* editIcone.png in Resources */,
@@ -1000,6 +1031,11 @@
 				5A4D503517EC4CEA007E6BDB /* barMyLib@2x.png in Resources */,
 				5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */,
 				5A4D503C17EC8B36007E6BDB /* exploreCell.png in Resources */,
+				5A0FFC3E17EF0A4C009B268D /* faceBookButton@2x.png in Resources */,
+				5A0FFC3F17EF0A4C009B268D /* joomagButton@2x.png in Resources */,
+				5A0FFC4017EF0A4C009B268D /* twitterButton@2x.png in Resources */,
+				5A0FFC4217EF0A56009B268D /* noInternet.png in Resources */,
+				5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

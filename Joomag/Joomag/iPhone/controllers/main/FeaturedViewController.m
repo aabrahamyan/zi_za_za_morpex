@@ -80,7 +80,7 @@
     
     //-------------------------------- Top Bar ------------------------------------
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"topTabBarBg"]];
     [topBar addSubview:backgroundView];
     [topBar sendSubviewToBack: backgroundView];
     
