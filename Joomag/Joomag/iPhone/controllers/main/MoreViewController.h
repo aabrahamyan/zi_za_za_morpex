@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoreViewController : UIViewController
+@interface MoreViewController : UIViewController <UITextFieldDelegate>
 
 @property bool isOpen;
 

@@ -10,8 +10,9 @@
 #import "Util.h"
 
 @interface MoreViewController () {
-    UILabel *topBarTitleLabel;
-    UIButton *closeButton;
+    UILabel  *topBarTitleLabel;
+    UIButton *backButton;
+    UIView   *changePasswordView;
 }
 
 @end
@@ -80,12 +81,15 @@
      ];
     
     //-------------------------- Close Search Botton -------`----------------------
-    closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 46, 44)];
-    [closeButton addTarget:self  action:@selector(backHandler) forControlEvents:UIControlEventTouchDown];
-    [closeButton setBackgroundImage: [Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
-    closeButton.hidden = YES;
+    backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 46, 44)];
+    [backButton addTarget:self  action:@selector(backHandler) forControlEvents:UIControlEventTouchDown];
+    [backButton setBackgroundImage: [Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
+    backButton.hidden = YES;
     
-    [topBar addSubview: closeButton];
+    [topBar addSubview: backButton];
+    
+    [self cunstructChangePasswordView];
+    
     
 }
 
@@ -118,7 +122,11 @@
             [self bookmarksHandler];
             break;
         case 2222222:
-            [self cunstructChangePasswordView];
+            
+            topBarTitleLabel.text = @"Change Password";
+            backButton.hidden = NO;
+            changePasswordView.hidden = NO;
+            
             break;
             
         case 3333333:
@@ -140,6 +148,10 @@
 
 - (void)backHandler {
     NSLog(@"backHandler");
+    topBarTitleLabel.text = @"More";
+    backButton.hidden = YES;
+    changePasswordView.hidden = YES;
+    
 }
 
 - (void)bookmarksHandler {
@@ -148,9 +160,104 @@
 
 - (void)cunstructChangePasswordView {
     NSLog(@"changePasswordHandler");
+
+    changePasswordView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
+    changePasswordView.backgroundColor = RGBA(49, 49, 49, 1);
+    changePasswordView.hidden = YES;
     
+    [self.view addSubview: changePasswordView];
     
+    UIImageView *emailBG = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"settingsTextFieldBG"]];
+    emailBG.frame = CGRectMake(20, 30, 280, 50);
+    [changePasswordView addSubview: emailBG];
     
+    UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 30, 60, 50)];
+    emailLabel.font = [UIFont boldSystemFontOfSize:17.5];
+    emailLabel.textColor = [UIColor whiteColor];
+    emailLabel.backgroundColor = [UIColor clearColor];
+    emailLabel.text = @"Email:";
+    
+    [changePasswordView addSubview:emailLabel];
+    
+    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(95, 30, 215, 50)];
+    emailTextField.font = [UIFont systemFontOfSize:17.5] ;
+	emailTextField.returnKeyType = UIReturnKeyDone;
+    emailTextField.backgroundColor = [UIColor clearColor];
+	emailTextField.delegate = self;
+    emailTextField.placeholder = @"Required";
+    emailTextField.textAlignment = NSTextAlignmentCenter;
+    emailTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
+	emailTextField.borderStyle = UITextBorderStyleNone;
+	emailTextField.textColor = [UIColor grayColor];
+	emailTextField.tag = 2262071;
+    
+    [changePasswordView addSubview:emailTextField];
+    
+    UIImageView *passBg = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"settingsTextFieldBG"]];
+    passBg.frame = CGRectMake(20, 90, 280, 50);
+    [changePasswordView addSubview:passBg];
+    
+    UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 90, 90, 50)];
+    passwordLabel.font = [UIFont boldSystemFontOfSize:17.5];
+    passwordLabel.textColor = [UIColor whiteColor];
+    passwordLabel.backgroundColor = [UIColor clearColor];
+    passwordLabel.text = @"Password:";
+    
+    [changePasswordView addSubview:passwordLabel];
+    
+    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(95, 90, 215, 50)];
+	passwordTextField.backgroundColor = [UIColor clearColor];
+    passwordTextField.font = [UIFont systemFontOfSize:17.5] ;
+	passwordTextField.returnKeyType = UIReturnKeyDone;
+	passwordTextField.delegate = self;
+	passwordTextField.secureTextEntry = YES;
+    passwordTextField.placeholder = @"Required";
+    passwordTextField.textAlignment = NSTextAlignmentCenter;
+    passwordTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	passwordTextField.borderStyle = UITextBorderStyleNone;
+	passwordTextField.textColor = [UIColor whiteColor];
+	passwordTextField.tag = 2262072;
+    
+    [changePasswordView addSubview:passwordTextField];
+
+    UIImageView *passBgRepeat = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"settingsTextFieldBG"]];
+    passBgRepeat.frame = CGRectMake(20, 150, 280, 50);
+    [changePasswordView addSubview:passBgRepeat];
+    
+    UILabel *retypeLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 150, 90, 50)];
+    retypeLabel.font = [UIFont boldSystemFontOfSize:17.5];
+    retypeLabel.textColor = [UIColor whiteColor];
+    retypeLabel.backgroundColor = [UIColor clearColor];
+    retypeLabel.text = @"Retype:";
+    
+    [changePasswordView addSubview:retypeLabel];
+    
+    UITextField *passwordTextFieldRepeat = [[UITextField alloc] initWithFrame:CGRectMake(95, 150, 215, 50)];
+	passwordTextFieldRepeat.backgroundColor = [UIColor clearColor];
+    passwordTextFieldRepeat.font = [UIFont systemFontOfSize:17.5] ;
+	passwordTextFieldRepeat.returnKeyType = UIReturnKeyDone;
+	passwordTextFieldRepeat.delegate = self;
+	passwordTextFieldRepeat.secureTextEntry = YES;
+    passwordTextFieldRepeat.placeholder = @"Required";
+    passwordTextFieldRepeat.textAlignment = NSTextAlignmentCenter;
+    passwordTextFieldRepeat.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	passwordTextFieldRepeat.borderStyle = UITextBorderStyleNone;
+	passwordTextFieldRepeat.textColor = [UIColor grayColor];
+	passwordTextFieldRepeat.tag = 2262073;
+    
+    [changePasswordView addSubview:passwordTextFieldRepeat];
+
+    UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    submitButton.frame = CGRectMake(90, 220, 140, 40);
+    [submitButton setImage:[Util imageNamedSmart:@"submitSettings"] forState:UIControlStateNormal];
+    [submitButton setImage:[Util imageNamedSmart:@"submitSettings"] forState:UIControlStateSelected];
+    [submitButton setImage:[Util imageNamedSmart:@"submitSettings"] forState:UIControlStateHighlighted];
+    submitButton.showsTouchWhenHighlighted = YES;
+    [submitButton addTarget: self action: @selector(submitHandler) forControlEvents:UIControlEventTouchUpInside];
+    
+    [changePasswordView addSubview: submitButton];
+
 }
 
 - (void)notificationHandler {
@@ -163,6 +270,20 @@
 
 - (void)restorePurschasesHandler {
     NSLog(@"restorePurschasesHandler");
+}
+
+- (void)submitHandler {
+    NSLog(@"submitHandler");
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
