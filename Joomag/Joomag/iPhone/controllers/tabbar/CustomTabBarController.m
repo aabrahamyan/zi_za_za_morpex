@@ -226,7 +226,6 @@ static CustomTabBarController * customTabBarController;
             break;
         }
         case 44444: {
-            NSLog(@"aaaa");
             self.featuredNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = YES;
             self.myBookshelfNavigationController.view.hidden = YES;
