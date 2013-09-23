@@ -9,7 +9,10 @@
 #import "MoreViewController.h"
 #import "Util.h"
 
-@interface MoreViewController ()
+@interface MoreViewController () {
+    UILabel *topBarTitleLabel;
+    UIButton *closeButton;
+}
 
 @end
 
@@ -25,7 +28,7 @@
     //-------------------------------- BG Image -------------------------------
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,
                                                                              self.view.frame.size.height)];
-    bgImageView.image = [UIImage imageNamed:@"moreBg.png"];
+    bgImageView.image = [UIImage imageNamed:@"moreBG.png"];
     
     [self.view addSubview: bgImageView];
     
@@ -37,7 +40,7 @@
     [self.view addSubview: topBar];
     
     //-------------------------------- Top Bar Title ------------------------------------
-    UILabel *topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     topBarTitleLabel.backgroundColor = [UIColor clearColor];
     topBarTitleLabel.textAlignment = NSTextAlignmentCenter;
     topBarTitleLabel.textColor = [UIColor whiteColor];
@@ -55,7 +58,7 @@
     [self.view addSubview: [self constructTabsWithTitle: @"Change Password"
                                                   frame: CGRectMake(20, 95, 140, 20)
                                                     tag:2222222
-                                            andSelector: @selector(changePasswordHandler)]
+                                            andSelector: @selector(cunstructChangePasswordView)]
      ];
     
     [self.view addSubview: [self constructTabsWithTitle: @"Notification Settings"
@@ -75,6 +78,15 @@
                                                     tag:5555555
                                             andSelector: @selector(restorePurschasesHandler)]
      ];
+    
+    //-------------------------- Close Search Botton -------`----------------------
+    closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 46, 44)];
+    [closeButton addTarget:self  action:@selector(backHandler) forControlEvents:UIControlEventTouchDown];
+    [closeButton setBackgroundImage: [Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
+    closeButton.hidden = YES;
+    
+    [topBar addSubview: closeButton];
+    
 }
 
 - (UIButton *)constructTabsWithTitle: (NSString *)title
@@ -85,7 +97,7 @@
     UIButton *btn = [[UIButton alloc] initWithFrame:frame];
 //    btn.backgroundColor = [UIColor redColor];
     btn.titleLabel.font  = [UIFont boldSystemFontOfSize: 16];
-    btn.tag = 1111111;
+    btn.tag = tag;
     [btn setTitle: title forState:UIControlStateNormal];
     [btn setTitle: title forState:UIControlStateSelected];
     [btn setTitle: title forState:UIControlStateHighlighted];
@@ -106,7 +118,7 @@
             [self bookmarksHandler];
             break;
         case 2222222:
-            [self changePasswordHandler];
+            [self cunstructChangePasswordView];
             break;
             
         case 3333333:
@@ -126,14 +138,19 @@
     }
 }
 
-
+- (void)backHandler {
+    NSLog(@"backHandler");
+}
 
 - (void)bookmarksHandler {
     NSLog(@"bookmarksHandler");
 }
 
-- (void)changePasswordHandler {
+- (void)cunstructChangePasswordView {
     NSLog(@"changePasswordHandler");
+    
+    
+    
 }
 
 - (void)notificationHandler {
