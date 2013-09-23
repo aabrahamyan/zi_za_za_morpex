@@ -125,6 +125,7 @@
 		5A7AFCC417C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */; };
 		5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */; };
 		5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */; };
+		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
 		5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */; };
 		5AB0F69017DD5F7D00671C24 /* editIcone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68F17DD5F7D00671C24 /* editIcone.png */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
@@ -338,6 +339,7 @@
 		5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTabBarClose_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose_iPad@2x.png"; sourceTree = "<group>"; };
+		5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreBG@2x.png"; sourceTree = "<group>"; };
 		5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookMarkSeparator.png; sourceTree = "<group>"; };
 		5AB0F68F17DD5F7D00671C24 /* editIcone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editIcone.png; sourceTree = "<group>"; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				5A7AFCB517C0D91700380CBD /* placeholder.png */,
 				5A0FFC4117EF0A56009B268D /* noInternet.png */,
 				5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */,
+				5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */,
 				5A0FFC4917EF6A4F009B268D /* logo@2x.png */,
 				5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */,
 				5A4D503B17EC8B36007E6BDB /* exploreCell.png */,
@@ -1049,6 +1052,7 @@
 				5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */,
 				5A0FFC4A17EF6A51009B268D /* logo@2x.png in Resources */,
 				5A0FFC4C17EF6F2B009B268D /* retryButton@2x.png in Resources */,
+				5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
