@@ -22,33 +22,6 @@
     self.view.backgroundColor = [UIColor redColor];
 }
 
-- (void) animateUpAndDown: (BOOL) isUP {
-    
-    if(isUP) {
-        self.isOpen = YES;
-        
-        [UIView beginAnimations:@"popingUP" context:nil];
-        self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        
-        [UIView setAnimationDuration:1.0];
-        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        
-        [UIView commitAnimations];
-        
-    } else {
-        self.isOpen = NO;
-        
-        [UIView beginAnimations:@"popingUP" context:nil];
-        
-        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [UIView setAnimationDuration:1.0];
-        self.view.frame = CGRectMake(0, 568, self.view.frame.size.width, self.view.frame.size.height);
-        
-        [UIView commitAnimations];
-    }
-    
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

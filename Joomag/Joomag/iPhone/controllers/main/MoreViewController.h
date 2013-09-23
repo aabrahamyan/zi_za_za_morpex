@@ -12,6 +12,6 @@
 
 @property bool isOpen;
 
-- (void) animateUpAndDown: (BOOL) isUP;
+//- (void) animateUpAndDown: (BOOL) isUP;
 
 @end
