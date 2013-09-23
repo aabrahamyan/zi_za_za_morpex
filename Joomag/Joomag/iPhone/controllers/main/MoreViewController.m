@@ -13,6 +13,8 @@
     UILabel  *topBarTitleLabel;
     UIButton *backButton;
     UIView   *changePasswordView;
+    UIView   *restorePurschasesView;
+    UIView   *signOutView;
 }
 
 @end
@@ -89,6 +91,8 @@
     [topBar addSubview: backButton];
     
     [self cunstructChangePasswordView];
+    [self cunstructRestorePurschasesView];
+    [self cunstructSignOutView];
     
     
 }
@@ -116,15 +120,15 @@
 - (void) toggleButtons: (id) target {
     UIButton *button = (UIButton *)target;
     NSInteger buttonTag = button.tag;
+    backButton.hidden = NO;
     
     switch (buttonTag) {
         case 1111111:
             [self bookmarksHandler];
             break;
         case 2222222:
-            
+            signOutView.hidden = YES;
             topBarTitleLabel.text = @"Change Password";
-            backButton.hidden = NO;
             changePasswordView.hidden = NO;
             
             break;
@@ -134,11 +138,19 @@
             break;
             
         case 4444444:
-            [self signOutHandler];
+            restorePurschasesView.hidden = YES;
+            changePasswordView.hidden = YES;
+            topBarTitleLabel.text = @"Sign Out";
+            signOutView.hidden = NO;
+            
             break;
             
         case 5555555:
-            [self restorePurschasesHandler];
+            signOutView.hidden = YES;
+            changePasswordView.hidden = YES;
+            topBarTitleLabel.text = @"Restore iTunes Purchases";
+            restorePurschasesView.hidden = NO;
+
             break;
             
         default:
@@ -151,15 +163,12 @@
     topBarTitleLabel.text = @"More";
     backButton.hidden = YES;
     changePasswordView.hidden = YES;
-    
-}
-
-- (void)bookmarksHandler {
-    NSLog(@"bookmarksHandler");
+    restorePurschasesView.hidden = YES;
+    signOutView.hidden = YES;
 }
 
 - (void)cunstructChangePasswordView {
-    NSLog(@"changePasswordHandler");
+    NSLog(@"cunstructChangePasswordView");
 
     changePasswordView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
     changePasswordView.backgroundColor = RGBA(49, 49, 49, 1);
@@ -260,20 +269,115 @@
 
 }
 
+- (void)cunstructRestorePurschasesView {
+    NSLog(@"cunstructRestorePurschasesView");
+    
+    restorePurschasesView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
+    restorePurschasesView.backgroundColor = RGBA(49, 49, 49, 1);
+    restorePurschasesView.hidden = YES;
+    
+    [self.view addSubview: restorePurschasesView];
+    
+    UILabel *restoreTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 320, 50)];
+    restoreTitle.font = [UIFont boldSystemFontOfSize: 21.0f];
+    restoreTitle.textColor = [UIColor whiteColor];
+    restoreTitle.alpha = 0.7;
+    restoreTitle.textAlignment = NSTextAlignmentCenter;
+    restoreTitle.backgroundColor = [UIColor clearColor];
+    restoreTitle.text = @"Restore iTunes Purchases";
+    
+    [restorePurschasesView addSubview: restoreTitle];
+    
+    UILabel *restoreDesc = [[UILabel alloc] initWithFrame:CGRectMake(20, 90, 280, 100)];
+    restoreDesc.font = [UIFont boldSystemFontOfSize: 14.0f];
+    restoreDesc.textColor = [UIColor grayColor];
+    restoreDesc.alpha = 1;
+    restoreDesc.textAlignment = NSTextAlignmentCenter;
+    restoreDesc.backgroundColor = [UIColor clearColor];
+    restoreDesc.numberOfLines = 4;
+    restoreDesc.text = @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.";
+    
+    [restorePurschasesView addSubview: restoreDesc];
+    
+    UIButton *restoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    restoreBtn.frame = CGRectMake(90, 220, 140, 40);
+    restoreBtn.backgroundColor = RGBA(214, 77, 76, 1);
+    [restoreBtn setTitle:@"Restore" forState:UIControlStateNormal];
+    restoreBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [restoreBtn addTarget:self  action:@selector(restorePurschasesHandler) forControlEvents:UIControlEventTouchDown];
+    
+    [restorePurschasesView addSubview: restoreBtn];
+}
+
+- (void)cunstructSignOutView {
+    NSLog(@"cunstructSignOutView");
+    
+    signOutView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
+    signOutView.backgroundColor = RGBA(49, 49, 49, 1);
+    signOutView.hidden = YES;
+    
+    [self.view addSubview: signOutView];
+    
+    UIImageView *logo = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"logo"]];
+    logo.frame = CGRectMake(100, 40, 120, 70);
+    [signOutView addSubview: logo];
+    
+    UILabel *signOutTitle = [[UILabel alloc] initWithFrame:CGRectMake(70, 140, 180, 50)];
+    signOutTitle.font = [UIFont boldSystemFontOfSize: 16.0f];
+    signOutTitle.textColor = [UIColor whiteColor];
+    signOutTitle.numberOfLines = 2;
+    signOutTitle.textAlignment = NSTextAlignmentCenter;
+    signOutTitle.backgroundColor = [UIColor clearColor];
+    signOutTitle.text = @"Are you sure you want to sign out";
+    
+    [signOutView addSubview: signOutTitle];
+    
+    UILabel *signOutDesc = [[UILabel alloc] initWithFrame:CGRectMake(20, 190, 280, 100)];
+    signOutDesc.font = [UIFont boldSystemFontOfSize: 16.0f];
+    signOutDesc.textColor = [UIColor whiteColor];
+    signOutDesc.alpha = 1;
+    signOutDesc.textAlignment = NSTextAlignmentCenter;
+    signOutDesc.backgroundColor = [UIColor clearColor];
+    signOutDesc.numberOfLines = 2;
+    signOutDesc.text = @"You will be asked to sign in again to access you Joomag Library.";
+    
+    [signOutView addSubview: signOutDesc];
+    
+    UIButton *restoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    restoreBtn.frame = CGRectMake(90, 310, 140, 40);
+    restoreBtn.backgroundColor = RGBA(214, 77, 76, 1);
+    [restoreBtn setTitle:@"Restore" forState:UIControlStateNormal];
+    restoreBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [restoreBtn addTarget:self  action:@selector(signOutHandler) forControlEvents:UIControlEventTouchDown];
+    
+    [signOutView addSubview: restoreBtn];
+}
+
+- (void)bookmarksHandler {
+    NSLog(@"bookmarksHandler");
+}
+
+
 - (void)notificationHandler {
     NSLog(@"notificationHandler");
 }
 
-- (void)signOutHandler {
-    NSLog(@"signOutHandler");
+
+
+
+
+
+
+- (void)submitHandler {
+    NSLog(@"submitHandler");
 }
 
 - (void)restorePurschasesHandler {
     NSLog(@"restorePurschasesHandler");
 }
 
-- (void)submitHandler {
-    NSLog(@"submitHandler");
+- (void)signOutHandler {
+    NSLog(@"signOutHandler");
 }
 
 
