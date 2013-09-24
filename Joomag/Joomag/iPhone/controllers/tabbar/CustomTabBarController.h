@@ -53,4 +53,6 @@
 
 + (CustomTabBarController *) getInstance:(UIImage *) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height;
 
++ (CustomTabBarController *) getInstance;
+
 @end

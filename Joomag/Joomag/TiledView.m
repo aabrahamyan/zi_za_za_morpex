@@ -67,7 +67,7 @@
 
 	// Calculate tile index
 	CGFloat contentsScale = [layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
-
+    
 	CGSize tileSize = [(CATiledLayer*)layer tileSize];
 
 	CGFloat x = box.origin.x * contentsScale / tileSize.width;
@@ -157,15 +157,21 @@
             
             imageURLString = [Util generatePageRequestBlock:numString pagePortion: [NSString stringWithFormat:@"%d%d",row,col] withMagazineId:self.magazineId];
         }
-        
-        
+    
+        NSLog(@"imageURLString = = %@", imageURLString);
+    
          
         NSURL *imageURL = [NSURL URLWithString:imageURLString];
         
         provider = CGDataProviderCreateWithURL((CFURLRef)CFBridgingRetain(imageURL));
         
-        image = CGImageCreateWithPNGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
+       image = CGImageCreateWithPNGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
+        if(!image) {
+           image = CGImageCreateWithJPEGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
+        }
+        NSLog(@" Image = %@",image);
         CFRelease(provider);
+    
     //}
     
     return image; 

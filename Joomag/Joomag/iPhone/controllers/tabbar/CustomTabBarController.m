@@ -40,6 +40,10 @@ static CustomTabBarController * customTabBarController;
     return self;
 }
 
++ (CustomTabBarController *) getInstance {
+    return customTabBarController;
+}
+
 + (CustomTabBarController *) getInstance:(UIImage *) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height {
 
     if(customTabBarController == nil) {

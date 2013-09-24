@@ -33,8 +33,8 @@
         self.clipsToBounds = YES;
         
         self.minimumZoomScale = 1.0f;
-        self.maximumZoomScale = 2.0f;
-        self.zoomScale = 2.0f; 
+        self.maximumZoomScale = 1.955f;
+        self.zoomScale = 1.955f;
         self.contentSize = frame.size; 
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO; 
