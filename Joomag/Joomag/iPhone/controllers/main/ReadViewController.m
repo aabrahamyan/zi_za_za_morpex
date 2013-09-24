@@ -18,6 +18,8 @@
 //#import "AFImageRequestOperation.h"
 #import "ReaderView.h"  
 #import "TiledView.h"
+#import "CustomTabBarController.h"
+#import "CustomTabBarController_iPad.h"
 
 
 
@@ -103,7 +105,7 @@
             scrollViewIndex = 0;
             //currentMagazinePageCount = counter;
             
-            NSLog(@"Number of Pages = = = = = = = = %d",counter);
+
             
             [self generatePageStringAndHit:counter];
             
@@ -140,7 +142,7 @@
         NSString * queryUri = [Util generateRequestBlock:page withMagazineId:self.currentMagazineId];
         queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
         
-        NSLog(@"QUERY URI + %@", queryUri);
+
         
         [self startDownloadMagazine:i withImageUrl:queryUri];
          
@@ -174,7 +176,7 @@
     
 
     pageScrollView = [[UIScrollView alloc] init];
-    pageScrollView.frame = CGRectMake(0, 0, 1024, 768-TOP_VIEW_HEIGHT); // TODO
+    pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
     pageScrollView.tag = 7658943;
     pageScrollView.delegate = self;
     pageScrollView.pagingEnabled = YES;
@@ -289,11 +291,17 @@
 - (void)hideTopAndBottomView {
     [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 1024, TOP_VIEW_HEIGHT)];
     [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768, 1024, NAV_SCROLL_HEIGHT)];
+    CustomTabBarController_iPad * costum = [CustomTabBarController_iPad getInstance];
+    costum.backGroundView.hidden = YES;
+
+
 }
 
 - (void)showTopAndBottomView {
     [self animateView: topView withFrame: CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT)];
     [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)];
+    CustomTabBarController_iPad * costum = [CustomTabBarController_iPad getInstance];
+    costum.backGroundView.hidden = NO;
 }
 
 - (void)animateView: (UIView *)view withFrame: (CGRect)frm {
@@ -320,7 +328,6 @@
 }
 
 - (void) tapOnNavigation: (UITapGestureRecognizer *) gesture {
-    NSLog(@"gesture.view: %i", gesture.view.tag);
     [pageScrollView setContentOffset:CGPointMake(1024*gesture.view.tag, 0) animated:YES];
 }
 
@@ -613,12 +620,11 @@
         UIImage * firstImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",firstPageIndex]];
         UIImage * secondImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]]; 
         
-        ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 723) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 723)];
+        ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 768) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 768)];
         
         newPageView.delegate = self;
         newPageView.parentOfImages.tag = VIEW_FOR_ZOOM_TAG;
         
-        //pageContentWidth += newPageView.frame.size.width;
         
         
         newPageView.contentMode = UIViewContentModeScaleAspectFit;

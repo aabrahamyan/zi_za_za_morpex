@@ -16,4 +16,6 @@
 }
 
 
++ (CustomTabBarController_iPad *) getInstance;
+
 @end

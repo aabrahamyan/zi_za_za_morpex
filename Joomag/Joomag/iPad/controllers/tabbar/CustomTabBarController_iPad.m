@@ -26,6 +26,10 @@ static CustomTabBarController_iPad * customTabBar_iPad;
     return self;
 }
 
++ (CustomTabBarController_iPad *) getInstance {
+    return customTabBar_iPad;  
+}
+
 + (CustomTabBarController *) getInstance:(UIImage *) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height {
         [super getInstance:bgImage withWidth:width withHeight:height];
     
