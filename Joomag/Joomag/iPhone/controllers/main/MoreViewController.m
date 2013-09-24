@@ -718,7 +718,6 @@
 	return 100;
 }
 
-
 - (void)bookMarkEditHandler:(id)sender {
     UIButton *button = (UIButton *)sender;
     int buttonTag = button.tag;
@@ -738,8 +737,12 @@
     UIButton *button = (UIButton *)sender;
     int buttonTag = button.tag;
     
-    NSLog(@"removev: %@", [bookMarkData objectAtIndex: buttonTag]);
-    
+    NSLog(@"remove: %@", [bookMarkData objectAtIndex: buttonTag]);
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:buttonTag inSection:0];
+//    UITableViewCell *cell  = [self.bookMarkTable cellForRowAtIndexPath: indexPath];
+//    [self.bookMarkTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    //[bookMarkData removeObjectAtIndex:indexPath.row];
+
     // [self.bookMarkTable reloadData];
 }
 
@@ -760,16 +763,8 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-     // added this in for case when keyboard was already on screen
-
-    return YES;
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"aaaaa");
-    
     if (textField.tag >= 666666 && textField.tag <= 666676) {  // TODO: check textfield tag last values ===> 666 and save bookmark
         textField.enabled = NO;
     }
