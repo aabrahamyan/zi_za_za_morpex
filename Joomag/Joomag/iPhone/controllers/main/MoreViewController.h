@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoreViewController : UIViewController <UITextFieldDelegate>
+@interface MoreViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property bool isOpen;
 
-//- (void) animateUpAndDown: (BOOL) isUP;
+@property (nonatomic, strong) UITableView *bookMarkTable;
 
 @end

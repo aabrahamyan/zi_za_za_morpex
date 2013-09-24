@@ -8,6 +8,8 @@
 
 #import "MoreViewController.h"
 #import "Util.h"
+#import "BookMarkView.h"
+#import "UIImageView+WebCache.h"
 
 @interface MoreViewController () {
     UILabel  *topBarTitleLabel;
@@ -15,8 +17,14 @@
     UIView   *changePasswordView;
     UIView   *restorePurschasesView;
     UIView   *signOutView;
-    
     UIView   *notificationView;
+    UIView   *bookMarksView;
+    
+    UILabel   *label1;
+    UILabel   *label2;
+    UIView    *border;
+    
+    NSMutableArray *bookMarkData;
 }
 
 @end
@@ -27,6 +35,13 @@
     NSLog(@"More View");
     
     [super loadView];
+    
+    bookMarkData =  [NSArray  arrayWithObjects:
+                     [NSArray arrayWithObjects:@"title 1",@"General Information", @"placeholder.png", nil],
+                     [NSArray arrayWithObjects:@"title 2",@"Banking and financial institutions", @"placeholder.png", nil],
+                     [NSArray arrayWithObjects:@"title 3",@"Legal regulation for foreign investors", @"placeholder.png", nil],
+                     [NSArray arrayWithObjects:@"title 4",@"Airport & Cargo", @"placeholder.png", nil],
+                     nil];
     
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
@@ -55,33 +70,28 @@
     
     //-------------------------------- TABS ---------------------------------
     [self.view addSubview: [self constructTabsWithTitle: @"BookMarks"
-                                                  frame: CGRectMake(20, 60, 88, 20)
-                                                    tag: 1111111
-                                            andSelector: @selector(bookmarksHandler)]
+                                                  frame: CGRectMake(20, 60, 300, 20)
+                                                    tag: 1111111]
     ];
     
     [self.view addSubview: [self constructTabsWithTitle: @"Change Password"
-                                                  frame: CGRectMake(20, 95, 140, 20)
-                                                    tag:2222222
-                                            andSelector: @selector(cunstructChangePasswordView)]
+                                                  frame: CGRectMake(20, 95, 300, 20)
+                                                    tag:2222222]
      ];
     
     [self.view addSubview: [self constructTabsWithTitle: @"Notification Settings"
-                                                  frame: CGRectMake(20, 130, 157, 20)
-                                                    tag:3333333
-                                            andSelector: @selector(notificationHandler)]
+                                                  frame: CGRectMake(20, 130, 300, 20)
+                                                    tag:3333333]
      ];
     
     [self.view addSubview: [self constructTabsWithTitle: @"Sign Out"
-                                                  frame: CGRectMake(20, 165, 67, 20)
-                                                    tag:4444444
-                                            andSelector: @selector(signOutHandler)]
+                                                  frame: CGRectMake(20, 165, 300, 20)
+                                                    tag:4444444]
      ];
     
     [self.view addSubview: [self constructTabsWithTitle: @"Restore iTunes Purchases"
-                                                  frame: CGRectMake(20, 200, 202, 20)
-                                                    tag:5555555
-                                            andSelector: @selector(restorePurschasesHandler)]
+                                                  frame: CGRectMake(20, 200, 300, 20)
+                                                    tag:5555555]
      ];
     
     //-------------------------- Close Search Botton -------`----------------------
@@ -92,6 +102,7 @@
     
     [topBar addSubview: backButton];
     
+    [self cunstructChangeBookMarksView];
     [self cunstructChangePasswordView];
     [self cunstructRestorePurschasesView];
     [self cunstructSignOutView];
@@ -101,7 +112,6 @@
 - (UIButton *)constructTabsWithTitle: (NSString *)title
                                frame: (CGRect)frame
                                  tag: (int)tag
-                         andSelector: (SEL)selector
 {
     UIButton *btn = [[UIButton alloc] initWithFrame:frame];
     btn.titleLabel.font  = [UIFont boldSystemFontOfSize: 16];
@@ -111,6 +121,7 @@
     [btn setTitle: title forState:UIControlStateHighlighted];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
     [btn addTarget: self action: @selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -126,11 +137,18 @@
     switch (buttonTag) {
         case 1111111:
             [self bookmarksHandler];
+            signOutView.hidden = YES;
+            notificationView.hidden = YES;
+            restorePurschasesView.hidden = YES;
+            changePasswordView.hidden = YES;
+            topBarTitleLabel.text = @"BookMarks";
+            bookMarksView.hidden = NO;
             break;
         case 2222222:
             signOutView.hidden = YES;
             notificationView.hidden = YES;
             restorePurschasesView.hidden = YES;
+            bookMarksView.hidden = YES;
             topBarTitleLabel.text = @"Change Password";
             changePasswordView.hidden = NO;
             
@@ -140,6 +158,7 @@
             restorePurschasesView.hidden = YES;
             changePasswordView.hidden = YES;
             signOutView.hidden = YES;
+            bookMarksView.hidden = YES;
             topBarTitleLabel.text = @"Notification Settings";
             notificationView.hidden = NO;
             
@@ -149,6 +168,7 @@
             restorePurschasesView.hidden = YES;
             changePasswordView.hidden = YES;
             notificationView.hidden = YES;
+            bookMarksView.hidden = YES;
             topBarTitleLabel.text = @"Sign Out";
             signOutView.hidden = NO;
             
@@ -158,6 +178,7 @@
             signOutView.hidden = YES;
             changePasswordView.hidden = YES;
             notificationView.hidden = YES;
+            bookMarksView.hidden = YES;
             topBarTitleLabel.text = @"Restore iTunes Purchases";
             restorePurschasesView.hidden = NO;
 
@@ -175,7 +196,32 @@
     changePasswordView.hidden = YES;
     restorePurschasesView.hidden = YES;
     signOutView.hidden = YES;
+    bookMarksView.hidden = YES;
     notificationView.hidden = YES;
+}
+
+- (void)cunstructChangeBookMarksView {
+    bookMarksView = [[UIView alloc] initWithFrame: CGRectMake(0, 46, 320, self.view.frame.size.height)];
+    bookMarksView.backgroundColor = RGBA(49, 49, 49, 1);
+    bookMarksView.hidden = YES;
+    
+    [self.view addSubview: bookMarksView];
+    
+    UIImageView *bookMarksViewBg = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"moreBookMarksBg"]];
+    bookMarksViewBg.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
+    [bookMarksView addSubview: bookMarksViewBg];
+    
+    [bookMarksView addSubview: [self titleLabelsWithBorder]];
+    
+    self.bookMarkTable = [[UITableView alloc] initWithFrame:CGRectMake(20, 80, 290, (IS_IPHONE_5) ? 350 : 260) style:UITableViewStylePlain];
+    
+    self.bookMarkTable.backgroundColor = [UIColor clearColor];
+    self.bookMarkTable.separatorColor = [UIColor clearColor];
+    self.bookMarkTable.showsVerticalScrollIndicator = NO;
+    self.bookMarkTable.delegate = self;
+    self.bookMarkTable.dataSource = self;
+    
+    [bookMarksView addSubview: self.bookMarkTable];
 }
 
 - (void)cunstructChangePasswordView {
@@ -199,7 +245,7 @@
     [changePasswordView addSubview:emailLabel];
     
     UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(95, 30, 215, 50)];
-    emailTextField.font = [UIFont systemFontOfSize:17.5] ;
+    emailTextField.font = [UIFont systemFontOfSize:17.5];
 	emailTextField.returnKeyType = UIReturnKeyDone;
     emailTextField.backgroundColor = [UIColor clearColor];
 	emailTextField.delegate = self;
@@ -276,7 +322,6 @@
     [submitButton addTarget: self action: @selector(submitHandler) forControlEvents:UIControlEventTouchUpInside];
     
     [changePasswordView addSubview: submitButton];
-
 }
 
 - (void)cunstructRestorePurschasesView {
@@ -443,6 +488,7 @@
     return container;
 }
 
+
 -(void)notificationCheckboxSelected:(id)sender
 {
     NSLog(@"notificationCheckboxSelected");
@@ -502,27 +548,249 @@
     NSLog(@"signOutHandler");
 }
 
-
-
-
-
-
-
-
-
 - (void)bookmarksHandler {
     NSLog(@"bookmarksHandler");
 }
 
-- (void)notificationHandler {
-    NSLog(@"notificationHandler");
+- (UIView *)titleLabelsWithBorder {
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(190, 10, 110, 30)];
+    // container.backgroundColor = [UIColor redColor];
+    
+    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)]; label1.text = @"DATE";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 50, 20)]; label2.text = @"TITLE";
+    
+    NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, nil];
+    
+    for (int i = 0; i < labelArr.count; i ++) {
+        [container addSubview:[labelArr objectAtIndex:i]];
+        
+        ((UILabel *)[labelArr objectAtIndex:i]).backgroundColor = [UIColor clearColor];
+        ((UILabel *)[labelArr objectAtIndex:i]).textColor = [UIColor whiteColor];
+        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:14.0];
+        ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
+        ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
+        ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
+        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
+        
+        // Add Gesture Recognizer To Label
+        UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
+        [((UILabel *)[labelArr objectAtIndex:i]) addGestureRecognizer: labelTap];
+    }
+    
+    border = [[UIView alloc] initWithFrame:CGRectMake(0, 20, label1.frame.size.width, 2)];
+    border.backgroundColor = [UIColor redColor];
+    
+    [container addSubview:border];
+    
+    return container;
 }
 
+-(void)titleLabelTapHandler :(id) sender
+{
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
+    
+    if (gesture.view.tag == 0) {
+        [self animateLabelBorder: label1];
+        NSLog(@"DATE");
+    } else if(gesture.view.tag == 1){
+        [self animateLabelBorder: label2];
+        NSLog(@"TITLE");
+    }
+}
+
+- (void) animateLabelBorder: (UILabel *)label {
+    NSValue * from = [NSNumber numberWithFloat:border.layer.position.x];
+    NSValue * to = [NSNumber numberWithFloat:label.layer.position.x];
+    NSString * keypath = @"position.x";
+    [border.layer addAnimation:[self animationFrom:from to:to forKeyPath:keypath withDuration:.2] forKey:@"bounce"];
+    [border.layer setValue:to forKeyPath:keypath];
+    
+    CGRect frm = border.frame;
+    frm.origin.x = label.frame.origin.x;
+    frm.size.width = label.frame.size.width;
+    border.frame = frm;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Number of rows is the number of time zones in the region for the specified section.
+   return [bookMarkData count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *MyIdentifier = @"bookMarkCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSString *path = @"http://tim-dawson.com/wp-content/uploads/RAP_May_78_cover-200x100.jpg";
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 120, 80)];
+    [imageView setImageWithURL: [NSURL URLWithString: path] placeholderImage: nil options:SDWebImageProgressiveDownload];
+    
+    [cell.contentView addSubview: imageView];
+    
+    UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(130, 0, 110, 30)];
+	title.backgroundColor = [UIColor clearColor];
+    title.font = [UIFont systemFontOfSize:17.5] ;
+	title.returnKeyType = UIReturnKeyDone;
+	title.delegate = self;
+    title.text = [[bookMarkData objectAtIndex: indexPath.row] objectAtIndex: 0];
+    title.textAlignment = NSTextAlignmentLeft;
+    title.enabled = NO;
+    title.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	title.borderStyle = UITextBorderStyleNone;
+	title.textColor = [UIColor whiteColor];
+	title.tag = indexPath.row+666666;
+    
+    [cell.contentView addSubview: title];
+    
+    UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    editBtn.frame = CGRectMake(250,0,40,30);
+    editBtn.backgroundColor = [UIColor clearColor];
+    [editBtn setImage:[UIImage imageNamed:@"editIcone.png"] forState:UIControlStateNormal];
+    [editBtn setImage:[UIImage imageNamed:@"editIcone.png"] forState:UIControlStateSelected];
+    [editBtn setImage:[UIImage imageNamed:@"editIcone.png"] forState:UIControlStateHighlighted];
+    editBtn.adjustsImageWhenHighlighted=YES;
+    editBtn.userInteractionEnabled = YES;
+    editBtn.tag = indexPath.row;
+    [editBtn addTarget:self  action:@selector(bookMarkEditHandler:) forControlEvents:UIControlEventTouchDown];
+    
+    [cell.contentView addSubview: editBtn];
+    
+    UIButton *removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    removeBtn.frame = CGRectMake(250,30,40,30);
+    removeBtn.backgroundColor = [UIColor clearColor];
+    [removeBtn setImage:[UIImage imageNamed:@"closeButton.png"] forState:UIControlStateNormal];
+    [removeBtn setImage:[UIImage imageNamed:@"closeButton.png"] forState:UIControlStateSelected];
+    [removeBtn setImage:[UIImage imageNamed:@"closeButton.png"] forState:UIControlStateHighlighted];
+    removeBtn.adjustsImageWhenHighlighted=YES;
+    removeBtn.userInteractionEnabled = YES;
+    removeBtn.tag = indexPath.row;
+    [removeBtn addTarget:self  action:@selector(bookMarkRemoveHandler:) forControlEvents:UIControlEventTouchDown];
+    
+    [cell.contentView addSubview: removeBtn];
+    
+    UILabel * descLabel = [[UILabel alloc] initWithFrame: CGRectMake(130, 30, 110, 30)];
+    descLabel.backgroundColor = [UIColor clearColor];
+    descLabel.textColor = [UIColor whiteColor];
+    descLabel.textAlignment = NSTextAlignmentLeft;
+    descLabel.font = [UIFont systemFontOfSize: 16.0f];
+    descLabel.text = @"Title | date"; //TODO: get from data object
+    
+    [cell.contentView addSubview: descLabel];
+    
+    UILabel * createdDateLabel = [[UILabel alloc] initWithFrame: CGRectMake(130, 60, 130, 20)];
+    createdDateLabel.backgroundColor = [UIColor clearColor];
+    createdDateLabel.textColor = [UIColor whiteColor];
+    createdDateLabel.textAlignment = NSTextAlignmentLeft;
+    createdDateLabel.font = [UIFont systemFontOfSize: 14.0f];
+    createdDateLabel.text = @"Created sep 3, 2013"; //TODO: get from data object
+    
+    [cell.contentView addSubview: createdDateLabel];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor clearColor];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    // cell.textLabel.textColor = [UIColor redColor];
+    
+    // NSLog(@"selected year: %i", indexPath.row);
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// If our cell is selected, return double height
+	return 100;
+}
+
+
+- (void)bookMarkEditHandler:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    int buttonTag = button.tag;
+    
+    NSLog(@"edit bookmark: %i", buttonTag);
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:buttonTag inSection:0];
+    UITableViewCell *cell  = [self.bookMarkTable cellForRowAtIndexPath: indexPath];
+    
+    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:666666]; //TODO remove 666666
+    
+    editTextField.enabled = YES;
+    
+    [editTextField resignFirstResponder];
+}
+
+- (void)bookMarkRemoveHandler:(id)sender  {
+    UIButton *button = (UIButton *)sender;
+    int buttonTag = button.tag;
+    
+    NSLog(@"removev: %@", [bookMarkData objectAtIndex: buttonTag]);
+    
+    // [self.bookMarkTable reloadData];
+}
+
+#pragma mark - CAAnimations
+
+-(CABasicAnimation *)animationFrom:(NSValue *)from
+                                to:(NSValue *)to
+                        forKeyPath:(NSString *)keypath
+                      withDuration:(CFTimeInterval)duration
+{
+    CABasicAnimation * result = [CABasicAnimation animationWithKeyPath:keypath];
+    [result setFromValue:from];
+    [result setToValue:to];
+    [result setDuration:duration];
+    
+    return  result;
+}
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    
+//    NSString *searchedString = @"domain-name.tld.tld6666";
+//    NSString *pattern = @"(^6666[0-9])"; //
+//    NSError* error = nil;
+//    
+//    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+//    NSTextCheckingResult *match = [regex firstMatchInString:searchedString options:0 range:NSMakeRange(0, [searchedString length])];
+//    NSLog(@"group1: %@", [searchedString substringWithRange:[match rangeAtIndex:4]]);
+    
+//    NSString *yourString =  @"6666domain-asas";
+//    NSError *error = NULL;
+//    NSRegularExpression *regex = [NSRegularExpression
+//                                  regularExpressionWithPattern:@"^6666[0-9]"
+//                                  options:NSRegularExpressionCaseInsensitive
+//                                  error:&error];
+//    [regex enumerateMatchesInString:yourString options:0 range:NSMakeRange(0, [yourString length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+//        // your code to handle matches here
+//        NSLog(@"sasasasa");
+//    }];
+    
+    //^6666[0-9]
+    
+    NSLog(@"aaaaa");
+    
+    if (textField.tag == 666666) {  // TODO: check textfield tag last values ===> 666 and save bookmark
+        textField.enabled = NO;
+    }
+    
     [textField resignFirstResponder];
     
     return YES;
