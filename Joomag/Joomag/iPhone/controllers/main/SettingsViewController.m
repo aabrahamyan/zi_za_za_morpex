@@ -321,7 +321,7 @@
     passwordTextField.frame = CGRectMake(104, 120, 180, 20);
     
     retypeLabel.frame = CGRectMake(5, 165, 80, 20);
-    passwordTextFieldRepeat.frame = CGRectMake(105, 164, 155, 20);
+    passwordTextFieldRepeat.frame = CGRectMake(105, 264, 155, 20);
     
     termsOfService.frame = CGRectMake(200, 270, 120, 20);
     

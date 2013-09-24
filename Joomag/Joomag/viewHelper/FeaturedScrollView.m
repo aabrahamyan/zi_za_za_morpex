@@ -31,9 +31,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
-        NSLog(@"scroll fram: %f", self.frame.size.height);
-        
+
         self.backgroundColor = [UIColor blackColor];
         self.pagingEnabled = YES;
         //self.showsVerticalScrollIndicator = NO;

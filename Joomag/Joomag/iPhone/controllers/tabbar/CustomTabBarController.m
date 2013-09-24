@@ -70,29 +70,40 @@ static CustomTabBarController * customTabBarController;
     return [[LibraryViewController alloc] init];
 }
 
+- (MoreViewController *) getMoreViewController {
+    return [[MoreViewController alloc] init];
+}
+
 
 - (void) createTabBarContent {
     FeaturedViewController * featuredVC = [self getFeaturedViewController];
-    ExploreViewController * exploreVC = [self getExploreViewController];
-    LibraryViewController * libraryVC = [self getLibraryViewController];
+    ExploreViewController  * exploreVC = [self getExploreViewController];
+    LibraryViewController  * libraryVC = [self getLibraryViewController];
+    MoreViewController     * moreVC = [self getMoreViewController];
     
     self.featuredNavigationController = [[UINavigationController alloc] initWithRootViewController:featuredVC];
-    self.featuredNavigationController.view.frame = CGRectMake(0, -20, 320, (IS_IPHONE_5 ? 568 : 480));
+    self.featuredNavigationController.view.frame = CGRectMake(0, 0, 320, (IS_IPHONE_5 ? 568 : 480));
     self.featuredNavigationController.navigationBarHidden = YES;
 
     self.exploreNavigationController = [[UINavigationController alloc] initWithRootViewController:exploreVC];
-    self.exploreNavigationController.view.frame = CGRectMake(0, -20, 320, (IS_IPHONE_5 ? 568 : 480));
+    self.exploreNavigationController.view.frame = CGRectMake(0, 0, 320, (IS_IPHONE_5 ? 568 : 480));
     self.exploreNavigationController.navigationBarHidden = YES;
     
     self.exploreNavigationController.view.hidden = YES;
     self.myBookshelfNavigationController = [[UINavigationController alloc] initWithRootViewController:libraryVC];
-    self.myBookshelfNavigationController.view.frame = CGRectMake(0, -20, 320, (IS_IPHONE_5 ? 568 : 480));
+    self.myBookshelfNavigationController.view.frame = CGRectMake(0, 0, 320, (IS_IPHONE_5 ? 568 : 480));
     self.myBookshelfNavigationController.navigationBarHidden = YES;
     self.myBookshelfNavigationController.view.hidden = YES;
     
+    self.moreNavigationController = [[UINavigationController alloc] initWithRootViewController: moreVC];
+    self.moreNavigationController.view.frame = CGRectMake(0, 0, 320, (IS_IPHONE_5 ? 568 : 480));
+    self.moreNavigationController.navigationBarHidden = YES;
+    
+    [self.view addSubview:self.moreNavigationController.view];
     [self.view addSubview:self.featuredNavigationController.view];
     [self.view addSubview:self.exploreNavigationController.view];
     [self.view addSubview:self.myBookshelfNavigationController.view];
+    
 }
 
 - (void) loadView {
@@ -153,8 +164,9 @@ static CustomTabBarController * customTabBarController;
     [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateSelected];
     [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateHighlighted];
     self.moreButton.showsTouchWhenHighlighted = YES;
+    self.moreButton.tag = 44444;
     
-    [self.moreButton addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+    [self.moreButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.backGroundView addSubview:self.moreButton];
     
@@ -189,13 +201,15 @@ static CustomTabBarController * customTabBarController;
         case 11111: {
             
             self.featuredNavigationController.view.hidden = NO;
-            self.exploreNavigationController.view.hidden = YES;            
+            self.exploreNavigationController.view.hidden = YES;
+            self.moreNavigationController.view.hidden = YES;
             self.myBookshelfNavigationController.view.hidden = YES;
             
             break;
         }
         case 22222: {
             self.featuredNavigationController.view.hidden = YES;
+            self.moreNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = NO;
             ExploreViewController * vc =  (ExploreViewController *)self.exploreNavigationController.visibleViewController;
             [vc redrawData];
@@ -206,30 +220,22 @@ static CustomTabBarController * customTabBarController;
         case 33333: {
             self.featuredNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = YES;
+            self.moreNavigationController.view.hidden = YES;
             self.myBookshelfNavigationController.view.hidden = NO;
+            
+            break;
+        }
+        case 44444: {
+            self.featuredNavigationController.view.hidden = YES;
+            self.exploreNavigationController.view.hidden = YES;
+            self.myBookshelfNavigationController.view.hidden = YES;
+            self.moreNavigationController.view.hidden = NO;
             
             break;
         }
         default:
             break;
     }
-}
-
-- (void)viewDidLayoutSubviews {
-    // NSLog(@"LAYOUT ORIENTATION CHANGED");
-}
-
-- (void) showMore {
-    self.moreVC = [[MoreViewController alloc] init];
-    
-    if (IS_IPHONE_5)
-        self.moreVC.view.frame = CGRectMake(0, 0, 320, 483);
-    else
-        self.moreVC.view.frame = CGRectMake(0, 0, 320, 400);
-    
-    [self.view addSubview: self.moreVC.view];
-    
-    [self.moreVC animateUpAndDown:YES];
 }
 
 - (void) showSettings {

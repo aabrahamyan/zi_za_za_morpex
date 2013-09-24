@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoreViewController : UIViewController
+@interface MoreViewController : UIViewController <UITextFieldDelegate>
 
 @property bool isOpen;
 
-- (void) animateUpAndDown: (BOOL) isUP;
+//- (void) animateUpAndDown: (BOOL) isUP;
 
 @end

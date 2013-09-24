@@ -57,6 +57,9 @@
     topBar.frame = topBarFrame;
     filterLabels.frame = filterLabelsFrame;
     loginContainer.frame = loginContainerFrame;
+    loginText.text = @"Sign in using social network or your Joomag account. Not a member? Join Joomag";
+    loginText.numberOfLines = 2;
+    loginText.font = [UIFont systemFontOfSize:14.0];
     loginText.frame = loginTextFrame;
     joomagButton.frame = joomagButtonFrame;
     orLabel.frame = orLabelFrame;

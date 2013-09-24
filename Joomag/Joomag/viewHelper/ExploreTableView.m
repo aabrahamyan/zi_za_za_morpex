@@ -87,7 +87,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";   
-    NSLog(@"[UIApplication sharedApplication].statusBarOrientation = %d",[UIApplication sharedApplication].statusBarOrientation); 
+    //NSLog(@"[UIApplication sharedApplication].statusBarOrientation = %d",[UIApplication sharedApplication].statusBarOrientation);
 
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         ExploreCatsTableViewCell * cell = (ExploreCatsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];

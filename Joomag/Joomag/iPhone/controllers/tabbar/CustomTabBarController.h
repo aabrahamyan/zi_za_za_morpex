@@ -11,6 +11,7 @@
 @class MoreViewController;
 @class SettingsViewController;
 @class BookMarkViewController;
+@class MoreViewController;
 
 @interface CustomTabBarController : UIViewController {
 
@@ -34,6 +35,7 @@
 @property (nonatomic, strong) UINavigationController * featuredNavigationController;
 @property (nonatomic, strong) UINavigationController * exploreNavigationController;
 @property (nonatomic, strong) UINavigationController * myBookshelfNavigationController;
+@property (nonatomic, strong) UINavigationController * moreNavigationController;
 //---------------- Helper Indices --------------------------//
 @property (nonatomic, assign) NSInteger currentFeatureControllerIndex;
 @property (nonatomic, assign) NSInteger currentExploreControllerIndex;
@@ -45,7 +47,6 @@
 //----------------------- Mixed Attributes --------------------------//
 @property (nonatomic, strong) SettingsViewController * settingsVC;
 @property (nonatomic, strong) BookMarkViewController * bookMarksVC;
-@property (nonatomic, strong) MoreViewController     * moreVC;
 
 //----------------------- Instance Methods --------------------------//
 - (id) initWithSpecifics: (UIImage * ) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height;
