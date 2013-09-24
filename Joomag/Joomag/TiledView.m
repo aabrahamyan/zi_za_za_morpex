@@ -166,7 +166,11 @@
         provider = CGDataProviderCreateWithURL((CFURLRef)CFBridgingRetain(imageURL));
         
        image = CGImageCreateWithPNGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
-        CFRelease(provider); 
+        if(!image) {
+           image = CGImageCreateWithJPEGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
+        }
+        NSLog(@" Image = %@",image);
+        CFRelease(provider);
     
     //}
     
