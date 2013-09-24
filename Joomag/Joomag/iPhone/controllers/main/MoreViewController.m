@@ -727,12 +727,11 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:buttonTag inSection:0];
     UITableViewCell *cell  = [self.bookMarkTable cellForRowAtIndexPath: indexPath];
-    
-    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:666666]; //TODO remove 666666
+
+    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:666666];
     
     editTextField.enabled = YES;
-    
-    [editTextField resignFirstResponder];
+    [editTextField becomeFirstResponder]; //TODO remove 666666
 }
 
 - (void)bookMarkRemoveHandler:(id)sender  {
@@ -760,6 +759,12 @@
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+     // added this in for case when keyboard was already on screen
+
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
