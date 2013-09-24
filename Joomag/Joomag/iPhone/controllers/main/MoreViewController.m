@@ -15,6 +15,8 @@
     UIView   *changePasswordView;
     UIView   *restorePurschasesView;
     UIView   *signOutView;
+    
+    UIView   *notificationView;
 }
 
 @end
@@ -93,8 +95,7 @@
     [self cunstructChangePasswordView];
     [self cunstructRestorePurschasesView];
     [self cunstructSignOutView];
-    
-    
+    [self cunstructNotificationView];
 }
 
 - (UIButton *)constructTabsWithTitle: (NSString *)title
@@ -103,7 +104,6 @@
                          andSelector: (SEL)selector
 {
     UIButton *btn = [[UIButton alloc] initWithFrame:frame];
-//    btn.backgroundColor = [UIColor redColor];
     btn.titleLabel.font  = [UIFont boldSystemFontOfSize: 16];
     btn.tag = tag;
     [btn setTitle: title forState:UIControlStateNormal];
@@ -121,6 +121,7 @@
     UIButton *button = (UIButton *)target;
     NSInteger buttonTag = button.tag;
     backButton.hidden = NO;
+    topBarTitleLabel.frame = CGRectMake(46, 0, 320-46, 44);
     
     switch (buttonTag) {
         case 1111111:
@@ -128,18 +129,26 @@
             break;
         case 2222222:
             signOutView.hidden = YES;
+            notificationView.hidden = YES;
+            restorePurschasesView.hidden = YES;
             topBarTitleLabel.text = @"Change Password";
             changePasswordView.hidden = NO;
             
             break;
             
         case 3333333:
-            [self notificationHandler];
+            restorePurschasesView.hidden = YES;
+            changePasswordView.hidden = YES;
+            signOutView.hidden = YES;
+            topBarTitleLabel.text = @"Notification Settings";
+            notificationView.hidden = NO;
+            
             break;
             
         case 4444444:
             restorePurschasesView.hidden = YES;
             changePasswordView.hidden = YES;
+            notificationView.hidden = YES;
             topBarTitleLabel.text = @"Sign Out";
             signOutView.hidden = NO;
             
@@ -148,6 +157,7 @@
         case 5555555:
             signOutView.hidden = YES;
             changePasswordView.hidden = YES;
+            notificationView.hidden = YES;
             topBarTitleLabel.text = @"Restore iTunes Purchases";
             restorePurschasesView.hidden = NO;
 
@@ -159,16 +169,16 @@
 }
 
 - (void)backHandler {
-    NSLog(@"backHandler");
+    topBarTitleLabel.frame = CGRectMake(0, 0, 320, 44);
     topBarTitleLabel.text = @"More";
     backButton.hidden = YES;
     changePasswordView.hidden = YES;
     restorePurschasesView.hidden = YES;
     signOutView.hidden = YES;
+    notificationView.hidden = YES;
 }
 
 - (void)cunstructChangePasswordView {
-    NSLog(@"cunstructChangePasswordView");
 
     changePasswordView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
     changePasswordView.backgroundColor = RGBA(49, 49, 49, 1);
@@ -270,7 +280,6 @@
 }
 
 - (void)cunstructRestorePurschasesView {
-    NSLog(@"cunstructRestorePurschasesView");
     
     restorePurschasesView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
     restorePurschasesView.backgroundColor = RGBA(49, 49, 49, 1);
@@ -310,8 +319,7 @@
 }
 
 - (void)cunstructSignOutView {
-    NSLog(@"cunstructSignOutView");
-    
+   
     signOutView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
     signOutView.backgroundColor = RGBA(49, 49, 49, 1);
     signOutView.hidden = YES;
@@ -343,30 +351,144 @@
     
     [signOutView addSubview: signOutDesc];
     
-    UIButton *restoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    restoreBtn.frame = CGRectMake(90, 310, 140, 40);
-    restoreBtn.backgroundColor = RGBA(214, 77, 76, 1);
-    [restoreBtn setTitle:@"Restore" forState:UIControlStateNormal];
-    restoreBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [restoreBtn addTarget:self  action:@selector(signOutHandler) forControlEvents:UIControlEventTouchDown];
+    UIButton *signOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    signOutBtn.frame = CGRectMake(90, 310, 140, 40);
+    signOutBtn.backgroundColor = RGBA(214, 77, 76, 1);
+    [signOutBtn setTitle:@"Sign Out" forState:UIControlStateNormal];
+    signOutBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [signOutBtn addTarget:self  action:@selector(signOutHandler) forControlEvents:UIControlEventTouchDown];
     
-    [signOutView addSubview: restoreBtn];
+    [signOutView addSubview: signOutBtn];
 }
 
-- (void)bookmarksHandler {
-    NSLog(@"bookmarksHandler");
+- (void)cunstructNotificationView {
+    
+    notificationView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, 320, self.view.frame.size.height)];
+    notificationView.backgroundColor = RGBA(49, 49, 49, 1);
+    notificationView.hidden = YES;
+    
+    [self.view addSubview: notificationView];
+    
+    UILabel *notificationTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 300, 50)];
+    notificationTitle.font = [UIFont systemFontOfSize: 16.0f];
+    notificationTitle.textColor = [UIColor whiteColor];
+    notificationTitle.numberOfLines = 2;
+    notificationTitle.textAlignment = NSTextAlignmentCenter;
+    notificationTitle.backgroundColor = [UIColor clearColor];
+    notificationTitle.text = @"Visit the iOS Settings menu to enable and disable Push Notifications for Joomag.";
+    
+    [notificationView addSubview: notificationTitle];
+    
+    [notificationView addSubview: [self createLabelsInNotificationViewWithTitle: @"New Issues"
+                                                                           desc: @"Alert me when new issues are available."
+                                                                          frame: CGRectMake(30, 120, 260, 60)
+                                                                         andTag: 55011
+    ]];
+    
+    [notificationView addSubview: [self createLabelsInNotificationViewWithTitle: @"Renewals"
+                                                                           desc: @"Alert me when I am near the end of subscription."
+                                                                          frame: CGRectMake(30, 200, 260, 60)
+                                                                         andTag: 55012
+    ]];
+    
+    [notificationView addSubview: [self createLabelsInNotificationViewWithTitle: @"App Updates"
+                                                                           desc: @"Alert me when there are new app updates."
+                                                                          frame: CGRectMake(30, 280, 260, 60)
+                                                                         andTag: 55013
+    ]];
+    
 }
 
-
-- (void)notificationHandler {
-    NSLog(@"notificationHandler");
+- (UIView *) createLabelsInNotificationViewWithTitle: (NSString *)title
+                                            desc: (NSString *)desc
+                                           frame: (CGRect)frame
+                                          andTag: (int)tag
+{
+    UIView *container = [[UIView alloc] initWithFrame: frame];
+    container.backgroundColor = [UIColor clearColor];
+    
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, 120, 20)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.font = [UIFont systemFontOfSize: 20.0f];
+    titleLabel.text = title;
+    
+    [container addSubview: titleLabel];
+    
+    UILabel * descLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 20, 190, 40)];
+    descLabel.backgroundColor = [UIColor clearColor];
+    descLabel.textColor = [UIColor grayColor];
+    descLabel.textAlignment = NSTextAlignmentLeft;
+    descLabel.numberOfLines = 2;
+    descLabel.font = [UIFont systemFontOfSize: 14.0f];
+    descLabel.text = desc;
+    
+    [container addSubview: descLabel];
+    
+    UIButton *checkbox = [UIButton buttonWithType:UIButtonTypeCustom];
+    checkbox.frame = CGRectMake(220,10,50,50);
+    checkbox.backgroundColor = [UIColor clearColor];
+    [checkbox setImage:[UIImage imageNamed:@"notselectedcheckbox.png"] forState:UIControlStateNormal];
+    [checkbox setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateSelected];
+    [checkbox setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateHighlighted];
+    checkbox.adjustsImageWhenHighlighted=YES;
+    checkbox.userInteractionEnabled = YES;
+    [checkbox setSelected: YES];
+    checkbox.tag = tag;
+    [checkbox addTarget:self  action:@selector(notificationCheckboxSelected:) forControlEvents:UIControlEventTouchDown];
+    
+    [container addSubview: checkbox];
+    
+    return container;
 }
 
+-(void)notificationCheckboxSelected:(id)sender
+{
+    NSLog(@"notificationCheckboxSelected");
+    
+    UIButton *button = (UIButton *)sender;
+    int buttonTag = button.tag;
+    
+    switch (buttonTag) {
+        case 55011:
+            
+            //New Issues CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        case 55012:
+            
+            //Renewals CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        case 55013:
+            
+            //App Updates CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
 
-
-
-
-
+}
 
 - (void)submitHandler {
     NSLog(@"submitHandler");
@@ -378,6 +500,22 @@
 
 - (void)signOutHandler {
     NSLog(@"signOutHandler");
+}
+
+
+
+
+
+
+
+
+
+- (void)bookmarksHandler {
+    NSLog(@"bookmarksHandler");
+}
+
+- (void)notificationHandler {
+    NSLog(@"notificationHandler");
 }
 
 

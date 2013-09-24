@@ -131,6 +131,8 @@
 		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
 		5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */; };
 		5AB0F69017DD5F7D00671C24 /* editIcone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68F17DD5F7D00671C24 /* editIcone.png */; };
+		5ABB9A9817F16CC60078A4FB /* notselectedcheckbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB9A9617F16CC60078A4FB /* notselectedcheckbox@2x.png */; };
+		5ABB9A9917F16CC60078A4FB /* selectedcheckbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB9A9717F16CC60078A4FB /* selectedcheckbox@2x.png */; };
 		5ABDDBCA179BF75D002F23AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */; };
 		5ABDDBCB179BF75D002F23AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBA179BF75D002F23AD /* AFHTTPRequestOperation.m */; };
 		5ABDDBCC179BF75D002F23AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDDBBC179BF75D002F23AD /* AFImageRequestOperation.m */; };
@@ -348,6 +350,8 @@
 		5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreBG@2x.png"; sourceTree = "<group>"; };
 		5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookMarkSeparator.png; sourceTree = "<group>"; };
 		5AB0F68F17DD5F7D00671C24 /* editIcone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editIcone.png; sourceTree = "<group>"; };
+		5ABB9A9617F16CC60078A4FB /* notselectedcheckbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notselectedcheckbox@2x.png"; sourceTree = "<group>"; };
+		5ABB9A9717F16CC60078A4FB /* selectedcheckbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedcheckbox@2x.png"; sourceTree = "<group>"; };
 		5ABDDBB7179BF75D002F23AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		5ABDDBB8179BF75D002F23AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		5ABDDBB9179BF75D002F23AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -819,6 +823,8 @@
 		5A4D503217EC4C6A007E6BDB /* tabBar */ = {
 			isa = PBXGroup;
 			children = (
+				5ABB9A9617F16CC60078A4FB /* notselectedcheckbox@2x.png */,
+				5ABB9A9717F16CC60078A4FB /* selectedcheckbox@2x.png */,
 				5A33077017F06FA000DE1E6E /* settingsTextFieldBG@2x.png */,
 				5A33076E17F0656900DE1E6E /* backButton@2x.png */,
 				5A4D502E17EC49D7007E6BDB /* tabBg@2x.png */,
@@ -1065,6 +1071,8 @@
 				5A33076F17F0656900DE1E6E /* backButton@2x.png in Resources */,
 				5A33077117F06FA000DE1E6E /* settingsTextFieldBG@2x.png in Resources */,
 				5A33077317F0760D00DE1E6E /* submitSettings@2x.png in Resources */,
+				5ABB9A9817F16CC60078A4FB /* notselectedcheckbox@2x.png in Resources */,
+				5ABB9A9917F16CC60078A4FB /* selectedcheckbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
