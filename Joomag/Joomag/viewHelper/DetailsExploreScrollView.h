@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailsExploreScrollView : UIScrollView {
+@interface DetailsExploreScrollView : UIScrollView <UIScrollViewDelegate> {
     NSInteger entriesLength;
     int tileW;
     int tileH;
@@ -18,6 +18,10 @@
 
 // the main data model for our UIScrollView
 @property (nonatomic, strong) NSArray *entries;
+
+- (void) redrawData;
+
+- (void)loadVisibleImages;
 
 @end
 

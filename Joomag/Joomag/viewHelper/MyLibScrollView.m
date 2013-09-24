@@ -81,7 +81,7 @@
         [self addSubview: imageView];
         
         xPosition += 210;
-        if(xPosition >= self.frame.size.width){
+        if(xPosition >= self.frame.size.width) {
             xPosition = 0;
             yPosition += 260;
         }

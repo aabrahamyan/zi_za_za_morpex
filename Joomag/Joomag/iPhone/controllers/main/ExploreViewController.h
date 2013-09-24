@@ -13,6 +13,7 @@
 
 @class ExploreScrollView;
 @class ExploreTableView;
+@class DetailsExploreScrollView;
 
 @interface ExploreViewController : UIViewController <ResponseTrackerDelegate> {
     
@@ -28,6 +29,7 @@
     ExploreScrollView *scrollView;
     ExploreTableView *categoriesTable;
     
+    DetailsExploreScrollView * det; 
 
 }
 

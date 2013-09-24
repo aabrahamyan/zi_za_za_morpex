@@ -12,6 +12,7 @@
 #import "SearchViewController.h"
 #import "ConnectionManager.h"
 #import "MagazinRecord.h"
+#import "DetailsExploreScrollView.h"
 
 @interface ExploreViewController () {
     MainDataHolder *dataHolder;
@@ -19,6 +20,8 @@
     UILabel        *label2;
     UILabel        *label3;
     UIView         *border;
+    
+    int hierarchy;
 }
 
 @end
@@ -27,7 +30,7 @@
 
 - (void)loadView {
     [super loadView];
- 
+    hierarchy = 0;
     dataHolder = [MainDataHolder getInstance];
     
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
@@ -103,20 +106,41 @@
     [self.view addSubview: categoriesTable];
 }
 
-- (void) redrawDataAndTopBar: (NSString *) breadcrumb withHierarchy : (NSInteger) hierarchy {
+- (void) redrawDataAndTopBar: (NSString *) breadcrumb withHierarchy : (NSInteger) hier {
     if([dataHolder.testData count] != 0) {
-        if (hierarchy == 0) {
+        if (hier == 0) {
             firstBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
-        } else if (hierarchy > 0) {
+        } else if (hier > 0) {
             secondBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
+            scrollView.hidden = YES;
+            pageControl.hidden = YES;
+            label1.hidden = YES;
+            label2.hidden = YES;
+            label3.hidden = YES;
+            border.hidden = YES;
+            
+            det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(67, 111, 877, 594)];
+            det.entries = dataHolder.testData;
+            [self.view addSubview:det];
+            [det redrawData];
+            
+            hierarchy = hier;
         }
     }
 }
 
+- (void) setupScrollTableView {
+    
+}
+
 - (void) redrawData {
     if([dataHolder.testData count] != 0) {
-        scrollView.entries = dataHolder.testData;
-        [scrollView redrawData];
+        if(hierarchy == 0) {
+            scrollView.entries = dataHolder.testData;
+            [scrollView redrawData];
+        } else {
+            
+        }
     }
 }
 
