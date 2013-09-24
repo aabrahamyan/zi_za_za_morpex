@@ -14,6 +14,8 @@
 #import "MagazinRecord.h"
 #import "DetailsExploreScrollView.h"
 
+#define TOP_VIEW_HEIGHT 44
+#define NAV_SCROLL_HEIGHT 130
 
 @interface ExploreViewController () {
     MainDataHolder *dataHolder;
@@ -29,7 +31,29 @@
 
 @implementation ExploreViewController
 
-- (void)loadView {
+- (void) backAction {
+    if(hierarchy > 0) {
+        scrollView.entries = firstBreadCrumbData;
+        [scrollView redrawData];
+        [categoriesTable reloadExploreTable];
+        hierarchy--;
+        secondBreadCrumb.text=@"";
+        det.hidden = YES;
+        scrollView.hidden = NO;
+        pageControl.hidden = NO;
+        categoriesTable.hidden = NO;
+    } else if (hierarchy == 0) {
+        label1.hidden = NO;
+        label2.hidden = NO;
+        label3.hidden = NO;
+        border.hidden = NO;
+        
+        ConnectionManager * connManager = [[ConnectionManager alloc] init];
+        [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
+    }
+}
+
+- (void) loadView {
     [super loadView];
     hierarchy = 0;
     dataHolder = [MainDataHolder getInstance];
@@ -55,6 +79,7 @@
     [topBar addSubview: topBarTitleLabel];
     
     firstBreadCrumb = [[UILabel alloc] init];
+    firstBreadCrumb.font = [UIFont fontWithName:@"proximanovaregular" size:20.0f];
     firstBreadCrumb.backgroundColor = [UIColor clearColor];
     firstBreadCrumb.textColor = [UIColor whiteColor];
     firstBreadCrumb.text = @"";
@@ -62,6 +87,7 @@
     [topBar addSubview: firstBreadCrumb];
     
     secondBreadCrumb = [[UILabel alloc] init];
+    firstBreadCrumb.font = [UIFont fontWithName:@"proximanovaregular" size:20.0f];
     secondBreadCrumb.backgroundColor = [UIColor clearColor];
     secondBreadCrumb.textColor = [UIColor whiteColor];
     secondBreadCrumb.text = @"";
@@ -74,6 +100,16 @@
     [searchBtn setBackgroundImage: [Util imageNamedSmart:@"searchIconeTopBar"] forState:UIControlStateNormal];
     searchBtn.showsTouchWhenHighlighted = YES;
     [topBar addSubview: searchBtn];
+    
+    backButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButtonView.frame = CGRectMake(0, 0, TOP_VIEW_HEIGHT, TOP_VIEW_HEIGHT);  //TODO
+    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
+    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateSelected];
+    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateHighlighted];
+    backButtonView.showsTouchWhenHighlighted = YES;
+    [backButtonView addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [topBar addSubview: backButtonView];
 
     
     //---------------------------- Scroll View ------------------------------------
@@ -111,8 +147,11 @@
     if([dataHolder.testData count] != 0) {
         if (hier == 0) {
             firstBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
+//            firstBreadCrumb.frame = [Util calculateLabelFrame:firstBreadCrumb];
         } else if (hier > 0) {
             secondBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
+//            secondBreadCrumb.frame = [Util calculateLabelFrame:firstBreadCrumb];                       
+            
             scrollView.hidden = YES;
             pageControl.hidden = YES;
             label1.hidden = YES;
@@ -120,8 +159,12 @@
             label3.hidden = YES;
             border.hidden = YES;
             
-            det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(67, 111, 877, 594)];
+            if(!det && !det.hidden)
+                det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(67, 111, 877, 594)];
+            else
+                det.hidden = NO;
             det.entries = dataHolder.testData;
+            
             [self.view addSubview:det];
             [det redrawData];
             
@@ -138,6 +181,7 @@
     if([dataHolder.testData count] != 0) {
         if(hierarchy == 0) {
             scrollView.entries = dataHolder.testData;
+            firstBreadCrumbData = dataHolder.testData;
             [scrollView redrawData];
         } else {
             
@@ -314,13 +358,17 @@
     NSLog(@"entries: %i", dataHolder.testData.count);
     
     //---------------------------- Page Control ------------------------------------
-    pageControl = [[UIPageControl alloc] init];
-    pageControl.currentPage = 0;
-    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    pageControl.backgroundColor = [UIColor clearColor];
-    CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
-    pageControl.frame = pageControlFrame;
+    if(pageControl && !pageControl.hidden) {
+        pageControl = [[UIPageControl alloc] init];
+        pageControl.currentPage = 0;
+        pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+        pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        pageControl.backgroundColor = [UIColor clearColor];
+        CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
+        pageControl.frame = pageControlFrame;
+    } else {
+        pageControl.hidden = NO;
+    }
     
     if (IS_IPAD) { //TODO: page numbers
         pageControl.numberOfPages = 2;

@@ -20,4 +20,6 @@
 
 + (NSString *) generatePageRequestBlock: (NSString *) pageNumber pagePortion: (NSString *) portion withMagazineId: (NSInteger) magazineId;
 
++ (CGRect) calculateLabelFrame : (UILabel *) lbl;
+
 @end

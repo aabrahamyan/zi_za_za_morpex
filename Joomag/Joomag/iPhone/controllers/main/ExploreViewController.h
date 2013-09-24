@@ -28,6 +28,9 @@
     UIPageControl *pageControl;
     ExploreScrollView *scrollView;
     ExploreTableView *categoriesTable;
+    UIButton     *backButtonView;
+    
+    NSMutableArray * firstBreadCrumbData;
     
     DetailsExploreScrollView * det; 
 

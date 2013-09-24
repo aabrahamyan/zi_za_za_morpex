@@ -34,4 +34,22 @@
     return queryUri;
 }
 
++ (CGRect) calculateLabelFrame : (UILabel *) lbl {
+	//Calculate the expected size based on the font and linebreak mode of your label
+	CGSize maximumLabelSize = CGSizeMake(9999,9999);
+	
+	CGSize expectedLabelSize = [lbl.text sizeWithFont:lbl.font
+									constrainedToSize:maximumLabelSize
+										lineBreakMode:lbl.lineBreakMode];
+	
+	//adjust the label the the new height.
+	CGRect newFrame = lbl.frame;
+	newFrame.size.height = expectedLabelSize.height;
+    newFrame.size.width = expectedLabelSize.width;
+	lbl.frame = newFrame;
+    
+    return newFrame;
+}
+
+
 @end
