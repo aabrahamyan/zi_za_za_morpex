@@ -728,7 +728,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:buttonTag inSection:0];
     UITableViewCell *cell  = [self.bookMarkTable cellForRowAtIndexPath: indexPath];
 
-    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:666666];
+    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:buttonTag+666666];
     
     editTextField.enabled = YES;
     [editTextField becomeFirstResponder]; //TODO remove 666666
@@ -768,31 +768,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-//    NSString *searchedString = @"domain-name.tld.tld6666";
-//    NSString *pattern = @"(^6666[0-9])"; //
-//    NSError* error = nil;
-//    
-//    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
-//    NSTextCheckingResult *match = [regex firstMatchInString:searchedString options:0 range:NSMakeRange(0, [searchedString length])];
-//    NSLog(@"group1: %@", [searchedString substringWithRange:[match rangeAtIndex:4]]);
-    
-//    NSString *yourString =  @"6666domain-asas";
-//    NSError *error = NULL;
-//    NSRegularExpression *regex = [NSRegularExpression
-//                                  regularExpressionWithPattern:@"^6666[0-9]"
-//                                  options:NSRegularExpressionCaseInsensitive
-//                                  error:&error];
-//    [regex enumerateMatchesInString:yourString options:0 range:NSMakeRange(0, [yourString length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
-//        // your code to handle matches here
-//        NSLog(@"sasasasa");
-//    }];
-    
-    //^6666[0-9]
-    
     NSLog(@"aaaaa");
     
-    if (textField.tag == 666666) {  // TODO: check textfield tag last values ===> 666 and save bookmark
+    if (textField.tag >= 666666 && textField.tag <= 666676) {  // TODO: check textfield tag last values ===> 666 and save bookmark
         textField.enabled = NO;
     }
     
