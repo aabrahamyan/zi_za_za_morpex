@@ -10,6 +10,10 @@
 #import "Util.h"
 #import "BookMarkView.h"
 #import "UIImageView+WebCache.h"
+#import "SIAlertView.h"
+
+#define TEST_UIAPPEARANCE 1
+#define BookMark_Tag 666600
 
 @interface MoreViewController () {
     UILabel  *topBarTitleLabel;
@@ -25,6 +29,8 @@
     UIView    *border;
     
     NSMutableArray *bookMarkData;
+    
+    UITextField *currentTxtField;
 }
 
 @end
@@ -36,12 +42,33 @@
     
     [super loadView];
     
-    bookMarkData =  [NSArray  arrayWithObjects:
-                     [NSArray arrayWithObjects:@"title 1",@"General Information", @"placeholder.png", nil],
-                     [NSArray arrayWithObjects:@"title 2",@"Banking and financial institutions", @"placeholder.png", nil],
-                     [NSArray arrayWithObjects:@"title 3",@"Legal regulation for foreign investors", @"placeholder.png", nil],
-                     [NSArray arrayWithObjects:@"title 4",@"Airport & Cargo", @"placeholder.png", nil],
-                     nil];
+#if TEST_UIAPPEARANCE
+    [[SIAlertView appearance] setMessageFont:[UIFont systemFontOfSize:16]];
+    [[SIAlertView appearance] setTitleColor:[UIColor whiteColor]];
+    [[SIAlertView appearance] setMessageColor:[UIColor grayColor]];
+    [[SIAlertView appearance] setCornerRadius:12];
+    [[SIAlertView appearance] setShadowRadius:20];
+    [[SIAlertView appearance] setViewBackgroundColor:RGBA(49, 49, 49, 1)];
+    [[SIAlertView appearance] setButtonColor:[UIColor whiteColor]];
+    [[SIAlertView appearance] setCancelButtonColor:[UIColor whiteColor]];
+    [[SIAlertView appearance] setDestructiveButtonColor:[UIColor whiteColor]];
+    
+    [[SIAlertView appearance] setDefaultButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setDefaultButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateHighlighted];
+    
+    [[SIAlertView appearance] setCancelButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setCancelButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateHighlighted];
+    
+    [[SIAlertView appearance] setDestructiveButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setDestructiveButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateHighlighted];
+#endif
+    
+    bookMarkData =  [NSMutableArray  arrayWithObjects:
+                    [NSArray arrayWithObjects:@"title 1",@"General Information", @"placeholder.png", nil],
+                    [NSArray arrayWithObjects:@"title 2",@"Banking and financial institutions", @"placeholder.png", nil],
+                    [NSArray arrayWithObjects:@"title 3",@"Legal regulation for foreign investors", @"placeholder.png", nil],
+                    [NSArray arrayWithObjects:@"title 4",@"Airport & Cargo", @"placeholder.png", nil],
+                    nil];
     
     self.view.backgroundColor = RGBA(49, 49, 49, 1);
     
@@ -107,6 +134,11 @@
     [self cunstructRestorePurschasesView];
     [self cunstructSignOutView];
     [self cunstructNotificationView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboardOnScreenTap)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (UIButton *)constructTabsWithTitle: (NSString *)title
@@ -650,7 +682,7 @@
     title.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	title.borderStyle = UITextBorderStyleNone;
 	title.textColor = [UIColor whiteColor];
-	title.tag = indexPath.row+666666;
+	title.tag = indexPath.row+BookMark_Tag;
     
     [cell.contentView addSubview: title];
     
@@ -676,7 +708,7 @@
     removeBtn.adjustsImageWhenHighlighted=YES;
     removeBtn.userInteractionEnabled = YES;
     removeBtn.tag = indexPath.row;
-    [removeBtn addTarget:self  action:@selector(bookMarkRemoveHandler:) forControlEvents:UIControlEventTouchDown];
+    [removeBtn addTarget:self  action:@selector(bookMarksRemoveHandler:) forControlEvents:UIControlEventTouchDown];
     
     [cell.contentView addSubview: removeBtn];
     
@@ -718,7 +750,6 @@
 	return 100;
 }
 
-
 - (void)bookMarkEditHandler:(id)sender {
     UIButton *button = (UIButton *)sender;
     int buttonTag = button.tag;
@@ -728,19 +759,45 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:buttonTag inSection:0];
     UITableViewCell *cell  = [self.bookMarkTable cellForRowAtIndexPath: indexPath];
 
-    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:buttonTag+666666];
+    UITextField *editTextField = (UITextField *)[cell.contentView viewWithTag:buttonTag+BookMark_Tag];
     
     editTextField.enabled = YES;
-    [editTextField becomeFirstResponder]; //TODO remove 666666
+    [editTextField becomeFirstResponder];
 }
 
-- (void)bookMarkRemoveHandler:(id)sender  {
+- (void)bookMarksRemoveHandler:(id)sender  {
     UIButton *button = (UIButton *)sender;
     int buttonTag = button.tag;
     
-    NSLog(@"removev: %@", [bookMarkData objectAtIndex: buttonTag]);
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Remove BookMark" andMessage:[[bookMarkData objectAtIndex: buttonTag] objectAtIndex: 0]];
+    [alertView addButtonWithTitle:@"Cancel"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              NSLog(@"Cancel Clicked");
+                          }];
+    [alertView addButtonWithTitle:@"OK"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              NSLog(@"OK Clicked");
+                              
+                              [self removeBookMark: buttonTag];
+                              
+                          }];
+    alertView.titleColor = RGBA(214, 77, 76, 1);
+    alertView.cornerRadius = 0;
+    alertView.buttonFont = [UIFont boldSystemFontOfSize:15];
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
     
-    // [self.bookMarkTable reloadData];
+    [alertView show];
+}
+
+- (void)removeBookMark: (int)index {
+    [bookMarkData  removeObjectAtIndex: index];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.bookMarkTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.bookMarkTable reloadData];
 }
 
 #pragma mark - CAAnimations
@@ -760,23 +817,30 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-     // added this in for case when keyboard was already on screen
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSError *error = nil;
+    NSString *string = [NSString stringWithFormat:@"%i", textField.tag];
+    NSString *placeholder = @"(6666)";
+    NSString *pattern = [NSString stringWithFormat:placeholder, string];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSAssert(regex, @"Unable to create regular expression");
+    
+    NSRange textRange = NSMakeRange(0, string.length);
+    NSRange matchRange = [regex rangeOfFirstMatchInString:string options:NSMatchingReportProgress range:textRange];
+
+    // Did we find a matching range
+    if (matchRange.location != NSNotFound) {
+        textField.enabled = NO;
+        [textField resignFirstResponder];
+    }
 
     return YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSLog(@"aaaaa");
-    
-    if (textField.tag >= 666666 && textField.tag <= 666676) {  // TODO: check textfield tag last values ===> 666 and save bookmark
-        textField.enabled = NO;
-    }
-    
-    [textField resignFirstResponder];
-    
-    return YES;
+- (void)dismissKeyboardOnScreenTap {
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning

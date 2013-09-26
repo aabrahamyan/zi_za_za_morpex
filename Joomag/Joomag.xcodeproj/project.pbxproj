@@ -128,6 +128,8 @@
 		5A7AFCC417C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */; };
 		5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */; };
 		5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */; };
+		5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */; };
+		5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F023317F2C73D0029F0C5 /* SIAlertView.m */; };
 		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
 		5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */; };
 		5AB0F69017DD5F7D00671C24 /* editIcone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68F17DD5F7D00671C24 /* editIcone@2x.png */; };
@@ -349,6 +351,9 @@
 		5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTabBarClose_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose_iPad@2x.png"; sourceTree = "<group>"; };
+		5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
+		5A9F023217F2C73D0029F0C5 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		5A9F023317F2C73D0029F0C5 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreBG@2x.png"; sourceTree = "<group>"; };
 		5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookMarkSeparator.png; sourceTree = "<group>"; };
 		5AB0F68F17DD5F7D00671C24 /* editIcone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "editIcone@2x.png"; path = "../../iPad/Resources-iPad/editIcone@2x.png"; sourceTree = "<group>"; };
@@ -891,9 +896,20 @@
 			name = BookMark;
 			sourceTree = "<group>";
 		};
+		5A9F023017F2C73D0029F0C5 /* SIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */,
+				5A9F023217F2C73D0029F0C5 /* SIAlertView.h */,
+				5A9F023317F2C73D0029F0C5 /* SIAlertView.m */,
+			);
+			path = SIAlertView;
+			sourceTree = "<group>";
+		};
 		5AA1A73717AD45C100EADCA3 /* viewHelper */ = {
 			isa = PBXGroup;
 			children = (
+				5A9F023017F2C73D0029F0C5 /* SIAlertView */,
 				5A1B582D17DA9F3A0087214F /* FeaturedView */,
 				5A75E93417DD4B2A0039FD17 /* BookMark */,
 				5A1B582E17DA9F570087214F /* ExploreView */,
@@ -1081,6 +1097,7 @@
 				5ABB9A9917F16CC60078A4FB /* selectedcheckbox@2x.png in Resources */,
 				5ABB9A9B17F1ABFC0078A4FB /* moreBookMarksBg@2x.png in Resources */,
 				5ABB9A9D17F21E9D0078A4FB /* closeButton@2x.png in Resources */,
+				5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1182,7 @@
 				2CCC217A17ECBBA5001DABD3 /* ExploreCatsTableViewCell.m in Sources */,
 				2CCC217D17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m in Sources */,
 				5A0FFC4817EF60A2009B268D /* NoInternetView.m in Sources */,
+				5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
