@@ -68,17 +68,17 @@
 	CGRect box = CGContextGetClipBoundingBox(context);
 
 	// Calculate tile index
-	CGFloat contentsScale = [MainDataHolder getInstance]._scalingFactor;
+	CGFloat contentsScale = [MainDataHolder getInstance]._scalingFactor;//[layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
+    
     //[layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
     
 	CGSize tileSize = [(CATiledLayer*) layer tileSize];    
     
     NSLog(@"contentsScale = %f", contentsScale);
     NSLog(@"NSStringFromCGSize(tileSize) = %@", NSStringFromCGSize(tileSize));
-    
-    
-	CGFloat x = box.origin.x * contentsScale / tileSize.width;
-	CGFloat y = box.origin.y * contentsScale / tileSize.height;
+        
+	CGFloat x = floorf(box.origin.x * contentsScale / tileSize.width);
+	CGFloat y = floorf(box.origin.y * contentsScale / tileSize.height);
         
     
     if(x == 8 || y == 6) {
@@ -95,7 +95,7 @@
 	//CGContextSaveGState(context);
 	//CGContextConcatCTM(context, [self transformForTile:tile]);
     
-    /*CGImageRef image = [self imageForScale:contentsScale row:x col:y coordToDdecide: box.origin.x];
+    CGImageRef image = [self imageForScale:contentsScale row:x col:y coordToDdecide: box.origin.x];
 
          
     if(NULL != image) {
@@ -104,11 +104,11 @@
         box = CGContextGetClipBoundingBox(context);
         
         CGContextDrawImage(context, box, image);
-        CGImageRelease(image);  
-    }*/
+        CGImageRelease(image);
+    } 
 	
 	// Render label (Setup)
-	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
+	/*UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
 	CGContextSelectFont(context, [[font fontName] cStringUsingEncoding:NSASCIIStringEncoding], [font pointSize], kCGEncodingMacRoman);
 	CGContextSetTextDrawingMode(context, kCGTextFill);
 	CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1, -1));
@@ -116,12 +116,13 @@
 	
 	// Draw label
 	NSString* s = [NSString stringWithFormat:@"(%.1f, %.1f)",x,y];
+//    NSString* s = [NSString stringWithFormat:@"(%d, %d)",x,y];
 	CGContextShowTextAtPoint(context,
 							 box.origin.x,
 							 box.origin.y + [font pointSize],
 							 [s cStringUsingEncoding:NSMacOSRomanStringEncoding],
 							 [s lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding]);
-    
+     */
 }
 
 -(CGImageRef) imageForScale:(CGFloat)scale row:(int)row col:(int)col coordToDdecide: (CGFloat) ider {

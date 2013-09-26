@@ -90,22 +90,21 @@
     magazineZoomWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz2"] floatValue];
     magazineZoomHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz2"] floatValue];
     
-    NSInteger horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
-    NSInteger verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
-    
-    [MainDataHolder getInstance].tileWidth = magazineZoomWidth / horizontalBlocks;
-    [MainDataHolder getInstance].tileHeight = magazineZoomHeight / verticalBlocks;
-    
     CGFloat scalingFactorWidth = magazineZoomWidth / magazineWidth;
     CGFloat scalingFactorHeight = magazineZoomHeight / magazineHeight;
     
-    _scalingFactor = scalingFactorWidth;
+    _scalingFactor = MIN(scalingFactorWidth, scalingFactorHeight);        
     
-    if(scalingFactorHeight < scalingFactorWidth) {
-        _scalingFactor = scalingFactorHeight;
-    }
     
     [MainDataHolder getInstance]._scalingFactor = _scalingFactor;
+    
+    NSInteger horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
+    NSInteger verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
+    
+    [MainDataHolder getInstance].tileWidth = (magazineZoomWidth * _scalingFactor) / horizontalBlocks;
+    [MainDataHolder getInstance].tileHeight = (magazineZoomHeight * _scalingFactor) / verticalBlocks;
+    
+    
     
 }
 
