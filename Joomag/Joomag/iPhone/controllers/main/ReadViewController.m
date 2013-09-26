@@ -41,7 +41,9 @@
     UILabel *progresLabel;
     UIView *progressBgView;
     UIView *progressView;
+    TiledView * tlView;
     
+    //----- Private Primitives for Calculations ------//
     int xItemPos;
     int pagXPos;
     int pageWidth;
@@ -57,7 +59,13 @@
     int scrollViewInd2;
     int oldScrollViewIndex;
     
-    TiledView * tlView;
+    //----- Read Properties ------//
+    CGFloat magazineWidth;
+    CGFloat magazineHeight;
+    
+    CGFloat magazineZoomWidth;
+    CGFloat magazineZoomHeight;
+    float _scalingFactor;
 }
 
 @end
@@ -74,6 +82,33 @@
     return self;
 }
 
+- (void) calculateScalingFactor : (NSArray *) pageData {
+    
+    magazineWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz1"] floatValue];
+    magazineHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz1"] floatValue];
+    
+    magazineZoomWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz2"] floatValue];
+    magazineZoomHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz2"] floatValue];
+    
+    NSInteger horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
+    NSInteger verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
+    
+    [MainDataHolder getInstance].tileWidth = magazineZoomWidth / horizontalBlocks;
+    [MainDataHolder getInstance].tileHeight = magazineZoomHeight / verticalBlocks;
+    
+    CGFloat scalingFactorWidth = magazineZoomWidth / magazineWidth;
+    CGFloat scalingFactorHeight = magazineZoomHeight / magazineHeight;
+    
+    _scalingFactor = scalingFactorWidth;
+    
+    if(scalingFactorHeight < scalingFactorWidth) {
+        _scalingFactor = scalingFactorHeight;
+    }
+    
+    [MainDataHolder getInstance]._scalingFactor = _scalingFactor;
+    
+}
+
 #pragma mark requests part--
 
 - (void) didFailResponse:(id)responseObject {
@@ -85,10 +120,12 @@
         
     
     
-    NSArray * pageData = (NSArray*) responseObject;
-    
-    if([pageData count] == 1) {
-      NSInteger counter = [[[pageData objectAtIndex:0] objectForKey:@"page_count"] intValue];                
+        NSArray * pageData = (NSArray*) responseObject;            
+        
+        [self calculateScalingFactor:pageData];
+        
+        if([pageData count] == 1) {
+            NSInteger counter = [[[pageData objectAtIndex:0] objectForKey:@"page_count"] intValue];
         
         
         if(counter > 0) {
@@ -96,8 +133,16 @@
             
             xItemPos = 0;
             pagXPos = 0;
-            pageWidth = 1024;
-            itemWidth = 200;
+            if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                pageWidth = 768;
+            } else {
+                pageWidth = 1024;
+            }
+            if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                itemWidth = 100;
+            } else {
+                itemWidth = 200;
+            }
             itemContentWidth = 0;
             pageContentWidth = 0;
             firstPageIndex = 1;
@@ -127,7 +172,11 @@
     NSString * page = @"";
     
     @autoreleasepool {
-        pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, 768-2*44);
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*768, 1024);
+        } else {
+            pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, 768-2*44);
+        }
     for (int i = 0;i < numberOfPages; i++) {
     
         NSString * currentNumberString = [NSString stringWithFormat:@"%d", i];
@@ -176,7 +225,11 @@
     
 
     pageScrollView = [[UIScrollView alloc] init];
-    pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        pageScrollView.frame = CGRectMake(0, 0, 768, 1024); // -TOP_VIEW_HEIGHT
+    } else {
+        pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
+    }
     pageScrollView.tag = 7658943;
     pageScrollView.delegate = self;
     pageScrollView.pagingEnabled = YES;
@@ -225,10 +278,23 @@
     
     [topView addSubview: progresLabel];
     
-    navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)]; //TODO
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+    
+        navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 1024-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 768, NAV_SCROLL_HEIGHT)]; //TODO
+        
+    } else {
+    
+        navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 768, NAV_SCROLL_HEIGHT)]; //TODO
+        
+    }
     navScrollViewContainer.userInteractionEnabled = YES;
     
-    UIView *navScrollViewBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, NAV_SCROLL_HEIGHT)]; //TODO
+    UIView *navScrollViewBG = nil;
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        navScrollViewBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 768, NAV_SCROLL_HEIGHT)]; //TODO
+    } else {
+        navScrollViewBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, NAV_SCROLL_HEIGHT)]; //TODO
+    }
     navScrollViewBG.backgroundColor = [UIColor blackColor];
     navScrollViewBG.alpha = 0.7;
     navScrollViewBG.userInteractionEnabled = YES;
@@ -237,7 +303,11 @@
     
     navScrollView = [[UIScrollView alloc] init];
     navScrollView.userInteractionEnabled = YES;
-    navScrollView.frame = CGRectMake(0, 0, 1024, NAV_SCROLL_HEIGHT); // TODO
+    
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        navScrollView.frame = CGRectMake(0, 0, 768, NAV_SCROLL_HEIGHT); // TODO
+    }
+    
     navScrollView.tag = 1111;
     navScrollView.backgroundColor = [UIColor clearColor];
     
@@ -246,13 +316,22 @@
     [self.view addSubview: navScrollViewContainer];
     
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(tapOnScreenHandler) userInfo:nil repeats:NO];
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        buyView = [[UIView alloc] initWithFrame:CGRectMake(768-150, 0, 150, 768)];
+    } else {
+        buyView = [[UIView alloc] initWithFrame:CGRectMake(1024-150, 0, 150, 768)];
+    }
     
-    buyView = [[UIView alloc] initWithFrame:CGRectMake(1024-150, 0, 150, 768)];
     buyView.backgroundColor = [UIColor blackColor];
     buyView.alpha = 0;
     [self.view addSubview: buyView];
     
-    progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1024, 2)]; // TODO
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 768, 2)]; // TODO
+    } else {
+        progressBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1024, 2)]; // TODO
+    }
+    
     progressBgView.backgroundColor = [UIColor whiteColor];
     
     [navScrollViewContainer addSubview: progressBgView];
@@ -289,8 +368,18 @@
 }
 
 - (void)hideTopAndBottomView {
-    [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 1024, TOP_VIEW_HEIGHT)];
-    [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768, 1024, NAV_SCROLL_HEIGHT)];
+    
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            
+            [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 768, TOP_VIEW_HEIGHT)];
+            [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 1024, 768, NAV_SCROLL_HEIGHT)];
+            
+        } else {
+            
+            [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 1024, TOP_VIEW_HEIGHT)];
+            [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768, 1024, NAV_SCROLL_HEIGHT)];
+            
+        }
     CustomTabBarController_iPad * costum = [CustomTabBarController_iPad getInstance];
     costum.backGroundView.hidden = YES;
 
@@ -298,8 +387,14 @@
 }
 
 - (void)showTopAndBottomView {
-    [self animateView: topView withFrame: CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT)];
-    [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)];
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        [self animateView: topView withFrame: CGRectMake(0, 0, 768, TOP_VIEW_HEIGHT)];
+                [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 1024-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 768, NAV_SCROLL_HEIGHT)];
+    } else {
+        [self animateView: topView withFrame: CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT)];
+        [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)];
+    }
+
     CustomTabBarController_iPad * costum = [CustomTabBarController_iPad getInstance];
     costum.backGroundView.hidden = NO;
 }
@@ -328,7 +423,11 @@
 }
 
 - (void) tapOnNavigation: (UITapGestureRecognizer *) gesture {
-    [pageScrollView setContentOffset:CGPointMake(1024*gesture.view.tag, 0) animated:YES];
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        [pageScrollView setContentOffset:CGPointMake(768 * gesture.view.tag, 0) animated:YES];
+    } else {
+        [pageScrollView setContentOffset:CGPointMake(1024*gesture.view.tag, 0) animated:YES];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -343,7 +442,12 @@
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
     if(scrollView.tag != 7658943 && scale > 1.0) {
-        tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            //tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 2000, 3000)];
+            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, magazineZoomWidth, magazineZoomHeight)];
+        } else {
+            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, magazineZoomHeight, magazineZoomWidth)];
+        }
         
         /*if(globalPage == 0) {
             scrollViewInd1 = 1;
@@ -453,12 +557,27 @@
            // }
             
             item.image = image;
-            item.frame = CGRectMake(xItemPos, 5, itemWidth/2, 100);
-            itemContentWidth = xItemPos + itemWidth/2;
+            
+            if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                
+                item.frame = CGRectMake(xItemPos, 5, itemWidth, 100);
+                itemContentWidth = xItemPos + itemWidth;
+                
+            } else {
+                item.frame = CGRectMake(xItemPos, 5, itemWidth/2, 100);
+                itemContentWidth = xItemPos + itemWidth/2;
+            }
             
             [navScrollView addSubview: item];
-            
-             xItemPos += itemWidth/2+5;
+            if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                
+                xItemPos += itemWidth+5;
+                
+            } else {
+                
+                xItemPos += itemWidth/2+5;
+                
+            }
             
             navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
         }
@@ -518,8 +637,15 @@
     [UIView animateWithDuration:0.5f animations:^{
         // NSLog(@"width: %i", (loadPercentage*100/pageCount)*1024/100);
         progresLabel.text = [NSString stringWithFormat: @"%i %%", loadedPercentage*100/pageCount];
+        
+        
         CGRect theFrame = progressView.frame;
-        theFrame.size.width = (loadedPercentage*100/pageCount)*1024/100; // TODO screen width
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            theFrame.size.width = (loadedPercentage*100/pageCount)*768/100;
+        } else {
+            theFrame.size.width = (loadedPercentage*100/pageCount)*1024/100;
+        }
+        
         progressView.frame = theFrame;
     }];
     
@@ -541,8 +667,14 @@
 - (void)loadVisiblePages {
     // First, determine which page is currently visible
     CGFloat pageWidth1 = pageScrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((pageScrollView.contentOffset.x * 2.0f + pageWidth1) / (pageWidth1 * 2.0f));
-    //pageWidth = pageWidth1;
+    NSInteger page = 0;
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        page = (NSInteger)floor(pageScrollView.contentOffset.x / pageWidth1);
+    } else {
+       page = (NSInteger)floor((pageScrollView.contentOffset.x * 2.0f + pageWidth1) / (pageWidth1 * 2.0f));
+    }
+    
+
     
     // Work out which pages we want to load
     NSInteger firstPage = page - 1;
@@ -618,9 +750,18 @@
         
 
         UIImage * firstImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",firstPageIndex]];
-        UIImage * secondImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]]; 
         
-        ReaderView * newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 768) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 768)];
+        UIImage * secondImage = nil;
+        secondImage = [pageImages objectForKey:[NSString stringWithFormat:@"%d",secondPageIndex]];
+        
+        ReaderView * newPageView = nil;
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            
+            newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 1024) withLeftImageView:firstImage withRightImageView:nil withLeftFrame:CGRectMake(0, 0, pageWidth, 1024) withRightFrame:CGRectZero];
+            
+        } else {
+            newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 768) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 768)];
+        }
         
         newPageView.delegate = self;
         newPageView.parentOfImages.tag = VIEW_FOR_ZOOM_TAG;

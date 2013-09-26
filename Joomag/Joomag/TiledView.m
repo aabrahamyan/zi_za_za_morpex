@@ -5,6 +5,7 @@
 #import "TiledView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Util.h"
+#import "MainDataHolder.h"
 
 
 @interface TiledView ()
@@ -17,20 +18,18 @@
 
 @implementation TiledView
 
-+ (Class)layerClass
-{
++ (Class)layerClass {
 	return [CATiledLayer class];
 }
 
 
-- (id)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame])
-	{
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        
         CATiledLayer * tiledLayer = (CATiledLayer *)[self layer];
         //tiledLayer.levelsOfDetail = 4;
         //tiledLayer.levelsOfDetailBias = 4;
-        tiledLayer.tileSize = CGSizeMake(500.0, 500.0);
+        tiledLayer.tileSize = CGSizeMake([MainDataHolder getInstance].tileWidth, [MainDataHolder getInstance].tileHeight);
         
         mappingMatrix = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"00", @"40",
                          @"10", @"50", @"20",@"60",@"01",@"41",@"11",@"51",@"21",@"61",@"31",@"71",@"02",@"42",@"12",@"52",@"22",@"62",@"32",@"72",@"03",@"43",@"13",@"53",@"23",@"63",@"33",@"73",@"04",@"44",@"14",@"54",@"24",@"64",@"34",@"74",@"05",@"45",@"15",@"55",@"25",@"65",@"35",@"75",nil];
@@ -40,7 +39,9 @@
         //[self addGestureRecognizer:pincher];
         
     }
+    
     return self;
+    
 }
 
 - (void) didZoom:(UIPinchGestureRecognizer *)recognizer { 
@@ -51,8 +52,10 @@
     //self.transform = transform;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
     return YES;
+    
 }
 
 
@@ -60,23 +63,26 @@
 
 #pragma mark Tiled layer delegate methods
 
-- (void)drawLayer:(CALayer*)layer inContext:(CGContextRef)context
-{
+- (void) drawLayer:(CALayer*) layer inContext:(CGContextRef) context {
 	// Fetch clip box in *view* space; context's CTM is preconfigured for view space->tile space transform
 	CGRect box = CGContextGetClipBoundingBox(context);
 
 	// Calculate tile index
-	CGFloat contentsScale = [layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
+	CGFloat contentsScale = [MainDataHolder getInstance]._scalingFactor;
+    //[layer respondsToSelector:@selector(contentsScale)]?[layer contentsScale]:1.0;
     
-	CGSize tileSize = [(CATiledLayer*)layer tileSize];
-
+	CGSize tileSize = [(CATiledLayer*) layer tileSize];    
+    
+    NSLog(@"contentsScale = %f", contentsScale);
+    NSLog(@"NSStringFromCGSize(tileSize) = %@", NSStringFromCGSize(tileSize));
+    
+    
 	CGFloat x = box.origin.x * contentsScale / tileSize.width;
 	CGFloat y = box.origin.y * contentsScale / tileSize.height;
-    
-    
+        
     
     if(x == 8 || y == 6) {
-        return;
+//        return;
     }
     
 	//CGPoint tile = CGPointMake(x, y);
@@ -89,9 +95,9 @@
 	//CGContextSaveGState(context);
 	//CGContextConcatCTM(context, [self transformForTile:tile]);
     
-    CGImageRef image = [self imageForScale:contentsScale row:x col:y coordToDdecide: box.origin.x];
+    /*CGImageRef image = [self imageForScale:contentsScale row:x col:y coordToDdecide: box.origin.x];
 
-    
+         
     if(NULL != image) {
         CGContextTranslateCTM(context, 0.0, box.size.height);
         CGContextScaleCTM(context, 1.0, -1.0); 
@@ -99,10 +105,10 @@
         
         CGContextDrawImage(context, box, image);
         CGImageRelease(image);  
-    } 
+    }*/
 	
 	// Render label (Setup)
-	/*UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
+	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
 	CGContextSelectFont(context, [[font fontName] cStringUsingEncoding:NSASCIIStringEncoding], [font pointSize], kCGEncodingMacRoman);
 	CGContextSetTextDrawingMode(context, kCGTextFill);
 	CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1, -1));
@@ -115,8 +121,7 @@
 							 box.origin.y + [font pointSize],
 							 [s cStringUsingEncoding:NSMacOSRomanStringEncoding],
 							 [s lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding]);
-     */
-     
+    
 }
 
 -(CGImageRef) imageForScale:(CGFloat)scale row:(int)row col:(int)col coordToDdecide: (CGFloat) ider {
@@ -169,6 +174,7 @@
         if(!image) {
            image = CGImageCreateWithJPEGDataProvider(provider,NULL,FALSE,kCGRenderingIntentDefault);
         }
+    
         NSLog(@" Image = %@",image);
         CFRelease(provider);
     

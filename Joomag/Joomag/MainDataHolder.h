@@ -28,4 +28,10 @@
 
 + (MainDataHolder *) getInstance;
 
+
+//----------------- Specific read Properties ---------------//
+@property (nonatomic, assign) CGFloat _scalingFactor;
+@property (nonatomic, assign) CGFloat tileWidth;
+@property (nonatomic, assign) CGFloat tileHeight;
+
 @end
