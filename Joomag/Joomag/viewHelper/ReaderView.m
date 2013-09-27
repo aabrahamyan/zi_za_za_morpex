@@ -43,8 +43,9 @@
         self.zoomScale = [MainDataHolder getInstance]._scalingFactor;
         
         self.contentSize = frame.size; 
-        self.showsHorizontalScrollIndicator = NO;
-        self.showsVerticalScrollIndicator = NO;  
+//        self.showsHorizontalScrollIndicator = NO;
+//        self.showsVerticalScrollIndicator = NO;
+        self.backgroundColor = [UIColor redColor];
         
         self.frame = frame;
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {

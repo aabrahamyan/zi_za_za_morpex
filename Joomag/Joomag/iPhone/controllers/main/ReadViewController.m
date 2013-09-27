@@ -65,6 +65,13 @@
     
     CGFloat magazineZoomWidth;
     CGFloat magazineZoomHeight;
+    
+    NSInteger horizontalBlocks;
+    NSInteger verticalBlocks;
+    
+    CGFloat tileWidth;
+    CGFloat tileHeight;
+    
     float _scalingFactor;
 }
 
@@ -83,28 +90,53 @@
 }
 
 - (void) calculateScalingFactor : (NSArray *) pageData {
+    NSLog(@"pageData = %@",pageData);
     
     magazineWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz1"] floatValue];
     magazineHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz1"] floatValue];
     
     magazineZoomWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz2"] floatValue];
     magazineZoomHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz2"] floatValue];
+        
     
-    CGFloat scalingFactorWidth = magazineZoomWidth / magazineWidth;
-    CGFloat scalingFactorHeight = magazineZoomHeight / magazineHeight;
+    horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
+    verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
     
-    _scalingFactor = MIN(scalingFactorWidth, scalingFactorHeight);        
+    [MainDataHolder getInstance].tileWidth = (magazineZoomWidth) / horizontalBlocks;
+    [MainDataHolder getInstance].tileHeight = (magazineZoomHeight) / verticalBlocks;
     
+    if([MainDataHolder getInstance].tileHeight < [MainDataHolder getInstance].tileWidth) {
+        [MainDataHolder getInstance].tileWidth = [MainDataHolder getInstance].tileHeight;
+    } else {
+        [MainDataHolder getInstance].tileHeight = [MainDataHolder getInstance].tileWidth;
+    }
+    
+    tileWidth = [MainDataHolder getInstance].tileWidth;
+    tileHeight = [MainDataHolder getInstance].tileHeight;
+    
+    if([MainDataHolder getInstance].tileWidth > 500.0f) {
+
+        [MainDataHolder getInstance].tileWidth = 500.0f * 2.0f;
+    } else {
+        [MainDataHolder getInstance].tileWidth  *= 2.0f;
+    }
+    
+    if([MainDataHolder getInstance].tileHeight > 500.0f) {
+
+        [MainDataHolder getInstance].tileHeight = 500.0f * 2.0f;
+    } else {
+        [MainDataHolder getInstance].tileHeight *= 2.0f;
+    }
+    
+   
+    
+    CGFloat scalingFactorWidth = (tileWidth * horizontalBlocks) / magazineWidth;
+    CGFloat scalingFactorHeight = (tileHeight * verticalBlocks) / magazineHeight;
+    
+    _scalingFactor = (scalingFactorWidth + scalingFactorHeight) / 2.0f;//MIN(scalingFactorWidth, scalingFactorHeight);
+
     
     [MainDataHolder getInstance]._scalingFactor = _scalingFactor;
-    
-    NSInteger horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
-    NSInteger verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
-    
-    [MainDataHolder getInstance].tileWidth = (magazineZoomWidth * _scalingFactor) / horizontalBlocks;
-    [MainDataHolder getInstance].tileHeight = (magazineZoomHeight * _scalingFactor) / verticalBlocks;
-    
-    
     
 }
 
@@ -441,11 +473,19 @@
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
     if(scrollView.tag != 7658943 && scale > 1.0) {
+        
+        CGFloat widther = tileWidth * horizontalBlocks;
+        CGFloat heighter = tileHeight * verticalBlocks;
+        
+        NSLog(@"WIDTH = %f", widther);
+        NSLog(@"HEIGHT = %f", heighter);
+        
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             //tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 2000, 3000)];
-            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, magazineZoomWidth, magazineZoomHeight)];
+            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, widther, heighter)];
+            scrollView.contentSize = CGSizeMake(widther, heighter);
         } else {
-            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, magazineZoomHeight, magazineZoomWidth)];
+            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, heighter, widther)];  
         }
         
         /*if(globalPage == 0) {

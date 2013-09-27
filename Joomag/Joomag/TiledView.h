@@ -5,7 +5,9 @@
 @interface TiledView : UIView<UIGestureRecognizerDelegate> {
 
     NSMutableDictionary * mappingMatrix;
-    
+    NSArray *arrayTiles;
+    int counterX;
+    int counterY;
 }
 
 @property (nonatomic, assign) NSInteger magazineId;
