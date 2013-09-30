@@ -128,6 +128,7 @@
 		5A7AFCC417C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */; };
 		5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */; };
 		5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */; };
+		5A8BC7CD17F5AEAF0007FE99 /* FaceBookUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */; };
 		5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */; };
 		5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F023317F2C73D0029F0C5 /* SIAlertView.m */; };
 		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
@@ -161,6 +162,9 @@
 		5ADF07E817BE4B4000F0AD35 /* backButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton_iPad@2x.png */; };
 		5AE5E85617E87909002EECE4 /* BuyIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */; };
 		5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */; };
+		5AE6521A17F989D500A130BE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE6521917F989D500A130BE /* Accounts.framework */; };
+		5AE6521C17F99CD000A130BE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE6521B17F99CD000A130BE /* Social.framework */; };
+		5AEBEC5F17F5906500011C43 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEBEC5E17F5906500011C43 /* FacebookSDK.framework */; };
 		5AF9789F17D758E2008FA0C2 /* faceBookButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */; };
 		5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */; };
@@ -351,6 +355,8 @@
 		5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchTabBarClose_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose_iPad@2x.png"; sourceTree = "<group>"; };
+		5A8BC7CB17F5AEAE0007FE99 /* FaceBookUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceBookUtil.h; sourceTree = "<group>"; };
+		5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBookUtil.m; sourceTree = "<group>"; };
 		5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
 		5A9F023217F2C73D0029F0C5 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
 		5A9F023317F2C73D0029F0C5 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
@@ -405,6 +411,9 @@
 		5AE5E85517E87909002EECE4 /* BuyIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueViewController.m; sourceTree = "<group>"; };
 		5AE5E85717E87920002EECE4 /* BuyIssueViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyIssueViewController_iPad.h; sourceTree = "<group>"; };
 		5AE5E85817E87920002EECE4 /* BuyIssueViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueViewController_iPad.m; sourceTree = "<group>"; };
+		5AE6521917F989D500A130BE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		5AE6521B17F99CD000A130BE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		5AEBEC5E17F5906500011C43 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceBookButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton_iPad@2x.png"; sourceTree = "<group>"; };
@@ -418,6 +427,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE6521C17F99CD000A130BE /* Social.framework in Frameworks */,
+				5AE6521A17F989D500A130BE /* Accounts.framework in Frameworks */,
 				5A6C94C217C7718300B7DED0 /* ImageIO.framework in Frameworks */,
 				5A6C94C017C7717400B7DED0 /* MapKit.framework in Frameworks */,
 				5A0795D217A1C93B0039F705 /* QuartzCore.framework in Frameworks */,
@@ -426,6 +437,7 @@
 				2C0B759117971C0900735AD3 /* UIKit.framework in Frameworks */,
 				2C0B759317971C0900735AD3 /* Foundation.framework in Frameworks */,
 				2C0B759517971C0900735AD3 /* CoreGraphics.framework in Frameworks */,
+				5AEBEC5F17F5906500011C43 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +447,8 @@
 		2C0B758417971C0900735AD3 = {
 			isa = PBXGroup;
 			children = (
+				5AE6521B17F99CD000A130BE /* Social.framework */,
+				5AE6521917F989D500A130BE /* Accounts.framework */,
 				2C0B759617971C0900735AD3 /* Joomag */,
 				2C0B758F17971C0900735AD3 /* Frameworks */,
 				2C0B758E17971C0900735AD3 /* Products */,
@@ -452,6 +466,7 @@
 		2C0B758F17971C0900735AD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AEBEC5E17F5906500011C43 /* FacebookSDK.framework */,
 				5A6C94C117C7718300B7DED0 /* ImageIO.framework */,
 				5A6C94BF17C7717400B7DED0 /* MapKit.framework */,
 				5A0795D117A1C93B0039F705 /* QuartzCore.framework */,
@@ -731,6 +746,8 @@
 				2CC4247D17A6DE17007A494E /* Constants.m */,
 				2CC4247F17A6DE23007A494E /* Util.h */,
 				2CC4248017A6DE23007A494E /* Util.m */,
+				5A8BC7CB17F5AEAE0007FE99 /* FaceBookUtil.h */,
+				5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */,
 			);
 			name = util;
 			path = Shared/util;
@@ -1183,6 +1200,7 @@
 				2CCC217D17ECBCD7001DABD3 /* ExploreCatsLandscapeCell.m in Sources */,
 				5A0FFC4817EF60A2009B268D /* NoInternetView.m in Sources */,
 				5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */,
+				5A8BC7CD17F5AEAF0007FE99 /* FaceBookUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,6 +1279,10 @@
 		2C0B75B417971C0A00735AD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
 				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
@@ -1272,6 +1294,10 @@
 		2C0B75B517971C0A00735AD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
 				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";

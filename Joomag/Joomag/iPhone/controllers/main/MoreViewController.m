@@ -11,6 +11,8 @@
 #import "BookMarkView.h"
 #import "UIImageView+WebCache.h"
 #import "SIAlertView.h"
+#import "FaceBookUtil.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 #define TEST_UIAPPEARANCE 1
 #define BookMark_Tag 666600
@@ -31,6 +33,8 @@
     NSMutableArray *bookMarkData;
     
     UITextField *currentTxtField;
+    
+    FaceBookUtil *fbUtil;
 }
 
 @end
@@ -41,6 +45,8 @@
     NSLog(@"More View");
     
     [super loadView];
+    
+    fbUtil = [FaceBookUtil getInstance];
     
 #if TEST_UIAPPEARANCE
     [[SIAlertView appearance] setMessageFont:[UIFont systemFontOfSize:16]];
@@ -276,7 +282,7 @@
     
     [changePasswordView addSubview:emailLabel];
     
-    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(95, 30, 215, 50)];
+    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(95, 30, 200, 50)];
     emailTextField.font = [UIFont systemFontOfSize:17.5];
 	emailTextField.returnKeyType = UIReturnKeyDone;
     emailTextField.backgroundColor = [UIColor clearColor];
@@ -303,7 +309,7 @@
     
     [changePasswordView addSubview:passwordLabel];
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(95, 90, 215, 50)];
+    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(130, 90, 165, 50)];
 	passwordTextField.backgroundColor = [UIColor clearColor];
     passwordTextField.font = [UIFont systemFontOfSize:17.5] ;
 	passwordTextField.returnKeyType = UIReturnKeyDone;
@@ -313,7 +319,7 @@
     passwordTextField.textAlignment = NSTextAlignmentCenter;
     passwordTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	passwordTextField.borderStyle = UITextBorderStyleNone;
-	passwordTextField.textColor = [UIColor whiteColor];
+	passwordTextField.textColor = [UIColor grayColor];
 	passwordTextField.tag = 2262072;
     
     [changePasswordView addSubview:passwordTextField];
@@ -330,7 +336,7 @@
     
     [changePasswordView addSubview:retypeLabel];
     
-    UITextField *passwordTextFieldRepeat = [[UITextField alloc] initWithFrame:CGRectMake(95, 150, 215, 50)];
+    UITextField *passwordTextFieldRepeat = [[UITextField alloc] initWithFrame:CGRectMake(105, 150, 190, 50)];
 	passwordTextFieldRepeat.backgroundColor = [UIColor clearColor];
     passwordTextFieldRepeat.font = [UIFont systemFontOfSize:17.5] ;
 	passwordTextFieldRepeat.returnKeyType = UIReturnKeyDone;
@@ -578,6 +584,7 @@
 
 - (void)signOutHandler {
     NSLog(@"signOutHandler");
+    [fbUtil closeSession];
 }
 
 - (void)bookmarksHandler {

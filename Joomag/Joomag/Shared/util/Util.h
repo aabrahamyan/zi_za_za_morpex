@@ -23,4 +23,5 @@
 + (CGRect) calculateLabelFrame : (UILabel *) lbl;
 
 + (UIImage *)imageWithColor:(UIColor *)color;
+
 @end

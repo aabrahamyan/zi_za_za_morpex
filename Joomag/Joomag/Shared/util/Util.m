@@ -8,6 +8,7 @@
 
 #import "Util.h"
 #import "Constants.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @implementation Util
 
@@ -64,6 +65,5 @@
     
     return image;
 }
-
 
 @end

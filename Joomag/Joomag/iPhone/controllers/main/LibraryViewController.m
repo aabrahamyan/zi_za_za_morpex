@@ -10,11 +10,13 @@
 #import "Util.h"
 #import "MainDataHolder.h"
 #import "ConnectionManager.h"
+#import "FaceBookUtil.h"
 
 #define TOP_BAR_HEIGHT 44
 
 @interface LibraryViewController (){
     MainDataHolder *dataHolder;
+    FaceBookUtil   *fbUtil;
 
     bool noMagazines;
     
@@ -32,7 +34,53 @@
     
     noMagazines = YES;
     
+    fbUtil = [FaceBookUtil getInstance];
+    
     [super loadView];
+    
+    NSLog(@"[FaceBookUtil getInstance].session.isOpen: %d",fbUtil.session.isOpen);
+
+    if (!fbUtil.session.isOpen) {
+        // create a fresh session object
+        NSLog(@"create a fresh session object");
+        [fbUtil createNewSession];
+        
+        // if we don't have a cached token, a call to open here would cause UX for login to
+        // occur; we don't want that to happen unless the user clicks the login button, and so
+        // we check here to make sure we have a token before calling open
+        if (fbUtil.session.state == FBSessionStateCreatedTokenLoaded) {
+            // even though we had a cached token, we need to login to make the session usable
+//            [fbUtil.session openWithCompletionHandler:^(FBSession *session,
+//                                                             FBSessionState status,
+//                                                             NSError *error) {
+//                // we recurse here, in order to update buttons and labels
+//                NSLog(@"have a cached token");
+//                [self updateView];
+//            }];
+            
+            __weak LibraryViewController *libVC = self;
+            
+            [fbUtil setCompletionHandler:^{
+                 NSLog(@"have a cached token");
+                 [libVC updateView];
+            }];
+            
+            [fbUtil openSessionWithCompletionHandler];
+            
+        } else {
+            // show login container
+            NSLog(@"L O G   O U T");
+        }
+    }
+    
+    
+
+    
+    
+    
+    
+    
+    
     
     dataHolder = [MainDataHolder getInstance];
     
@@ -224,7 +272,77 @@
 }
 
 - (void)loginWithFaceBook {
-    NSLog(@"Login With FaceBook");
+    NSLog(@"Login With FaceBook: %d", fbUtil.session.isOpen);
+    
+    if (!fbUtil.session.isOpen) {
+        // create a fresh session object
+        NSLog(@"session not exist");
+        fbUtil.session = [[FBSession alloc] init];
+    } else {
+       NSLog(@"session exist"); 
+    }
+    
+    if (fbUtil.session.state == FBSessionStateCreated) {
+        
+        NSLog(@"N O T   C R E A T E D");
+        
+        FBSession.activeSession = fbUtil.session;
+        
+        // if the session isn't open, let's open it now and present the login UX to the user
+        [fbUtil.session openWithCompletionHandler:^(FBSession *session,
+                                                                        FBSessionState status,
+                                                                        NSError *error) {
+            // and here we make sure to update our UX according to the new session state
+            [self updateView];
+            
+            // NSLog(@"USER_ID: %@", FBSession.activeSession.appID);
+            
+            // Initiate a Facebook instance
+            switch (status) {
+                case FBSessionStateOpen:
+                    NSLog(@"FBSessionStateOpen");
+                    break;
+                
+                case FBSessionStateClosed:
+                    NSLog(@"FBSessionStateClosed");
+                    break;
+                    
+                case FBSessionStateClosedLoginFailed:
+                    NSLog(@"FBSessionStateClosedLoginFailed");
+                    break;
+                
+                default:
+                    break;
+            }
+            
+        }];
+    
+    } else {
+        NSLog(@"C R E A T E D");
+    }
+}
+
+// FBSample logic
+// main helper method to update the UI to reflect the current state of the session.
+- (void)updateView {
+    NSLog(@"updateView");
+    if (fbUtil.session.isOpen) {
+        // valid account UI is shown whenever the session is open
+        //NSLog(@"LOGIN: %@", [FaceBookUtil getInstance].session.accessTokenData.accessToken);
+        NSLog(@"L O G I N");
+        
+        [[FBRequest requestForMe] startWithCompletionHandler: ^(FBRequestConnection *connection,
+                                                                NSDictionary<FBGraphUser> *user,
+                                                                NSError *error)
+        {
+             if (!error) {
+                 NSLog(@"user.id: %@", user.id);
+                 NSLog(@"user.name: %@", user.name);
+             }
+         }];
+        
+        
+    }
 }
 
 #pragma mark - DatePicker
