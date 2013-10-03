@@ -44,7 +44,11 @@
     UITextField * passwordTextFieldRepeat;
     
     UIImageView * tmpAbout;
-
+    
+    //---------- Notification Settings View -------//
+    UIView * notificationContainer;
+    UILabel * mainTitle;
+    UILabel * mainSubTitle;
     
 }
 

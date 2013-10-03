@@ -361,6 +361,17 @@
             [restoreItunes setSelected:NO];
             [helpButton setSelected:NO];
             
+            if(registrationView) {
+                [registrationView removeFromSuperview];
+                registrationView = nil;
+                self.tmpDesc = nil;
+            } else if (tmpAbout) {
+                [tmpAbout removeFromSuperview];
+                tmpAbout = nil;
+            }
+            
+            [self createNotificationSettingsView];
+            
             break;
             
         case 8765430:
@@ -381,6 +392,27 @@
         default:
             break;
     }
+}
+
+- (void) createNotificationSettingsView {
+    notificationContainer = [[UIView alloc] initWithFrame:CGRectMake(270, 138, 300, 222)];    
+ 
+    mainTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220, 26)];
+    mainTitle.backgroundColor = [UIColor clearColor];
+    mainTitle.font = [UIFont fontWithName:@"proximanovabold" size:26.0f];
+    mainTitle.textColor = [UIColor whiteColor];
+    mainTitle.text = @"Manage Notification Settings";
+    [notificationContainer addSubview:mainTitle];
+    
+    mainSubTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 320, 40)];
+    mainSubTitle.backgroundColor = [UIColor clearColor];
+    mainSubTitle.font = [UIFont systemFontOfSize:12.0f];//[UIFont fontWithName:@"proximanovathin" size:10.0f];
+    mainSubTitle.textColor = [UIColor whiteColor];
+    mainSubTitle.numberOfLines = 2;
+    mainSubTitle.text = @"Visit the iOS Settings menu to enable and disable Push Notifications for Joomag";
+    [notificationContainer addSubview:mainSubTitle];
+    
+    [self.view addSubview:notificationContainer];
 }
 
 - (void)didReceiveMemoryWarning {

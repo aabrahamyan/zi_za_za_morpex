@@ -541,6 +541,9 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				2C600B9917FE0B49004A3D01 /* howTo */,
+				2C600B9817FE0B27004A3D01 /* restoreItunes */,
+				2C600B9717FE0B14004A3D01 /* notificationSettings */,
 				5A0FFC4317EF0AE4009B268D /* myLib */,
 				5A4D503317EC4C86007E6BDB /* tabBar */,
 				5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */,
@@ -687,6 +690,27 @@
 			);
 			name = protocol;
 			path = Shared/protocol;
+			sourceTree = "<group>";
+		};
+		2C600B9717FE0B14004A3D01 /* notificationSettings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = notificationSettings;
+			sourceTree = "<group>";
+		};
+		2C600B9817FE0B27004A3D01 /* restoreItunes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = restoreItunes;
+			sourceTree = "<group>";
+		};
+		2C600B9917FE0B49004A3D01 /* howTo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = howTo;
 			sourceTree = "<group>";
 		};
 		2CADE37217993C41002202D5 /* main */ = {
