@@ -28,6 +28,8 @@
 		2C0C127917AB038E00A0357A /* BaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127817AB038E00A0357A /* BaseParser.m */; };
 		2C0C127C17AB083B00A0357A /* MagazineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127B17AB083B00A0357A /* MagazineParser.m */; };
 		2C0C127F17AB087600A0357A /* PageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C127E17AB087600A0357A /* PageParser.m */; };
+		2C30B2EE17FF461F00C7431B /* ipad_checkbox_checked_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C30B2EC17FF461F00C7431B /* ipad_checkbox_checked_iPad@2x.png */; };
+		2C30B2EF17FF461F00C7431B /* ipad_checkbox_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C30B2ED17FF461F00C7431B /* ipad_checkbox_unchecked@2x.png */; };
 		2C7F71C317DF16DC000D492B /* proximanovablack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F71BC17DF16DC000D492B /* proximanovablack.ttf */; };
 		2C7F71C417DF16DC000D492B /* proximanovabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F71BD17DF16DC000D492B /* proximanovabold.ttf */; };
 		2C7F71C517DF16DC000D492B /* proximanovaextrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F71BE17DF16DC000D492B /* proximanovaextrabold.ttf */; };
@@ -37,7 +39,7 @@
 		2C7F71C917DF16DC000D492B /* proximanovathin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F71C217DF16DC000D492B /* proximanovathin.ttf */; };
 		2CA13BC417B3C3BD00D0257F /* restoreButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */; };
 		2CA13BC517B3C3BD00D0257F /* restoreDescription@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */; };
-		2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */; };
+		2CA13BC617B3C3BD00D0257F /* aboutJoomag_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC217B3C3BD00D0257F /* aboutJoomag_iPad@2x.png */; };
 		2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA13BC317B3C3BD00D0257F /* desc@2x.png */; };
 		2CADE37917993D0A002202D5 /* FeaturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37817993D0A002202D5 /* FeaturedViewController.m */; };
 		2CADE37C17993D1F002202D5 /* FeaturedViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CADE37B17993D1F002202D5 /* FeaturedViewController_iPad.m */; };
@@ -209,6 +211,8 @@
 		2C0C127B17AB083B00A0357A /* MagazineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagazineParser.m; sourceTree = "<group>"; };
 		2C0C127D17AB087600A0357A /* PageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageParser.h; sourceTree = "<group>"; };
 		2C0C127E17AB087600A0357A /* PageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageParser.m; sourceTree = "<group>"; };
+		2C30B2EC17FF461F00C7431B /* ipad_checkbox_checked_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad_checkbox_checked_iPad@2x.png"; sourceTree = "<group>"; };
+		2C30B2ED17FF461F00C7431B /* ipad_checkbox_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad_checkbox_unchecked@2x.png"; sourceTree = "<group>"; };
 		2C7F71BC17DF16DC000D492B /* proximanovablack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovablack.ttf; sourceTree = "<group>"; };
 		2C7F71BD17DF16DC000D492B /* proximanovabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovabold.ttf; sourceTree = "<group>"; };
 		2C7F71BE17DF16DC000D492B /* proximanovaextrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovaextrabold.ttf; sourceTree = "<group>"; };
@@ -218,7 +222,7 @@
 		2C7F71C217DF16DC000D492B /* proximanovathin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovathin.ttf; sourceTree = "<group>"; };
 		2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restoreButton@2x.png"; sourceTree = "<group>"; };
 		2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restoreDescription@2x.png"; sourceTree = "<group>"; };
-		2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutJoomag@2x.png"; sourceTree = "<group>"; };
+		2CA13BC217B3C3BD00D0257F /* aboutJoomag_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutJoomag_iPad@2x.png"; sourceTree = "<group>"; };
 		2CA13BC317B3C3BD00D0257F /* desc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "desc@2x.png"; sourceTree = "<group>"; };
 		2CADE37717993D0A002202D5 /* FeaturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturedViewController.h; sourceTree = "<group>"; };
 		2CADE37817993D0A002202D5 /* FeaturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturedViewController.m; sourceTree = "<group>"; };
@@ -557,7 +561,7 @@
 				5ADF07E717BE4B4000F0AD35 /* backButton_iPad@2x.png */,
 				2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */,
 				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
-				2CA13BC217B3C3BD00D0257F /* aboutJoomag@2x.png */,
+				2CA13BC217B3C3BD00D0257F /* aboutJoomag_iPad@2x.png */,
 				2CA13BC317B3C3BD00D0257F /* desc@2x.png */,
 				2CC3E45B17B388CD00801BC9 /* realSettingsBG_iPad@2x.png */,
 				2CB7890C17B30496009ECE98 /* Settings@2x.png */,
@@ -695,6 +699,8 @@
 		2C600B9717FE0B14004A3D01 /* notificationSettings */ = {
 			isa = PBXGroup;
 			children = (
+				2C30B2EC17FF461F00C7431B /* ipad_checkbox_checked_iPad@2x.png */,
+				2C30B2ED17FF461F00C7431B /* ipad_checkbox_unchecked@2x.png */,
 			);
 			name = notificationSettings;
 			sourceTree = "<group>";
@@ -1093,7 +1099,7 @@
 				2CC3E45C17B388CD00801BC9 /* realSettingsBG_iPad@2x.png in Resources */,
 				2CA13BC417B3C3BD00D0257F /* restoreButton@2x.png in Resources */,
 				2CA13BC517B3C3BD00D0257F /* restoreDescription@2x.png in Resources */,
-				2CA13BC617B3C3BD00D0257F /* aboutJoomag@2x.png in Resources */,
+				2CA13BC617B3C3BD00D0257F /* aboutJoomag_iPad@2x.png in Resources */,
 				2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */,
 				5ADF07E817BE4B4000F0AD35 /* backButton_iPad@2x.png in Resources */,
 				5A7AFCB417C0D3AC00380CBD /* shareBtn_iPad@2x.png in Resources */,
@@ -1139,6 +1145,8 @@
 				5ABB9A9B17F1ABFC0078A4FB /* moreBookMarksBg@2x.png in Resources */,
 				5ABB9A9D17F21E9D0078A4FB /* closeButton@2x.png in Resources */,
 				5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */,
+				2C30B2EE17FF461F00C7431B /* ipad_checkbox_checked_iPad@2x.png in Resources */,
+				2C30B2EF17FF461F00C7431B /* ipad_checkbox_unchecked@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

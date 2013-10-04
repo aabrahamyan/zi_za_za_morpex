@@ -348,6 +348,9 @@
             if(tmpAbout) {
                 [tmpAbout removeFromSuperview];
                 tmpAbout = nil;
+            } else if (notificationContainer) {
+                [notificationContainer removeFromSuperview];
+                notificationContainer = nil;
             }
             
             [self constructRegistrationView];
@@ -385,6 +388,9 @@
                 [registrationView removeFromSuperview];
                 registrationView = nil;
                 self.tmpDesc = nil;
+            } else if (notificationContainer) {
+                [notificationContainer removeFromSuperview];
+                notificationContainer = nil;
             }
             [self createAboutView];
             break;
@@ -394,8 +400,44 @@
     }
 }
 
+-(void)notificationCheckboxClicked:(id) sender {
+    
+    NSLog(@"notificationCheckboxSelected");
+    
+    UIButton *button = (UIButton *)sender;
+    int buttonTag = button.tag;
+    
+    switch (buttonTag) {
+        case 8503218:
+            
+            //New Issues CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        case 8503213:
+            
+            //Renewals CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        default:
+                break;
+    }
+}
+
 - (void) createNotificationSettingsView {
-    notificationContainer = [[UIView alloc] initWithFrame:CGRectMake(270, 138, 300, 222)];    
+    notificationContainer = [[UIView alloc] initWithFrame:CGRectMake(270, 138, 440, 222)];
+    
  
     mainTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220, 26)];
     mainTitle.backgroundColor = [UIColor clearColor];
@@ -411,8 +453,72 @@
     mainSubTitle.numberOfLines = 2;
     mainSubTitle.text = @"Visit the iOS Settings menu to enable and disable Push Notifications for Joomag";
     [notificationContainer addSubview:mainSubTitle];
+
+    newIssues = [[UILabel alloc] initWithFrame:CGRectMake(0, mainSubTitle.frame.origin.y + 70, 220, 26)];
+    newIssues.backgroundColor = [UIColor clearColor];
+    newIssues.font = [UIFont fontWithName:@"proximanovabold" size:26.0f];
+    newIssues.textColor = [UIColor whiteColor];
+    newIssues.text = @"New Issues";
+    [notificationContainer addSubview:newIssues];
+    
+    newIssuesDetails = [[UILabel alloc] initWithFrame:CGRectMake(0, newIssues.frame.origin.y + 10, 220, 40)];
+    newIssuesDetails.backgroundColor = [UIColor clearColor];
+    newIssuesDetails.font = [UIFont systemFontOfSize:12.0f];//[UIFont fontWithName:@"proximanovathin" size:10.0f];
+    newIssuesDetails.textColor = [UIColor grayColor];
+    newIssuesDetails.numberOfLines = 1;
+    newIssuesDetails.text = @"Alert me when new issues are available.";
+    [notificationContainer addSubview:newIssuesDetails];
+    
+    
+    renewals = [[UILabel alloc] initWithFrame:CGRectMake(0, newIssuesDetails.frame.origin.y + 40, 220, 26)];
+    renewals.backgroundColor = [UIColor clearColor];
+    renewals.font = [UIFont fontWithName:@"proximanovabold" size:26.0f];
+    renewals.textColor = [UIColor whiteColor];
+    renewals.text = @"Renewals";
+
+    [notificationContainer addSubview:renewals];
+    
+    renewalsDetails = [[UILabel alloc] initWithFrame:CGRectMake(0, renewals.frame.origin.y + 10, 280, 40)];
+    renewalsDetails.backgroundColor = [UIColor clearColor];
+    renewalsDetails.font = [UIFont systemFontOfSize:12.0f];//[UIFont fontWithName:@"proximanovathin" size:10.0f];
+    renewalsDetails.textColor = [UIColor grayColor];
+    renewalsDetails.numberOfLines = 1;
+    renewalsDetails.text = @"Alert me when I am near the end of subscription.";    
+    [notificationContainer addSubview:renewalsDetails];
+    
+    UIButton *checkboxNewIssues = [UIButton buttonWithType:UIButtonTypeCustom];
+    checkboxNewIssues.frame = CGRectMake(351,newIssues.frame.origin.y + 5,50,50);
+    checkboxNewIssues.backgroundColor = [UIColor clearColor];
+    [checkboxNewIssues setImage:[UIImage imageNamed:@"notselectedcheckbox.png"] forState:UIControlStateNormal];
+    [checkboxNewIssues setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateSelected];
+    [checkboxNewIssues setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateHighlighted];
+    checkboxNewIssues.adjustsImageWhenHighlighted=YES;
+    checkboxNewIssues.userInteractionEnabled = YES;
+    [checkboxNewIssues setSelected: NO];
+    checkboxNewIssues.tag = 8503218;
+    [checkboxNewIssues addTarget:self  action:@selector(notificationCheckboxClicked:) forControlEvents:UIControlEventTouchDown];
+    
+    [notificationContainer addSubview: checkboxNewIssues];
+    
+    UIButton * checkboxRenewals = [UIButton buttonWithType:UIButtonTypeCustom];
+    checkboxRenewals.frame = CGRectMake(351,renewals.frame.origin.y + 5,50,50);
+    checkboxRenewals.backgroundColor = [UIColor clearColor];
+    [checkboxRenewals setImage:[UIImage imageNamed:@"notselectedcheckbox.png"] forState:UIControlStateNormal];
+    [checkboxRenewals setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateSelected];
+    [checkboxRenewals setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateHighlighted];
+    checkboxRenewals.adjustsImageWhenHighlighted=YES;
+    checkboxRenewals.userInteractionEnabled = YES;
+    [checkboxRenewals setSelected: YES];
+    checkboxRenewals.tag = 8503213;
+    
+    [checkboxRenewals addTarget:self  action:@selector(notificationCheckboxClicked:) forControlEvents:UIControlEventTouchDown];
+
+    
+    [notificationContainer addSubview: checkboxRenewals];
+
     
     [self.view addSubview:notificationContainer];
+
 }
 
 - (void)didReceiveMemoryWarning {

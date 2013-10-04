@@ -50,6 +50,12 @@
     UILabel * mainTitle;
     UILabel * mainSubTitle;
     
+    UILabel * newIssues;
+    UILabel * newIssuesDetails;
+    
+    UILabel * renewals;
+    UILabel * renewalsDetails;
+    
 }
 
 @property bool isOpen;
