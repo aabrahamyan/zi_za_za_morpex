@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class HelpView;
+
 @interface SettingsViewController : UIViewController<UITextFieldDelegate> {
     UIButton * closeButtonView;
     UIImageView * gearView;
@@ -55,7 +57,9 @@
     
     UILabel * renewals;
     UILabel * renewalsDetails;
-    
+ 
+    //----------- Help View ------------//
+    HelpView * helpView;
 }
 
 @property bool isOpen;

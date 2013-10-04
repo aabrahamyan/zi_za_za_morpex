@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "Util.h"
+#import "HelpView.h"
 
 @interface SettingsViewController ()
 
@@ -394,6 +395,25 @@
             }
             [self createAboutView];
             break;
+
+        case 8765439:
+            
+            [accountSettingsButton setSelected:NO];
+            [notificationSettingsButton setSelected:NO];
+            [aboutJoomagButton setSelected:NO];
+            [restoreItunes setSelected:NO];
+            [helpButton setSelected:YES];
+            
+            if(registrationView) {
+                [registrationView removeFromSuperview];
+                registrationView = nil;
+                self.tmpDesc = nil;
+            } else if (notificationContainer) {
+                [notificationContainer removeFromSuperview];
+                notificationContainer = nil;
+            }
+            
+            [self createHelpView];
             
         default:
             break;
@@ -519,6 +539,13 @@
     
     [self.view addSubview:notificationContainer];
 
+}
+
+- (void) createHelpView {
+    helpView = [[HelpView alloc] initWithFrame:CGRectMake(287, 107, 412, 800)];
+    
+    [self.view addSubview:helpView];    
+    [helpView redrawData];
 }
 
 - (void)didReceiveMemoryWarning {
