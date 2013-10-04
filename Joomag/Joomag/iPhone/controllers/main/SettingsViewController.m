@@ -349,9 +349,21 @@
             if(tmpAbout) {
                 [tmpAbout removeFromSuperview];
                 tmpAbout = nil;
-            } else if (notificationContainer) {
+            }
+            
+            if (notificationContainer) {
                 [notificationContainer removeFromSuperview];
                 notificationContainer = nil;
+            }
+            
+            if (helpView) {
+                [helpView removeFromSuperview];
+                helpView = nil;
+            }
+            
+            if (restoreView) {
+                [restoreView removeFromSuperview];
+                restoreView = nil;
             }
             
             [self constructRegistrationView];
@@ -369,9 +381,21 @@
                 [registrationView removeFromSuperview];
                 registrationView = nil;
                 self.tmpDesc = nil;
-            } else if (tmpAbout) {
+            }
+            
+            if (tmpAbout) {
                 [tmpAbout removeFromSuperview];
                 tmpAbout = nil;
+            }
+            
+            if (helpView) {
+                [helpView removeFromSuperview];
+                helpView = nil;
+            }
+            
+            if (restoreView) {
+                [restoreView removeFromSuperview];
+                restoreView = nil;
             }
             
             [self createNotificationSettingsView];
@@ -389,38 +413,99 @@
                 [registrationView removeFromSuperview];
                 registrationView = nil;
                 self.tmpDesc = nil;
-            } else if (notificationContainer) {
+            }
+            
+            if (notificationContainer) {
                 [notificationContainer removeFromSuperview];
                 notificationContainer = nil;
             }
+            
+            if (helpView) {
+                [helpView removeFromSuperview];
+                helpView = nil;
+            }
+            
+            if (restoreView) {
+                [restoreView removeFromSuperview];
+                restoreView = nil;
+            }
+            
             [self createAboutView];
             break;
 
         case 8765439:
             
+            [helpButton setSelected:YES];
+            
             [accountSettingsButton setSelected:NO];
             [notificationSettingsButton setSelected:NO];
             [aboutJoomagButton setSelected:NO];
             [restoreItunes setSelected:NO];
-            [helpButton setSelected:YES];
+            
             
             if(registrationView) {
                 [registrationView removeFromSuperview];
                 registrationView = nil;
                 self.tmpDesc = nil;
-            } else if (notificationContainer) {
+            }
+            
+            if (notificationContainer) {
                 [notificationContainer removeFromSuperview];
                 notificationContainer = nil;
             }
             
+            if (tmpAbout) {
+                [tmpAbout removeFromSuperview];
+                tmpAbout = nil;
+            }
+            
+            if (restoreView) {
+                [restoreView removeFromSuperview];
+                restoreView = nil;
+            }
+            
             [self createHelpView];
+        
+            break;
+            
+        case 8765438:
+            [accountSettingsButton setSelected:NO];
+            [notificationSettingsButton setSelected:NO];
+            [aboutJoomagButton setSelected:NO];
+            [restoreItunes setSelected:YES];
+            [helpButton setSelected:NO];
+            
+            if(registrationView) {
+                [registrationView removeFromSuperview];
+                registrationView = nil;
+                self.tmpDesc = nil;
+            }
+            
+            if (notificationContainer) {
+                [notificationContainer removeFromSuperview];
+                notificationContainer = nil;
+            }
+            
+            if (tmpAbout) {
+                [tmpAbout removeFromSuperview];
+                tmpAbout = nil;
+            }
+            
+            if (helpView) {
+                [helpView removeFromSuperview];
+                helpView = nil;
+            }
+            
+            [self createRestoreItunes];
+            
+            break;
             
         default:
             break;
     }
 }
 
--(void)notificationCheckboxClicked:(id) sender {
+- (void) notificationCheckboxClicked:(id) sender {
     
     NSLog(@"notificationCheckboxSelected");
     
@@ -548,7 +633,51 @@
     [helpView redrawData];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void) createRestoreItunes {
+    
+    restoreView = [[UIView alloc] initWithFrame:CGRectMake(287, 107, 320, 181)];
+    
+    UILabel * titleLbl = [[UILabel alloc] init];
+    titleLbl.backgroundColor = [UIColor clearColor];
+    titleLbl.text = @"Restore iTunes Purchases";
+    titleLbl.font = [UIFont systemFontOfSize:21.0f];
+
+    titleLbl.frame = CGRectMake(60, 0, 320, 27);
+    titleLbl.numberOfLines = NSIntegerMax;
+    titleLbl.textColor = [UIColor whiteColor];
+    
+    [restoreView addSubview:titleLbl];
+    
+    UILabel * textLbl = [[UILabel alloc] init];
+    textLbl.backgroundColor = [UIColor clearColor];
+    textLbl.text = @"Lorem ipsum, dolor amet, Lorem ipsum, dolor ametLorem ipsum, dolor ametLorem ipsum, dolor ametLorem ipsum, dolor amet";
+    textLbl.font = [UIFont systemFontOfSize:16.0f];
+    textLbl.frame = [Util calculateLabelFrame:textLbl];    
+    textLbl.frame = CGRectMake(40, 42, 320, textLbl.frame.size.height + 50);
+    textLbl.numberOfLines = NSIntegerMax;
+    textLbl.textColor = [UIColor grayColor];
+    
+    [restoreView addSubview:textLbl];
+    
+    UIButton * restoreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    restoreButton.frame = CGRectMake(113,139,150,39);
+    restoreButton.userInteractionEnabled = YES;
+    
+    [restoreButton setBackgroundImage:[Util imageNamedSmart:@"redBgButton"] forState:UIControlStateNormal];
+    [restoreButton setBackgroundImage:[Util imageNamedSmart:@"redBgButton"] forState:UIControlStateSelected];
+    [restoreButton setBackgroundImage:[Util imageNamedSmart:@"redBgButton"] forState:UIControlStateHighlighted];
+    restoreButton.showsTouchWhenHighlighted = YES;
+    [restoreButton setTitle:@"Restore" forState:UIControlStateNormal];
+
+
+
+    
+    [restoreView addSubview:restoreButton];
+    
+    [self.view addSubview:restoreView];
+}
+
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 

@@ -34,7 +34,21 @@
 
 #pragma -- Main App Cycle --
 
+- (void) handlePushNotification : (NSDictionary *) userInfo {
+
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *) userInfo {
+    //TODO: add APNS profile to support: Armen Abrahamyan
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    
+    NSDictionary *userInfo = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
+    if ( userInfo != nil ) {
+        [self handlePushNotification: userInfo];
+    }
+    
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     

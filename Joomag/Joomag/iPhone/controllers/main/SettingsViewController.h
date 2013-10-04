@@ -60,6 +60,8 @@
  
     //----------- Help View ------------//
     HelpView * helpView;
+    //----------- Restore Container ----//
+    UIView * restoreView;
 }
 
 @property bool isOpen;
