@@ -18,6 +18,7 @@
 @interface FeaturedViewController : UIViewController <ResponseTrackerDelegate, FeaturedDetailsButtonsDelegate>  {
     
 @protected
+    UIView *topBar;
     FeaturedScrollView  *scrollView;
     UIPageControl       *pageControl;
     FeaturedDetailsView *detailsView;

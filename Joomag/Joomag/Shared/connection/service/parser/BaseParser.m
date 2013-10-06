@@ -58,7 +58,7 @@
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-	NSString * errorString = [NSString stringWithFormat:@" (Error code %i )", [parseError code]];
+	//NSString * errorString = [NSString stringWithFormat:@" (Error code %i )", [parseError code]];
 	//NSLog(@"errorString = %@", errorString);
 }
 

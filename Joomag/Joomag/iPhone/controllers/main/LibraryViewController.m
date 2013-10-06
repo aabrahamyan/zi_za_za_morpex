@@ -123,7 +123,7 @@
     
     if(IS_IPHONE_5) {
         magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 370)];
-    } else {
+    } else if(!IS_IPAD) {
         magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 300)];
     }
     

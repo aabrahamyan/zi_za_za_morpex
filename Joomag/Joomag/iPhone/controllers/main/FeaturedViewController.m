@@ -38,9 +38,23 @@
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
     
+    //-------------------------------- Top Bar ------------------------------------
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topTabBarBg.png"]];
+    [topBar addSubview:backgroundView];
+    
+    [self.view addSubview: topBar];
+    
+    UILabel *topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 44)];
+    topBarTitleLabel.backgroundColor = [UIColor clearColor];
+    topBarTitleLabel.textColor = [UIColor whiteColor];
+    topBarTitleLabel.text = @"Featured Magazines";
+    
+    [topBar addSubview: topBarTitleLabel];
+    
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width,
-                                                                      self.view.frame.size.height-69)]; // TODO frmae size
+    scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 46.5, self.view.frame.size.width,
+                                                                      self.view.frame.size.height-90)]; // TODO frmae size
     
     [self.view addSubview: scrollView];
     
@@ -78,22 +92,6 @@
     
     // Hide Details view when start dragging
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
-    
-    //-------------------------------- Top Bar ------------------------------------
-    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"topTabBarBg"]];
-    [topBar addSubview:backgroundView];
-    [topBar sendSubviewToBack: backgroundView];
-    
-    [self.view addSubview: topBar];
-    
-    
-    UILabel *topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 44)];
-    topBarTitleLabel.backgroundColor = [UIColor clearColor];
-    topBarTitleLabel.textColor = [UIColor whiteColor];
-    topBarTitleLabel.text = @"Featured Magazines";
-    
-    [topBar addSubview: topBarTitleLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,7 +133,6 @@
     }];
     //}
 }
-
 
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
     

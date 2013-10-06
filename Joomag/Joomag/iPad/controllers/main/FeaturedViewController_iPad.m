@@ -10,7 +10,7 @@
 #import "BuyIssueViewController_iPad.h"
 
 @interface FeaturedViewController_iPad () {
-    CGRect detailsViewFrame, pageControlFrame, scrollViewFrame;
+    CGRect topViewFrame, detailsViewFrame, pageControlFrame, scrollViewFrame;
 }
 
 @end
@@ -26,15 +26,18 @@
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
 
     if (iOrientation == UIDeviceOrientationPortrait) {
-        scrollViewFrame = CGRectMake(0, 0, 768, 959);
+        topViewFrame = CGRectMake(0, 0, 768, 44);
+        scrollViewFrame = CGRectMake(0, 46, 768, 914);
         detailsViewFrame = CGRectMake(230, 700, 500, 200);
         pageControlFrame = CGRectMake(0, 50, 768, 30);
     } else {
-        scrollViewFrame = CGRectMake(0, 0, 1024, 704);
+        topViewFrame = CGRectMake(0, 0, 1024, 44);
+        scrollViewFrame = CGRectMake(0, 46, 1024, 660);
         detailsViewFrame = CGRectMake(490, 450, 540, 220);
         pageControlFrame = CGRectMake(0, 50, 1024, 30);
     }
     
+    topBar.frame = topViewFrame;
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
     detailsView.frame = detailsViewFrame;
