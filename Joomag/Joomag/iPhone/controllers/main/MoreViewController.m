@@ -8,7 +8,6 @@
 
 #import "MoreViewController.h"
 #import "Util.h"
-#import "BookMarkView.h"
 #import "UIImageView+WebCache.h"
 #import "SIAlertView.h"
 #import "FaceBookUtil.h"

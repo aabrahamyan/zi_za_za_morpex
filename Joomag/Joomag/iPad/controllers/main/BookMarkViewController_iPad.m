@@ -8,7 +8,6 @@
 
 #import "BookMarkViewController_iPad.h"
 #import "Util.h"
-#import "BookMarkView.h"
 #import "MainDataHolder.h"
 #import "MagazinRecord.h"
 
