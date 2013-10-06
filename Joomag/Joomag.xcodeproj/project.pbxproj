@@ -133,7 +133,6 @@
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
 		5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E92F17DD33210039FD17 /* BookMarkViewController.m */; };
 		5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */; };
-		5A75E93717DD4B470039FD17 /* BookMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E93617DD4B470039FD17 /* BookMarkView.m */; };
 		5A7AFCB417C0D3AC00380CBD /* shareBtn_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */; };
 		5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB517C0D91700380CBD /* placeholder.png */; };
 		5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */; };
@@ -375,8 +374,6 @@
 		5A75E92F17DD33210039FD17 /* BookMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController.m; sourceTree = "<group>"; };
 		5A75E93117DD334C0039FD17 /* BookMarkViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkViewController_iPad.h; sourceTree = "<group>"; };
 		5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController_iPad.m; sourceTree = "<group>"; };
-		5A75E93517DD4B470039FD17 /* BookMarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkView.h; sourceTree = "<group>"; };
-		5A75E93617DD4B470039FD17 /* BookMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkView.m; sourceTree = "<group>"; };
 		5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCB517C0D91700380CBD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topTabBarBg@2x.png"; sourceTree = "<group>"; };
@@ -984,15 +981,6 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		5A75E93417DD4B2A0039FD17 /* BookMark */ = {
-			isa = PBXGroup;
-			children = (
-				5A75E93517DD4B470039FD17 /* BookMarkView.h */,
-				5A75E93617DD4B470039FD17 /* BookMarkView.m */,
-			);
-			name = BookMark;
-			sourceTree = "<group>";
-		};
 		5A9F023017F2C73D0029F0C5 /* SIAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,7 +996,6 @@
 			children = (
 				5A9F023017F2C73D0029F0C5 /* SIAlertView */,
 				5A1B582D17DA9F3A0087214F /* FeaturedView */,
-				5A75E93417DD4B2A0039FD17 /* BookMark */,
 				5A1B582E17DA9F570087214F /* ExploreView */,
 				5A1B582F17DA9F850087214F /* MyLibrary */,
 				5A0FFC4617EF60A1009B268D /* NoInternetView.h */,
@@ -1281,7 +1268,6 @@
 				5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */,
 				5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */,
 				5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */,
-				5A75E93717DD4B470039FD17 /* BookMarkView.m in Sources */,
 				5AE5E85617E87909002EECE4 /* BuyIssueViewController.m in Sources */,
 				5AE5E85917E87920002EECE4 /* BuyIssueViewController_iPad.m in Sources */,
 				2CCC217717EC7649001DABD3 /* DetailsExploreScrollView.m in Sources */,
