@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "DatePickerView.h"
 #import "MyLibScrollView.h"
+#import "MyLIbMagazinesTabelView.h"
 #import "ResponseTrackerDelegate.h"
 
-@interface LibraryViewController : UIViewController <ResponseTrackerDelegate, UIGestureRecognizerDelegate> {
+@interface LibraryViewController : UIViewController <ResponseTrackerDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource> {
     
 @protected
     UIView   *topBar;
@@ -24,5 +25,6 @@
     UIButton *fbButton;
     UIButton *twitterButton;
     MyLibScrollView *scrollView;
+    MyLIbMagazinesTabelView *magazinesTableView;
 }
 @end

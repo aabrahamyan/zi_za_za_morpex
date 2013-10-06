@@ -107,6 +107,8 @@
 		5A17413718015B1600B0CC1F /* myLibBarIconeSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A17413518015B1600B0CC1F /* myLibBarIconeSelected@2x.png */; };
 		5A17413A18015C1300B0CC1F /* moreBarIcone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A17413818015C1200B0CC1F /* moreBarIcone@2x.png */; };
 		5A17413B18015C1300B0CC1F /* moreBarIconeSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A17413918015C1300B0CC1F /* moreBarIconeSelected@2x.png */; };
+		5A17414118016F8C00B0CC1F /* MyLIbMagazinesTabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A17414018016F8C00B0CC1F /* MyLIbMagazinesTabelView.m */; };
+		5A17414318018AFD00B0CC1F /* myLibTableHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A17414218018AFD00B0CC1F /* myLibTableHeader@2x.png */; };
 		5A1B583517DAA0410087214F /* YearTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583417DAA0410087214F /* YearTableView.m */; };
 		5A1B583817DAA0540087214F /* MonthTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583717DAA0540087214F /* MonthTableView.m */; };
 		5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B583A17DAA1940087214F /* DatePickerView.m */; };
@@ -328,6 +330,9 @@
 		5A17413518015B1600B0CC1F /* myLibBarIconeSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myLibBarIconeSelected@2x.png"; sourceTree = "<group>"; };
 		5A17413818015C1200B0CC1F /* moreBarIcone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreBarIcone@2x.png"; sourceTree = "<group>"; };
 		5A17413918015C1300B0CC1F /* moreBarIconeSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreBarIconeSelected@2x.png"; sourceTree = "<group>"; };
+		5A17413F18016F8C00B0CC1F /* MyLIbMagazinesTabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLIbMagazinesTabelView.h; sourceTree = "<group>"; };
+		5A17414018016F8C00B0CC1F /* MyLIbMagazinesTabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLIbMagazinesTabelView.m; sourceTree = "<group>"; };
+		5A17414218018AFD00B0CC1F /* myLibTableHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myLibTableHeader@2x.png"; sourceTree = "<group>"; };
 		5A1B583317DAA0410087214F /* YearTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearTableView.h; sourceTree = "<group>"; };
 		5A1B583417DAA0410087214F /* YearTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearTableView.m; sourceTree = "<group>"; };
 		5A1B583617DAA0540087214F /* MonthTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthTableView.h; sourceTree = "<group>"; };
@@ -852,6 +857,7 @@
 				5A0FFC3B17EF0A4C009B268D /* faceBookButton@2x.png */,
 				5A0FFC3C17EF0A4C009B268D /* joomagButton@2x.png */,
 				5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */,
+				5A17414218018AFD00B0CC1F /* myLibTableHeader@2x.png */,
 			);
 			name = myLib;
 			sourceTree = "<group>";
@@ -915,6 +921,8 @@
 				5A1B582C17DA9F260087214F /* DatePicker */,
 				5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */,
 				5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */,
+				5A17413F18016F8C00B0CC1F /* MyLIbMagazinesTabelView.h */,
+				5A17414018016F8C00B0CC1F /* MyLIbMagazinesTabelView.m */,
 			);
 			name = MyLibrary;
 			sourceTree = "<group>";
@@ -1202,6 +1210,7 @@
 				5A17413718015B1600B0CC1F /* myLibBarIconeSelected@2x.png in Resources */,
 				5A17413A18015C1300B0CC1F /* moreBarIcone@2x.png in Resources */,
 				5A17413B18015C1300B0CC1F /* moreBarIconeSelected@2x.png in Resources */,
+				5A17414318018AFD00B0CC1F /* myLibTableHeader@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1300,7 @@
 				2C30B2F717FF4FDA00C7431B /* HelpView.m in Sources */,
 				2C30B2FA17FF505800C7431B /* HelpBO.m in Sources */,
 				2C30B2FD17FF51CF00C7431B /* HelpBU.m in Sources */,
+				5A17414118016F8C00B0CC1F /* MyLIbMagazinesTabelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

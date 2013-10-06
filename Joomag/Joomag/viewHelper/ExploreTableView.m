@@ -13,7 +13,6 @@
 #import "ExploreViewController.h"
 #import "ExploreCatsTableViewCell.h"
 
-
 @interface ExploreTableView () {
     
 }
@@ -127,9 +126,6 @@
         
         return cell;
     }
-  
-     
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

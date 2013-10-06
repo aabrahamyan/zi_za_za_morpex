@@ -121,6 +121,19 @@
 //    
 //    [self.view addSubview: scrollView];
     
+    if(IS_IPHONE_5) {
+        magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 370)];
+    } else {
+        magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 300)];
+    }
+    
+    //magazinesTableView.delegate = self;
+    //magazinesTableView.dataSource = self;
+    
+    [self.view addSubview: magazinesTableView];
+    
+    
+    
     if (!fbUtil.session.isOpen) {
         // create a fresh session object
         [fbUtil createNewSession];
@@ -291,8 +304,8 @@
                                                                 NSError *error)
         {
              if (!error) {
-                 NSLog(@"fb.user.id: %@", user.id);
-                 NSLog(@"fb.user.name: %@", user.name);
+                 // NSLog(@"fb.user.id: %@", user.id);
+                 // NSLog(@"fb.user.name: %@", user.name);
              }
          }];
     }

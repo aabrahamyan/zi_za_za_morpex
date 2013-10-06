@@ -42,8 +42,7 @@
 @implementation MoreViewController
 
 - (void)loadView {
-    NSLog(@"More View");
-    
+
     [super loadView];
     
     fbUtil = [FaceBookUtil getInstance];
@@ -672,7 +671,7 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSString *path = @"http://tim-dawson.com/wp-content/uploads/RAP_May_78_cover-200x100.jpg";
+    NSString *path = @"http://tim-dawson.com/wp-content/uploads/RAP_May_78_cover-200x100.jpg"; // TODO: set real data
     UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 120, 80)];
     [imageView setImageWithURL: [NSURL URLWithString: path] placeholderImage: nil options:SDWebImageProgressiveDownload];
     

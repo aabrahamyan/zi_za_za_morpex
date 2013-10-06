@@ -355,7 +355,7 @@
     [categoriesTable reloadExploreTable];
     [self redrawData];
     
-    NSLog(@"entries: %i", dataHolder.testData.count);
+    // NSLog(@"entries: %i", dataHolder.testData.count);
     
     //---------------------------- Page Control ------------------------------------
     if(pageControl && !pageControl.hidden) {
