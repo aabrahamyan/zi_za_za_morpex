@@ -72,9 +72,6 @@
     orLabel.frame = orLabelFrame;
     fbButton.frame = fbButtonFrame;
     twitterButton.frame = twitterButtonFrame;
-    scrollView.frame = scrollViewFrame;
-    
-    [scrollView redrawData];
     
 }
 

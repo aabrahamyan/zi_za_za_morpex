@@ -8,6 +8,17 @@
 
 #import "BookMarkViewController.h"
 
-@interface BookMarkViewController_iPad : BookMarkViewController
+@interface BookMarkViewController_iPad : BookMarkViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+    
+@protected
+    UIView   *topBar;
+    UILabel  *topBarTitleLabel;
+    UIView   *filterLabels;
+    UIButton *closeButtonView;
+    UIView   *noBookMarksContainer;
+    UIScrollView *bookMarksScrollView;
+}
+
+@property (nonatomic, strong) UITableView *bookMarkTable;
 
 @end

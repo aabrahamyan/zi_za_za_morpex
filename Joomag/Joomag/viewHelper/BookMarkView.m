@@ -89,13 +89,5 @@
     return self;
 }
 
-- (void)removeBookMark {
-    NSLog(@"remove: %i", self.tag);
-}
-
-- (void)editBookMark {
-    NSLog(@"edit: %i", self.tag);
-}
-
 
 @end

@@ -114,12 +114,7 @@
     
     [self.view addSubview: filterLabels];
     
-    //---------------------------- Scroll View ------------------------------------
-//    scrollView = [[MyLibScrollView alloc] init];
-//    
-//    scrollView.entries = dataHolder.testData;
-//    
-//    [self.view addSubview: scrollView];
+    //---------------------------- Magazines Table View ------------------------------------
     
     if(IS_IPHONE_5) {
         magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 370)];
@@ -154,7 +149,6 @@
             
             if (!noMagazines) {
                 filterLabels.hidden = YES;
-                scrollView.hidden = YES;
             }
             
         }
@@ -296,7 +290,6 @@
         
         if (noMagazines) {
             filterLabels.hidden = NO;
-            scrollView.hidden = NO;
         }
         
         [[FBRequest requestForMe] startWithCompletionHandler: ^(FBRequestConnection *connection,
@@ -328,10 +321,7 @@
 }
 
 - (void) didFinishResponse: (id) responseObject {
-    if([dataHolder.testData count] != 0) {
-        scrollView.entries = dataHolder.testData;
-        [scrollView redrawData];
-    }
+
 }
 
 - (void)didReceiveMemoryWarning {

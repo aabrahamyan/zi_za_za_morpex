@@ -8,19 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BookMarkViewController : UIViewController {
-
-@protected
-    UIView   *topBar;
-    UILabel  *topBarTitleLabel;
-    UIView   *filterLabels;
-    UIButton *closeButtonView;
-    UIView   *noBookMarksContainer;
-    UIScrollView *bookMarksScrollView;
-}
+@interface BookMarkViewController : UIViewController
 
 @property bool isOpen;
 
 - (void) animateUpAndDown: (BOOL) isUP;
+- (void) animateDown;
 
 @end

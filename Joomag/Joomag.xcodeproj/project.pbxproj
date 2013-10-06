@@ -184,7 +184,6 @@
 		5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */; };
 		5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */; };
-		5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -452,8 +451,6 @@
 		5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIconeTopBar_iPad@2x.png"; sourceTree = "<group>"; };
-		5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLibScrollView.h; sourceTree = "<group>"; };
-		5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLibScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -919,8 +916,6 @@
 			isa = PBXGroup;
 			children = (
 				5A1B582C17DA9F260087214F /* DatePicker */,
-				5AFDB71917D8A90B0089EB37 /* MyLibScrollView.h */,
-				5AFDB71A17D8A90B0089EB37 /* MyLibScrollView.m */,
 				5A17413F18016F8C00B0CC1F /* MyLIbMagazinesTabelView.h */,
 				5A17414018016F8C00B0CC1F /* MyLIbMagazinesTabelView.m */,
 			);
@@ -1281,7 +1276,6 @@
 				2CDAAE6217D71DAF00EFF968 /* Path.m in Sources */,
 				2CDAAE6317D71DAF00EFF968 /* PathGroup.m in Sources */,
 				2CDAAE6617D71DE300EFF968 /* TiledView.m in Sources */,
-				5AFDB71B17D8A90B0089EB37 /* MyLibScrollView.m in Sources */,
 				5A1B583517DAA0410087214F /* YearTableView.m in Sources */,
 				5A1B583817DAA0540087214F /* MonthTableView.m in Sources */,
 				5A1B583B17DAA1940087214F /* DatePickerView.m in Sources */,

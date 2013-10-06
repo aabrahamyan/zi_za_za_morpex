@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "DatePickerView.h"
-#import "MyLibScrollView.h"
 #import "MyLIbMagazinesTabelView.h"
 #import "ResponseTrackerDelegate.h"
 
@@ -24,7 +23,6 @@
     UILabel  *orLabel;
     UIButton *fbButton;
     UIButton *twitterButton;
-    MyLibScrollView *scrollView;
     MyLIbMagazinesTabelView *magazinesTableView;
 }
 @end
