@@ -128,51 +128,40 @@ static CustomTabBarController * customTabBarController;
     
     [self createTabBarContent];
     
+     
     self.featuredButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 1, 73, 45)];
-    [self.featuredButton setImage: [Util imageNamedSmart:@"barFeatured"] forState:UIControlStateNormal];
-    [self.featuredButton setImage: [Util imageNamedSmart:@"barFeatured"] forState:UIControlStateSelected];
-    [self.featuredButton setImage: [Util imageNamedSmart:@"barFeatured"] forState:UIControlStateHighlighted];
-    self.featuredButton.showsTouchWhenHighlighted = YES;
     self.featuredButton.tag = 11111;
-    
-    [self.featuredButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.backGroundView addSubview:self.featuredButton];
-    
-    
+    [self centerAlignImageAndTextForButton: self.featuredButton
+                                     title: @"Featured"
+                                     icone:[UIImage imageNamed:@"featuredBarIcone.png"]
+                             selectedIcone:[UIImage imageNamed:@"featuredBarIconeSelected.png"]
+                                     space: 3];
+
     self.exploreButton = [[UIButton alloc] initWithFrame:CGRectMake(85, 2, 73, 45)];
-    [self.exploreButton setImage: [Util imageNamedSmart:@"barExplore"] forState:UIControlStateNormal];
-    [self.exploreButton setImage: [Util imageNamedSmart:@"barExplore"] forState:UIControlStateSelected];
-    [self.exploreButton setImage: [Util imageNamedSmart:@"barExplore"] forState:UIControlStateHighlighted];
-    self.exploreButton.showsTouchWhenHighlighted = YES;
     self.exploreButton.tag = 22222;
-    
-    [self.exploreButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.backGroundView addSubview:self.exploreButton];
-    
-    
+    [self centerAlignImageAndTextForButton: self.exploreButton
+                                     title: @"Explore"
+                                     icone:[UIImage imageNamed:@"exploreBarIcone.png"]
+                             selectedIcone:[UIImage imageNamed:@"exploreBarIconeSelected.png"]
+                                     space: 5];
+
     self.myLibButton = [[UIButton alloc] initWithFrame:CGRectMake(170, 2, 73, 45)];
-    [self.myLibButton setImage: [Util imageNamedSmart:@"barMyLib"] forState:UIControlStateNormal];
-    [self.myLibButton setImage: [Util imageNamedSmart:@"barMyLib"] forState:UIControlStateSelected];
-    [self.myLibButton setImage: [Util imageNamedSmart:@"barMyLib"] forState:UIControlStateHighlighted];
-    self.myLibButton.showsTouchWhenHighlighted = YES;
     self.myLibButton.tag = 33333;
-    
-    [self.myLibButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.backGroundView addSubview:self.myLibButton];
+    [self centerAlignImageAndTextForButton: self.myLibButton
+                                     title: @"MY Library"
+                                     icone:[UIImage imageNamed:@"myLibBarIcone.png"]
+                             selectedIcone:[UIImage imageNamed:@"myLibBarIconeSelected.png"]
+                                     space: 4];
     
     self.moreButton = [[UIButton alloc] initWithFrame:CGRectMake(240, 3, 73, 45)];
-    [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateNormal];
-    [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateSelected];
-    [self.moreButton setImage: [Util imageNamedSmart:@"barMore"] forState:UIControlStateHighlighted];
-    self.moreButton.showsTouchWhenHighlighted = YES;
     self.moreButton.tag = 44444;
-    
-    [self.moreButton addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.backGroundView addSubview:self.moreButton];
+    [self centerAlignImageAndTextForButton: self.moreButton
+                                     title: @"More"
+                                     icone:[UIImage imageNamed:@"moreBarIcone.png"]
+                             selectedIcone:[UIImage imageNamed:@"moreBarIconeSelected.png"]
+                                     space: 16];
+    self.moreButton.imageEdgeInsets = UIEdgeInsetsMake(-25,0,-14,-24);
+
     
     self.gearButton = [[UIButton alloc] init];
     [self.gearButton setImage: [Util imageNamedSmart:@"barGear"] forState:UIControlStateNormal];
@@ -197,12 +186,43 @@ static CustomTabBarController * customTabBarController;
     [self.view bringSubviewToFront:self.backGroundView];
 }
 
+- (void)centerAlignImageAndTextForButton:(UIButton*)button
+                                   title: (NSString *)title
+                                   icone: (UIImage *)icone
+                           selectedIcone: (UIImage *)selectedIcone
+                                   space: (float)space
+{
+    [button setTitle: title forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:@"proximanovalight" size:10.0f];
+    button.titleLabel.font = [UIFont systemFontOfSize:10.0];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:RGBA(214, 77, 76, 1) forState:UIControlStateHighlighted];
+    [button setTitleColor:RGBA(214, 77, 76, 1) forState:UIControlStateSelected];
+    [button setImage: icone forState:UIControlStateNormal];
+    [button setImage: icone forState:UIControlStateHighlighted];
+    [button setImage: selectedIcone forState:UIControlStateSelected];
+    button.showsTouchWhenHighlighted = YES;
+    CGFloat spacing = space;
+    CGSize imageSize = button.imageView.frame.size;
+    button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0);
+    CGSize titleSize = button.titleLabel.frame.size;
+    button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width);
+    
+    [button addTarget:self action:@selector(toggleTabs:) forControlEvents:UIControlEventTouchUpInside];
+    [self.backGroundView addSubview: button];
+}
+
 - (void) toggleTabs: (id) target {
     
     NSInteger targetId = ((UIButton *)target).tag;
     
     switch (targetId) {
         case 11111: {
+            
+            self.featuredButton.selected = YES;
+            self.exploreButton.selected = NO;
+            self.myLibButton.selected = NO;
+            self.moreButton.selected = NO;
             
             self.featuredNavigationController.view.hidden = NO;
             self.exploreNavigationController.view.hidden = YES;
@@ -212,6 +232,12 @@ static CustomTabBarController * customTabBarController;
             break;
         }
         case 22222: {
+            
+            self.featuredButton.selected = NO;
+            self.exploreButton.selected = YES;
+            self.myLibButton.selected = NO;
+            self.moreButton.selected = NO;
+            
             self.featuredNavigationController.view.hidden = YES;
             self.moreNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = NO;
@@ -222,6 +248,12 @@ static CustomTabBarController * customTabBarController;
             break;
         }
         case 33333: {
+            
+            self.featuredButton.selected = NO;
+            self.exploreButton.selected = NO;
+            self.myLibButton.selected = YES;
+            self.moreButton.selected = NO;
+            
             self.featuredNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = YES;
             self.moreNavigationController.view.hidden = YES;
@@ -230,6 +262,12 @@ static CustomTabBarController * customTabBarController;
             break;
         }
         case 44444: {
+            
+            self.featuredButton.selected = NO;
+            self.exploreButton.selected = NO;
+            self.myLibButton.selected = NO;
+            self.moreButton.selected = YES;
+            
             self.featuredNavigationController.view.hidden = YES;
             self.exploreNavigationController.view.hidden = YES;
             self.myBookshelfNavigationController.view.hidden = YES;

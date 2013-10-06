@@ -10,7 +10,9 @@
 #import "DataHolder.h"
 #import "Util.h"
 
-@interface LibraryViewController_iPad ()
+@interface LibraryViewController_iPad () {
+        DatePickerView *datePicker;
+}
 
 @end
 
@@ -24,6 +26,11 @@
     [super loadView];
     
     //NSLog(@"ExploreViewController_iPad");
+    //---------------------------- DATE PICKER ------------------------------------
+    datePicker = [[DatePickerView alloc] initWithFrame: CGRectMake(20, 160, 50, 520)];
+    datePicker.delegate = self;
+    
+    [self.view addSubview: datePicker];
 }
 
 - (void)viewDidLayoutSubviews {

@@ -11,7 +11,7 @@
 #import "MyLibScrollView.h"
 #import "ResponseTrackerDelegate.h"
 
-@interface LibraryViewController : UIViewController <ResponseTrackerDelegate, DatePickerDelegate> {
+@interface LibraryViewController : UIViewController <ResponseTrackerDelegate, UIGestureRecognizerDelegate> {
     
 @protected
     UIView   *topBar;
@@ -23,7 +23,6 @@
     UILabel  *orLabel;
     UIButton *fbButton;
     UIButton *twitterButton;
-    DatePickerView *datePicker;
     MyLibScrollView *scrollView;
 }
 @end

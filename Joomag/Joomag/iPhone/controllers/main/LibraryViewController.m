@@ -32,56 +32,12 @@
 
 - (void)loadView {
     
+    [super loadView];
+    
     noMagazines = YES;
     
     fbUtil = [FaceBookUtil getInstance];
-    
-    [super loadView];
-    
-    NSLog(@"[FaceBookUtil getInstance].session.isOpen: %d",fbUtil.session.isOpen);
 
-    if (!fbUtil.session.isOpen) {
-        // create a fresh session object
-        NSLog(@"create a fresh session object");
-        [fbUtil createNewSession];
-        
-        // if we don't have a cached token, a call to open here would cause UX for login to
-        // occur; we don't want that to happen unless the user clicks the login button, and so
-        // we check here to make sure we have a token before calling open
-        if (fbUtil.session.state == FBSessionStateCreatedTokenLoaded) {
-            // even though we had a cached token, we need to login to make the session usable
-//            [fbUtil.session openWithCompletionHandler:^(FBSession *session,
-//                                                             FBSessionState status,
-//                                                             NSError *error) {
-//                // we recurse here, in order to update buttons and labels
-//                NSLog(@"have a cached token");
-//                [self updateView];
-//            }];
-            
-            __weak LibraryViewController *libVC = self;
-            
-            [fbUtil setCompletionHandler:^{
-                 NSLog(@"have a cached token");
-                 [libVC updateView];
-            }];
-            
-            [fbUtil openSessionWithCompletionHandler];
-            
-        } else {
-            // show login container
-            NSLog(@"L O G   O U T");
-        }
-    }
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
     dataHolder = [MainDataHolder getInstance];
     
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
@@ -103,14 +59,7 @@
     topBarTitleLabel.text = @"My Library";
     
     [topBar addSubview: topBarTitleLabel];
-    
-    //----------------------------Filter Labels With Border ------------------------
-    filterLabels = [[UIView alloc] init];
-    [filterLabels addSubview: [self titleLabelsWithBorder]];
-    
-    [topBar addSubview: filterLabels];
-    
-    
+        
     //---------------------------- Login Container ------------------------------------
     loginContainer = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT+3, 320, 150)];
     loginContainer.backgroundColor = RGBA(85, 85, 85, 1);
@@ -158,38 +107,54 @@
     
     [loginContainer addSubview: twitterButton];
     
-    //---------------------------- DATE PICKER ------------------------------------
-    datePicker = [[DatePickerView alloc] initWithFrame: CGRectMake(20, 160, 50, 520)];
-    datePicker.delegate = self;
     
-    [self.view addSubview: datePicker];
+    filterLabels = [[UIView alloc] initWithFrame: CGRectMake(0, 46, 320, 40)];
+    [filterLabels addSubview: [self titleLabelsWithBorder]];
+    //filterLabels.backgroundColor = [UIColor greenColor];
+    
+    [self.view addSubview: filterLabels];
     
     //---------------------------- Scroll View ------------------------------------
-    scrollView = [[MyLibScrollView alloc] init];
+//    scrollView = [[MyLibScrollView alloc] init];
+//    
+//    scrollView.entries = dataHolder.testData;
+//    
+//    [self.view addSubview: scrollView];
     
-    scrollView.entries = dataHolder.testData;
-    
-    [self.view addSubview: scrollView];
-    
-    
-    if (noMagazines) {
+    if (!fbUtil.session.isOpen) {
+        // create a fresh session object
+        [fbUtil createNewSession];
         
-        filterLabels.hidden = YES;
-        datePicker.hidden = YES;
-        scrollView.hidden = YES;
-        
-    } else {
-        
+        if (fbUtil.session.state == FBSessionStateCreatedTokenLoaded) {
+            // even though we had a cached token, we need to login to make the session usable
+            __weak LibraryViewController *libVC = self;
+            
+            [fbUtil setCompletionHandler:^{
+                [libVC updateView];
+            }];
+            
+            [fbUtil openSessionWithCompletionHandler];
+            
+        } else {
+            loginContainer.hidden = NO;
+            noMagazines = NO; // TODO
+            
+            if (!noMagazines) {
+                filterLabels.hidden = YES;
+                scrollView.hidden = YES;
+            }
+            
+        }
     }
-    
 }
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 10, 280, 30)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 10, self.view.frame.size.width,
+                                                                       self.view.frame.size.height)];
     
-    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)]; label1.text = @"DATE";
-    label2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 50, 20)]; label2.text = @"TITLE";
-    label3 = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, 50, 20)]; label3.text = @"EDIT";
+    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)]; label1.text = @"DATE";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 30, 20)]; label2.text = @"TITLE";
+    label3 = [[UILabel alloc] initWithFrame:CGRectMake(250, 0, 30, 20)]; label3.text = @"EDIT";
     
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, label3, nil];
     
@@ -227,9 +192,9 @@
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];
         NSLog(@"TITLE");
-    } else if(gesture.view.tag == 2) {
-        NSLog(@"EDIT");
+    } else if(gesture.view.tag == 2){
         [self animateLabelBorder: label3];
+        NSLog(@"EDIT");
     }
 }
 
@@ -261,6 +226,7 @@
     return  result;
 }
 
+
 #pragma mark - Login Methods
 
 - (void)loginWithJoomag {
@@ -272,35 +238,24 @@
 }
 
 - (void)loginWithFaceBook {
-    NSLog(@"Login With FaceBook: %d", fbUtil.session.isOpen);
     
     if (!fbUtil.session.isOpen) {
         // create a fresh session object
-        NSLog(@"session not exist");
-        fbUtil.session = [[FBSession alloc] init];
-    } else {
-       NSLog(@"session exist"); 
+        [fbUtil createNewSession];
     }
     
     if (fbUtil.session.state == FBSessionStateCreated) {
         
         NSLog(@"N O T   C R E A T E D");
         
-        FBSession.activeSession = fbUtil.session;
-        
         // if the session isn't open, let's open it now and present the login UX to the user
         [fbUtil.session openWithCompletionHandler:^(FBSession *session,
                                                                         FBSessionState status,
                                                                         NSError *error) {
-            // and here we make sure to update our UX according to the new session state
-            [self updateView];
-            
-            // NSLog(@"USER_ID: %@", FBSession.activeSession.appID);
-            
-            // Initiate a Facebook instance
             switch (status) {
                 case FBSessionStateOpen:
                     NSLog(@"FBSessionStateOpen");
+                    [self updateView];
                     break;
                 
                 case FBSessionStateClosed:
@@ -314,34 +269,32 @@
                 default:
                     break;
             }
-            
         }];
-    
-    } else {
-        NSLog(@"C R E A T E D");
     }
 }
 
-// FBSample logic
-// main helper method to update the UI to reflect the current state of the session.
+// Update the UI to reflect login container state
 - (void)updateView {
-    NSLog(@"updateView");
     if (fbUtil.session.isOpen) {
-        // valid account UI is shown whenever the session is open
-        //NSLog(@"LOGIN: %@", [FaceBookUtil getInstance].session.accessTokenData.accessToken);
-        NSLog(@"L O G I N");
+        
+        loginContainer.hidden = YES;
+        
+        noMagazines = YES; // TODO: set when magazin exist
+        
+        if (noMagazines) {
+            filterLabels.hidden = NO;
+            scrollView.hidden = NO;
+        }
         
         [[FBRequest requestForMe] startWithCompletionHandler: ^(FBRequestConnection *connection,
                                                                 NSDictionary<FBGraphUser> *user,
                                                                 NSError *error)
         {
              if (!error) {
-                 NSLog(@"user.id: %@", user.id);
-                 NSLog(@"user.name: %@", user.name);
+                 NSLog(@"fb.user.id: %@", user.id);
+                 NSLog(@"fb.user.name: %@", user.name);
              }
          }];
-        
-        
     }
 }
 

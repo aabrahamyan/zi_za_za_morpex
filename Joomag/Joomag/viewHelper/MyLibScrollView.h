@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Joomag. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h> //TODO: remove?
 
-@interface MyLibScrollView : UIScrollView <UIScrollViewDelegate>
+@interface MyLibScrollView : UIScrollView <UIScrollViewDelegate> 
 
 // the main data model for our UIScrollView
 @property (nonatomic, strong) NSArray *entries;

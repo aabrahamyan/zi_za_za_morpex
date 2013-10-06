@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "LibraryViewController.h"
 
-@interface LibraryViewController_iPad : LibraryViewController
+@interface LibraryViewController_iPad : LibraryViewController <DatePickerDelegate>
 
 @end
