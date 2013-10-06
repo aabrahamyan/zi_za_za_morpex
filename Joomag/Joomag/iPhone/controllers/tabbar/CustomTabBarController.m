@@ -148,7 +148,7 @@ static CustomTabBarController * customTabBarController;
     self.myLibButton = [[UIButton alloc] initWithFrame:CGRectMake(170, 2, 73, 45)];
     self.myLibButton.tag = 33333;
     [self centerAlignImageAndTextForButton: self.myLibButton
-                                     title: @"MY Library"
+                                     title: @"My Library"
                                      icone:[UIImage imageNamed:@"myLibBarIcone.png"]
                              selectedIcone:[UIImage imageNamed:@"myLibBarIconeSelected.png"]
                                      space: 4];
@@ -162,7 +162,6 @@ static CustomTabBarController * customTabBarController;
                                      space: 16];
     self.moreButton.imageEdgeInsets = UIEdgeInsetsMake(-25,0,-14,-24);
 
-    
     self.gearButton = [[UIButton alloc] init];
     [self.gearButton setImage: [Util imageNamedSmart:@"barGear"] forState:UIControlStateNormal];
     [self.gearButton setImage: [Util imageNamedSmart:@"barGear"] forState:UIControlStateSelected];
@@ -171,7 +170,6 @@ static CustomTabBarController * customTabBarController;
     [self.gearButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
     
     [self.backGroundView addSubview:self.gearButton];
-    
     
     self.noteButton = [[UIButton alloc] init];
     [self.noteButton setImage:[Util imageNamedSmart:@"barBookMark"] forState:UIControlStateNormal];

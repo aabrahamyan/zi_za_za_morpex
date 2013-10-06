@@ -78,15 +78,22 @@ static CustomTabBarController_iPad * customTabBar_iPad;
 
 - (void) loadView {
     [super loadView];
-        
-    self.featuredButton.frame = CGRectMake(50, 10, 99, 24);
-    self.exploreButton.frame = CGRectMake(220, 15, 94, 20);
-    self.myLibButton.frame = CGRectMake(390, 15, 112, 20);
+    
+    [self centerAlignImageAndTextForButton: self.featuredButton frame: CGRectMake(35, 2, 140, 44)];
+    [self centerAlignImageAndTextForButton: self.exploreButton frame: CGRectMake(200, 3, 140, 44)];
+    [self centerAlignImageAndTextForButton: self.myLibButton frame: CGRectMake(380, 2, 140, 44)];
     self.moreButton.hidden = YES;
-    
-    //[self createTabBarContent];
-    
-    [self.view bringSubviewToFront:self.backGroundView];
+ 
+    [self.view bringSubviewToFront: self.backGroundView];
+}
+
+- (void)centerAlignImageAndTextForButton: (UIButton *)button frame: (CGRect)frm {
+    button.frame = frm;
+    button.titleLabel.font = [UIFont fontWithName:@"proximanovalight" size:16.0f];
+    button.titleLabel.font = [UIFont systemFontOfSize:18.0];
+    CGSize imageSize = button.imageView.frame.size;
+    button.titleEdgeInsets = UIEdgeInsetsMake(-imageSize.width, -10, -24, -imageSize.height);
+    button.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, 10);
 }
 
 - (void)viewDidLayoutSubviews {
@@ -113,7 +120,7 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         } else {
             self.bookMarksVC.view.frame = CGRectMake(0, 1024, 768, 1024);
         }
-    
+        
     } else {
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
