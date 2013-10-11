@@ -25,13 +25,14 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+
         counterX = 0;
         counterY = 0;
 
         CATiledLayer * tiledLayer = (CATiledLayer *)[self layer];
         //tiledLayer.levelsOfDetail = 4;
         //tiledLayer.levelsOfDetailBias = 4;
-        tiledLayer.tileSize = CGSizeMake([MainDataHolder getInstance].tileWidth, [MainDataHolder getInstance].tileHeight);
+        tiledLayer.tileSize = CGSizeMake(723, 630);//CGSizeMake([MainDataHolder getInstance].tileWidth, [MainDataHolder getInstance].tileHeight);
         
         
         mappingMatrix = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"00", @"40",
@@ -107,7 +108,7 @@
     
     CGImageRef image = [self imageForScale:[MainDataHolder getInstance]._scalingFactor row:x col:y coordToDdecide: box.origin.x];
 
-         
+    
     if(NULL != image) {
         CGContextTranslateCTM(context, 0.0, box.size.height);
         CGContextScaleCTM(context, 1.0, -1.0); 
@@ -116,7 +117,7 @@
         
         CGContextDrawImage(context, box, image);
         CGImageRelease(image);
-    } 
+    }
 	
 	// Render label (Setup)
 	/*UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
@@ -137,8 +138,8 @@
 							 [s cStringUsingEncoding:NSMacOSRomanStringEncoding],
 							 [s lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding]);
  
-    
-  */
+    */
+  
 }
 
 -(CGImageRef) imageForScale:(CGFloat)scale row:(int)row col:(int)col coordToDdecide: (CGFloat) ider {

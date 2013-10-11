@@ -92,8 +92,14 @@
 - (void) calculateScalingFactor : (NSArray *) pageData {
     NSLog(@"pageData = %@",pageData);
     
-    magazineWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz1"] floatValue];
-    magazineHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz1"] floatValue];
+    magazineWidth = 768;//[[[pageData objectAtIndex:0] objectForKey:@"imgWz1"] floatValue];
+    magazineHeight = 1004;[[[pageData objectAtIndex:0] objectForKey:@"imgHz1"] floatValue];
+    
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        pageScrollView.frame = CGRectMake(0, 0, 768, 1004); // -TOP_VIEW_HEIGHT
+    } else {
+        pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
+    }
     
     magazineZoomWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz2"] floatValue];
     magazineZoomHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz2"] floatValue];
@@ -102,41 +108,34 @@
     horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
     verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
     
-    [MainDataHolder getInstance].tileWidth = (magazineZoomWidth) / horizontalBlocks;
-    [MainDataHolder getInstance].tileHeight = (magazineZoomHeight) / verticalBlocks;
+    [MainDataHolder getInstance].tileWidth = 500;//roundf((magazineZoomWidth) / horizontalBlocks);
+    [MainDataHolder getInstance].tileHeight = 500;//roundf((magazineZoomHeight) / verticalBlocks);
     
-    if([MainDataHolder getInstance].tileHeight < [MainDataHolder getInstance].tileWidth) {
-        [MainDataHolder getInstance].tileWidth = [MainDataHolder getInstance].tileHeight;
-    } else {
-        [MainDataHolder getInstance].tileHeight = [MainDataHolder getInstance].tileWidth;
-    }
+    /*if([MainDataHolder getInstance].tileHeight < [MainDataHolder getInstance].tileWidth) {
+     [MainDataHolder getInstance].tileWidth = [MainDataHolder getInstance].tileHeight;
+     } else {
+     [MainDataHolder getInstance].tileHeight = [MainDataHolder getInstance].tileWidth;
+     }*/
+    
     
     tileWidth = [MainDataHolder getInstance].tileWidth;
     tileHeight = [MainDataHolder getInstance].tileHeight;
+    NSLog(@"tileHeight = %f",tileHeight);
     
-    if([MainDataHolder getInstance].tileWidth > 500.0f) {
-
-        [MainDataHolder getInstance].tileWidth = 500.0f * 2.0f;
-    } else {
-        [MainDataHolder getInstance].tileWidth  *= 2.0f;
-    }
+    CGFloat contentsScale = [[UIScreen mainScreen] scale];
     
-    if([MainDataHolder getInstance].tileHeight > 500.0f) {
-
-        [MainDataHolder getInstance].tileHeight = 500.0f * 2.0f;
-    } else {
-        [MainDataHolder getInstance].tileHeight *= 2.0f;
-    }
-    
-   
+    [MainDataHolder getInstance].tileHeight *= contentsScale;
+    [MainDataHolder getInstance].tileWidth *= contentsScale;
     
     CGFloat scalingFactorWidth = (tileWidth * horizontalBlocks) / magazineWidth;
     CGFloat scalingFactorHeight = (tileHeight * verticalBlocks) / magazineHeight;
     
-    _scalingFactor = (scalingFactorWidth + scalingFactorHeight) / 2.0f;//MIN(scalingFactorWidth, scalingFactorHeight);
-
+    _scalingFactor = MAX(scalingFactorWidth, scalingFactorHeight);
+    //(scalingFactorHeight + scalingFactorWidth) / 2.0f;
+     
     
     [MainDataHolder getInstance]._scalingFactor = _scalingFactor;
+    NSLog(@"_scalingFactor = %f",[MainDataHolder getInstance]._scalingFactor);
     
 }
 
@@ -204,7 +203,7 @@
     
     @autoreleasepool {
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-            pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*768, 1024);
+            pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*768, magazineHeight);
         } else {
             pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, 768-2*44);
         }
@@ -257,10 +256,13 @@
 
     pageScrollView = [[UIScrollView alloc] init];
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        pageScrollView.frame = CGRectMake(0, 0, 768, 1024); // -TOP_VIEW_HEIGHT
+        pageScrollView.frame = CGRectMake(0, 0, 768, magazineHeight); // -TOP_VIEW_HEIGHT
     } else {
         pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
     }
+    
+    NSLog(@"pageScrollView = %@",NSStringFromCGRect(pageScrollView.frame));
+    
     pageScrollView.tag = 7658943;
     pageScrollView.delegate = self;
     pageScrollView.pagingEnabled = YES;
@@ -472,32 +474,19 @@
 
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
-    if(scrollView.tag != 7658943 && scale > 1.0) {
+    if(scrollView.tag != 7658943 && scale >= 1.0f) {
         
         CGFloat widther = tileWidth * horizontalBlocks;
-        CGFloat heighter = tileHeight * verticalBlocks;
+        CGFloat heighter = tileHeight * verticalBlocks;        
         
-        NSLog(@"WIDTH = %f", widther);
-        NSLog(@"HEIGHT = %f", heighter);
-        
-        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-            //tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 2000, 3000)];
-            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, widther, heighter)];
-            scrollView.contentSize = CGSizeMake(widther, heighter);
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {            
+            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 1446.144f, 1928.192f)];
+            //pageScrollView.contentSize = CGSizeMake(1536, 2000);
+            scrollView.contentSize = CGSizeMake(1446.144f, 1928.192f);
         } else {
             tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, heighter, widther)];  
         }
         
-        /*if(globalPage == 0) {
-            scrollViewInd1 = 1;
-            scrollViewInd2 = 2;
-        } else if (globalPage == 1) {
-            scrollViewInd1 = 3;
-            scrollViewInd2 = 4;
-        } else {
-            scrollViewInd1 = globalPage + globalPage + 1;
-            scrollViewInd2 = globalPage + globalPage + 2;
-        } */
         
         if(scrollViewIndex == 0) {
             scrollViewInd1 = 1;
@@ -518,7 +507,7 @@
     
         // TODO: Enable for drawing bigger image
         [scrollView addSubview:tlView];
-        [tlView.layer setNeedsDisplay];
+        
     } else if (scale == 1.0) {
         [tlView removeFromSuperview];
         scrollViewIndex = oldScrollViewIndex;
@@ -796,7 +785,7 @@
         ReaderView * newPageView = nil;
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             
-            newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 1024) withLeftImageView:firstImage withRightImageView:nil withLeftFrame:CGRectMake(0, 0, pageWidth, 1024) withRightFrame:CGRectZero];
+            newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, magazineHeight) withLeftImageView:firstImage withRightImageView:nil withLeftFrame:CGRectMake(0, 0, pageWidth, magazineHeight) withRightFrame:CGRectZero];
             
         } else {
             newPageView = [[ReaderView alloc] initWithFrameAndImages:CGRectMake(pagXPos, 0, pageWidth, 768) withLeftImageView:firstImage withRightImageView:secondImage withLeftFrame:CGRectMake(0, 0, pageWidth/2, 768) withRightFrame:CGRectMake(pageWidth/2, 0, pageWidth/2, 768)];

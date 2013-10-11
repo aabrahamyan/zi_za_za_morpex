@@ -678,7 +678,7 @@
     
     UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(130, 0, 110, 30)];
 	title.backgroundColor = [UIColor clearColor];
-    title.font = [UIFont systemFontOfSize:17.5] ;
+    title.font = [UIFont systemFontOfSize:17.5];
 	title.returnKeyType = UIReturnKeyDone;
 	title.delegate = self;
     title.text = [[bookMarkData objectAtIndex: indexPath.row] objectAtIndex: 0];

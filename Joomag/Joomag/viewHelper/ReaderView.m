@@ -34,32 +34,32 @@
             self.rightImageView = [[UIImageView alloc] initWithImage:rightImageView];
             self.rightImageView.frame = rightFrame;
         }
-        self.clipsToBounds = YES;
+        
         
         self.minimumZoomScale = 1.0f;
-        //self.maximumZoomScale = 1.955f;
-        //self.zoomScale = 1.955f;
-        self.maximumZoomScale = [MainDataHolder getInstance]._scalingFactor;
-        self.zoomScale = [MainDataHolder getInstance]._scalingFactor;
+        self.maximumZoomScale = 1.883f;
+        self.zoomScale = 1.883f;
+        //self.maximumZoomScale = [MainDataHolder getInstance]._scalingFactor;
+        //self.zoomScale = [MainDataHolder getInstance]._scalingFactor;
         
         self.contentSize = frame.size; 
 //        self.showsHorizontalScrollIndicator = NO;
 //        self.showsVerticalScrollIndicator = NO;
-        self.backgroundColor = [UIColor redColor];
+
         
         self.frame = frame;
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-            self.frame = CGRectMake(0, 0, 768, 1024);
+            self.frame = CGRectMake(0, 0, 768, 1004);
         } else {
             self.frame = CGRectMake(0, 0, 1024, 768);
         }
         
         self.parentOfImages = [[UIView alloc] initWithFrame:frame];
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-            self.parentOfImages.frame = CGRectMake(0, 0, 768, 1024);
+            self.parentOfImages.frame = CGRectMake(0, 0, 768, 1004);//CGRectMake(0, 0, 768, 1024);
         } else {
             
-            self.parentOfImages.frame = CGRectMake(0, 0, 1024, 768);
+            self.parentOfImages.frame = CGRectMake(0, 0, 1024, 768);//CGRectMake(0, 0, 1024, 768);
             
         }
         
