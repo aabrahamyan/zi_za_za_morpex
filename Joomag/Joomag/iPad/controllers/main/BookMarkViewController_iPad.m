@@ -10,7 +10,9 @@
 #import "Util.h"
 #import "MainDataHolder.h"
 #import "MagazinRecord.h"
+#import "SIAlertView.h"
 
+#define TEST_UIAPPEARANCE 1
 #define BookMark_Tag 666600
 
 @interface BookMarkViewController_iPad () {
@@ -133,6 +135,28 @@
                                                                           action:@selector(dismissKeyboardOnScreenTap)];
     
     [self.view addGestureRecognizer:tap];
+    
+    
+#if TEST_UIAPPEARANCE
+    [[SIAlertView appearance] setMessageFont:[UIFont systemFontOfSize:16]];
+    [[SIAlertView appearance] setTitleColor:[UIColor whiteColor]];
+    [[SIAlertView appearance] setMessageColor:[UIColor grayColor]];
+    [[SIAlertView appearance] setCornerRadius:12];
+    [[SIAlertView appearance] setShadowRadius:20];
+    [[SIAlertView appearance] setViewBackgroundColor:RGBA(49, 49, 49, 1)];
+    [[SIAlertView appearance] setButtonColor:[UIColor whiteColor]];
+    [[SIAlertView appearance] setCancelButtonColor:[UIColor whiteColor]];
+    [[SIAlertView appearance] setDestructiveButtonColor:[UIColor whiteColor]];
+    
+    [[SIAlertView appearance] setDefaultButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setDefaultButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateHighlighted];
+    
+    [[SIAlertView appearance] setCancelButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setCancelButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateHighlighted];
+    
+    [[SIAlertView appearance] setDestructiveButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setDestructiveButtonImage:[Util imageWithColor: RGBA(214, 77, 76, 1)] forState:UIControlStateHighlighted];
+#endif
     
 }
 
@@ -301,7 +325,7 @@
     [closeBookMarkView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateSelected];
     [closeBookMarkView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateHighlighted];
     closeBookMarkView.showsTouchWhenHighlighted = YES;
-    [closeBookMarkView addTarget:self action:@selector(removeBookMark) forControlEvents:UIControlEventTouchUpInside];
+    [closeBookMarkView addTarget:self action:@selector(removeBookMarkHandler:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell.contentView addSubview: closeBookMarkView];
     
@@ -379,8 +403,39 @@
     [self.view endEditing:YES];
 }
 
-- (void)removeBookMark {
-    NSLog(@"AAAA");
+- (void)removeBookMarkHandler:(id)sender  {
+    UIButton *button = (UIButton *)sender;
+    int buttonTag = button.tag;
+    
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Remove BookMark" andMessage:[[bookMarkData objectAtIndex: buttonTag] objectAtIndex: 0]];
+    [alertView addButtonWithTitle:@"Cancel"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              NSLog(@"Cancel Clicked");
+                          }];
+    [alertView addButtonWithTitle:@"OK"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              NSLog(@"OK Clicked");
+                              
+                              [self removeBookMark: buttonTag];
+                              
+                          }];
+    alertView.titleColor = RGBA(214, 77, 76, 1);
+    alertView.cornerRadius = 0;
+    alertView.buttonFont = [UIFont boldSystemFontOfSize:15];
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+    
+    [alertView show];
+}
+
+- (void)removeBookMark: (int)index {
+    [bookMarkData  removeObjectAtIndex: index];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.bookMarkTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.bookMarkTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning
