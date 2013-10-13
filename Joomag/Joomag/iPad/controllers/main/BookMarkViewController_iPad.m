@@ -88,6 +88,7 @@
     
     //----------------------------Filter Labels With Border ------------------------
     filterLabels = [[UIView alloc] init];
+    filterLabels.backgroundColor = [UIColor clearColor];
     [filterLabels addSubview: [self titleLabelsWithBorder]];
     
     [topBar addSubview: filterLabels];
@@ -166,12 +167,12 @@
     
     if (iOrientation == UIDeviceOrientationPortrait) {
         topBarFrame = CGRectMake(0, 0, 768, 44);
-        filterLabelsFrame = CGRectMake(620, 0, 300, 30);
+        filterLabelsFrame = CGRectMake(620, 0, 300, 44);
         noBookMarksContainerFrame = CGRectMake(259, 80, 250, 100);
         bookMarkViewFrame = CGRectMake(114, 100, 540, 850);
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
-        filterLabelsFrame = CGRectMake(880, 0, 300, 30);
+        filterLabelsFrame = CGRectMake(880, 0, 300, 44);
         noBookMarksContainerFrame = CGRectMake(387, 80, 250, 100);
         bookMarkViewFrame = CGRectMake(242, 100, 540, 590);
     }
@@ -184,10 +185,10 @@
 
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 10, 280, 30)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, 44)];
     
-    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)]; label1.text = @"DATE";
-    label2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 50, 20)]; label2.text = @"TITLE";
+    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 44)]; label1.text = @"DATE";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 41, 44)]; label2.text = @"TITLE";
     
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, nil];
     
@@ -200,14 +201,14 @@
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
         ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
         ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
-        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
+        // [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         
         // Add Gesture Recognizer To Label
         UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
         [((UILabel *)[labelArr objectAtIndex:i]) addGestureRecognizer: labelTap];
     }
     
-    border = [[UIView alloc] initWithFrame:CGRectMake(0, 20, label1.frame.size.width, 2)];
+    border = [[UIView alloc] initWithFrame:CGRectMake(0, 31, label1.frame.size.width, 2)];
     border.backgroundColor = [UIColor redColor];
     
     [container addSubview:border];
