@@ -13,6 +13,7 @@
     UIButton *closeButtonView;
     UIButton *signInBtn;
     UIView   *registrationView;
+    UIView   *notificationView;
 }
 
 @end
@@ -115,8 +116,9 @@
     
      // -------------------------- Construct Views -----------------------------
     [self constructRegistrationView];
-    
     ((UIButton *)[self.tabsView.subviews objectAtIndex: 0]).selected = YES;
+    
+    [self cunstructNotificationView];
     
     // ----------------------------------------------------------------------------
     
@@ -231,10 +233,12 @@
     
     switch (buttonTag) {
         case 87654321:
+            notificationView.hidden = YES;
             registrationView.hidden = NO;
             break;
         case 87654322:
-            
+            registrationView.hidden = YES;
+            notificationView.hidden = NO;
             break;
             
         case 87654323:
@@ -410,6 +414,127 @@
     [self.view addSubview:registrationView];
 }
 
+- (void)cunstructNotificationView {
+    
+    notificationView = [[UIView alloc] initWithFrame: CGRectMake(260, 130, 500, 250)];
+    notificationView.backgroundColor = [UIColor clearColor];
+    notificationView.hidden = YES;
+    
+    [self.view addSubview: notificationView];
+    
+    UILabel *notificationTitle1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
+    notificationTitle1.font = [UIFont systemFontOfSize: 18.0f];
+    notificationTitle1.textColor = [UIColor whiteColor];
+    notificationTitle1.numberOfLines = 2;
+    notificationTitle1.textAlignment = NSTextAlignmentLeft;
+    notificationTitle1.backgroundColor = [UIColor clearColor];
+    notificationTitle1.text = @"Manage Notifications Settings";
+    
+    [notificationView addSubview: notificationTitle1];
+    
+    UILabel *notificationTitle2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 350, 40)];
+    notificationTitle2.font = [UIFont systemFontOfSize: 14.0f];
+    notificationTitle2.textColor = [UIColor whiteColor];
+    notificationTitle2.numberOfLines = 2;
+    notificationTitle2.textAlignment = NSTextAlignmentLeft;
+    notificationTitle2.backgroundColor = [UIColor clearColor];
+    notificationTitle2.text = @"Visit the iOS Settings menu to enable and disable Push Notifications for Joomag.";
+    
+    [notificationView addSubview: notificationTitle2];
+    
+    [notificationView addSubview: [self createLabelsInNotificationViewWithTitle: @"New Issues"
+                                                                           desc: @"Alert me when new issues are available."
+                                                                          frame: CGRectMake(0, 120, 450, 60)
+                                                                         andTag: 550111
+                                   ]];
+    
+    [notificationView addSubview: [self createLabelsInNotificationViewWithTitle: @"Renewals"
+                                                                           desc: @"Alert me when I am near the end of subscription."
+                                                                          frame: CGRectMake(0, 180, 450, 60)
+                                                                         andTag: 550112
+                                   ]];
+    
+    
+}
+
+- (UIView *) createLabelsInNotificationViewWithTitle: (NSString *)title
+                                                desc: (NSString *)desc
+                                               frame: (CGRect)frame
+                                              andTag: (int)tag
+{
+    UIView *container = [[UIView alloc] initWithFrame: frame];
+    container.backgroundColor = [UIColor clearColor];
+    
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, 120, 20)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.font = [UIFont systemFontOfSize: 19.0f];
+    titleLabel.text = title;
+    
+    [container addSubview: titleLabel];
+    
+    UILabel * descLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 20, 350, 20)];
+    descLabel.backgroundColor = [UIColor clearColor];
+    descLabel.textColor = [UIColor grayColor];
+    descLabel.textAlignment = NSTextAlignmentLeft;
+    descLabel.font = [UIFont systemFontOfSize: 14.0f];
+    descLabel.text = desc;
+    
+    [container addSubview: descLabel];
+    
+    UIButton *checkbox = [UIButton buttonWithType:UIButtonTypeCustom];
+    checkbox.frame = CGRectMake(400,0,44,44);
+    checkbox.backgroundColor = [UIColor clearColor];
+    [checkbox setImage:[UIImage imageNamed:@"notselectedcheckbox.png"] forState:UIControlStateNormal];
+    [checkbox setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateSelected];
+    [checkbox setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateHighlighted];
+    checkbox.adjustsImageWhenHighlighted=YES;
+    checkbox.userInteractionEnabled = YES;
+    [checkbox setSelected: YES];
+    checkbox.tag = tag;
+    [checkbox addTarget:self  action:@selector(notificationCheckboxSelected:) forControlEvents:UIControlEventTouchDown];
+    
+    [container addSubview: checkbox];
+    
+    return container;
+}
+
+-(void)notificationCheckboxSelected:(id)sender
+{
+    NSLog(@"notificationCheckboxSelected");
+    
+    UIButton *button = (UIButton *)sender;
+    int buttonTag = button.tag;
+    
+    switch (buttonTag) {
+        case 550111:
+            
+            //New Issues CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        case 550112:
+            
+            //Renewals CheckBox Handler
+            if (button.isSelected) {
+                [button setSelected: NO];
+            } else {
+                [button setSelected: YES];
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+}
 
 
 /*
