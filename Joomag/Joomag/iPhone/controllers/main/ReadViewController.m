@@ -71,6 +71,7 @@
     
     CGFloat tileWidth;
     CGFloat tileHeight;
+    CGSize oldCVSize;
     
     float _scalingFactor;
 }
@@ -482,6 +483,7 @@
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {            
             tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 1446.144f, 1928.192f)];
             //pageScrollView.contentSize = CGSizeMake(1536, 2000);
+            oldCVSize = scrollView.contentSize;
             scrollView.contentSize = CGSizeMake(1446.144f, 1928.192f);
         } else {
             tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, heighter, widther)];  
@@ -510,14 +512,13 @@
         
     } else if (scale == 1.0) {
         [tlView removeFromSuperview];
+        scrollView.contentSize = oldCVSize;
         scrollViewIndex = oldScrollViewIndex;
     }
 }
 
 
 - (void) scrollViewDidZoom:(UIScrollView *)scrollView {
-//    UIView * view = (UIView*) [pageViews objectAtIndex:0];
-//    pageScrollView.contentSize = view.bounds.size;
       tlView.hidden = YES;
 }
 
