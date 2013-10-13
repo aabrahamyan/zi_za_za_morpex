@@ -14,6 +14,7 @@
     UIButton *signInBtn;
     UIView   *registrationView;
     UIView   *notificationView;
+    UIView   *aboutView;
 }
 
 @end
@@ -119,6 +120,7 @@
     ((UIButton *)[self.tabsView.subviews objectAtIndex: 0]).selected = YES;
     
     [self cunstructNotificationView];
+    [self cunstructAboutView];
     
     // ----------------------------------------------------------------------------
     
@@ -234,15 +236,19 @@
     switch (buttonTag) {
         case 87654321:
             notificationView.hidden = YES;
+            aboutView.hidden = YES;
             registrationView.hidden = NO;
             break;
         case 87654322:
             registrationView.hidden = YES;
+            aboutView.hidden = YES;
             notificationView.hidden = NO;
             break;
             
         case 87654323:
-            
+            registrationView.hidden = YES;
+            notificationView.hidden = YES;
+            aboutView.hidden = NO;
             break;
             
         case 87654324:
@@ -536,6 +542,56 @@
     
 }
 
+- (void)cunstructAboutView {
+    
+    aboutView = [[UIView alloc] initWithFrame: CGRectMake(260, 100, 480, 500)];
+    aboutView.backgroundColor = [UIColor clearColor];
+    aboutView.hidden = YES;
+    
+    [self.view addSubview: aboutView];
+    
+    UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
+    logo.frame = CGRectMake(160, 0, 160, 90);
+    
+    [aboutView addSubview: logo];
+    
+    UILabel * aboutTitleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 110, 480, 20)];
+    aboutTitleLabel.backgroundColor = [UIColor clearColor];
+    aboutTitleLabel.textColor = [UIColor whiteColor];
+    aboutTitleLabel.textAlignment = NSTextAlignmentCenter;
+    aboutTitleLabel.font = [UIFont systemFontOfSize: 18.0f];
+    aboutTitleLabel.text = @"About Joomag";
+    
+    [aboutView addSubview: aboutTitleLabel];
+    
+    UITextView *text = [[UITextView alloc] initWithFrame: CGRectMake(0, 140, 480, 270)];
+    text.backgroundColor = [UIColor clearColor];
+    text.font = [UIFont fontWithName:@"proximanovabold" size:14.0f];
+    text.textColor = [UIColor whiteColor];
+    text.editable = NO;
+    text.text = @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    
+    [aboutView addSubview: text];
+    
+    UILabel * versionLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 410, 480, 20)];
+    versionLabel.backgroundColor = [UIColor clearColor];
+    versionLabel.textColor = [UIColor grayColor];
+    versionLabel.textAlignment = NSTextAlignmentCenter;
+    versionLabel.font = [UIFont systemFontOfSize: 12.0f];
+    versionLabel.text = @"Version 1.0.0";
+    
+    [aboutView addSubview: versionLabel];
+    
+    UILabel * aboutDescLabel = [[UILabel alloc] initWithFrame: CGRectMake(70, 430, 330, 40)];
+    aboutDescLabel.backgroundColor = [UIColor clearColor];
+    aboutDescLabel.textColor = [UIColor grayColor];
+    aboutDescLabel.textAlignment = NSTextAlignmentCenter;
+    aboutDescLabel.font = [UIFont systemFontOfSize: 12.0f];
+    aboutDescLabel.numberOfLines = 2;
+    aboutDescLabel.text = @"1009-2013 Joomag LLC. All rights reserved. Covered by US. Patent No. 8,171,630 and 7,290,365";
+    
+    [aboutView addSubview: aboutDescLabel];
+}
 
 /*
 - (BOOL)shouldAutorotate {
