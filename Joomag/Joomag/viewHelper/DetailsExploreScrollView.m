@@ -34,7 +34,7 @@
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;        
         //self.backgroundColor = [UIColor redColor];
-        
+        NSLog(@"asasasasasas");
         // Load the initial set of pages that are on screen
         
     }

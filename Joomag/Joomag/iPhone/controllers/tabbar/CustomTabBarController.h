@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MoreViewController;
-@class SettingsViewController;
+@class SettingsViewController_iPad;
 @class BookMarkViewController;
 @class MoreViewController;
 
@@ -45,7 +45,7 @@
 @property (nonatomic, assign) CGFloat height;
 
 //----------------------- Mixed Attributes --------------------------//
-@property (nonatomic, strong) SettingsViewController * settingsVC;
+@property (nonatomic, strong) SettingsViewController_iPad * settingsVC;
 @property (nonatomic, strong) BookMarkViewController * bookMarksVC;
 
 //----------------------- Instance Methods --------------------------//

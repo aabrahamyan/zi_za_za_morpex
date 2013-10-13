@@ -7,7 +7,7 @@
 //
 
 #import "CustomTabBarController.h"
-#import "SettingsViewController.h"
+#import "SettingsViewController_iPad.h"
 #import "BookMarkViewController.h"
 #import "AppDelegate.h"
 #import "ExploreViewController.h"
@@ -54,8 +54,8 @@ static CustomTabBarController * customTabBarController;
     
 }
 
-- (SettingsViewController *) getSettingsViewController {
-    return [[SettingsViewController alloc] init];
+- (SettingsViewController_iPad *) getSettingsViewController {
+    return [[SettingsViewController_iPad alloc] init];
 }
 
 - (BookMarkViewController *) getBookMarksViewController {
@@ -282,8 +282,8 @@ static CustomTabBarController * customTabBarController;
     self.settingsVC = [self getSettingsViewController];
 
     [self.view addSubview: self.settingsVC.view];    
+    
     [self.settingsVC animateUpAndDown:YES];
-   
 }
 
 - (void) showBookMarks {

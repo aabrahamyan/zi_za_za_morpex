@@ -9,11 +9,10 @@
 #import "MyLIbMagazinesTabelView.h"
 #import "Util.h"
 #import "UIImageView+WebCache.h"
+#import "MainDataHolder.h"
 
 @implementation MyLIbMagazinesTabelView {
     NSMutableArray *myLibData; // TODO: real data
-    NSMutableArray *group1;  // TODO: real data
-    NSMutableArray *group2; // TODO: real data
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -22,18 +21,11 @@
     if (self) {
         // Initialization code
         
-        group1 = [NSMutableArray  arrayWithObjects:
-                  [NSArray arrayWithObjects:@"Cat title 1",@"title 1",@"General Information", @"placeholder.png", nil],
-                  nil];
+
         
-        group2 = [NSMutableArray  arrayWithObjects:
-                  [NSArray arrayWithObjects:@"Cat title 2",@"title 1",@"des 2", @"placeholder.png", nil],
-                  [NSArray arrayWithObjects:@"Cat title 2",@"title 2",@"sep 1", @"placeholder.png", nil],
-                  [NSArray arrayWithObjects:@"Cat title 2",@"title 3",@"jul 3", @"placeholder.png", nil],
-                  [NSArray arrayWithObjects:@"Cat title 2",@"title 4",@"jul 10", @"placeholder.png", nil],
-                  nil];
+        myLibData =  [MainDataHolder getInstance].myLibMagazines;
         
-        myLibData =  [NSMutableArray  arrayWithObjects: group1, group2, nil];
+        
         
         self.delegate = self;
         self.dataSource = self;
@@ -52,7 +44,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
-    return ((section == 0) ? [group1 count] : [group2 count]); // TODO
+    return ((section == 0) ? [[myLibData objectAtIndex:0] count] : [[myLibData objectAtIndex:1] count]); // TODO
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,7 +68,7 @@
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(110, 35, 130, 20)];
 	title.backgroundColor = [UIColor clearColor];
     title.font = [UIFont boldSystemFontOfSize:17.5] ;
-    title.text = [[group2 objectAtIndex: indexPath.row] objectAtIndex: 1];
+    title.text = [[[myLibData objectAtIndex:1] objectAtIndex: indexPath.row] objectAtIndex: 1];
     title.textAlignment = NSTextAlignmentLeft;
 
 	title.textColor = [UIColor whiteColor];
@@ -87,7 +79,7 @@
     UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(110, 55, 130, 20)];
 	date.backgroundColor = [UIColor clearColor];
     date.font = [UIFont systemFontOfSize:14] ;
-    date.text = [[group2 objectAtIndex: indexPath.row] objectAtIndex: 2];
+    date.text = [[[myLibData objectAtIndex:1] objectAtIndex: indexPath.row] objectAtIndex: 2];
     date.textAlignment = NSTextAlignmentLeft;
     
 	date.textColor = [UIColor whiteColor];
@@ -136,10 +128,10 @@
     switch (section)
     {
         case 0:
-            sectionName = [[group1 objectAtIndex: 0] objectAtIndex: 0];
+            sectionName = [[[myLibData objectAtIndex:0] objectAtIndex: 0] objectAtIndex: 0];
             break;
         case 1:
-            sectionName = [[group2 objectAtIndex: 0] objectAtIndex: 0];
+            sectionName = [[[myLibData objectAtIndex:1] objectAtIndex: 0] objectAtIndex: 0];
             break;
             // ...
         default:

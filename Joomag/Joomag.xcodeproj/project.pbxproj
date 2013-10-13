@@ -72,10 +72,9 @@
 		2CB7890B17B2F66A009ECE98 /* tabBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */; };
 		2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890C17B30496009ECE98 /* Settings@2x.png */; };
 		2CB7891217B30499009ECE98 /* settingsLabelsBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */; };
-		2CB7891317B30499009ECE98 /* settingsLandBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */; };
 		2CB7891417B30499009ECE98 /* settingsTextFieldBG_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7890F17B30498009ECE98 /* settingsTextFieldBG_iPad@2x.png */; };
 		2CB7891517B30499009ECE98 /* submitSettings_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7891017B30499009ECE98 /* submitSettings_iPad@2x.png */; };
-		2CC3E45C17B388CD00801BC9 /* realSettingsBG_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3E45B17B388CD00801BC9 /* realSettingsBG_iPad@2x.png */; };
+		2CC3E45C17B388CD00801BC9 /* settingsLandBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC3E45B17B388CD00801BC9 /* settingsLandBG@2x.png */; };
 		2CC4247E17A6DE17007A494E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4247D17A6DE17007A494E /* Constants.m */; };
 		2CC4248117A6DE23007A494E /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4248017A6DE23007A494E /* Util.m */; };
 		2CC450B117BADBC200DE806E /* MagazinesListParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC450B017BADBC200DE806E /* MagazinesListParser.m */; };
@@ -170,7 +169,7 @@
 		5AC6FFF4179B33AF0062736F /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6FFF3179B33AF0062736F /* DataHolder.m */; };
 		5ACAC1961799836F0029A07F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC1951799836F0029A07F /* MobileCoreServices.framework */; };
 		5ACAC198179983760029A07F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACAC197179983760029A07F /* SystemConfiguration.framework */; };
-		5AD4207317DF4D6F00E0C212 /* settingsPortBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */; };
+		5AD4207317DF4D6F00E0C212 /* settingsPortBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4207217DF4D6F00E0C212 /* settingsPortBg@2x.png */; };
 		5AD69EEF17BBC006008E4865 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EEE17BBC006008E4865 /* ReadViewController.m */; };
 		5AD69EF217BBC465008E4865 /* ReadViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD69EF117BBC464008E4865 /* ReadViewController_iPad.m */; };
 		5ADF07E817BE4B4000F0AD35 /* backButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF07E717BE4B4000F0AD35 /* backButton_iPad@2x.png */; };
@@ -278,10 +277,9 @@
 		2CB7890A17B2F66A009ECE98 /* tabBg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBg_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB7890C17B30496009ECE98 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
 		2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLabelsBG@2x.png"; sourceTree = "<group>"; };
-		2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLandBG@2x.png"; sourceTree = "<group>"; };
 		2CB7890F17B30498009ECE98 /* settingsTextFieldBG_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsTextFieldBG_iPad@2x.png"; sourceTree = "<group>"; };
 		2CB7891017B30499009ECE98 /* submitSettings_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitSettings_iPad@2x.png"; sourceTree = "<group>"; };
-		2CC3E45B17B388CD00801BC9 /* realSettingsBG_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "realSettingsBG_iPad@2x.png"; sourceTree = "<group>"; };
+		2CC3E45B17B388CD00801BC9 /* settingsLandBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsLandBG@2x.png"; sourceTree = "<group>"; };
 		2CC4247C17A6DE17007A494E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2CC4247D17A6DE17007A494E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2CC4247F17A6DE23007A494E /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -431,7 +429,7 @@
 		5AC6FFF3179B33AF0062736F /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataHolder.m; path = Joomag/DataHolder.m; sourceTree = SOURCE_ROOT; };
 		5ACAC1951799836F0029A07F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5ACAC197179983760029A07F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsPortBg.png; sourceTree = "<group>"; };
+		5AD4207217DF4D6F00E0C212 /* settingsPortBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsPortBg@2x.png"; sourceTree = "<group>"; };
 		5AD69EED17BBC006008E4865 /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController.h; sourceTree = "<group>"; };
 		5AD69EEE17BBC006008E4865 /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController.m; sourceTree = "<group>"; };
 		5AD69EF017BBC464008E4865 /* ReadViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController_iPad.h; sourceTree = "<group>"; };
@@ -570,12 +568,12 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5A18095E1809EE3200527FA5 /* settings */,
 				2C600B9917FE0B49004A3D01 /* howTo */,
 				2C600B9817FE0B27004A3D01 /* restoreItunes */,
 				2C600B9717FE0B14004A3D01 /* notificationSettings */,
 				5A0FFC4317EF0AE4009B268D /* myLib */,
 				5A4D503317EC4C86007E6BDB /* tabBar */,
-				5AD4207217DF4D6F00E0C212 /* settingsPortBg.png */,
 				5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */,
 				5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */,
 				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */,
@@ -588,16 +586,13 @@
 				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
 				2CA13BC217B3C3BD00D0257F /* aboutJoomag_iPad@2x.png */,
 				2CA13BC317B3C3BD00D0257F /* desc@2x.png */,
-				2CC3E45B17B388CD00801BC9 /* realSettingsBG_iPad@2x.png */,
 				2CB7890C17B30496009ECE98 /* Settings@2x.png */,
 				2CB7890D17B30496009ECE98 /* settingsLabelsBG@2x.png */,
-				2CB7890E17B30497009ECE98 /* settingsLandBG@2x.png */,
 				2CB7890F17B30498009ECE98 /* settingsTextFieldBG_iPad@2x.png */,
 				2CB7891017B30499009ECE98 /* submitSettings_iPad@2x.png */,
 				2CB7890817B2F56A009ECE98 /* tabbarSmbatich@2x.png */,
 				2CB788EB17B2EA25009ECE98 /* bigSeparator.png */,
 				2CB788EC17B2EA25009ECE98 /* closeButton_iPad@2x.png */,
-				2CB788ED17B2EA25009ECE98 /* gear@2x.png */,
 				2CB788EE17B2EA25009ECE98 /* signInButton_iPad@2x.png */,
 				2CB788EF17B2EA25009ECE98 /* separator.png */,
 				2CB788F217B2EA26009ECE98 /* tabBarBook.png */,
@@ -866,6 +861,16 @@
 			name = myLib;
 			sourceTree = "<group>";
 		};
+		5A18095E1809EE3200527FA5 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				5AD4207217DF4D6F00E0C212 /* settingsPortBg@2x.png */,
+				2CC3E45B17B388CD00801BC9 /* settingsLandBG@2x.png */,
+				2CB788ED17B2EA25009ECE98 /* gear@2x.png */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		5A1B582C17DA9F260087214F /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1130,10 +1135,9 @@
 				2CB7890B17B2F66A009ECE98 /* tabBg_iPad@2x.png in Resources */,
 				2CB7891117B30499009ECE98 /* Settings@2x.png in Resources */,
 				2CB7891217B30499009ECE98 /* settingsLabelsBG@2x.png in Resources */,
-				2CB7891317B30499009ECE98 /* settingsLandBG@2x.png in Resources */,
 				2CB7891417B30499009ECE98 /* settingsTextFieldBG_iPad@2x.png in Resources */,
 				2CB7891517B30499009ECE98 /* submitSettings_iPad@2x.png in Resources */,
-				2CC3E45C17B388CD00801BC9 /* realSettingsBG_iPad@2x.png in Resources */,
+				2CC3E45C17B388CD00801BC9 /* settingsLandBG@2x.png in Resources */,
 				2CA13BC417B3C3BD00D0257F /* restoreButton@2x.png in Resources */,
 				2CA13BC517B3C3BD00D0257F /* restoreDescription@2x.png in Resources */,
 				2CA13BC617B3C3BD00D0257F /* aboutJoomag_iPad@2x.png in Resources */,
@@ -1159,7 +1163,7 @@
 				2C7F71C717DF16DC000D492B /* proximanovaregular.ttf in Resources */,
 				2C7F71C817DF16DC000D492B /* proximanovasemibold.ttf in Resources */,
 				2C7F71C917DF16DC000D492B /* proximanovathin.ttf in Resources */,
-				5AD4207317DF4D6F00E0C212 /* settingsPortBg.png in Resources */,
+				5AD4207317DF4D6F00E0C212 /* settingsPortBg@2x.png in Resources */,
 				5A4D502F17EC49D7007E6BDB /* tabBg@2x.png in Resources */,
 				5A4D503517EC4CEA007E6BDB /* barMyLib@2x.png in Resources */,
 				5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */,

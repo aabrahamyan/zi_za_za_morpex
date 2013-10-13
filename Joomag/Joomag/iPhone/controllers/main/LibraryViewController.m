@@ -126,9 +126,7 @@
     //magazinesTableView.dataSource = self;
     
     [self.view addSubview: magazinesTableView];
-    
-    
-    
+
     if (!fbUtil.session.isOpen) {
         // create a fresh session object
         [fbUtil createNewSession];
@@ -144,11 +142,11 @@
             [fbUtil openSessionWithCompletionHandler];
             
         } else {
-            loginContainer.hidden = NO;
+            loginContainer.hidden = YES; // TOD: NO
             noMagazines = NO; // TODO
             
             if (!noMagazines) {
-                filterLabels.hidden = YES;
+                filterLabels.hidden = NO; // TODO: YES
             }
             
         }
@@ -158,7 +156,6 @@
 - (UIView *)titleLabelsWithBorder {
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 10, self.view.frame.size.width,
                                                                        self.view.frame.size.height)];
-    
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)]; label1.text = @"DATE";
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 30, 20)]; label2.text = @"TITLE";
     label3 = [[UILabel alloc] initWithFrame:CGRectMake(250, 0, 30, 20)]; label3.text = @"EDIT";

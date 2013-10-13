@@ -108,10 +108,10 @@
     [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateHighlighted];
     backButtonView.showsTouchWhenHighlighted = YES;
     [backButtonView addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    backButtonView.hidden = YES;
     
     [topBar addSubview: backButtonView];
 
-    
     //---------------------------- Scroll View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 100, 320, 180)];

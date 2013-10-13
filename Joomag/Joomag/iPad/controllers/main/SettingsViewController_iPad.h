@@ -8,6 +8,12 @@
 
 #import "SettingsViewController.h"
 
-@interface SettingsViewController_iPad : SettingsViewController
+@interface SettingsViewController_iPad : SettingsViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) UIImageView * backgroundImageView;
+@property (nonatomic, strong) UIView * tabsView;
+
+@property bool isOpen;
+- (void) animateUpAndDown: (BOOL) isUP;
 
 @end

@@ -11,6 +11,8 @@
 @class HelpView;
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate> {
+    
+    /*
     UIButton * closeButtonView;
     UIImageView * gearView;
     UILabel * settingsLabel;
@@ -62,8 +64,10 @@
     HelpView * helpView;
     //----------- Restore Container ----//
     UIView * restoreView;
+    */
 }
 
+/*
 @property bool isOpen;
 
 //--------- Tabs Container ---------------//
@@ -77,5 +81,6 @@
 
 
 - (void) animateUpAndDown: (BOOL) isUP;
+*/
 
 @end

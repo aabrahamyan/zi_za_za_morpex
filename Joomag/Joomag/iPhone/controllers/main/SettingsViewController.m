@@ -16,10 +16,21 @@
 
 @implementation SettingsViewController
 
+- (void) loadView {
+    [super loadView];
+    
+}
+
+- (void) didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+/*
 - (void) animateDown {
     [self animateUpAndDown:NO];
 }
 
+ 
 - (void) loadView {
     [super loadView];
     
@@ -32,101 +43,6 @@
     
     //--------------- Draw Here -----------------//
 
-    closeButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButtonView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateNormal];
-    [closeButtonView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateSelected];
-    [closeButtonView setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateHighlighted];
-    closeButtonView.showsTouchWhenHighlighted = YES;
-    [closeButtonView addTarget:self action:@selector(animateDown) forControlEvents:UIControlEventTouchUpInside];
-    
-    gearView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"gear"]];
-    
-    settingsLabel = [[UILabel alloc] init];
-    settingsLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    settingsLabel.textColor = [UIColor grayColor];
-    settingsLabel.backgroundColor = [UIColor clearColor];
-    settingsLabel.text = @"Settings";
-    
-    signInButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [signInButton setImage:[Util imageNamedSmart:@"signInButton"] forState:UIControlStateNormal];
-    [signInButton setImage:[Util imageNamedSmart:@"signInButton"] forState:UIControlStateSelected];
-    [signInButton setImage:[Util imageNamedSmart:@"signInButton"] forState:UIControlStateHighlighted];
-    signInButton.showsTouchWhenHighlighted = YES;
-    
-    [self.view addSubview:closeButtonView];
-    [self.view addSubview:gearView];
-    [self.view addSubview:settingsLabel];
-    [self.view addSubview:signInButton];
-
-    accountSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    accountSettingsButton.backgroundColor = [UIColor clearColor]; 
-    accountSettingsButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    accountSettingsButton.tag = 8765432;
-    [accountSettingsButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
-
-    [accountSettingsButton setTitle:@"Account Settings" forState:UIControlStateNormal];
-    [accountSettingsButton setTitle:@"Account Settings" forState:UIControlStateSelected];
-    [accountSettingsButton setTitle:@"Account Settings" forState:UIControlStateHighlighted];
-    
-    [accountSettingsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [accountSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [accountSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    
-    [accountSettingsButton setSelected:YES];
- 
-    [self.tabsView addSubview:accountSettingsButton];
-    
-    
-    notificationSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    notificationSettingsButton.backgroundColor = [UIColor clearColor];
-    notificationSettingsButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    notificationSettingsButton.tag = 8765431;
-    [notificationSettingsButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [notificationSettingsButton setTitle:@"Notification Settings" forState:UIControlStateNormal];
-    [notificationSettingsButton setTitle:@"Notification Settings" forState:UIControlStateSelected];
-    [notificationSettingsButton setTitle:@"Notification Settings" forState:UIControlStateHighlighted];
-    
-    [notificationSettingsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [notificationSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [notificationSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    
-    [self.tabsView addSubview:notificationSettingsButton];
-    
-    
-    aboutJoomagButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    aboutJoomagButton.backgroundColor = [UIColor clearColor];
-    aboutJoomagButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    aboutJoomagButton.tag = 8765430;
-    [aboutJoomagButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [aboutJoomagButton setTitle:@"About Joomag" forState:UIControlStateNormal];
-    [aboutJoomagButton setTitle:@"About Joomag" forState:UIControlStateSelected];
-    [aboutJoomagButton setTitle:@"About Joomag" forState:UIControlStateHighlighted];
-    
-    [aboutJoomagButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [aboutJoomagButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [aboutJoomagButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    
-    [self.tabsView addSubview:aboutJoomagButton];
-    
-    helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    helpButton.backgroundColor = [UIColor clearColor];
-    helpButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];    
-    helpButton.tag = 8765439;
-    [helpButton addTarget:self action:@selector(toggleButtons:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [helpButton setTitle:@"Help" forState:UIControlStateNormal];
-    [helpButton setTitle:@"Help" forState:UIControlStateSelected];
-    [helpButton setTitle:@"Help" forState:UIControlStateHighlighted];
-    
-    [helpButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [helpButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [helpButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    
-    [self.tabsView addSubview:helpButton];
     
     restoreItunes = [UIButton buttonWithType:UIButtonTypeCustom];
     restoreItunes.backgroundColor = [UIColor clearColor];
@@ -676,9 +592,6 @@
     
     [self.view addSubview:restoreView];
 }
-
-- (void) didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+*/
 
 @end

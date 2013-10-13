@@ -8,7 +8,10 @@
 
 #import "MainDataHolder.h"
 
-@implementation MainDataHolder
+@implementation MainDataHolder {
+    NSMutableArray *group1;  // TODO: real data
+    NSMutableArray *group2; // TODO: real data
+}
 
 static MainDataHolder * mainDataHolder;
 
@@ -25,6 +28,22 @@ static MainDataHolder * mainDataHolder;
         self.highlightedData = [[NSMutableArray alloc] init];
         
         self.categoriesList = [[NSMutableArray alloc] init];
+        
+        
+        
+        
+        group1 = [NSMutableArray  arrayWithObjects:
+                  [NSArray arrayWithObjects:@"Cat title 1",@"title 1",@"General Information", @"placeholder.png", nil],
+                  nil];
+        
+        group2 = [NSMutableArray  arrayWithObjects:
+                  [NSArray arrayWithObjects:@"Cat title 2",@"title 1",@"des 2", @"placeholder.png", nil],
+                  [NSArray arrayWithObjects:@"Cat title 2",@"title 2",@"sep 1", @"placeholder.png", nil],
+                  [NSArray arrayWithObjects:@"Cat title 2",@"title 3",@"jul 3", @"placeholder.png", nil],
+                  [NSArray arrayWithObjects:@"Cat title 2",@"title 4",@"jul 10", @"placeholder.png", nil],
+                  nil];
+        
+        self.myLibMagazines = [NSMutableArray  arrayWithObjects: group1, group2, nil];
     }
     
     return self;

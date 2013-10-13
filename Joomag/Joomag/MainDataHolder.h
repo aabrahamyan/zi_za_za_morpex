@@ -26,6 +26,10 @@
 
 @property (strong, nonatomic) NSMutableArray * bookMarkData;
 
+
+@property (nonatomic, strong) NSMutableArray * myLibMagazines;
+
+
 + (MainDataHolder *) getInstance;
 
 
