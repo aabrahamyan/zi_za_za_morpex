@@ -15,6 +15,7 @@
     UIView   *registrationView;
     UIView   *notificationView;
     UIView   *aboutView;
+    UIView   *restorePurschasesView;
 }
 
 @end
@@ -121,6 +122,7 @@
     
     [self cunstructNotificationView];
     [self cunstructAboutView];
+    [self cunstructRestorePurschasesView];
     
     // ----------------------------------------------------------------------------
     
@@ -237,17 +239,20 @@
         case 87654321:
             notificationView.hidden = YES;
             aboutView.hidden = YES;
+            restorePurschasesView.hidden = YES;
             registrationView.hidden = NO;
             break;
         case 87654322:
             registrationView.hidden = YES;
             aboutView.hidden = YES;
+            restorePurschasesView.hidden = YES;
             notificationView.hidden = NO;
             break;
             
         case 87654323:
             registrationView.hidden = YES;
             notificationView.hidden = YES;
+            restorePurschasesView.hidden = YES;
             aboutView.hidden = NO;
             break;
             
@@ -256,7 +261,10 @@
             break;
             
         case 87654325:
-            
+            registrationView.hidden = YES;
+            notificationView.hidden = YES;
+            aboutView.hidden = YES;
+            restorePurschasesView.hidden = NO;
             break;
             
         default:
@@ -593,6 +601,45 @@
     [aboutView addSubview: aboutDescLabel];
 }
 
+- (void)cunstructRestorePurschasesView {
+    
+    restorePurschasesView = [[UIView alloc] initWithFrame: CGRectMake(260, 100, 480, 500)];
+    restorePurschasesView.backgroundColor = [UIColor clearColor];
+    restorePurschasesView.hidden = YES;
+    
+    [self.view addSubview: restorePurschasesView];
+    
+    UILabel *restoreTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 480, 20)];
+    restoreTitle.font = [UIFont systemFontOfSize: 18.0f];
+    restoreTitle.textColor = [UIColor whiteColor];
+    restoreTitle.alpha = 0.7;
+    restoreTitle.textAlignment = NSTextAlignmentCenter;
+    restoreTitle.backgroundColor = [UIColor clearColor];
+    restoreTitle.text = @"Restore iTunes Purchases";
+    
+    [restorePurschasesView addSubview: restoreTitle];
+    
+    UILabel *restoreDesc = [[UILabel alloc] initWithFrame:CGRectMake(70, 50, 340, 100)];
+    restoreDesc.font = [UIFont boldSystemFontOfSize: 14.0f];
+    restoreDesc.textColor = [UIColor grayColor];
+    restoreDesc.alpha = 1;
+    restoreDesc.textAlignment = NSTextAlignmentCenter;
+    restoreDesc.backgroundColor = [UIColor clearColor];
+    restoreDesc.numberOfLines = 3;
+    restoreDesc.text = @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.";
+    
+    [restorePurschasesView addSubview: restoreDesc];
+    
+    UIButton *restoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    restoreBtn.frame = CGRectMake(160, 170, 140, 40);
+    restoreBtn.backgroundColor = RGBA(214, 77, 76, 1);
+    [restoreBtn setTitle:@"Restore" forState:UIControlStateNormal];
+    restoreBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [restoreBtn addTarget:self  action:@selector(restorePurschasesHandler) forControlEvents:UIControlEventTouchDown];
+    
+    [restorePurschasesView addSubview: restoreBtn];
+}
+
 /*
 - (BOOL)shouldAutorotate {
     return YES;
@@ -625,6 +672,10 @@
 
 - (void)submitHandler {
     NSLog(@"signInHandler");
+}
+
+- (void)restorePurschasesHandler {
+    NSLog(@"restorePurschasesHandler");
 }
 
 
