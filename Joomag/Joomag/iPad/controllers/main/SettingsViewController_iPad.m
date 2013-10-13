@@ -27,6 +27,8 @@
     
     NSLog(@"settings_ipad");
     
+    self.view.frame = CGRectMake(0, 1024, 1024, 768); // TODO:
+    
     // ----------------------------- Self View Frame -----------------------------
     
     CGRect frame = self.view.frame;
@@ -137,19 +139,24 @@
     if(isUP) {
         self.isOpen = YES;
         
-        [UIView animateWithDuration:0.3 animations:^{
-            CGRect frame = self.view.frame;
-            frame.origin.y = 0;
-            self.view.frame = frame;
-        }];
+        [UIView beginAnimations:@"popingUP" context:nil];
+        self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        
+        [UIView setAnimationDuration:0.3];
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        
+        [UIView commitAnimations];
+        
     } else {
         self.isOpen = NO;
         
-        [UIView animateWithDuration:0.3 animations:^{
-            CGRect frame = self.view.frame;
-            frame.origin.y = self.view.frame.size.height;
-            self.view.frame = frame;
-        }];
+        [UIView beginAnimations:@"popingUP" context:nil];
+        
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [UIView setAnimationDuration:0.3];
+        self.view.frame = CGRectMake(0, 1024, self.view.frame.size.width, self.view.frame.size.height);
+        
+        [UIView commitAnimations];
     }
 }
 
@@ -170,42 +177,6 @@
     
     self.backgroundImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     signInBtn.frame = CGRectMake(self.view.frame.size.width-120, 0, 88, 44);
-    
-    /*
-    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (iOrientation == UIDeviceOrientationPortrait) {
-        self.tmpDesc.frame = CGRectMake(0, 330, 323, 101);
-        tmpAbout.frame = CGRectMake(250, 105, 500, 520);
-    } else {
-        self.tmpDesc.frame = CGRectMake(358, 54, 323, 101);
-        tmpAbout.frame = CGRectMake(336, 105, 584, 470);
-    }
-
-    restoreItunes.frame = CGRectMake(0, 220, 120, 20);
-    helpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    
-    //-------------- Construct Registration View -----------------//
-    registrationView.frame = CGRectMake(278, 122, 700, 400);
-    joinJoomag.frame = CGRectMake(0, 1, 150, 20);
-    
-    genericBackgroundImage.frame = CGRectMake(0, 54, 287, 44);
-    emailLabel.frame = CGRectMake(5, 64, 80, 20);
-    emailTextField.frame = CGRectMake(105, 63, 165, 20);
-    
-    passBg.frame = CGRectMake(0, 111, 287, 44);
-    passBgRepeat.frame = CGRectMake(0, 155, 287, 44);
-    
-    passwordLabel.frame = CGRectMake(5, 121, 100, 20);
-    passwordTextField.frame = CGRectMake(104, 120, 180, 20);
-    
-    retypeLabel.frame = CGRectMake(5, 165, 80, 20);
-    passwordTextFieldRepeat.frame = CGRectMake(105, 164, 155, 20);
-    
-    termsOfService.frame = CGRectMake(200, 270, 120, 20);
-    
-    submitButton.frame = CGRectMake(0, 242, 175, 44);
-    */
 }
 
 - (UIButton *)constructTabsWithTitle: (NSString *)title
