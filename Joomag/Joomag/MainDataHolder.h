@@ -35,7 +35,12 @@
 
 //----------------- Specific read Properties ---------------//
 @property (nonatomic, assign) CGFloat _scalingFactor;
+
+
 @property (nonatomic, assign) CGFloat tileWidth;
 @property (nonatomic, assign) CGFloat tileHeight;
+
+@property (nonatomic, assign) CGFloat realTileWidth;
+@property (nonatomic, assign) CGFloat realTileHeight;
 
 @end

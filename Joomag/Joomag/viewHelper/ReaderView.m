@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     
     if(self) {                
-        
+
         self.backgroundColor = [UIColor clearColor];
         self.leftImageView = [[UIImageView alloc] initWithImage:leftImageView];
         self.leftImageView.frame = leftFrame;
@@ -37,30 +37,31 @@
         
         
         self.minimumZoomScale = 1.0f;
-        self.maximumZoomScale = 1.883f;
-        self.zoomScale = 1.883f;
-        //self.maximumZoomScale = [MainDataHolder getInstance]._scalingFactor;
-        //self.zoomScale = [MainDataHolder getInstance]._scalingFactor;
-        
-        self.contentSize = frame.size; 
-//        self.showsHorizontalScrollIndicator = NO;
-//        self.showsVerticalScrollIndicator = NO;
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                self.maximumZoomScale = 1.883f;
+                self.zoomScale = 1.883f;
+        } else {
+            self.maximumZoomScale = 1.955f;
+            self.zoomScale = 1.955f;
+        }
 
+        self.contentSize = frame.size;
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
+        
         
         self.frame = frame;
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             self.frame = CGRectMake(0, 0, 768, 1004);
         } else {
-            self.frame = CGRectMake(0, 0, 1024, 768);
+            self.frame = CGRectMake(0, 0, 1024, 748);
         }
         
         self.parentOfImages = [[UIView alloc] initWithFrame:frame];
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-            self.parentOfImages.frame = CGRectMake(0, 0, 768, 1004);//CGRectMake(0, 0, 768, 1024);
+            self.parentOfImages.frame = CGRectMake(0, 0, 768, 1004);
         } else {
-            
-            self.parentOfImages.frame = CGRectMake(0, 0, 1024, 768);//CGRectMake(0, 0, 1024, 768);
-            
+            self.parentOfImages.frame = CGRectMake(0, 0, 1024, 748);
         }
         
         self.parentOfImages.backgroundColor = [UIColor clearColor];

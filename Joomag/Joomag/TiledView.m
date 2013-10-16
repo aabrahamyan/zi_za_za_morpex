@@ -30,10 +30,12 @@
         counterY = 0;
 
         CATiledLayer * tiledLayer = (CATiledLayer *)[self layer];
-        //tiledLayer.levelsOfDetail = 4;
-        //tiledLayer.levelsOfDetailBias = 4;
-        tiledLayer.tileSize = CGSizeMake(723, 630);//CGSizeMake([MainDataHolder getInstance].tileWidth, [MainDataHolder getInstance].tileHeight);
         
+        if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            tiledLayer.tileSize = CGSizeMake(723, 630);
+        } else {
+            tiledLayer.tileSize = CGSizeMake(500.0, 500.0);
+        }        
         
         mappingMatrix = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"00", @"40",
                          @"10", @"50", @"20",@"60",@"01",@"41",@"11",@"51",@"21",@"61",@"31",@"71",@"02",@"42",@"12",@"52",@"22",@"62",@"32",@"72",@"03",@"43",@"13",@"53",@"23",@"63",@"33",@"73",@"04",@"44",@"14",@"54",@"24",@"64",@"34",@"74",@"05",@"45",@"15",@"55",@"25",@"65",@"35",@"75",nil];
@@ -44,33 +46,13 @@
                                , @[@0, @3], @[@1, @3], @[@2, @3],@[@3, @3]
                                , @[@0, @4], @[@1, @4], @[@2, @4],@[@3, @4]
                                , @[@0, @5], @[@1, @5], @[@2, @5],@[@3, @5]];
-        
-        //UIPinchGestureRecognizer * pincher = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didZoom:)];
-        
-        //[self addGestureRecognizer:pincher];
+                
         
     }
     
     return self;
     
 }
-
-- (void) didZoom:(UIPinchGestureRecognizer *)recognizer { 
-    
-    //NSLog(@"Pinch scale: %f", recognizer.scale);
-    //CGAffineTransform transform = CGAffineTransformMakeScale(recognizer.scale, recognizer.scale);
-
-    //self.transform = transform;
-}
-
-- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    
-    return YES;
-    
-}
-
-
-
 
 #pragma mark Tiled layer delegate methods
 
@@ -91,21 +73,13 @@
 	CGFloat y = box.origin.y * contentsScale / tileSize.height;
     
    
-    
-    if(x == 8 || y == 6) {
-        return;
+    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+            if(x == 8 || y == 6) {
+                return;
+            }
     }
     
-	//CGPoint tile = CGPointMake(x, y);
-	
-	// Clear background
-	//CGContextSetFillColorWithColor(context, [[UIColor grayColor] CGColor]);
-	//CGContextFillRect(context, box);
-	
-	// Rendering the paths
-	//CGContextSaveGState(context);
-	//CGContextConcatCTM(context, [self transformForTile:tile]);
-    
+	    
     CGImageRef image = [self imageForScale:[MainDataHolder getInstance]._scalingFactor row:x col:y coordToDdecide: box.origin.x];
 
     
@@ -113,7 +87,7 @@
         CGContextTranslateCTM(context, 0.0, box.size.height);
         CGContextScaleCTM(context, 1.0, -1.0); 
         box = CGContextGetClipBoundingBox(context);
-        NSLog(@"NSStringFromCGSize(tileSize) = %@", NSStringFromCGRect(box));
+        //NSLog(@"NSStringFromCGSize(tileSize) = %@", NSStringFromCGRect(box));
         
         CGContextDrawImage(context, box, image);
         CGImageRelease(image);

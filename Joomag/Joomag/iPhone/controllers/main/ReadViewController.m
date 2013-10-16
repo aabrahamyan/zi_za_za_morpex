@@ -15,7 +15,6 @@
 #import "ConnectionManager.h"
 #import "MainDataHolder.h"
 #import "UIImageView+WebCache.h"
-//#import "AFImageRequestOperation.h"
 #import "ReaderView.h"  
 #import "TiledView.h"
 #import "CustomTabBarController.h"
@@ -93,51 +92,18 @@
 - (void) calculateScalingFactor : (NSArray *) pageData {
     NSLog(@"pageData = %@",pageData);
     
-    magazineWidth = 768;//[[[pageData objectAtIndex:0] objectForKey:@"imgWz1"] floatValue];
-    magazineHeight = 1004;[[[pageData objectAtIndex:0] objectForKey:@"imgHz1"] floatValue];
+    
     
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        pageScrollView.frame = CGRectMake(0, 0, 768, 1004); // -TOP_VIEW_HEIGHT
+        magazineWidth = 768;
+        magazineHeight = 1004;
+        pageScrollView.frame = CGRectMake(0, 0, 768, 1004);
     } else {
-        pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
-    }
-    
-    magazineZoomWidth = [[[pageData objectAtIndex:0] objectForKey:@"imgWz2"] floatValue];
-    magazineZoomHeight = [[[pageData objectAtIndex:0] objectForKey:@"imgHz2"] floatValue];
+        magazineWidth = 1024;
+        magazineHeight = 748;
+        pageScrollView.frame = CGRectMake(0, 0, 1024, 748);
+    }        
         
-    
-    horizontalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2X"] intValue];
-    verticalBlocks = [[[pageData objectAtIndex:0] objectForKey:@"z2Y"] intValue];
-    
-    [MainDataHolder getInstance].tileWidth = 500;//roundf((magazineZoomWidth) / horizontalBlocks);
-    [MainDataHolder getInstance].tileHeight = 500;//roundf((magazineZoomHeight) / verticalBlocks);
-    
-    /*if([MainDataHolder getInstance].tileHeight < [MainDataHolder getInstance].tileWidth) {
-     [MainDataHolder getInstance].tileWidth = [MainDataHolder getInstance].tileHeight;
-     } else {
-     [MainDataHolder getInstance].tileHeight = [MainDataHolder getInstance].tileWidth;
-     }*/
-    
-    
-    tileWidth = [MainDataHolder getInstance].tileWidth;
-    tileHeight = [MainDataHolder getInstance].tileHeight;
-    NSLog(@"tileHeight = %f",tileHeight);
-    
-    CGFloat contentsScale = [[UIScreen mainScreen] scale];
-    
-    [MainDataHolder getInstance].tileHeight *= contentsScale;
-    [MainDataHolder getInstance].tileWidth *= contentsScale;
-    
-    CGFloat scalingFactorWidth = (tileWidth * horizontalBlocks) / magazineWidth;
-    CGFloat scalingFactorHeight = (tileHeight * verticalBlocks) / magazineHeight;
-    
-    _scalingFactor = MAX(scalingFactorWidth, scalingFactorHeight);
-    //(scalingFactorHeight + scalingFactorWidth) / 2.0f;
-     
-    
-    [MainDataHolder getInstance]._scalingFactor = _scalingFactor;
-    NSLog(@"_scalingFactor = %f",[MainDataHolder getInstance]._scalingFactor);
-    
 }
 
 #pragma mark requests part--
@@ -206,7 +172,7 @@
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*768, magazineHeight);
         } else {
-            pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, 768-2*44);
+            pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, magazineHeight);
         }
     for (int i = 0;i < numberOfPages; i++) {
     
@@ -254,12 +220,19 @@
     isNavigationVisible = YES;
     loadedPercentage = 0;
     
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.view.frame = CGRectMake(0, 0, 768, 1004);
+        oldCVSize = self.view.frame.size;
+    } else {
+        self.view.frame = CGRectMake(0, 0, 1024, 748);
+        oldCVSize = self.view.frame.size;
+    }
 
     pageScrollView = [[UIScrollView alloc] init];
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        pageScrollView.frame = CGRectMake(0, 0, 768, magazineHeight); // -TOP_VIEW_HEIGHT
+        pageScrollView.frame = CGRectMake(0, 0, 768, 1004);
     } else {
-        pageScrollView.frame = CGRectMake(0, 0, 1024, 768); // -TOP_VIEW_HEIGHT
+        pageScrollView.frame = CGRectMake(0, 0, 1024, 748);
     }
     
     NSLog(@"pageScrollView = %@",NSStringFromCGRect(pageScrollView.frame));
@@ -318,9 +291,10 @@
         
     } else {
     
-        navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 768, NAV_SCROLL_HEIGHT)]; //TODO
+        navScrollViewContainer = [[UIView alloc]  initWithFrame:CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)]; //TODO
         
     }
+    
     navScrollViewContainer.userInteractionEnabled = YES;
     
     UIView *navScrollViewBG = nil;
@@ -340,11 +314,13 @@
     
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         navScrollView.frame = CGRectMake(0, 0, 768, NAV_SCROLL_HEIGHT); // TODO
+    } else {
+        navScrollView.frame = CGRectMake(0, 0, 1024, NAV_SCROLL_HEIGHT); // TODO
     }
     
     navScrollView.tag = 1111;
     navScrollView.backgroundColor = [UIColor clearColor];
-    
+
     [navScrollViewContainer addSubview: navScrollView];
     
     [self.view addSubview: navScrollViewContainer];
@@ -383,6 +359,8 @@
 - (void)loadView {
     [super loadView];
     
+    
+    
     pageImages = [[NSMutableDictionary alloc] init];
     pageViews = [[NSMutableArray alloc] init];
     
@@ -406,11 +384,13 @@
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             
             [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 768, TOP_VIEW_HEIGHT)];
+           
             [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 1024, 768, NAV_SCROLL_HEIGHT)];
             
         } else {
             
             [self animateView: topView withFrame: CGRectMake(0, -TOP_VIEW_HEIGHT, 1024, TOP_VIEW_HEIGHT)];
+
             [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768, 1024, NAV_SCROLL_HEIGHT)];
             
         }
@@ -423,10 +403,12 @@
 - (void)showTopAndBottomView {
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         [self animateView: topView withFrame: CGRectMake(0, 0, 768, TOP_VIEW_HEIGHT)];
-                [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 1024-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 768, NAV_SCROLL_HEIGHT)];
+        
+        [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 1024-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 768, NAV_SCROLL_HEIGHT)];
     } else {
         [self animateView: topView withFrame: CGRectMake(0, 0, 1024, TOP_VIEW_HEIGHT)];
-        [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT-NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)];
+       
+        [self animateView: navScrollViewContainer withFrame: CGRectMake(0, 768-TOP_VIEW_HEIGHT - NAV_SCROLL_HEIGHT, 1024, NAV_SCROLL_HEIGHT)];
     }
 
     CustomTabBarController_iPad * costum = [CustomTabBarController_iPad getInstance];
@@ -460,7 +442,7 @@
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         [pageScrollView setContentOffset:CGPointMake(768 * gesture.view.tag, 0) animated:YES];
     } else {
-        [pageScrollView setContentOffset:CGPointMake(1024*gesture.view.tag, 0) animated:YES];
+        [pageScrollView setContentOffset:CGPointMake(1024 * gesture.view.tag, 0) animated:YES];
     }
 }
 
@@ -475,18 +457,16 @@
 
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
-    if(scrollView.tag != 7658943 && scale >= 1.0f) {
-        
-        CGFloat widther = tileWidth * horizontalBlocks;
-        CGFloat heighter = tileHeight * verticalBlocks;        
+    if(scrollView.tag != 7658943 && scale > 1.0f) {
         
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {            
             tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 1446.144f, 1928.192f)];
-            //pageScrollView.contentSize = CGSizeMake(1536, 2000);
-            oldCVSize = scrollView.contentSize;
+            
             scrollView.contentSize = CGSizeMake(1446.144f, 1928.192f);
         } else {
-            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, heighter, widther)];  
+            tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];           
+            
+            scrollView.contentSize = CGSizeMake(3000, 2000);
         }
         
         
@@ -512,7 +492,9 @@
         
     } else if (scale == 1.0) {
         [tlView removeFromSuperview];
+        tlView = nil;
         scrollView.contentSize = oldCVSize;
+        NSLog(@"oldCVSize = %@",NSStringFromCGSize(oldCVSize));
         scrollViewIndex = oldScrollViewIndex;
     }
 }
@@ -570,20 +552,14 @@
         @autoreleasepool {
             
         
-            [self showingDownloadProgress];
-            //item.image = image;
-            //page.image = image;
-        
-            //[pageImages addObject:image];
+            [self showingDownloadProgress];            
             
             [pageImages setValue:image forKey:[NSString stringWithFormat:@"%d",numberito]]; 
             [pageViews addObject:[NSNull null]];
         
-            //pageContentWidth += image.size.width;
-        
-            //if([pageImages count] > 2) {
-                [self loadVisiblePages];
-           // }
+            
+            [self loadVisiblePages];
+           
             
             item.image = image;
             
@@ -609,56 +585,16 @@
             }
             
             navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
+
         }
         
-        } failure:^(NSError *error) {
-            NSLog(@"Failure = %@",[error localizedDescription]);
-        }];
-
-     
-    //NSURLRequest * req = [NSURLRequest requestWithURL:[NSURL URLWithString:imageStr]];
-
-    
-/*[AFImageRequestOperation imageRequestOperationWithRequest:req
-                                                  success:^(UIImage *image) {
-                            [pageImages addObject:image];
-                            [pageViews addObject:[NSNull null]];
-                                                      
-                            pageContentWidth += image.size.width;
-                            pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
-                                                      
-                            if([pageImages count] > 2) {
-                                [self loadVisiblePages];
-                            }
-
-}]; */
-    
-/*AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:req success:^(UIImage *image) {
-    @autoreleasepool {
-        [self showingDownloadProgress];
-    
-        [pageImages addObject:image];
-        [pageViews addObject:[NSNull null]];
-    
-        pageContentWidth += image.size.width;
-        pageScrollView.contentSize = CGSizeMake(pageContentWidth, 768-2*44);
-    
-        if([pageImages count] > 2) {
-            [self loadVisiblePages];
-        }
-    }
-    
+    } failure:^(NSError *error) {
+        NSLog(@"Failure = %@",[error localizedDescription]);
     }];
-    
-
-    [operation start];*/
-    
-
 
 }
 
--(void)showingDownloadProgress
-{
+-(void)showingDownloadProgress {
     loadedPercentage++;
     
     // NSLog(@"count: --------------------------- %i -----------------------------", (loadPercentage*100/pageCount));
@@ -834,6 +770,18 @@
     }
     
 }
+
+- (void) viewDidLayoutSubviews {
+    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (iOrientation == UIDeviceOrientationPortrait) {
+        
+    } else {
+        
+    }
+
+}
+
 
 
 @end
