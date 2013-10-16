@@ -10,6 +10,7 @@
 #import "MainDataHolder.h"
 #import "MagazinRecord.h"
 #import "UIImageView+WebCache.h"
+#import "Util.h"
 
 @interface FeaturedScrollView () {
     CGFloat pageWidth;
@@ -210,10 +211,28 @@
     
     if (iOrientation == UIDeviceOrientationPortrait) {
         //crop the image
-        CGRect cropRect         = CGRectMake(0, 0, image.size.width, 2*image.size.height);
+        
+        //cropRect = CGRectMake(0, 0, image.size.width, 2*image.size.height);
+        
+        CGRect cropRect; // TODO: iPad mini
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            
+            //if ( [[UIScreen mainScreen] bounds].size.height != 1024) {
+            //    cropRect = CGRectMake(0, 0, image.size.width, 2*image.size.height);
+            //} else {
+                cropRect = CGRectMake(0, 0, image.size.width/2, image.size.height);
+           // }
+            
+        } else {
+            cropRect = CGRectMake(0, 0, image.size.width, 2*image.size.height);
+        }
+
         CGImageRef imageRef     = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
         UIImage *croppedAvatar  = [UIImage imageWithCGImage:imageRef];
         CGImageRelease(imageRef);
+        
         [imageView setImage:croppedAvatar];
     } else {
         [imageView setImage: image];
