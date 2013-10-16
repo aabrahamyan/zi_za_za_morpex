@@ -127,7 +127,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl2) name:@"updatePageControl2" object:nil];
     
     //----------------------------Title Labels With Border ------------------------
-    titleLabels = [self titleLabelsWithBorder];
+    titleLabels = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 44)];
+    [titleLabels addSubview: [self titleLabelsWithBorder]];
+    titleLabels.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:titleLabels];
     
@@ -190,11 +192,11 @@
 }
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(20, 60, 280, 30)];
-    
-    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 88, 20)]; label1.text = @"FEATURED";
-    label2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 80, 20)]; label2.text = @"POPULAR";
-    label3 = [[UILabel alloc] initWithFrame:CGRectMake(185, 0, 81, 20)]; label3.text = @"HIGHLIGHTED";
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
+
+    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 76, 44)]; label1.text = @"FEATURED";
+    label2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 69, 44)]; label2.text = @"POPULAR";
+    label3 = [[UILabel alloc] initWithFrame:CGRectMake(190, 0, 98, 44)]; label3.text = @"HIGHLIGHTED";
     
     NSArray *labelArr = [NSArray arrayWithObjects:label1, label2, label3, nil];
     
@@ -207,14 +209,14 @@
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
         ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
         ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
-        [((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
+        //[((UILabel *)[labelArr objectAtIndex:i]) sizeToFit];
         
         // Add Gesture Recognizer To Label
         UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelTapHandler:)];
         [((UILabel *)[labelArr objectAtIndex:i]) addGestureRecognizer: labelTap];
     }
     
-    border = [[UIView alloc] initWithFrame:CGRectMake(0, 20, label1.frame.size.width, 2)];
+    border = [[UIView alloc] initWithFrame:CGRectMake(0, 31, label1.frame.size.width, 2)];
     border.backgroundColor = [UIColor redColor];
     
     [container addSubview:border];
