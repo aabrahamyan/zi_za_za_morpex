@@ -203,7 +203,7 @@
 - (void) showBuyIssue {
     self.buyIssueVC = [self getBuyIssueViewController];
     
-    [self.view addSubview: self.buyIssueVC.view];
+    [[[UIApplication sharedApplication] keyWindow] addSubview: self.buyIssueVC.view];
     
     [self.buyIssueVC animateUpAndDown:YES];
 }
