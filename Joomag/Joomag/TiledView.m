@@ -31,10 +31,21 @@
 
         CATiledLayer * tiledLayer = (CATiledLayer *)[self layer];
         
+        float scale =   [[UIScreen mainScreen] scale];
+        
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-            tiledLayer.tileSize = CGSizeMake(723, 630);
+            if(scale == 1.0) {
+                tiledLayer.tileSize = CGSizeMake(361, 315);
+            } else {
+                tiledLayer.tileSize = CGSizeMake(723, 630);
+            }
         } else {
-            tiledLayer.tileSize = CGSizeMake(500.0, 500.0);
+            if(scale == 1.0) {
+                tiledLayer.tileSize = CGSizeMake(250, 250);
+            } else {
+                tiledLayer.tileSize = CGSizeMake(500.0, 500.0);
+            }
+            
         }        
         
         mappingMatrix = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"00", @"40",

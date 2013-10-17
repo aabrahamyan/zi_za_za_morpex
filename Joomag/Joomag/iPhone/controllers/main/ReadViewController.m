@@ -457,7 +457,14 @@
 
 - (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
     
-    if(scrollView.tag != 7658943 && scale > 1.0f) {
+    float comparableScale = 0.0f;
+    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        comparableScale = 1.955f;
+    } else {
+        comparableScale = 1.883f;
+    }
+    
+    if(scrollView.tag != 7658943 && scale >= comparableScale) {
         
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {            
             tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 1446.144f, 1928.192f)];
@@ -517,11 +524,11 @@
         // we are at the end
         NSLog(@"SHOW BUY");
         [UIView animateWithDuration:1.0 animations:^() {
-            buyView.alpha = 0.8;
+            //buyView.alpha = 0.8; TODO: Fix for end page
         }];
     } else {
         [UIView animateWithDuration:1.0 animations:^() {
-            buyView.alpha = 0;
+            //buyView.alpha = 0;
         }];
     }
     
