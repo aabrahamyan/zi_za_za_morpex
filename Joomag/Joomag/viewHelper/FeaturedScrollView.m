@@ -149,11 +149,14 @@
     UIView *pageView = [self.pageViews objectAtIndex:page];
     MagazinRecord *mRecord = [self.entries objectAtIndex:page];
     
-    if ((NSNull*)pageView == [NSNull null]) {
+    if ((NSNull*)pageView == [NSNull null] || page >= [self.cropImages count]) {
         [self startIconDownload: mRecord forIndexPath: page];
     } else {
-        [self cropImageWhitOriginalSize: ((UIImage *)[self.cropImages objectAtIndex: page])
+        
+        if(page < [self.cropImages count]) {
+            [self cropImageWhitOriginalSize: ((UIImage *)[self.cropImages objectAtIndex: page])
                            andImageView: ((UIImageView *)[self.pageViews objectAtIndex: page])];
+        }
     }
 }
 
