@@ -185,6 +185,11 @@
             scrollView.entries = dataHolder.testData;
             firstBreadCrumbData = dataHolder.testData;
             [scrollView redrawData];
+            
+            if(activityIndicator) {
+                [activityIndicator removeFromSuperview];
+                activityIndicator = nil;
+            }
         } else {
             
         }
@@ -256,6 +261,21 @@
     [self redrawData];
 }
 
+- (void) createActivityIndicator {
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+    
+        activityIndicator.frame = CGRectMake(384, 512 + 120, activityIndicator.frame.size.width, activityIndicator.frame.size.height);
+    } else {
+        activityIndicator.frame = CGRectMake(512 - 65 ,384 - 25 , activityIndicator.frame.size.width, activityIndicator.frame.size.height);
+    }
+    
+    [self.view addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+
+}
+
 
 -(void)titleLabelTapHandler :(id) sender {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
@@ -265,6 +285,9 @@
     if (gesture.view.tag == 0) {
         
         if([[MainDataHolder getInstance].magazinesList count] == 0) {
+           
+            [self createActivityIndicator];
+            
             [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
         } else {
             [self bindArrayToMappingObject:@"featured"];
@@ -275,6 +298,9 @@
     } else if(gesture.view.tag == 1){
         
         if([[MainDataHolder getInstance].popularMagList count] == 0) {
+           
+            [self createActivityIndicator];
+            
             [connManager constructGetMagazinesListRequest:self:@"Popular":nil:nil:nil];
         } else {
             [self bindArrayToMappingObject:@"Popular"];
@@ -285,6 +311,7 @@
     } else if(gesture.view.tag == 2) {
         
         if([[MainDataHolder getInstance].highlightedMagList count] == 0) {
+            [self createActivityIndicator];
             [connManager constructGetMagazinesListRequest:self:@"Highlighted":nil:nil:nil];
         } else {
             [self bindArrayToMappingObject:@"Highlighted"];

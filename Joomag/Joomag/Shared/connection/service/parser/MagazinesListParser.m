@@ -84,8 +84,8 @@
             
             [[MainDataHolder getInstance].testData addObject:mgRecord];
         }
-    }
-       
+    }    
+    
 }
 
 @end

@@ -32,7 +32,8 @@
     
     NSMutableArray * firstBreadCrumbData;
     
-    DetailsExploreScrollView * det; 
+    DetailsExploreScrollView * det;
+    UIActivityIndicatorView * activityIndicator;
 
 }
 
