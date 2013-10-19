@@ -66,7 +66,7 @@
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         
         [UIView setAnimationDuration:0.3];
-        self.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         
         [UIView commitAnimations];
         

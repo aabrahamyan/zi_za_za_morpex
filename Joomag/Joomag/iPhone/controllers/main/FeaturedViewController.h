@@ -13,7 +13,6 @@
 
 @class FeaturedScrollView;
 @class FeaturedDetailsView;
-@class BuyIssueViewController;
 
 @interface FeaturedViewController : UIViewController <ResponseTrackerDelegate, FeaturedDetailsButtonsDelegate>  {
     
@@ -25,7 +24,6 @@
 }
 
 @property (nonatomic, strong) UIProgressView *progressView;
-@property (nonatomic, strong) BuyIssueViewController *buyIssueVC;
 
 - (void)showDetailsView;
 

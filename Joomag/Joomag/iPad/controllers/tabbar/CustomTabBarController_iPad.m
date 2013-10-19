@@ -12,6 +12,7 @@
 #import "LibraryViewController_iPad.h"
 #import "SettingsViewController_iPad.h"
 #import "BookMarkViewController_iPad.h"
+#import "BuyIssueViewController_iPad.h"
 #import "Util.h"
 
 @implementation CustomTabBarController_iPad
@@ -118,6 +119,12 @@ static CustomTabBarController_iPad * customTabBar_iPad;
             self.bookMarksVC.view.frame = CGRectMake(0, 1024, 768, 1024);
         }
         
+        if (self.buyIssueVC.isOpen) {
+            self.buyIssueVC.view.frame = CGRectMake(0, 0, 768, 1024);
+        } else {
+            self.buyIssueVC.view.frame = CGRectMake(0, 1024, 768, 1024);
+        }
+        
     } else {
         self.view.frame = CGRectMake(0, 0, 1024, 768);
         self.backGroundView.frame = CGRectMake(0, 704, self.width, self.height);
@@ -135,6 +142,12 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         } else {
             self.bookMarksVC.view.frame = CGRectMake(0, 1024, 1024, 768);
         }
+        
+        if (self.buyIssueVC.isOpen) {
+            self.buyIssueVC.view.frame = CGRectMake(0, 0, 1024, 768);
+        } else {
+            self.buyIssueVC.view.frame = CGRectMake(0, 1024, 1024, 768);
+        }
     }
     
 }
@@ -146,5 +159,11 @@ static CustomTabBarController_iPad * customTabBar_iPad;
 - (BookMarkViewController *) getBookMarksViewController {
     return [[BookMarkViewController_iPad alloc] init];
 }
+
+- (BuyIssueViewController *) getBuyIssueViewController {
+    return [[BuyIssueViewController_iPad alloc] init];
+}
+
+
 
 @end

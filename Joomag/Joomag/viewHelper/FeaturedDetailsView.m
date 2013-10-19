@@ -9,7 +9,6 @@
 #import "FeaturedDetailsView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Util.h"
-#import "BuyIssueViewController.h"
 
 @implementation FeaturedDetailsView {
     CGRect imageViewFrame, titleFrame, dateFrame, backGroundFrame,

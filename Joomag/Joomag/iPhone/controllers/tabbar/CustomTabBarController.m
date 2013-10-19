@@ -14,6 +14,7 @@
 #import "FeaturedViewController.h"
 #import "LibraryViewController.h"
 #import "MoreViewController.h"
+#import "BuyIssueViewController.h"
 #import "Util.h"
 
 @interface CustomTabBarController ()
@@ -35,6 +36,8 @@ static CustomTabBarController * customTabBarController;
             self.width = width;
             self.height = height; 
         }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBuyIssueView) name:@"showBuyIssue" object:nil];
     }
     
     return self;
@@ -60,6 +63,10 @@ static CustomTabBarController * customTabBarController;
 
 - (BookMarkViewController *) getBookMarksViewController {
     return [[BookMarkViewController alloc] init];
+}
+
+- (BuyIssueViewController *) getBuyIssueViewController {
+    return [[BuyIssueViewController alloc] init];
 }
 
 - (FeaturedViewController *) getFeaturedViewController {
@@ -292,6 +299,14 @@ static CustomTabBarController * customTabBarController;
     [self.view addSubview: self.bookMarksVC.view];
     [self.bookMarksVC animateUpAndDown:YES];
     
+}
+
+- (void) showBuyIssueView {
+    NSLog(@"showBuyIssueView");
+    self.buyIssueVC = [self getBuyIssueViewController];
+    
+    [self.view addSubview: self.buyIssueVC.view];
+    [self.buyIssueVC animateUpAndDown:YES];
 }
 
 - (void)didReceiveMemoryWarning {

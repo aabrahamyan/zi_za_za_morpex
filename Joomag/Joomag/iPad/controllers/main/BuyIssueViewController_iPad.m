@@ -19,15 +19,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
 
 - (void)loadView {
     [super loadView];
-    
+
     self.view.frame = CGRectMake(0, 1024, 1024, 768);
-    closeButtonView.frame = CGRectMake(0, 0, 46, 44);
 }
 
 - (void)didReceiveMemoryWarning

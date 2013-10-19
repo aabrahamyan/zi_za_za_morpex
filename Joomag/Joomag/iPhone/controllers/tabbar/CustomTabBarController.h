@@ -12,6 +12,7 @@
 @class SettingsViewController_iPad;
 @class BookMarkViewController;
 @class MoreViewController;
+@class BuyIssueViewController;
 
 @interface CustomTabBarController : UIViewController {
 
@@ -47,6 +48,7 @@
 //----------------------- Mixed Attributes --------------------------//
 @property (nonatomic, strong) SettingsViewController_iPad * settingsVC;
 @property (nonatomic, strong) BookMarkViewController * bookMarksVC;
+@property (nonatomic, strong) BuyIssueViewController * buyIssueVC;
 
 //----------------------- Instance Methods --------------------------//
 - (id) initWithSpecifics: (UIImage * ) bgImage withWidth: (CGFloat) width withHeight: (CGFloat) height;

@@ -15,7 +15,6 @@
 #import "AFNetworking.h"
 #import "MainDataHolder.h"
 #import "ConnectionManager.h"
-#import "BuyIssueViewController.h"
 #import "NoInternetView.h"
 
 
@@ -199,21 +198,9 @@
     [self.navigationController pushViewController: readVC animated: NO];
 }
 
-- (BuyIssueViewController *) getBuyIssueViewController {
-    return [[BuyIssueViewController alloc] init];
-}
-
-- (void) showBuyIssue {
-    self.buyIssueVC = [self getBuyIssueViewController];
-    
-    [[[UIApplication sharedApplication] keyWindow] addSubview: self.buyIssueVC.view];
-    
-    [self.buyIssueVC animateUpAndDown:YES];
-}
-
 - (void)buyIssueHandler {
     NSLog(@"buy Issue");
-    [self showBuyIssue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showBuyIssue" object:nil];
 }
 
 - (void)shareHandler {
