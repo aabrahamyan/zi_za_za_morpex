@@ -169,10 +169,9 @@
     UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
     if (iOrientation == UIDeviceOrientationPortrait) {
-        self.view.backgroundColor = [UIColor redColor];
-        
+        self.backgroundImageView.image = [UIImage imageNamed:@"settingsPortBg.png"];
     } else {
-        self.view.backgroundColor = [UIColor greenColor];
+        self.backgroundImageView.image = [UIImage imageNamed:@"settingsLandBG.png"];
     }
     
     self.backgroundImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);

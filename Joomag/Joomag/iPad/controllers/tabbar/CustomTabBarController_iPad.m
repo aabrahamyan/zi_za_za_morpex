@@ -111,9 +111,7 @@ static CustomTabBarController_iPad * customTabBar_iPad;
         } else {
             self.settingsVC.view.frame = CGRectMake(1024, 0, 768, 1024);
         }
-        
-        self.settingsVC.backgroundImageView.image = [UIImage imageNamed:@"settingsPortBg.png"];
-        
+
         if (self.bookMarksVC.isOpen) {
             self.bookMarksVC.view.frame = CGRectMake(0, 0, 768, 1024);
         } else {
@@ -132,8 +130,6 @@ static CustomTabBarController_iPad * customTabBar_iPad;
             self.settingsVC.view.frame = CGRectMake(0, 1024, 1024, 768);
         }
         
-        self.settingsVC.backgroundImageView.image = [UIImage imageNamed:@"settingsLandBg.png"];
-
         if (self.bookMarksVC.isOpen) {
             self.bookMarksVC.view.frame = CGRectMake(0, 0, 1024, 768);
         } else {
