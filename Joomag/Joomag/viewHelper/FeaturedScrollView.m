@@ -248,19 +248,21 @@
 // -------------------------------------------------------------------------------
 //	scrollViewDidEndDecelerating:
 // -------------------------------------------------------------------------------
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
+    
     self.currentPage = (NSInteger)floor(self.contentOffset.x / pageWidth);
     
     [self loadVisiblePage: self.currentPage];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
+    
 }
 
 // called on start of dragging (may require some time and or distance to move)
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 
 
