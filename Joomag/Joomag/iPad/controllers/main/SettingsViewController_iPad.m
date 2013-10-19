@@ -367,6 +367,7 @@
     UITextView *text = [[UITextView alloc] initWithFrame: CGRectMake(300, 53, 200, 140)];
     text.backgroundColor = [UIColor clearColor];
     text.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
+    text.contentInset = UIEdgeInsetsMake(-10.0,0.0,0,0.0);
     text.textColor = [UIColor whiteColor];
     text.editable = NO;
     text.text = @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
