@@ -194,7 +194,7 @@
 - (UIView *)titleLabelsWithBorder {
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
 
-    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 76, 44)]; label1.text = @"FEATURED";
+    label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 77, 44)]; label1.text = @"FEATURED";
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 69, 44)]; label2.text = @"POPULAR";
     label3 = [[UILabel alloc] initWithFrame:CGRectMake(190, 0, 98, 44)]; label3.text = @"HIGHLIGHTED";
     
