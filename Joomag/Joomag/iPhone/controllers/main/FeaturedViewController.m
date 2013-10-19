@@ -104,16 +104,18 @@
 // -------------------------------------------------------------------------------
 - (void)updatePageControl {
     pageControl.currentPage = scrollView.currentPage;
-    [self showDetailsView: scrollView.currentPage];
+    [self showDetailsView];
 }
 
 // -------------------------------------------------------------------------------
 // showDetailsView:
 // Show details view with alpha value animating
 // -------------------------------------------------------------------------------
-- (void)showDetailsView: (NSInteger)page {
+- (void)showDetailsView {
     
-    mRecord = [dataHolder.testData objectAtIndex:page];
+    mRecord = [dataHolder.testData objectAtIndex:scrollView.currentPage];
+    
+    NSLog(@"dataHolder.testData: %i", scrollView.currentPage);
     
     detailsView.date.text = mRecord.magazinDate;
     detailsView.title.text = mRecord.magazinTitle;
@@ -122,16 +124,26 @@
     if (!mRecord.magazinDetailsIcon) {
         //detailsView.imageView.image = [UIImage imageNamed:@"placeholder.png"];
         detailsView.imageView.image = nil;
-        [self startIconDownload:mRecord forIndexPath:page];
+        [self startIconDownload:mRecord forIndexPath:scrollView.currentPage];
     } else {
         detailsView.imageView.image = mRecord.magazinDetailsIcon;
     }
     
-    //if(mRecord.magazinIcon){ // TODO check when magazin icon loaded
+    
     [UIView animateWithDuration:0.3 animations:^() {
         detailsView.alpha = 1;
     }];
-    //}
+}
+
+// -------------------------------------------------------------------------------
+// hideDetailsView
+// -------------------------------------------------------------------------------
+- (void)hideDetailsView {
+    if(scrollView.currentPage != dataHolder.testData.count-1){
+        [UIView animateWithDuration:0.3 animations:^() {
+            detailsView.alpha = 0;
+        }];
+    }
 }
 
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
@@ -161,15 +173,6 @@
     }
 }
 
-// -------------------------------------------------------------------------------
-// hideDetailsView
-// -------------------------------------------------------------------------------
-- (void)hideDetailsView {
-    [UIView animateWithDuration:0.3 animations:^() {
-        detailsView.alpha = 0;
-    }];
-}
-
 #pragma Featured Buttons Handlers
 
 -(void)readHandler {
@@ -187,7 +190,7 @@
     
     
     ReadViewController *readVC = [[ReadViewController alloc] init];
-
+    
     //[readVC startDownloadMagazine: scrollView.currentPage];
     [readVC hitPageDescription:scrollView.currentPage];
     
@@ -226,7 +229,7 @@
 - (void) didFinishResponse: (id) responseObject {
     dataHolder = [MainDataHolder getInstance];
     [scrollView redrawData];
-    [self showDetailsView: scrollView.currentPage];
+    [self showDetailsView];
     pageControl.numberOfPages = dataHolder.testData.count;
 }
 
