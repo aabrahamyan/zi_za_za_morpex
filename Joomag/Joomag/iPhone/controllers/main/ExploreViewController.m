@@ -71,7 +71,7 @@
     [self.view addSubview: topBar];
     
     //-------------------------------- Top Bar Title ------------------------------------
-    topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 44)];
+    topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 170, 44)];
     topBarTitleLabel.backgroundColor = [UIColor clearColor];
     topBarTitleLabel.textColor = [UIColor whiteColor];
     topBarTitleLabel.text = @"Magazines";
@@ -103,12 +103,12 @@
     
     backButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
     backButtonView.frame = CGRectMake(0, 0, TOP_VIEW_HEIGHT, TOP_VIEW_HEIGHT);  //TODO
-    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
-    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateSelected];
-    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateHighlighted];
+    [backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
+    //[backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateSelected];
+    //[backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateHighlighted];
     backButtonView.showsTouchWhenHighlighted = YES;
     [backButtonView addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    backButtonView.hidden = YES;
+    // backButtonView.hidden = YES;
     
     [topBar addSubview: backButtonView];
 
