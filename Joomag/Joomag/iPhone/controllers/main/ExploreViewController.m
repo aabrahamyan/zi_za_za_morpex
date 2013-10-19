@@ -252,6 +252,8 @@
             [[MainDataHolder getInstance].testData addObject:mgRecord];
         }
     }
+    
+    [self redrawData];
 }
 
 
