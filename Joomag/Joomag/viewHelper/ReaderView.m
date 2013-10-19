@@ -27,7 +27,10 @@
     if(self) {                
 
         self.backgroundColor = [UIColor clearColor];
+        
+        
         self.leftImageView = [[UIImageView alloc] initWithImage:leftImageView];
+
         self.leftImageView.frame = leftFrame;
         
         if(rightImageView) {

@@ -29,6 +29,8 @@
 
 @property (nonatomic, assign) NSInteger currentMagazineId;
 
+@property (nonatomic, strong) UIActivityIndicatorView * activityIndicator;
+
 - (void)startDownloadMagazine: (NSInteger)number withImageUrl : (NSString *) imgUrl;
 
 - (void) hitPageDescription : (NSInteger) magazineId;

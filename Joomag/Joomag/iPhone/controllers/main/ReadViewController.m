@@ -102,7 +102,11 @@
         magazineWidth = 1024;
         magazineHeight = 748;
         pageScrollView.frame = CGRectMake(0, 0, 1024, 748);
-    }        
+    }
+    
+    UIImage * bgImg = [Util imageWithImage:[UIImage imageNamed:@"placeholder.png"] scaledToSize:pageScrollView.frame.size];
+    
+    pageScrollView.backgroundColor = [UIColor colorWithPatternImage:bgImg];
         
 }
 
@@ -174,7 +178,7 @@
         } else {
             pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, magazineHeight);
         }
-    for (int i = 0;i < numberOfPages; i++) {
+    for (int i = 0;i < numberOfPages; i++) {                
     
         NSString * currentNumberString = [NSString stringWithFormat:@"%d", i];
         if([currentNumberString length] == 1) {
@@ -188,7 +192,8 @@
         NSString * queryUri = [Util generateRequestBlock:page withMagazineId:self.currentMagazineId];
         queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
         
-
+        
+        
         
         [self startDownloadMagazine:i withImageUrl:queryUri];
          
@@ -432,7 +437,8 @@
     
         UIImageView *pageImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         UIImageView *itemImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
-        
+    
+       
     [self startDownloadItems: number: imgUrl pageImage: pageImage andItem: itemImage];
         
     
@@ -555,7 +561,7 @@
     //[sharedManager cancelAll]; //cancel all current queue
 
     
-    [itemImage setImageWithURL:[NSURL URLWithString: imageStr] placeholderImage:nil options: 0 success:^(UIImage *image, BOOL cached) {
+    [itemImage setImageWithURL:[NSURL URLWithString: imageStr] placeholderImage:[UIImage imageNamed:@"placeholder.png"] options: 0 success:^(UIImage *image, BOOL cached) {
         @autoreleasepool {
             
         
@@ -567,6 +573,7 @@
             
             [self loadVisiblePages];
            
+            
             
             item.image = image;
             
