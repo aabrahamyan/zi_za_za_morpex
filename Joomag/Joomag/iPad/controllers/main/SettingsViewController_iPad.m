@@ -8,6 +8,7 @@
 
 #import "SettingsViewController_iPad.h"
 #import "Util.h"
+#import "HelpView.h"
 
 @interface SettingsViewController_iPad () {
     UIButton *closeButtonView;
@@ -16,6 +17,7 @@
     UIView   *notificationView;
     UIView   *aboutView;
     UIView   *restorePurschasesView;
+    HelpView * helpView;
 }
 
 @end
@@ -36,7 +38,7 @@
     self.view.frame = frame;
     
     // ----------------------------------------------------------------------------
-
+    
     self.isOpen = NO;
     
     // -------------------------- Background Image View ---------------------------
@@ -64,7 +66,7 @@
     [closeButtonView addTarget:self action:@selector(animateDown) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview: closeButtonView];
-
+    
     UIImageView *gearView = [[UIImageView alloc] initWithFrame:CGRectMake(65, 10, 20, 20)];
     gearView.image = [UIImage imageNamed:@"gear.png"];
     
@@ -92,9 +94,9 @@
     
     // -------------------------------- Left Side Bar -----------------------------
     [self.tabsView addSubview: [self constructTabsWithTitle: @"Account Settings"
-                                                  frame: CGRectMake(0, -10, 190, 40)
-                                                    tag: 87654321]
-    ];
+                                                      frame: CGRectMake(0, -10, 190, 40)
+                                                        tag: 87654321]
+     ];
     
     [self.tabsView addSubview: [self constructTabsWithTitle: @"Notification Settings"
                                                       frame: CGRectMake(0, 50, 190, 40)
@@ -118,13 +120,14 @@
     
     // ----------------------------------------------------------------------------
     
-     // -------------------------- Construct Views -----------------------------
+    // -------------------------- Construct Views -----------------------------
     [self constructRegistrationView];
     ((UIButton *)[self.tabsView.subviews objectAtIndex: 0]).selected = YES;
     
     [self cunstructNotificationView];
     [self cunstructAboutView];
     [self cunstructRestorePurschasesView];
+    [self createHelpView];
     
     // ----------------------------------------------------------------------------
     
@@ -210,12 +213,14 @@
             notificationView.hidden = YES;
             aboutView.hidden = YES;
             restorePurschasesView.hidden = YES;
+            helpView.hidden = YES;
             registrationView.hidden = NO;
             break;
         case 87654322:
             registrationView.hidden = YES;
             aboutView.hidden = YES;
             restorePurschasesView.hidden = YES;
+            helpView.hidden = YES;
             notificationView.hidden = NO;
             break;
             
@@ -223,17 +228,23 @@
             registrationView.hidden = YES;
             notificationView.hidden = YES;
             restorePurschasesView.hidden = YES;
+            helpView.hidden = YES;
             aboutView.hidden = NO;
             break;
             
         case 87654324:
-            
+            registrationView.hidden = YES;
+            notificationView.hidden = YES;
+            restorePurschasesView.hidden = YES;
+            aboutView.hidden = YES;
+            helpView.hidden = NO;
             break;
             
         case 87654325:
             registrationView.hidden = YES;
             notificationView.hidden = YES;
             aboutView.hidden = YES;
+            helpView.hidden = YES;
             restorePurschasesView.hidden = NO;
             break;
             
@@ -363,7 +374,7 @@
     termsOfService.text = @"Terms of Service";
     
     [registrationView addSubview:termsOfService];
-
+    
     UITextView *text = [[UITextView alloc] initWithFrame: CGRectMake(300, 53, 200, 140)];
     text.backgroundColor = [UIColor clearColor];
     text.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
@@ -611,23 +622,32 @@
     [restorePurschasesView addSubview: restoreBtn];
 }
 
-/*
-- (BOOL)shouldAutorotate {
-    return YES;
+- (void) createHelpView {
+    helpView = [[HelpView alloc] initWithFrame:CGRectMake(287, 107, 412, 800)];
+    
+    [self.view addSubview:helpView];
+    helpView.hidden = YES;
+    [helpView redrawData];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-    
-}
-*/
+
+/*
+ - (BOOL)shouldAutorotate {
+ return YES;
+ }
+ 
+ - (NSUInteger)supportedInterfaceOrientations {
+ 
+ return UIInterfaceOrientationMaskAllButUpsideDown;
+ 
+ }
+ */
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-
+    
     [textField resignFirstResponder];
     
     return YES;
