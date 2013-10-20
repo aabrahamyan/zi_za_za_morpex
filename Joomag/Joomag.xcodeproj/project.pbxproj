@@ -100,7 +100,6 @@
 		5A0FFC3F17EF0A4C009B268D /* joomagButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC3C17EF0A4C009B268D /* joomagButton@2x.png */; };
 		5A0FFC4017EF0A4C009B268D /* twitterButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */; };
 		5A0FFC4217EF0A56009B268D /* noInternet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4117EF0A56009B268D /* noInternet@2x.png */; };
-		5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */; };
 		5A0FFC4817EF60A2009B268D /* NoInternetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4717EF60A2009B268D /* NoInternetView.m */; };
 		5A0FFC4A17EF6A51009B268D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4917EF6A4F009B268D /* logo@2x.png */; };
 		5A0FFC4C17EF6F2B009B268D /* retryButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */; };
@@ -125,6 +124,10 @@
 		5A4D503717EC4DE7007E6BDB /* barMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503617EC4DE7007E6BDB /* barMore@2x.png */; };
 		5A4D503A17EC4FF3007E6BDB /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D503917EC4FF2007E6BDB /* MoreViewController.m */; };
 		5A4D503C17EC8B36007E6BDB /* exploreCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503B17EC8B36007E6BDB /* exploreCell.png */; };
+		5A55B7F41813B9D600696284 /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F31813B9D500696284 /* shareBtn@2x.png */; };
+		5A55B7F61813D0E300696284 /* buyIssueBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */; };
+		5A55B7F81813E82400696284 /* buyIssueBtnBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F71813E82400696284 /* buyIssueBtnBg@2x.png */; };
+		5A55B7FE1814097B00696284 /* shareBtn_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */; };
 		5A6C94B717C770E400B7DED0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */; };
 		5A6C94B817C770E400B7DED0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A617C770E400B7DED0 /* SDImageCache.m */; };
 		5A6C94B917C770E400B7DED0 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94AA17C770E400B7DED0 /* SDWebImageDecoder.m */; };
@@ -138,7 +141,6 @@
 		5A6EF5C417B2D70E00E597DA /* ExploreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EF5C317B2D70E00E597DA /* ExploreTableView.m */; };
 		5A75E93017DD33210039FD17 /* BookMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E92F17DD33210039FD17 /* BookMarkViewController.m */; };
 		5A75E93317DD334C0039FD17 /* BookMarkViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */; };
-		5A7AFCB417C0D3AC00380CBD /* shareBtn_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */; };
 		5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB517C0D91700380CBD /* placeholder.png */; };
 		5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */; };
 		5A7AFCBD17C0E79B00380CBD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7AFCBC17C0E79A00380CBD /* SearchViewController.m */; };
@@ -151,7 +153,7 @@
 		5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */; };
 		5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F023317F2C73D0029F0C5 /* SIAlertView.m */; };
 		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
-		5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */; };
+		5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator@2x.png */; };
 		5AB0F69017DD5F7D00671C24 /* editIcone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB0F68F17DD5F7D00671C24 /* editIcone@2x.png */; };
 		5ABB9A9817F16CC60078A4FB /* notselectedcheckbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB9A9617F16CC60078A4FB /* notselectedcheckbox@2x.png */; };
 		5ABB9A9917F16CC60078A4FB /* selectedcheckbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB9A9717F16CC60078A4FB /* selectedcheckbox@2x.png */; };
@@ -325,7 +327,6 @@
 		5A0FFC3C17EF0A4C009B268D /* joomagButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton@2x.png"; sourceTree = "<group>"; };
 		5A0FFC3D17EF0A4C009B268D /* twitterButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton@2x.png"; sourceTree = "<group>"; };
 		5A0FFC4117EF0A56009B268D /* noInternet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noInternet@2x.png"; sourceTree = "<group>"; };
-		5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
 		5A0FFC4617EF60A1009B268D /* NoInternetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetView.h; sourceTree = "<group>"; };
 		5A0FFC4717EF60A2009B268D /* NoInternetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetView.m; sourceTree = "<group>"; };
 		5A0FFC4917EF6A4F009B268D /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
@@ -356,6 +357,10 @@
 		5A4D503817EC4FF2007E6BDB /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		5A4D503917EC4FF2007E6BDB /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		5A4D503B17EC8B36007E6BDB /* exploreCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exploreCell.png; sourceTree = "<group>"; };
+		5A55B7F31813B9D500696284 /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
+		5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyIssueBg@2x.png"; sourceTree = "<group>"; };
+		5A55B7F71813E82400696284 /* buyIssueBtnBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyIssueBtnBg@2x.png"; sourceTree = "<group>"; };
+		5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn_iPad@2x.png"; sourceTree = "<group>"; };
 		5A6C94A317C770E400B7DED0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		5A6C94A517C770E400B7DED0 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -384,7 +389,6 @@
 		5A75E92F17DD33210039FD17 /* BookMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController.m; sourceTree = "<group>"; };
 		5A75E93117DD334C0039FD17 /* BookMarkViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkViewController_iPad.h; sourceTree = "<group>"; };
 		5A75E93217DD334C0039FD17 /* BookMarkViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkViewController_iPad.m; sourceTree = "<group>"; };
-		5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn_iPad@2x.png"; sourceTree = "<group>"; };
 		5A7AFCB517C0D91700380CBD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topTabBarBg@2x.png"; sourceTree = "<group>"; };
 		5A7AFCBB17C0E79A00380CBD /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -401,7 +405,7 @@
 		5A9F023217F2C73D0029F0C5 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
 		5A9F023317F2C73D0029F0C5 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreBG@2x.png"; sourceTree = "<group>"; };
-		5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookMarkSeparator.png; sourceTree = "<group>"; };
+		5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookMarkSeparator@2x.png"; sourceTree = "<group>"; };
 		5AB0F68F17DD5F7D00671C24 /* editIcone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "editIcone@2x.png"; path = "../../iPad/Resources-iPad/editIcone@2x.png"; sourceTree = "<group>"; };
 		5ABB9A9617F16CC60078A4FB /* notselectedcheckbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notselectedcheckbox@2x.png"; sourceTree = "<group>"; };
 		5ABB9A9717F16CC60078A4FB /* selectedcheckbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedcheckbox@2x.png"; sourceTree = "<group>"; };
@@ -587,12 +591,12 @@
 				5A0FFC4317EF0AE4009B268D /* myLib */,
 				5A4D503317EC4C86007E6BDB /* tabBar */,
 				5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */,
+				5A55B7F71813E82400696284 /* buyIssueBtnBg@2x.png */,
 				5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */,
 				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */,
 				5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */,
 				5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */,
 				5A7AFCB717C0DE6B00380CBD /* topTabBarBg@2x.png */,
-				5A7AFCB317C0D3AC00380CBD /* shareBtn_iPad@2x.png */,
 				5ADF07E717BE4B4000F0AD35 /* backButton_iPad@2x.png */,
 				2CA13BC017B3C3BD00D0257F /* restoreButton@2x.png */,
 				2CA13BC117B3C3BD00D0257F /* restoreDescription@2x.png */,
@@ -607,10 +611,11 @@
 				2CB788EC17B2EA25009ECE98 /* closeButton_iPad@2x.png */,
 				2CB788EE17B2EA25009ECE98 /* signInButton_iPad@2x.png */,
 				2CB788EF17B2EA25009ECE98 /* separator.png */,
+				5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */,
 				2CB788F217B2EA26009ECE98 /* tabBarBook.png */,
 				2CB788F317B2EA26009ECE98 /* tabBarEye.png */,
 				2CB788F517B2EA26009ECE98 /* tabBarStar.png */,
-				5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator.png */,
+				5AB0F68D17DD5BDF00671C24 /* bookMarkSeparator@2x.png */,
 				2C0B75DB1797426E00735AD3 /* MainWindow_iPad.xib */,
 			);
 			path = "Resources-iPad";
@@ -624,12 +629,13 @@
 				5A7AFCB517C0D91700380CBD /* placeholder.png */,
 				5ABB9A9C17F21E9D0078A4FB /* closeButton@2x.png */,
 				5ABB9A9A17F1ABFC0078A4FB /* moreBookMarksBg@2x.png */,
+				5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */,
 				5A0FFC4117EF0A56009B268D /* noInternet@2x.png */,
 				5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */,
 				5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */,
 				5A0FFC4917EF6A4F009B268D /* logo@2x.png */,
+				5A55B7F31813B9D500696284 /* shareBtn@2x.png */,
 				5AB0F68F17DD5F7D00671C24 /* editIcone@2x.png */,
-				5A0FFC4417EF5AEC009B268D /* shareBtn@2x.png */,
 				5A4D503B17EC8B36007E6BDB /* exploreCell.png */,
 				5A33077217F0760D00DE1E6E /* submitSettings@2x.png */,
 				2C0B75DD1797427300735AD3 /* MainWindow_iPhone.xib */,
@@ -1161,7 +1167,6 @@
 				2CA13BC617B3C3BD00D0257F /* aboutJoomag_iPad@2x.png in Resources */,
 				2CA13BC717B3C3BD00D0257F /* desc@2x.png in Resources */,
 				5ADF07E817BE4B4000F0AD35 /* backButton_iPad@2x.png in Resources */,
-				5A7AFCB417C0D3AC00380CBD /* shareBtn_iPad@2x.png in Resources */,
 				5A7AFCB617C0D91700380CBD /* placeholder.png in Resources */,
 				5A7AFCB817C0DE6B00380CBD /* topTabBarBg@2x.png in Resources */,
 				5A7AFCC217C0EEAA00380CBD /* searchTopBarBg_iPad@2x.png in Resources */,
@@ -1172,7 +1177,7 @@
 				5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */,
 				5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */,
 				5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */,
-				5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator.png in Resources */,
+				5AB0F68E17DD5BDF00671C24 /* bookMarkSeparator@2x.png in Resources */,
 				5AB0F69017DD5F7D00671C24 /* editIcone@2x.png in Resources */,
 				2C7F71C317DF16DC000D492B /* proximanovablack.ttf in Resources */,
 				2C7F71C417DF16DC000D492B /* proximanovabold.ttf in Resources */,
@@ -1190,7 +1195,6 @@
 				5A0FFC3F17EF0A4C009B268D /* joomagButton@2x.png in Resources */,
 				5A0FFC4017EF0A4C009B268D /* twitterButton@2x.png in Resources */,
 				5A0FFC4217EF0A56009B268D /* noInternet@2x.png in Resources */,
-				5A0FFC4517EF5AED009B268D /* shareBtn@2x.png in Resources */,
 				5A0FFC4A17EF6A51009B268D /* logo@2x.png in Resources */,
 				5A0FFC4C17EF6F2B009B268D /* retryButton@2x.png in Resources */,
 				5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */,
@@ -1221,6 +1225,10 @@
 				2C7A134F1812EAC300C39D08 /* fb_login_iPad@2x.png in Resources */,
 				2C7A13501812EAC300C39D08 /* star_iPad@2x.png in Resources */,
 				2C7A13511812EAC300C39D08 /* twitter_login_iPad@2x.png in Resources */,
+				5A55B7F41813B9D600696284 /* shareBtn@2x.png in Resources */,
+				5A55B7F61813D0E300696284 /* buyIssueBg@2x.png in Resources */,
+				5A55B7F81813E82400696284 /* buyIssueBtnBg@2x.png in Resources */,
+				5A55B7FE1814097B00696284 /* shareBtn_iPad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1387,8 +1395,8 @@
 		2C0B75B417971C0A00735AD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1397,8 +1405,8 @@
 				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
 				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5926D59C-CEA6-48CE-A918-854AEF0CBE08";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5926D59C-CEA6-48CE-A918-854AEF0CBE08";
+				PROVISIONING_PROFILE = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1406,8 +1414,8 @@
 		2C0B75B517971C0A00735AD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1416,8 +1424,8 @@
 				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
 				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5926D59C-CEA6-48CE-A918-854AEF0CBE08";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5926D59C-CEA6-48CE-A918-854AEF0CBE08";
+				PROVISIONING_PROFILE = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
