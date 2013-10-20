@@ -10,16 +10,18 @@
 #import "UIImageView+WebCache.h"
 #import "MainDataHolder.h"
 #import "MagazinRecord.h"
+#import "Util.h"
 
-#define TILE_WIDTH_IPHONE 160
-#define TILE_HEIGHT_IPHONE 200
+#define TILE_WIDTH_IPHONE 135
+#define TILE_HEIGHT_IPHONE 170
 #define TILE_WIDTH_IPAD 180
 #define TILE_HEIGHT_IPAD 240
 
 
 
 @implementation DetailsExploreScrollView {
-  
+    int WIDHT, HEIGHT;
+    int spaceBettwenImages;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -32,9 +34,21 @@
         self.backgroundColor = [UIColor clearColor];
         self.delegate = self;
         self.pagingEnabled = YES;
-        self.showsHorizontalScrollIndicator = NO;        
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         //self.backgroundColor = [UIColor redColor];
         // Load the initial set of pages that are on screen
+        
+        if (IS_IPAD) {
+            WIDHT = TILE_WIDTH_IPAD;
+            HEIGHT  = TILE_HEIGHT_IPAD;
+            spaceBettwenImages = WIDHT+60;
+        } else {
+            WIDHT = TILE_WIDTH_IPHONE;
+            HEIGHT = TILE_HEIGHT_IPHONE;
+            spaceBettwenImages = WIDHT+30;
+        }
+        
         
     }
     
@@ -64,23 +78,23 @@
         }
     }
     
-    int yPosition = 0;
+    int yPosition = 5;
     int xPosition = 0;
     
     for (int i = 0; i < entriesLength; i++) {
         MagazinRecord * mRec = [[MagazinRecord alloc] init]; 
         mRec = [self.entries objectAtIndex: i];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, TILE_WIDTH_IPAD, TILE_HEIGHT_IPAD)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, WIDHT, HEIGHT)];
         
         [imageView setImageWithURL: [NSURL URLWithString: mRec.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
         
         [self addSubview: imageView];
         
-        xPosition += 235;
+        xPosition += spaceBettwenImages;
         if(xPosition >= self.frame.size.width) {
             xPosition = 0;
-            yPosition += TILE_HEIGHT_IPAD+30;
+            yPosition += HEIGHT+30;
         }
         
         imageView.tag = i+1;
@@ -88,17 +102,6 @@
     
     [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+260)];
 }
-
-- (void)changeImagesFrame {
-    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (iOrientation == UIDeviceOrientationPortrait) {
-        NSLog(@"11111111");
-    } else {
-        NSLog(@"22222222");
-    }
-}
-
 /*
 
  - (void)loadVisibleImages {

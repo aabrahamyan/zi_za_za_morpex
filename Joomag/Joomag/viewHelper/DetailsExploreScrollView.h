@@ -22,7 +22,6 @@
 - (void) redrawData;
 
 - (void)loadVisibleImages;
-- (void)changeImagesFrame;
 
 @end
 
