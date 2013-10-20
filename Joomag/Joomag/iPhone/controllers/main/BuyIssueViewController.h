@@ -11,9 +11,14 @@
 @interface BuyIssueViewController : UIViewController {
     
 @protected
-    UIView   *topBar;
-    UIButton *closeButtonView;
-    UILabel  *topBarTitleLabel;
+    UIView      *topBar;
+    UIButton    *closeButtonView;
+    UILabel     *topBarTitleLabel;
+    UIImageView *imageView;
+    UILabel     *dateLabel;
+    UIButton    *buyIssueBtn;
+    UIButton    *subscribeIssueBtn;
+    UITextView  *buyIssueText;
 }
 
 @property bool isOpen;
