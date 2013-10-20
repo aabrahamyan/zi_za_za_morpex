@@ -10,6 +10,7 @@
 #import "ExploreScrollView.h"
 #import "ResponseTrackerDelegate.h"
 #import "ExploreTableView.h"
+#import "DetailsExploreScrollView.h"
 
 @class ExploreScrollView;
 @class ExploreTableView;
@@ -34,7 +35,6 @@
     
     DetailsExploreScrollView * det;
     UIActivityIndicatorView * activityIndicator;
-
 }
 
 - (void) redrawData;

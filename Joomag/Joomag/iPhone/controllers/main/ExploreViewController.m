@@ -12,7 +12,7 @@
 #import "SearchViewController.h"
 #import "ConnectionManager.h"
 #import "MagazinRecord.h"
-#import "DetailsExploreScrollView.h"
+
 
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
