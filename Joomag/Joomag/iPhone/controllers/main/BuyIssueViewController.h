@@ -16,8 +16,11 @@
     UILabel     *topBarTitleLabel;
     UIImageView *imageView;
     UILabel     *dateLabel;
+    UIButton    *shareBtn;
+    UILabel     *buyThisIssueLabel;
     UIButton    *buyIssueBtn;
     UIButton    *subscribeIssueBtn;
+    UILabel     *subscribeIssueLabel;
     UITextView  *buyIssueText;
 }
 

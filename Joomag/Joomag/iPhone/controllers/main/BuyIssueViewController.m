@@ -69,7 +69,7 @@
     
     [self.view addSubview: dateLabel];
     
-    UIButton *shareBtn = [[UIButton alloc] initWithFrame:CGRectMake(175, 100, 130, 30)];
+    shareBtn = [[UIButton alloc] initWithFrame:CGRectMake(175, 100, 130, 30)];
     [shareBtn addTarget:self  action:@selector(shareHandler) forControlEvents:UIControlEventTouchDown];
     [shareBtn setBackgroundImage: [Util imageNamedSmart:@"shareBtn"] forState:UIControlStateNormal];
     [shareBtn setTitle:@"SHARE" forState:UIControlStateNormal];
@@ -78,14 +78,14 @@
     
     [self.view addSubview: shareBtn];
     
-    UILabel *buyThisIssue = [[UILabel alloc] initWithFrame: CGRectMake(175, 140, 135, 20)];
-    buyThisIssue.backgroundColor = [UIColor clearColor];
-    buyThisIssue.font = [UIFont fontWithName:@"proximanovaregular" size:12.0f];
-    buyThisIssue.font = [UIFont boldSystemFontOfSize: 12.0f];
-    buyThisIssue.textColor = [UIColor whiteColor];
-    buyThisIssue.text = @"Buy this issue";
+    buyThisIssueLabel = [[UILabel alloc] initWithFrame: CGRectMake(175, 140, 135, 20)];
+    buyThisIssueLabel.backgroundColor = [UIColor clearColor];
+    buyThisIssueLabel.font = [UIFont fontWithName:@"proximanovaregular" size:12.0f];
+    buyThisIssueLabel.font = [UIFont boldSystemFontOfSize: 12.0f];
+    buyThisIssueLabel.textColor = [UIColor whiteColor];
+    buyThisIssueLabel.text = @"Buy this issue";
     
-    [self.view addSubview: buyThisIssue];
+    [self.view addSubview: buyThisIssueLabel];
     
     buyIssueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     buyIssueBtn.frame = CGRectMake(175, 165, 135, 30);
@@ -97,14 +97,14 @@
     
     [self.view addSubview: buyIssueBtn];
     
-    UILabel *subscribeIssue = [[UILabel alloc] initWithFrame: CGRectMake(175, 200, 135, 20)];
-    subscribeIssue.backgroundColor = [UIColor clearColor];
-    subscribeIssue.font = [UIFont fontWithName:@"proximanovaregular" size:12.0f];
-    subscribeIssue.font = [UIFont boldSystemFontOfSize: 12.0f];
-    subscribeIssue.textColor = [UIColor whiteColor];
-    subscribeIssue.text = @"Subscribe for 10 issues";
+    subscribeIssueLabel = [[UILabel alloc] initWithFrame: CGRectMake(175, 200, 135, 20)];
+    subscribeIssueLabel.backgroundColor = [UIColor clearColor];
+    subscribeIssueLabel.font = [UIFont fontWithName:@"proximanovaregular" size:12.0f];
+    subscribeIssueLabel.font = [UIFont boldSystemFontOfSize: 12.0f];
+    subscribeIssueLabel.textColor = [UIColor whiteColor];
+    subscribeIssueLabel.text = @"Subscribe for 10 issues";
     
-    [self.view addSubview: subscribeIssue];
+    [self.view addSubview: subscribeIssueLabel];
     
     subscribeIssueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     subscribeIssueBtn.frame = CGRectMake(175, 225, 135, 30);
