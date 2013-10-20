@@ -263,10 +263,8 @@
     [self.view addSubview: topView];
     
     backButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButtonView.frame = CGRectMake(0, 0, TOP_VIEW_HEIGHT, TOP_VIEW_HEIGHT);  //TODO
-    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
-    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateSelected];
-    [backButtonView setImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateHighlighted];
+    backButtonView.frame = CGRectMake(0, 0, TOP_VIEW_HEIGHT, TOP_VIEW_HEIGHT);
+    [backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
     backButtonView.showsTouchWhenHighlighted = YES;
     [backButtonView addTarget:self action:@selector(backToFeaturedView) forControlEvents:UIControlEventTouchUpInside];
     
@@ -428,7 +426,20 @@
 }
 
 - (void)backToFeaturedView {
-    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];
+    UIViewAnimationOptions animationType;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    if (screenHeight > screenWidth) {
+        animationType = UIViewAnimationOptionTransitionFlipFromRight;
+    } else {
+        animationType = UIViewAnimationOptionTransitionFlipFromTop;
+    }
+    
+    
+    [UIView transitionWithView: self.navigationController.view duration:1 options:animationType animations:nil completion:nil];
     [self.navigationController popViewControllerAnimated: NO];
 }
 

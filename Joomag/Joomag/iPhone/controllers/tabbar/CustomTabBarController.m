@@ -109,6 +109,7 @@ static CustomTabBarController * customTabBarController;
     self.moreNavigationController = [[UINavigationController alloc] initWithRootViewController: moreVC];
     self.moreNavigationController.view.frame = CGRectMake(0, 0, 320, (IS_IPHONE_5 ? 568 : 480));
     self.moreNavigationController.navigationBarHidden = YES;
+    self.moreNavigationController.view.hidden = YES;
     
     [self.view addSubview:self.moreNavigationController.view];
     [self.view addSubview:self.featuredNavigationController.view];

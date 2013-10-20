@@ -193,7 +193,20 @@
     //[readVC startDownloadMagazine: scrollView.currentPage];
     [readVC hitPageDescription:scrollView.currentPage];
     
-    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
+    
+    UIViewAnimationOptions animationType;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    if (screenHeight > screenWidth) {
+        animationType = UIViewAnimationOptionTransitionFlipFromLeft;
+    } else {
+        animationType = UIViewAnimationOptionTransitionFlipFromBottom;
+    }
+    
+    [UIView transitionWithView: self.navigationController.view duration:1 options:animationType animations:nil completion:nil];
     
     [self.navigationController pushViewController: readVC animated: NO];
 }
