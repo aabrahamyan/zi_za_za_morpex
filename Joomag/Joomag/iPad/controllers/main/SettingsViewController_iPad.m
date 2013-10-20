@@ -9,6 +9,8 @@
 #import "SettingsViewController_iPad.h"
 #import "Util.h"
 #import "HelpView.h"
+#import "LoginView.h"
+#import "ConnectionManager.h"
 
 @interface SettingsViewController_iPad () {
     UIButton *closeButtonView;
@@ -18,6 +20,16 @@
     UIView   *aboutView;
     UIView   *restorePurschasesView;
     HelpView * helpView;
+    LoginView * loginView;
+    
+    UIButton *restoreBtn;
+    UITextField *fullNameTextField;
+    UITextField *emailTextField;
+    UITextField *passwordTextField;
+    UITextField *passwordTextFieldRepeat;
+    UIButton *agreWithTermsCheckbox;
+    
+    UILabel * errorLabel;
 }
 
 @end
@@ -128,6 +140,7 @@
     [self cunstructAboutView];
     [self cunstructRestorePurschasesView];
     [self createHelpView];
+    
     
     // ----------------------------------------------------------------------------
     
@@ -273,12 +286,41 @@
     
     [registrationView addSubview:joinJoomag];
     
-    UIImageView *genericBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 54, 287, 44)];
+    UIImageView *genericBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 68, 287, 44)];
     genericBackgroundImage.image = [Util imageNamedSmart:@"settingsTextFieldBG"];
     
     [registrationView addSubview:genericBackgroundImage];
     
-    UILabel *emailLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 64, 80, 20)];
+    UILabel *fullNameLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 78, 100, 20)];
+    fullNameLabel.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
+    fullNameLabel.textColor = [UIColor whiteColor];
+    fullNameLabel.backgroundColor = [UIColor clearColor];
+    fullNameLabel.text = @"Full Name:";
+    
+    [registrationView addSubview:fullNameLabel];
+    
+    fullNameTextField = [[UITextField alloc] initWithFrame: CGRectMake(105, 68, 170, 44)];
+    fullNameTextField.font = [UIFont systemFontOfSize:17.0];
+	fullNameTextField.returnKeyType = UIReturnKeyDone;
+    fullNameTextField.backgroundColor = [UIColor clearColor];
+	fullNameTextField.delegate = self;
+    fullNameTextField.placeholder = @"Required";
+    fullNameTextField.textAlignment = NSTextAlignmentCenter;
+    fullNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	fullNameTextField.keyboardType = UIKeyboardTypeEmailAddress;
+	fullNameTextField.borderStyle = UITextBorderStyleNone;
+	fullNameTextField.textColor = [UIColor whiteColor];
+	fullNameTextField.tag = 90903331;
+    
+    [registrationView addSubview:fullNameTextField];
+    
+    
+    UIImageView *emBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 111, 287, 44)];
+    emBackgroundImage.image = [Util imageNamedSmart:@"settingsTextFieldBG"];
+    
+    [registrationView addSubview:emBackgroundImage];
+    
+    UILabel *emailLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 121, 80, 20)];
     emailLabel.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
     emailLabel.textColor = [UIColor whiteColor];
     emailLabel.backgroundColor = [UIColor clearColor];
@@ -286,7 +328,7 @@
     
     [registrationView addSubview:emailLabel];
     
-    UITextField *emailTextField = [[UITextField alloc] initWithFrame: CGRectMake(105, 53, 170, 44)];
+    emailTextField = [[UITextField alloc] initWithFrame: CGRectMake(105, 110, 170, 44)];
     emailTextField.font = [UIFont systemFontOfSize:17.0];
 	emailTextField.returnKeyType = UIReturnKeyDone;
     emailTextField.backgroundColor = [UIColor clearColor];
@@ -301,12 +343,12 @@
     
     [registrationView addSubview:emailTextField];
     
-    UIImageView *passBg = [[UIImageView alloc] initWithFrame: CGRectMake(0, 111, 287, 44)];
+    UIImageView *passBg = [[UIImageView alloc] initWithFrame: CGRectMake(0, 165, 287, 44)];
     passBg.image = [Util imageNamedSmart:@"settingsTextFieldBG"];
     
     [registrationView addSubview:passBg];
     
-    UILabel *passwordLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 121, 100, 20)];
+    UILabel *passwordLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 175, 100, 20)];
     passwordLabel.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
     passwordLabel.textColor = [UIColor whiteColor];
     passwordLabel.backgroundColor = [UIColor clearColor];
@@ -314,7 +356,7 @@
     
     [registrationView addSubview:passwordLabel];
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame: CGRectMake(105, 110, 170, 44)];
+    passwordTextField = [[UITextField alloc] initWithFrame: CGRectMake(105, 165, 170, 44)];
 	passwordTextField.backgroundColor = [UIColor clearColor];
     passwordTextField.font = [UIFont systemFontOfSize:17.0];
 	passwordTextField.returnKeyType = UIReturnKeyDone;
@@ -329,12 +371,12 @@
     
     [registrationView addSubview:passwordTextField];
     
-    UIImageView *passBgRepeat = [[UIImageView alloc] initWithFrame: CGRectMake(0, 155, 287, 44)];
+    UIImageView *passBgRepeat = [[UIImageView alloc] initWithFrame: CGRectMake(0, 205, 287, 44)];
     passBgRepeat.image = [Util imageNamedSmart:@"settingsTextFieldBG"];
     
     [registrationView addSubview:passBgRepeat];
     
-    UILabel *retypeLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 165, 80, 20)];
+    UILabel *retypeLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 215, 80, 20)];
     retypeLabel.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
     retypeLabel.textColor = [UIColor whiteColor];
     retypeLabel.backgroundColor = [UIColor clearColor];
@@ -342,7 +384,7 @@
     
     [registrationView addSubview:retypeLabel];
     
-    UITextField *passwordTextFieldRepeat = [[UITextField alloc] initWithFrame: CGRectMake(105, 155, 170, 44)];
+    passwordTextFieldRepeat = [[UITextField alloc] initWithFrame: CGRectMake(105, 205, 170, 44)];
 	passwordTextFieldRepeat.backgroundColor = [UIColor clearColor];
     passwordTextFieldRepeat.font = [UIFont systemFontOfSize:17.0];
 	passwordTextFieldRepeat.returnKeyType = UIReturnKeyDone;
@@ -358,16 +400,25 @@
     [registrationView addSubview:passwordTextFieldRepeat];
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    submitButton.frame = CGRectMake(0, 242, 175, 44);
+    submitButton.frame = CGRectMake(0, 262, 175, 44);
     [submitButton setImage:[Util imageNamedSmart:@"submitSettings"] forState:UIControlStateNormal];
     [submitButton setImage:[Util imageNamedSmart:@"submitSettings"] forState:UIControlStateSelected];
     [submitButton setImage:[Util imageNamedSmart:@"submitSettings"] forState:UIControlStateHighlighted];
     submitButton.showsTouchWhenHighlighted = YES;
     [submitButton addTarget: self action: @selector(submitHandler) forControlEvents:UIControlEventTouchUpInside];
     
+    errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 325, 350, 15)];
+    errorLabel.backgroundColor = [UIColor clearColor];
+    errorLabel.textColor = [UIColor redColor];
+    errorLabel.numberOfLines = NSIntegerMax;
+    errorLabel.font = [UIFont systemFontOfSize:13.0f];
+    errorLabel.hidden = YES;
+    
+    [registrationView addSubview:errorLabel];
+    
     [registrationView addSubview:submitButton];
     
-    UILabel *termsOfService = [[UILabel alloc] initWithFrame: CGRectMake(190, 270, 120, 20)];
+    UILabel *termsOfService = [[UILabel alloc] initWithFrame: CGRectMake(190, 285, 120, 20)];
     termsOfService.font = [UIFont boldSystemFontOfSize:12];
     termsOfService.textColor = [UIColor redColor];
     termsOfService.backgroundColor = [UIColor clearColor];
@@ -375,7 +426,7 @@
     
     [registrationView addSubview:termsOfService];
     
-    UITextView *text = [[UITextView alloc] initWithFrame: CGRectMake(300, 53, 200, 140)];
+    UITextView *text = [[UITextView alloc] initWithFrame: CGRectMake(300, 68, 200, 140)];
     text.backgroundColor = [UIColor clearColor];
     text.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
     text.contentInset = UIEdgeInsetsMake(-10.0,0.0,0,0.0);
@@ -385,7 +436,7 @@
     
     [registrationView addSubview: text];
     
-    UITextView *agreWithTermsLabel = [[UITextView alloc] initWithFrame: CGRectMake(340, 230, 160, 50)];
+    UITextView *agreWithTermsLabel = [[UITextView alloc] initWithFrame: CGRectMake(340, 245, 160, 50)];
     agreWithTermsLabel.font = [UIFont boldSystemFontOfSize:10];
     agreWithTermsLabel.textColor = [UIColor whiteColor];
     agreWithTermsLabel.backgroundColor = [UIColor clearColor];
@@ -393,8 +444,8 @@
     
     [registrationView addSubview:agreWithTermsLabel];
     
-    UIButton *agreWithTermsCheckbox = [UIButton buttonWithType:UIButtonTypeCustom];
-    agreWithTermsCheckbox.frame = CGRectMake(300,225,50,50);
+    agreWithTermsCheckbox = [UIButton buttonWithType:UIButtonTypeCustom];
+    agreWithTermsCheckbox.frame = CGRectMake(300,240,50,50);
     agreWithTermsCheckbox.backgroundColor = [UIColor clearColor];
     [agreWithTermsCheckbox setImage:[UIImage imageNamed:@"notselectedcheckbox.png"] forState:UIControlStateNormal];
     [agreWithTermsCheckbox setImage:[UIImage imageNamed:@"selectedcheckbox.png"] forState:UIControlStateSelected];
@@ -612,7 +663,7 @@
     
     [restorePurschasesView addSubview: restoreDesc];
     
-    UIButton *restoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    restoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     restoreBtn.frame = CGRectMake(160, 170, 140, 40);
     restoreBtn.backgroundColor = RGBA(214, 77, 76, 1);
     [restoreBtn setTitle:@"Restore" forState:UIControlStateNormal];
@@ -629,6 +680,16 @@
     helpView.hidden = YES;
     [helpView redrawData];
 }
+
+- (void) createLoginView {
+    
+     loginView = [[LoginView alloc] initWithFrame:CGRectMake(260, 120, 700, 400)];
+    
+    [self.view addSubview:loginView];
+    registrationView.hidden = YES;
+}
+
+
 
 
 /*
@@ -662,8 +723,80 @@
 }
 
 - (void)submitHandler {
-    NSLog(@"signInHandler");
+    NSLog(@"signUpHandler");
+    
+    if(agreWithTermsCheckbox.selected) {
+        
+        if([passwordTextField.text isEqualToString:passwordTextFieldRepeat.text]) {
+            
+            if(fullNameTextField.text.length == 0 || emailTextField.text.length == 0 || passwordTextField.text == 0 || passwordTextFieldRepeat.text == 0) {
+                
+                [self updateError:@"Error: Fields must not be blank."];
+                
+            } else {
+                
+                self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                self.activityIndicator.center = self.view.center;
+                registrationView.hidden = YES;
+                [self.view addSubview:self.activityIndicator];
+                [self.activityIndicator startAnimating];
+                
+                ConnectionManager * connManager = [[ConnectionManager alloc] init];
+                [connManager constructAndPostRegistrationRequest:self withUserName:emailTextField.text withPassword:passwordTextField.text withFullName:fullNameTextField.text];
+                
+                                
+            }
+            
+        } else {            
+            [self updateError:@"Error: Make sure passwords are identical."];
+        }
+        
+    } else {
+        [self updateError:@"Error: First, you must agree with terms of use."];
+    }
+    
 }
+
+- (void) updateError: (NSString *) message {
+    errorLabel.text = message;
+    errorLabel.hidden = NO;
+}
+
+- (void) didFinishResponse:(id)responseObject {
+    [self.activityIndicator stopAnimating];
+    self.activityIndicator = nil;
+    
+    id errorObj = [responseObject objectForKey:@"error"];
+    
+    NSInteger error = [errorObj integerValue];
+    
+    if(error == 0) {
+        errorLabel.hidden = YES;
+        [self createLoginView];
+    
+    } else {
+        NSString * msg = [responseObject objectForKey:@"msg"];
+        if(msg) {
+            errorLabel.hidden = NO;
+            [self updateError:msg];
+        }
+        
+        registrationView.hidden = NO;
+    }
+}
+
+- (void) didFailResponse:(id)responseObject {
+    [self.activityIndicator stopAnimating];
+    self.activityIndicator = nil;
+    
+    NSLog(@"Error while registering: %@", [responseObject description]);
+    
+    errorLabel.hidden = NO;
+    [self updateError:[responseObject description]];
+
+    registrationView.hidden = NO;
+}
+
 
 - (void)restorePurschasesHandler {
     NSLog(@"restorePurschasesHandler");

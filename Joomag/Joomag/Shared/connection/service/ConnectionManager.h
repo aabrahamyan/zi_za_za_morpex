@@ -22,4 +22,6 @@
 
 - (void) constrcutAndGetCategoriesTypesRequest: (id<ResponseTrackerDelegate>) callback;
 
+- (void) constructAndPostRegistrationRequest: (id<ResponseTrackerDelegate>) callback withUserName : (NSString *) uname withPassword : (NSString *) passwd withFullName : (NSString *) fullName;
+
 @end

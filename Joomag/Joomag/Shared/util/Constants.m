@@ -9,6 +9,7 @@
 #import "Constants.h"
 
 //-------------- Main Request/Response handling ---------------//
+NSString * const NON_JSCIP_SERVICE_REG = @"http://joomag.com/Frontend/WebService/WebsiteGateway/registration.php?isAjax=true";
 NSString * const SERVICE_URL = @"http://www.joomag.com/Frontend/WebService/gateway.php";
 NSString * const MAIN_POST_PARAM = @"req";
 
@@ -44,6 +45,11 @@ NSString * const GETTYPESWITHCATEGORIES = @"GETTYPESWITHCATEGORIES";
 //-------------- Constant Value -----------------//
 NSString * const RANDOM_BLOCK_NUMBER = @"4tMb0";
 NSString * const GK = @"gk";
+
+//-------------- Reg Values -------------//
+NSString * const REG_EMAIL = @"E_Mail";
+NSString * const REG_PASSWD = @"Password";
+NSString * const REG_FULLNAME = @"FullName";
 
 
 @implementation Constants

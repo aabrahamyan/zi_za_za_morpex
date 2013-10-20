@@ -7,13 +7,17 @@
 //
 
 #import "SettingsViewController.h"
+#import "ResponseTrackerDelegate.h"
 
-@interface SettingsViewController_iPad : SettingsViewController <UITextFieldDelegate>
+@interface SettingsViewController_iPad : SettingsViewController <UITextFieldDelegate, ResponseTrackerDelegate> 
 
 @property (nonatomic, strong) UIImageView * backgroundImageView;
 @property (nonatomic, strong) UIView * tabsView;
 
 @property bool isOpen;
 - (void) animateUpAndDown: (BOOL) isUP;
+
+
+@property (nonatomic, strong) UIActivityIndicatorView * activityIndicator;
 
 @end

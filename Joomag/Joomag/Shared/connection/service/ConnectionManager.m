@@ -16,6 +16,7 @@
 #import "PageParser.h"
 #import "MagazinesListParser.h"
 #import "CategoriesParser.h"
+#import "RegistrationParser.h"
 #import "MainDataHolder.h"
 
 @implementation ConnectionManager
@@ -184,6 +185,29 @@
     }
 }
 
+- (void) constructAndPostRegistrationRequest: (id<ResponseTrackerDelegate>) callback withUserName : (NSString *) uname withPassword : (NSString *) passwd withFullName : (NSString *) fullName {
+    
+    if(uname && passwd && fullName) {
+        
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:uname, REG_EMAIL, passwd, REG_PASSWD, fullName, REG_FULLNAME, nil];
+        
+        AFHTTPClient * requestClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:NON_JSCIP_SERVICE_REG]];
+        
+        [requestClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            RegistrationParser * regParser = [[RegistrationParser alloc] init];
+            NSDictionary * error = [regParser parseRegistration:responseObject];
+            
+            [callback didFinishResponse:error];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+            [callback didFailResponse:[error description]];
+        }];
+        
+    }
+
+}
 
 
 @end

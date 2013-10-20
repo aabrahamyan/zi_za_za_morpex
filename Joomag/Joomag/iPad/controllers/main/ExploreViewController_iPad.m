@@ -11,6 +11,9 @@
 #import "Util.h"
 #import "MainDataHolder.h"
 
+
+
+
 @interface ExploreViewController_iPad () {
     DataHolder *dataHolder;
     CGRect topBarFrame, topBarTitleLabelFrame, searchBtnFrame, titleLabelsViewFrame, pageControlFrame, scrollViewFrame, categoriesTableFrame;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //-------------- Main Request/Response handling ---------------//
+extern NSString * const NON_JSCIP_SERVICE_REG;
 extern NSString * const SERVICE_URL;
 extern NSString * const MAIN_POST_PARAM;
 
@@ -44,6 +45,11 @@ extern NSString * const GETTYPESWITHCATEGORIES;
 //-------------- Constant Value -----------------//
 extern NSString * const RANDOM_BLOCK_NUMBER;
 extern NSString * const GK;
+
+//-------------- Reg Values -------------//
+extern NSString * const REG_EMAIL;
+extern NSString * const REG_PASSWD;
+extern NSString * const REG_FULLNAME;
 
 @interface Constants : NSObject
 
