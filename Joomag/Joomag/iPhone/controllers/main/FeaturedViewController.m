@@ -114,7 +114,7 @@
     
     mRecord = [dataHolder.testData objectAtIndex:scrollView.currentPage];
     
-    NSLog(@"dataHolder.testData: %i", scrollView.currentPage);
+    dataHolder.currentMagazineNumber = scrollView.currentPage;
     
     detailsView.date.text = mRecord.magazinDate;
     detailsView.title.text = mRecord.magazinTitle;
@@ -212,7 +212,6 @@
 }
 
 - (void)buyIssueHandler {
-    NSLog(@"buy Issue");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBuyIssue" object:nil];
 }
 

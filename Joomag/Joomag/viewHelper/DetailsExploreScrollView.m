@@ -10,16 +10,18 @@
 #import "UIImageView+WebCache.h"
 #import "MainDataHolder.h"
 #import "MagazinRecord.h"
+#import "Util.h"
 
-#define TILE_WIDTH_IPHONE 160
-#define TILE_HEIGHT_IPHONE 200
-#define TILE_WIDTH_IPAD 220
-#define TILE_HEIGHT_IPAD 280
+#define TILE_WIDTH_IPHONE 135
+#define TILE_HEIGHT_IPHONE 170
+#define TILE_WIDTH_IPAD 180
+#define TILE_HEIGHT_IPAD 240
 
 
 
 @implementation DetailsExploreScrollView {
-  
+    int WIDHT, HEIGHT;
+    int spaceBettwenImages;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -32,10 +34,21 @@
         self.backgroundColor = [UIColor clearColor];
         self.delegate = self;
         self.pagingEnabled = YES;
-        self.showsHorizontalScrollIndicator = NO;        
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         //self.backgroundColor = [UIColor redColor];
-        NSLog(@"asasasasasas");
         // Load the initial set of pages that are on screen
+        
+        if (IS_IPAD) {
+            WIDHT = TILE_WIDTH_IPAD;
+            HEIGHT  = TILE_HEIGHT_IPAD;
+            spaceBettwenImages = WIDHT+60;
+        } else {
+            WIDHT = TILE_WIDTH_IPHONE;
+            HEIGHT = TILE_HEIGHT_IPHONE;
+            spaceBettwenImages = WIDHT+30;
+        }
+        
         
     }
     
@@ -65,25 +78,23 @@
         }
     }
     
-    int yPosition = 0;
-    int xPosition = 50;
-    
-    //NSLog(@"self.frame.size.width: %f", self.frame.size.width);
+    int yPosition = 5;
+    int xPosition = 0;
     
     for (int i = 0; i < entriesLength; i++) {
         MagazinRecord * mRec = [[MagazinRecord alloc] init]; 
         mRec = [self.entries objectAtIndex: i];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 180, 240)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, WIDHT, HEIGHT)];
         
         [imageView setImageWithURL: [NSURL URLWithString: mRec.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
         
         [self addSubview: imageView];
         
-        xPosition += 210;
-        if(xPosition >= self.frame.size.width - 100) {
-            xPosition = 50;
-            yPosition += 260;
+        xPosition += spaceBettwenImages;
+        if(xPosition >= self.frame.size.width) {
+            xPosition = 0;
+            yPosition += HEIGHT+30;
         }
         
         imageView.tag = i+1;
@@ -91,39 +102,46 @@
     
     [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+260)];
 }
+/*
 
-// -------------------------------------------------------------------------------
-// setTilesWithArray: tileWidth: andHeight:
-// Set the images in scroll view
-// -------------------------------------------------------------------------------
-- (void)setTilesWithArray: (NSArray *)arr tileWidth: (int)width andHeight: (int)height {
-    
-    int xPosition = 0;
-    int yPosition = 0;
-    int offsetX = 0;
-    index = [arr count];
-    
-    for (int i = 0; i < entriesLength; i ++) {
-        
-        if(i%index == 0 && i!=0){
-            offsetX += index/2*width;
-        }
-        
-        xPosition = offsetX + [arr[i%index][0] intValue]*width;
-        yPosition = [arr[i%index][1] intValue]*height;
-        
-        //NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
-        imageView.image = [UIImage imageNamed:@"placeholder.png"];
-        imageView.tag = i+1;
-        
-        [self addSubview:imageView];
-    }
-    
-    // Set up the content size of the scroll view for IPHONE
-    self.contentSize = CGSizeMake(2*660, self.frame.size.height); //TODO
-}
+ - (void)loadVisibleImages {
+ // First, determine which page is currently visible
+ 
+ // With some valid UIView *view:
+ for(UIView *subview in [self subviews]) {
+ if (subview.tag > 0) {
+ [subview removeFromSuperview];  //TODO: change subview frame
+ }
+ }
+ 
+ int yPosition = 0;
+ int xPosition = 50;
+ 
+ //NSLog(@"self.frame.size.width: %f", self.frame.size.width);
+ 
+ for (int i = 0; i < entriesLength; i++) {
+ MagazinRecord * mRec = [[MagazinRecord alloc] init];
+ mRec = [self.entries objectAtIndex: i];
+ 
+ UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 180, 240)];
+ 
+ [imageView setImageWithURL: [NSURL URLWithString: mRec.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
+ 
+ [self addSubview: imageView];
+ 
+ xPosition += 210;
+ if(xPosition >= self.frame.size.width - 100) {
+ xPosition = 50;
+ yPosition += 260;
+ }
+ 
+ imageView.tag = i+1;
+ }
+ 
+ [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+260)];
+ }
+ 
+*/
 
 
 

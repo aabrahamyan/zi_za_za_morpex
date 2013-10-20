@@ -16,7 +16,8 @@
 
 @interface ExploreViewController_iPad () {
     DataHolder *dataHolder;
-    CGRect topBarFrame, topBarTitleLabelFrame, searchBtnFrame, titleLabelsViewFrame, pageControlFrame, scrollViewFrame, categoriesTableFrame;
+    CGRect topBarFrame, topBarTitleLabelFrame, searchBtnFrame, titleLabelsViewFrame,
+    pageControlFrame, scrollViewFrame, categoriesTableFrame, detailsScrollViewFrame;
     NSArray *data;
 }
 
@@ -50,7 +51,7 @@
         titleLabelsViewFrame = CGRectMake(60, 60, 310, 44);
         pageControlFrame = CGRectMake(70, 650, 610, 30);
         categoriesTableFrame = CGRectMake(0, 1024-315, 768, 250);               
-        
+        detailsScrollViewFrame = CGRectMake(60, 111, 648, 794);
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
         topBarTitleLabelFrame = CGRectMake(60, 0, 150, 44);
@@ -61,6 +62,7 @@
         titleLabelsViewFrame = CGRectMake(40, 60, 310, 44);
         pageControlFrame = CGRectMake(70, 630, 610, 30);
         categoriesTableFrame = CGRectMake(1024-260, 46, 240, 660);
+        detailsScrollViewFrame = CGRectMake(75, 111, 877, 544);
     }
     
     CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
@@ -72,6 +74,9 @@
     scrollView.frame = scrollViewFrame;
     pageControl.frame = pageControlFrame;
     categoriesTable.frame = categoriesTableFrame;
+    
+    det.frame = detailsScrollViewFrame;
+    [det redrawData];
 }
 
 

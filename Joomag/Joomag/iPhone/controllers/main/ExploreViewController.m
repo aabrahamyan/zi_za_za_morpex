@@ -12,7 +12,7 @@
 #import "SearchViewController.h"
 #import "ConnectionManager.h"
 #import "MagazinRecord.h"
-#import "DetailsExploreScrollView.h"
+
 
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
@@ -162,7 +162,7 @@
             border.hidden = YES;
             
             if(!det && !det.hidden)
-                det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(67, 111, 877, 594)];
+                det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(10, 64, 300, 400)];
             else
                 det.hidden = NO;
             det.entries = dataHolder.testData;

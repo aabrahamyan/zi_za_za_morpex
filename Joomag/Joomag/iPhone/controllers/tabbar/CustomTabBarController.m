@@ -16,6 +16,7 @@
 #import "MoreViewController.h"
 #import "BuyIssueViewController.h"
 #import "Util.h"
+#import "MainDataHolder.h"
 
 @interface CustomTabBarController ()
 
@@ -307,6 +308,10 @@ static CustomTabBarController * customTabBarController;
     self.buyIssueVC = [self getBuyIssueViewController];
     
     [self.view addSubview: self.buyIssueVC.view];
+    
+    int currentMagazineNumber = [MainDataHolder getInstance].currentMagazineNumber;
+    [self.buyIssueVC hitIssueDescription: currentMagazineNumber];
+    
     [self.buyIssueVC animateUpAndDown:YES];
 }
 
