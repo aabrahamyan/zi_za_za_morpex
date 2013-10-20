@@ -28,5 +28,6 @@
 @property bool isOpen;
 
 - (void) animateUpAndDown: (BOOL) isUP;
+- (void) hitIssueDescription : (NSInteger) magazineId;
 
 @end

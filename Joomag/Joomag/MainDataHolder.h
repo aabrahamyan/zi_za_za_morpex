@@ -29,6 +29,7 @@
 
 @property (nonatomic, strong) NSMutableArray * myLibMagazines;
 
+@property int currentMagazineNumber;
 
 + (MainDataHolder *) getInstance;
 

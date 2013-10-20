@@ -8,6 +8,9 @@
 
 #import "BuyIssueViewController.h"
 #import "Util.h"
+#import "MainDataHolder.h"
+#import "MagazinRecord.h"
+#import "UIImageView+WebCache.h"
 
 @interface BuyIssueViewController ()
 
@@ -20,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -71,7 +75,6 @@
     dateLabel.font = [UIFont fontWithName:@"proximanovaregular" size:16.0f];
     dateLabel.font = [UIFont boldSystemFontOfSize: 16.0f];
     dateLabel.textColor = [UIColor whiteColor];
-    dateLabel.text = @"Aug 2013";
     
     [scrollView addSubview: dateLabel];
     
@@ -132,6 +135,16 @@
     
     [scrollView addSubview: buyIssueText];
     
+}
+
+- (void) hitIssueDescription : (NSInteger) magazineId {
+    MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex:magazineId];
+    // NSLog(@"currentMagazine: %@", currentMagazine.magazinDetailsImageURL);
+    dateLabel.text = currentMagazine.magazinDate;
+    
+    [imageView setImageWithURL: [NSURL URLWithString: currentMagazine.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
+    
+    buyIssueText.text = currentMagazine.magazinDetailsText;
 }
 
 

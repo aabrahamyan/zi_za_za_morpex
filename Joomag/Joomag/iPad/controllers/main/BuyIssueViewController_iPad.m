@@ -77,7 +77,7 @@
     
     if (iOrientation == UIDeviceOrientationPortrait) {
         imageFrame = CGRectMake(0, 40, 240, 310);
-        dateLabelFrame = CGRectMake(270, 0, 200, 20);
+        dateLabelFrame = CGRectMake(270, 0, 400, 20);
         textFrame = CGRectMake(270, 70, 420, 240);
         shareBtnFrame = CGRectMake(560, 305, 110, 30);
         buyThisIssueFrame = CGRectMake(270, 365, 200, 20);
@@ -89,7 +89,7 @@
         scrollViewFrame = CGRectMake(50, 100, 670, 849);
     } else {
         imageFrame = CGRectMake(0, 40, 240, 310);
-        dateLabelFrame = CGRectMake(270, 0, 200, 20);
+        dateLabelFrame = CGRectMake(270, 0, 400, 20);
         textFrame = CGRectMake(270, 70, 420, 240);
         shareBtnFrame = CGRectMake(560, 305, 110, 30);
         buyThisIssueFrame = CGRectMake(270, 365, 200, 20);
@@ -106,7 +106,7 @@
     dateLabel.frame = dateLabelFrame;
     
     buyIssueText.frame = textFrame;
-    buyIssueText.contentInset = UIEdgeInsetsMake(-10, -9, 0, 0);
+    buyIssueText.contentInset = UIEdgeInsetsMake(-10, -7, 0, 0);
     buyIssueText.backgroundColor = [UIColor clearColor];
     
     shareBtn.frame = shareBtnFrame;
