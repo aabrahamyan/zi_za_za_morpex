@@ -53,6 +53,8 @@
         buttonContainerFrame = CGRectMake(270, 290, 400, 180);
         shareLabelFrame = CGRectMake(270, 310, 100, 20);
         scrollViewFrame = CGRectMake(50, 100, 670, 849);
+        
+        afterPurchase.frame = CGRectMake(40, 160, 688, 500);
     } else {
         imageFrame = CGRectMake(0, 40, 240, 310);
         dateLabelFrame = CGRectMake(270, 0, 400, 20);
@@ -65,6 +67,8 @@
         buttonContainerFrame = CGRectMake(270, 290, 400, 180);
         shareLabelFrame = CGRectMake(270, 310, 100, 20);
         scrollViewFrame = CGRectMake(177, 100, 670, 849);
+        
+        afterPurchase.frame = CGRectMake(168, 160, 688, 500);
     }
     
     imageView.frame = imageFrame;
@@ -93,6 +97,13 @@
     shareLabel.frame = shareLabelFrame;
     
     scrollView.frame = scrollViewFrame;
+    
+    afterPurchaseImage.frame = CGRectMake(0, 0, 290, 360);
+    afterPurchaseTitle.frame = CGRectMake(320, 0, 370, 30);
+    afterPurchaseTitle.font = [UIFont boldSystemFontOfSize: 30.0f];
+    afterPurchaseText.frame = CGRectMake(320, 30, 370, 80);
+    afterPurchaseGoReadBtn.frame = CGRectMake(320, 130, 170, 36);
+    afterPurchaseShopForMoreBtn.frame = CGRectMake(517, 130, 170, 36);
 }
 
 // TODO
