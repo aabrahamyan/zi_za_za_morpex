@@ -9,13 +9,8 @@
 #import "BuyIssueViewController_iPad.h"
 
 @interface BuyIssueViewController_iPad () {
-    
     CGRect imageFrame, dateLabelFrame, textFrame, shareBtnFrame, buyThisIssueFrame, shareLabelFrame,
     subscribeIssueLabelFrame, buyIssueBtnFrame, subscribeIssueBtnFrame, buttonContainerFrame, scrollViewFrame;
-    
-    UIView  *buttonContainer;
-    UILabel *shareLabel;
-
 }
 
 @end
@@ -37,38 +32,9 @@
 
     self.view.frame = CGRectMake(0, 1024, 1024, 768);
     
-    buttonContainer = [[UIView alloc] init];
-    
-    UIImageView *bgImage = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 400, 180)];
-    bgImage.image = [UIImage imageNamed: @"buyIssueBtnBg.png"];
-    [buttonContainer addSubview: bgImage];
-    
-    [scrollView addSubview: buttonContainer];
-    
-    
-    shareLabel = [[UILabel alloc] init];
-    shareLabel.text = @"Share";
-    shareLabel.font = [UIFont fontWithName:@"proximanovabold" size:18.0f];
-    shareLabel.textColor = [UIColor whiteColor];
-    shareLabel.backgroundColor = [UIColor clearColor];
-    
-    [scrollView addSubview: shareLabel];
-    
-    UILabel *singleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 500, 170, 20)];
-    singleLabel.backgroundColor = [UIColor clearColor];
-    singleLabel.textColor = [UIColor whiteColor];
-    singleLabel.text = @"SINGLE ISSUES";
-    singleLabel.font = [UIFont boldSystemFontOfSize: 12.0f];
-    
-    [scrollView addSubview: singleLabel];
-    
-    UIImageView *bootomBorder = [[UIImageView alloc] initWithFrame: CGRectMake(50, 950, 670, 2)];
-    bootomBorder.image = [UIImage imageNamed:@"bookMarkSeparator.png"];
-    
-    [self.view addSubview: bootomBorder];
+    buttonContainer.hidden = NO;
     
     [self setIssuesWithData];
-    
 }
 
 - (void)viewDidLayoutSubviews {

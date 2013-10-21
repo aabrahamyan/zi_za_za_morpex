@@ -23,6 +23,15 @@
     UILabel      *subscribeIssueLabel;
     UITextView   *buyIssueText;
     UIScrollView *scrollView;
+    UIView       *buttonContainer;
+    UILabel      *shareLabel;
+    
+    UIView       *afterPurchase;
+    UILabel      *afterPurchaseTitle;
+    UIImageView  *afterPurchaseImage;
+    UILabel      *afterPurchaseText;
+    UIButton     *afterPurchaseGoReadBtn;
+    UIButton     *afterPurchaseShopForMoreBtn;
 }
 
 @property bool isOpen;
