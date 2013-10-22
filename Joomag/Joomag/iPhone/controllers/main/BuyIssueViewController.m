@@ -62,6 +62,7 @@
     scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 64, 300, 440)];
     scrollView.contentSize = CGSizeMake(300, 440);
     scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.userInteractionEnabled = YES;
     
     [self.view addSubview: scrollView];
     
@@ -96,16 +97,6 @@
     
     [scrollView addSubview: buyThisIssueLabel];
     
-    buyIssueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    buyIssueBtn.frame = CGRectMake(165, 105, 135, 30);
-    [buyIssueBtn setTitle:@"$4.99" forState:UIControlStateNormal];
-    buyIssueBtn.backgroundColor = RGBA(214, 77, 76, 1);
-    buyIssueBtn.showsTouchWhenHighlighted = YES;
-    buyIssueBtn.titleLabel.font = [UIFont fontWithName:@"proximanovaregular" size: 18.0f];
-    [buyIssueBtn addTarget: self action: @selector(submitHandler) forControlEvents:UIControlEventTouchUpInside];
-    
-    [scrollView addSubview: buyIssueBtn];
-    
     subscribeIssueLabel = [[UILabel alloc] initWithFrame: CGRectMake(165, 140, 135, 20)];
     subscribeIssueLabel.backgroundColor = [UIColor clearColor];
     subscribeIssueLabel.font = [UIFont fontWithName:@"proximanovaregular" size:12.0f];
@@ -114,17 +105,7 @@
     subscribeIssueLabel.text = @"Subscribe for 10 issues";
     
     [scrollView addSubview: subscribeIssueLabel];
-    
-    subscribeIssueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    subscribeIssueBtn.frame = CGRectMake(165, 165, 135, 30);
-    [subscribeIssueBtn setTitle:@"$12.99" forState:UIControlStateNormal];
-    subscribeIssueBtn.backgroundColor = RGBA(214, 77, 76, 1);
-    subscribeIssueBtn.showsTouchWhenHighlighted = YES;
-    subscribeIssueBtn.titleLabel.font = [UIFont fontWithName:@"proximanovaregular" size: 18.0f];
-    [subscribeIssueBtn addTarget: self action: @selector(submitHandler) forControlEvents:UIControlEventTouchUpInside];
-    
-    [scrollView addSubview: subscribeIssueBtn];
-    
+        
     buyIssueText = [[UITextView alloc] initWithFrame: CGRectMake(0, 240, 300, 200)];
     buyIssueText.backgroundColor = RGBA(41, 41, 41, 1);
     buyIssueText.font = [UIFont fontWithName:@"proximanovabold" size:17.0];
@@ -135,6 +116,107 @@
     
     [scrollView addSubview: buyIssueText];
     
+    buttonContainer = [[UIView alloc] init];
+    
+    UIImageView *bgImage = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 400, 180)];
+    bgImage.image = [UIImage imageNamed: @"buyIssueBtnBg.png"];
+    [buttonContainer addSubview: bgImage];
+    buttonContainer.hidden = YES;
+    
+    [scrollView addSubview: buttonContainer];
+    
+    shareLabel = [[UILabel alloc] init];
+    shareLabel.text = @"Share";
+    shareLabel.font = [UIFont fontWithName:@"proximanovabold" size:18.0f];
+    shareLabel.textColor = [UIColor whiteColor];
+    shareLabel.backgroundColor = [UIColor clearColor];
+    
+    [scrollView addSubview: shareLabel];
+    
+    UILabel *singleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 500, 170, 20)];
+    singleLabel.backgroundColor = [UIColor clearColor];
+    singleLabel.textColor = [UIColor whiteColor];
+    singleLabel.text = @"SINGLE ISSUES";
+    singleLabel.font = [UIFont boldSystemFontOfSize: 12.0f];
+    
+    [scrollView addSubview: singleLabel];
+    
+    UIImageView *bootomBorder = [[UIImageView alloc] initWithFrame: CGRectMake(50, 950, 670, 2)];
+    bootomBorder.image = [UIImage imageNamed:@"bookMarkSeparator.png"];
+    
+    [self.view addSubview: bootomBorder];
+    
+    buyIssueBtn = [[UIButton alloc] initWithFrame: CGRectMake(165, 105, 135, 30)];
+    [buyIssueBtn setTitle:@"$4.99" forState:UIControlStateNormal];
+    buyIssueBtn.backgroundColor = RGBA(214, 77, 76, 1);
+    buyIssueBtn.showsTouchWhenHighlighted = YES;
+    buyIssueBtn.titleLabel.font = [UIFont fontWithName:@"proximanovaregular" size: 18.0f];
+    [buyIssueBtn addTarget: self action: @selector(buyButtonHandler) forControlEvents:UIControlEventTouchUpInside];
+    
+    [scrollView addSubview: buyIssueBtn];
+    
+    subscribeIssueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    subscribeIssueBtn.frame = CGRectMake(165, 165, 135, 30);
+    [subscribeIssueBtn setTitle:@"$12.99" forState:UIControlStateNormal];
+    subscribeIssueBtn.backgroundColor = RGBA(214, 77, 76, 1);
+    subscribeIssueBtn.showsTouchWhenHighlighted = YES;
+    subscribeIssueBtn.titleLabel.font = [UIFont fontWithName:@"proximanovaregular" size: 18.0f];
+    [subscribeIssueBtn addTarget: self action: @selector(subscribeIssueHandler) forControlEvents:UIControlEventTouchUpInside];
+    
+    [scrollView addSubview: subscribeIssueBtn];
+    
+    
+    // --------------------------------------- After Purchaase View ------------------------------------------
+    
+    afterPurchase = [[UIView alloc] initWithFrame: CGRectMake(20, 80, 280, 200)];
+    afterPurchase.backgroundColor = [UIColor clearColor];
+    afterPurchase.hidden = YES;
+    [self.view addSubview: afterPurchase];
+    
+    afterPurchaseTitle = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, 280, 20)];
+    afterPurchaseTitle.text = @"Thanks for your purchase";
+    afterPurchaseTitle.textColor = [UIColor whiteColor];
+    afterPurchaseTitle.backgroundColor = [UIColor clearColor];
+    afterPurchaseTitle.textAlignment = NSTextAlignmentLeft;
+    afterPurchaseTitle.font = [UIFont boldSystemFontOfSize: 22.0f];
+    [afterPurchase addSubview: afterPurchaseTitle];
+    
+    afterPurchaseImage = [[UIImageView alloc] initWithFrame: CGRectMake(0, 40, 120, 160)];
+    [afterPurchase addSubview: afterPurchaseImage];
+    
+    afterPurchaseText = [[UILabel alloc] initWithFrame: CGRectMake(130, 40, 150, 90)];
+    afterPurchaseText.numberOfLines = 4;
+    afterPurchaseText.text = @"Your new issue of is now waiting for you in your library";
+    afterPurchaseText.textColor = [UIColor whiteColor];
+    afterPurchaseText.backgroundColor = [UIColor clearColor];
+    afterPurchaseText.textAlignment = NSTextAlignmentLeft;
+    afterPurchaseText.font = [UIFont systemFontOfSize: 15.0f];
+    [afterPurchase addSubview: afterPurchaseText];
+    
+    afterPurchaseGoReadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    afterPurchaseGoReadBtn.frame = CGRectMake(130, 135, 110, 28);
+    [afterPurchaseGoReadBtn setTitle:@"GO READ IT" forState:UIControlStateNormal];
+    afterPurchaseGoReadBtn.backgroundColor = [UIColor clearColor];
+    afterPurchaseGoReadBtn.showsTouchWhenHighlighted = YES;
+    [[afterPurchaseGoReadBtn layer] setBorderWidth:1.0f];
+    [[afterPurchaseGoReadBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    afterPurchaseGoReadBtn.titleLabel.font = [UIFont boldSystemFontOfSize: 12.0f];
+    [afterPurchaseGoReadBtn addTarget: self action: @selector(goReadHandler) forControlEvents:UIControlEventTouchUpInside];
+    
+    [afterPurchase addSubview: afterPurchaseGoReadBtn];
+    
+    afterPurchaseShopForMoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    afterPurchaseShopForMoreBtn.frame = CGRectMake(130, 172, 110, 28);
+    [afterPurchaseShopForMoreBtn setTitle:@"SHOP FOR MORE" forState:UIControlStateNormal];
+    afterPurchaseShopForMoreBtn.backgroundColor = [UIColor clearColor];
+    afterPurchaseShopForMoreBtn.showsTouchWhenHighlighted = YES;
+    [[afterPurchaseShopForMoreBtn layer] setBorderWidth:1.0f];
+    [[afterPurchaseShopForMoreBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    afterPurchaseShopForMoreBtn.titleLabel.font = [UIFont boldSystemFontOfSize: 12.0f];
+    [afterPurchaseShopForMoreBtn addTarget: self action: @selector(goReadHandler) forControlEvents:UIControlEventTouchUpInside];
+    
+    [afterPurchase addSubview: afterPurchaseShopForMoreBtn];
+    
 }
 
 - (void) hitIssueDescription : (NSInteger) magazineId {
@@ -144,7 +226,28 @@
     
     [imageView setImageWithURL: [NSURL URLWithString: currentMagazine.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
     
+    [afterPurchaseImage setImageWithURL: [NSURL URLWithString: currentMagazine.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
+    
     buyIssueText.text = currentMagazine.magazinDetailsText;
+    
+    buyIssueBtn.tag = magazineId; // TODO set uniq identifire
+    
+    afterPurchaseText.text = [NSString stringWithFormat:@"Your new issue of %@ is now waiting for you in your library", currentMagazine.magazinTitle];
+}
+
+- (void)buyButtonHandler {
+    NSLog(@"buyButtonHandler");
+    scrollView.hidden = YES;
+    afterPurchase.hidden = NO;
+}
+
+- (void)subscribeIssueHandler {
+    NSLog(@"subscribeIssueHandler");
+    
+}
+
+- (void)goReadHandler {
+    NSLog(@"goReadHandler");
 }
 
 
