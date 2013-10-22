@@ -1429,8 +1429,8 @@
 		2C0B75B417971C0A00735AD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1439,8 +1439,8 @@
 				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
 				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
+				PROVISIONING_PROFILE = "87AECBF1-8C28-4A58-866C-7D2271669724";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "87AECBF1-8C28-4A58-866C-7D2271669724";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1448,8 +1448,8 @@
 		2C0B75B517971C0A00735AD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ARMEN MKRTCHYAN (LD6EWZJA8F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Armen Abrahamyan (LB62TC86V4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1458,8 +1458,8 @@
 				GCC_PREFIX_HEADER = "Joomag/Joomag-Prefix.pch";
 				INFOPLIST_FILE = "Joomag/Joomag-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "807DD1AD-B2DE-42E5-A1A5-2C3910A46CC8";
+				PROVISIONING_PROFILE = "87AECBF1-8C28-4A58-866C-7D2271669724";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5926D59C-CEA6-48CE-A918-854AEF0CBE08";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

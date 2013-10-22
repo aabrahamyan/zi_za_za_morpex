@@ -8,6 +8,7 @@
 
 #import "LoginView.h"
 #import "Util.h"
+#import "ConnectionManager.h"
 
 @implementation LoginView
 
@@ -279,12 +280,23 @@
 }
 
 - (void) login {
+    ConnectionManager * connManager = [[ConnectionManager alloc] init];
     
+    [connManager constructLoginRequest:emailTextField.text withPassword:passwordTextField.text withCallback:self];
 }
 
 - (void) forgoPassword {
     
 }
+
+- (void) didFinishResponse:(id)responseObject {
+
+}
+
+- (void) didFailResponse:(id)responseObject {
+    
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
