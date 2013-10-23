@@ -119,7 +119,7 @@
 }
 
 - (void)shareHandler{
-    NSLog(@"shareHandler");
+    [self.delegate shareHandler];
 }
 
 

@@ -197,6 +197,8 @@
 		5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */; };
 		5AFD2CEB17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */; };
+		5AFF44A618183F97001887B8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFF44A518183F97001887B8 /* Security.framework */; };
+		5AFF44A818183F9F001887B8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFF44A718183F9F001887B8 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -479,6 +481,8 @@
 		5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AFD2CEA17DD099B00E4EB36 /* searchIconeTopBar_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIconeTopBar_iPad@2x.png"; sourceTree = "<group>"; };
+		5AFF44A518183F97001887B8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5AFF44A718183F9F001887B8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +490,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFF44A818183F9F001887B8 /* MessageUI.framework in Frameworks */,
+				5AFF44A618183F97001887B8 /* Security.framework in Frameworks */,
 				5AE6521C17F99CD000A130BE /* Social.framework in Frameworks */,
 				5AE6521A17F989D500A130BE /* Accounts.framework in Frameworks */,
 				5A6C94C217C7718300B7DED0 /* ImageIO.framework in Frameworks */,
@@ -506,6 +512,8 @@
 		2C0B758417971C0900735AD3 = {
 			isa = PBXGroup;
 			children = (
+				5AFF44A718183F9F001887B8 /* MessageUI.framework */,
+				5AFF44A518183F97001887B8 /* Security.framework */,
 				5AE6521B17F99CD000A130BE /* Social.framework */,
 				5AE6521917F989D500A130BE /* Accounts.framework */,
 				2C0B759617971C0900735AD3 /* Joomag */,
@@ -1146,6 +1154,14 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				eu,
+				fr,
+				ja,
+				ko,
+				nl,
+				vi,
+				zh_CN,
 			);
 			mainGroup = 2C0B758417971C0900735AD3;
 			productRefGroup = 2C0B758E17971C0900735AD3 /* Products */;

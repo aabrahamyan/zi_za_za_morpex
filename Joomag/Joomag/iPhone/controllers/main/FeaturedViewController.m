@@ -17,7 +17,6 @@
 #import "ConnectionManager.h"
 #import "NoInternetView.h"
 
-
 @interface FeaturedViewController (){
     MainDataHolder *dataHolder;
     MagazinRecord *mRecord;
@@ -216,7 +215,12 @@
 }
 
 - (void)shareHandler {
-    NSLog(@"share");
+    
+    MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex: scrollView.currentPage];
+    NSLog(@"share currentMagazine: %@", currentMagazine);
+    
+    
+    
 }
 
 #pragma Response Tracker Delegates ---

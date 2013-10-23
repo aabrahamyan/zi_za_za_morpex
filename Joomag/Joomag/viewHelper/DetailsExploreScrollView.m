@@ -39,7 +39,7 @@
         //self.backgroundColor = [UIColor redColor];
         // Load the initial set of pages that are on screen
         
-        if (IS_IPAD) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             WIDHT = TILE_WIDTH_IPAD;
             HEIGHT  = TILE_HEIGHT_IPAD;
             spaceBettwenImages = WIDHT+60;

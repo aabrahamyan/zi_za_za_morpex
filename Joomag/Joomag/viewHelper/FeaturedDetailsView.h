@@ -12,6 +12,7 @@
 @optional
 - (void)readHandler;
 - (void)buyIssueHandler;
+- (void)shareHandler;
 @end
 
 @interface FeaturedDetailsView : UIView <FeaturedDetailsButtonsDelegate>
