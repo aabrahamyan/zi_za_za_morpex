@@ -214,6 +214,13 @@
     
 }
 
+- (void) hitPageDescriptionWithMagazineId: (NSInteger) magazineId {
+    self.currentMagazineId = magazineId;
+    ConnectionManager * conManager = [[ConnectionManager alloc] init];
+    [conManager constructGetMagazineRequest:magazineId withCallback:self];
+}
+
+
 - (void) startDownloadingPages {
     
         

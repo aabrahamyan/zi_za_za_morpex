@@ -34,5 +34,6 @@
 - (void)startDownloadMagazine: (NSInteger)number withImageUrl : (NSString *) imgUrl;
 
 - (void) hitPageDescription : (NSInteger) magazineId;
+- (void) hitPageDescriptionWithMagazineId : (NSInteger) magazineId; // TODO
 
 @end

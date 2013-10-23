@@ -12,7 +12,7 @@
 #import "SearchViewController.h"
 #import "ConnectionManager.h"
 #import "MagazinRecord.h"
-
+#import "ReadViewController.h"
 
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
@@ -375,6 +375,24 @@
 
 - (void)readHandlerWithMagazineId:(int)magazineId {
     NSLog(@"Make Request with magazine ID: %i", magazineId);
+    ReadViewController *readVC = [[ReadViewController alloc] init];
+    [readVC hitPageDescriptionWithMagazineId:magazineId];
+    
+    UIViewAnimationOptions animationType;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    if (screenHeight > screenWidth) {
+        animationType = UIViewAnimationOptionTransitionFlipFromLeft;
+    } else {
+        animationType = UIViewAnimationOptionTransitionFlipFromBottom;
+    }
+    
+    [UIView transitionWithView: self.navigationController.view duration:1 options:animationType animations:nil completion:nil];
+    
+    [self.navigationController pushViewController: readVC animated: NO];
 }
 
 
