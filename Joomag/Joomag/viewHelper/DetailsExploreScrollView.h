@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailsExploreScrollView : UIScrollView <UIScrollViewDelegate> {
+@interface DetailsExploreScrollView : UIScrollView <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
     NSInteger entriesLength;
     int tileW;
     int tileH;

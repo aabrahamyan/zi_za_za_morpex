@@ -99,6 +99,10 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
         imageView.image = [UIImage imageNamed:@"placeholder.png"];
         imageView.tag = i+1;
+        imageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapOnImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage:)];
+        tapOnImageView.delegate = self;
+        [imageView addGestureRecognizer: tapOnImageView];
         
         [self addSubview:imageView];
     }
@@ -128,6 +132,7 @@
         if (subview.tag < len+1 && subview.tag != 0) {
             // Load an individual page, first seeing if we've already loaded it
             MagazinRecord *mRecord = [self.entries objectAtIndex:subview.tag-1];
+            subview.tag = mRecord.magazineID;
             if(!mRecord.magazinDetailsIcon)
                 [self startIconDownload:mRecord:subview];
             else
@@ -146,6 +151,8 @@
     
     __block UIImageView *imageView = view;
     imageView.alpha = 0.0f;
+    imageView.tag = magazinRecord.magazineID;
+    
     // Here we use the new provided setImageWithURL: method to load the web image
 
     [view setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL]
@@ -197,6 +204,12 @@
     imageView.layer.shadowOpacity = 0.7;
     imageView.layer.shadowRadius = 1.0;
     imageView.clipsToBounds = NO;
+}
+
+
+- (void)tapOnImage:(UITapGestureRecognizer *)gesture {
+    UIImageView *imageView = (UIImageView *)gesture.view;
+    [self.exploreDelegate readHandlerWithMagazineId: imageView.tag];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -283,63 +296,6 @@
 {
     
 }
-
-/*
- int arrIPhone[4][2] ={{0,0},{1,0},{0,1},{1,1}};
- int arrIpad[6][2] ={{0,0},{1,0},{2,0},{0,1},{1,1},{2,1}};
- 
- if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
- tileW = 150;
- tileH = 200;
- 
- for (int i = 0; i < 11; i ++) {
- if(i%4 == 0 && i!=0){
- offsetX += 2*tileW+20;
- }
- 
- xPosition = offsetX + arrIPhone[i%4][0]*tileW;
- yPosition = arrIPhone[i%4][1]*tileH;
- 
- //NSLog(@"x: %d y: %d",xPosition, yPosition);
- UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition+20, yPosition, 130, 170)];
- imageView.image = [UIImage imageNamed:@"placeholder.png"];
- imageView.tag = i+1;
- 
- [self addSubview:imageView];
- }
- 
- index = 4;
- 
- // Set up the content size of the scroll view for IPHONE
- self.contentSize = CGSizeMake(3*320, self.frame.size.height);
- 
- } else {
- tileW = 220;
- tileH = 280;
- 
- for (int i = 0; i < 11; i ++) {
- if(i%6 == 0 && i!=0){
- NSLog(@"i: %i",i);
- offsetX += 3*tileW;
- }
- 
- xPosition = offsetX + arrIpad[i%6][0]*tileW;
- yPosition = arrIpad[i%6][1]*tileH;
- 
- //NSLog(@"x: %d y: %d",xPosition, yPosition);
- UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 170, 220)];
- imageView.image = [UIImage imageNamed:@"placeholder.png"];
- imageView.tag = i+1;
- 
- [self addSubview:imageView];
- }
- 
- index = 6;
- 
- // Set up the content size of the scroll view for IPHONE
- self.contentSize = CGSizeMake(6*320, self.frame.size.height);
- }
- */
 
 
 @end

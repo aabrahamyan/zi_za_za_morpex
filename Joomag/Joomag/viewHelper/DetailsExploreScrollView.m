@@ -85,64 +85,35 @@
         MagazinRecord * mRec = [[MagazinRecord alloc] init]; 
         mRec = [self.entries objectAtIndex: i];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, WIDHT, HEIGHT)];
+        // NSLog(@"magazineID: %i", mRec.magazineID);
         
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, WIDHT, HEIGHT)];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = mRec.magazineID;
         [imageView setImageWithURL: [NSURL URLWithString: mRec.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
         
         [self addSubview: imageView];
+        
+        UITapGestureRecognizer *tapOnImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage:)];
+        tapOnImageView.delegate = self;
+        [imageView addGestureRecognizer: tapOnImageView];
         
         xPosition += spaceBettwenImages;
         if(xPosition >= self.frame.size.width) {
             xPosition = 0;
             yPosition += HEIGHT+30;
         }
-        
-        imageView.tag = i+1;
     }
     
     [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+260)];
 }
-/*
 
- - (void)loadVisibleImages {
- // First, determine which page is currently visible
- 
- // With some valid UIView *view:
- for(UIView *subview in [self subviews]) {
- if (subview.tag > 0) {
- [subview removeFromSuperview];  //TODO: change subview frame
- }
- }
- 
- int yPosition = 0;
- int xPosition = 50;
- 
- //NSLog(@"self.frame.size.width: %f", self.frame.size.width);
- 
- for (int i = 0; i < entriesLength; i++) {
- MagazinRecord * mRec = [[MagazinRecord alloc] init];
- mRec = [self.entries objectAtIndex: i];
- 
- UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, 180, 240)];
- 
- [imageView setImageWithURL: [NSURL URLWithString: mRec.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
- 
- [self addSubview: imageView];
- 
- xPosition += 210;
- if(xPosition >= self.frame.size.width - 100) {
- xPosition = 50;
- yPosition += 260;
- }
- 
- imageView.tag = i+1;
- }
- 
- [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+260)];
- }
- 
-*/
-
-
+- (void)tapOnImage:(UITapGestureRecognizer *)gesture {
+    
+    UIImageView *imageView = (UIImageView *)gesture.view;
+    
+    NSLog(@"imageView: %i", imageView.tag);
+    // Make Request with magazine ID
+}
 
 @end

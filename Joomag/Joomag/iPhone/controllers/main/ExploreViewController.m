@@ -119,6 +119,7 @@
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 130, 720, 450)];
     }
     
+    scrollView.exploreDelegate = self;
     scrollView.entries = dataHolder.testData;
     
     [self.view addSubview: scrollView];
@@ -369,6 +370,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+
+
+- (void)readHandlerWithMagazineId:(int)magazineId {
+    NSLog(@"Make Request with magazine ID: %i", magazineId);
+}
+
+
+
 
 #pragma Response Tracker Delegates ---
 
