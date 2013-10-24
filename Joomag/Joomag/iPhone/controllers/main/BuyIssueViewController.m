@@ -147,7 +147,6 @@
     [self.view addSubview: bootomBorder];
     
     buyIssueBtn = [[UIButton alloc] initWithFrame: CGRectMake(165, 105, 135, 30)];
-    [buyIssueBtn setTitle:@"$4.99" forState:UIControlStateNormal];
     buyIssueBtn.backgroundColor = RGBA(214, 77, 76, 1);
     buyIssueBtn.showsTouchWhenHighlighted = YES;
     buyIssueBtn.titleLabel.font = [UIFont fontWithName:@"proximanovaregular" size: 18.0f];
@@ -230,7 +229,9 @@
     
     buyIssueText.text = currentMagazine.magazinDetailsText;
     
-    buyIssueBtn.tag = magazineId; // TODO set uniq identifire
+    buyIssueBtn.tag = currentMagazine.magazineID;
+    
+    [buyIssueBtn setTitle: [NSString stringWithFormat: @"$%@", currentMagazine.magazinPrice] forState:UIControlStateNormal];
     
     afterPurchaseText.text = [NSString stringWithFormat:@"Your new issue of %@ is now waiting for you in your library", currentMagazine.magazinTitle];
 }
