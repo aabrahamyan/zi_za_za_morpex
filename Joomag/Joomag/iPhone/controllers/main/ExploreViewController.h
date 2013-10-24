@@ -16,7 +16,7 @@
 @class ExploreTableView;
 @class DetailsExploreScrollView;
 
-@interface ExploreViewController : UIViewController <ResponseTrackerDelegate, ExploreScrollViewDelegate> {
+@interface ExploreViewController : UIViewController <ResponseTrackerDelegate, ExploreScrollViewDelegate, DetailsExploreScrollViewDelegate> {
     
 @protected
     UIView * topBar;

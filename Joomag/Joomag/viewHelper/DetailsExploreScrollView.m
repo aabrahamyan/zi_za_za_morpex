@@ -109,11 +109,8 @@
 }
 
 - (void)tapOnImage:(UITapGestureRecognizer *)gesture {
-    
     UIImageView *imageView = (UIImageView *)gesture.view;
-    
-    NSLog(@"imageView: %i", imageView.tag);
-    // Make Request with magazine ID
+    [self.detailsExploreDelegate readHandlerWithMagazineId: imageView.tag];
 }
 
 @end

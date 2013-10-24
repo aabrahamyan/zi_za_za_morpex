@@ -8,13 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailsExploreScrollView : UIScrollView <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
+@protocol DetailsExploreScrollViewDelegate <NSObject>
+@optional
+- (void)readHandlerWithMagazineId: (int)magazineId;
+@end
+
+@interface DetailsExploreScrollView : UIScrollView <UIScrollViewDelegate, UIGestureRecognizerDelegate, DetailsExploreScrollViewDelegate> {
     NSInteger entriesLength;
     int tileW;
     int tileH;
     int index;
     
 }
+
+@property (weak, nonatomic) id <DetailsExploreScrollViewDelegate> detailsExploreDelegate;
 
 // the main data model for our UIScrollView
 @property (nonatomic, strong) NSArray *entries;
