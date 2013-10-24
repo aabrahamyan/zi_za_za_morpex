@@ -72,25 +72,28 @@
     
     //-------------------------------- Top Bar Title ------------------------------------
     topBarTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 170, 44)];
+    topBarTitleLabel.font = [UIFont fontWithName:@"proximanovaregular" size:20.0f];
     topBarTitleLabel.backgroundColor = [UIColor clearColor];
     topBarTitleLabel.textColor = [UIColor whiteColor];
     topBarTitleLabel.text = @"Magazines";
-    
+
     [topBar addSubview: topBarTitleLabel];
     
-    firstBreadCrumb = [[UILabel alloc] init];
+    firstBreadCrumb = [[UILabel alloc] initWithFrame: CGRectMake(150, 13, 150, 44)];
     firstBreadCrumb.font = [UIFont fontWithName:@"proximanovaregular" size:20.0f];
     firstBreadCrumb.backgroundColor = [UIColor clearColor];
     firstBreadCrumb.textColor = [UIColor whiteColor];
     firstBreadCrumb.text = @"";
+    [firstBreadCrumb sizeToFit];
     
     [topBar addSubview: firstBreadCrumb];
-    
-    secondBreadCrumb = [[UILabel alloc] init];
-    firstBreadCrumb.font = [UIFont fontWithName:@"proximanovaregular" size:20.0f];
+
+    secondBreadCrumb = [[UILabel alloc] initWithFrame: CGRectMake(firstBreadCrumb.frame.origin.x + 70, 13, 150, 44)];
+    secondBreadCrumb.font = [UIFont fontWithName:@"proximanovaregular" size:20.0f];
     secondBreadCrumb.backgroundColor = [UIColor clearColor];
     secondBreadCrumb.textColor = [UIColor whiteColor];
     secondBreadCrumb.text = @"";
+    [secondBreadCrumb sizeToFit];
     
     [topBar addSubview: secondBreadCrumb];
     
@@ -104,11 +107,8 @@
     backButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
     backButtonView.frame = CGRectMake(0, 0, TOP_VIEW_HEIGHT, TOP_VIEW_HEIGHT);  //TODO
     [backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateNormal];
-    //[backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateSelected];
-    //[backButtonView setBackgroundImage:[Util imageNamedSmart:@"backButton"] forState:UIControlStateHighlighted];
     backButtonView.showsTouchWhenHighlighted = YES;
     [backButtonView addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    // backButtonView.hidden = YES;
     
     [topBar addSubview: backButtonView];
 
@@ -150,11 +150,14 @@
     if([dataHolder.testData count] != 0) {
         if (hier == 0) {
             firstBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
+            [firstBreadCrumb sizeToFit];
 //            firstBreadCrumb.frame = [Util calculateLabelFrame:firstBreadCrumb];
         } else if (hier > 0) {
+
+            secondBreadCrumb.frame = CGRectMake(firstBreadCrumb.frame.origin.x + firstBreadCrumb.frame.size.width + 10, 13, 150, 44);
             secondBreadCrumb.text = [NSString stringWithFormat:@"|  %@", breadcrumb];
 //            secondBreadCrumb.frame = [Util calculateLabelFrame:firstBreadCrumb];                       
-            
+            [secondBreadCrumb sizeToFit];
             scrollView.hidden = YES;
             pageControl.hidden = YES;
             label1.hidden = YES;

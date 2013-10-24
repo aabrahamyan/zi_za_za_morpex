@@ -108,7 +108,7 @@
     }
     
     // Set up the content size of the scroll view for IPHONE
-    self.contentSize = CGSizeMake(2*660, self.frame.size.height); //TODO
+    self.contentSize = CGSizeMake(xPosition+30+tileW, self.frame.size.height);
 }
 
 // -------------------------------------------------------------------------------

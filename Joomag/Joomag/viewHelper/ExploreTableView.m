@@ -141,8 +141,6 @@
     ConnectionManager * connManager = [[ConnectionManager alloc] init];
     [connManager constructGetMagazinesListRequest:self:nil:nil:nil:[[self.data objectAtIndex:indexPath.row] objectForKey:@"name"]];
     
-    NSLog(@"[[data objectAtIndex:indexPath.row] objectForKey: = %@",  [[self.data objectAtIndex:indexPath.row] objectForKey:@"name"]);
-    
     NSLog(@"hierarchy = %d",hierarchy);
     [self.callbacker redrawDataAndTopBar:[[self.data objectAtIndex:indexPath.row] objectForKey:@"name"] withHierarchy:hierarchy];
     

@@ -105,7 +105,7 @@
         }
     }
     
-    [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+260)];
+    [self setContentSize:CGSizeMake(self.frame.size.width, yPosition)];
 }
 
 - (void)tapOnImage:(UITapGestureRecognizer *)gesture {

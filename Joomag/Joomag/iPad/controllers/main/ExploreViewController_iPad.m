@@ -43,9 +43,6 @@
     
     if (iOrientation == UIDeviceOrientationPortrait) {
         topBarFrame = CGRectMake(0, 0, 768, 44);
-        topBarTitleLabelFrame = CGRectMake(60, 0, 150, 44);
-        firstBreadCrumb.frame = CGRectMake(190, 0, 150, 44);
-        secondBreadCrumb.frame = CGRectMake(firstBreadCrumb.frame.origin.x + 120, 0, 350, 44);
         searchBtnFrame = CGRectMake(768-145, 0, 122, 44);
         scrollViewFrame = CGRectMake(70, 130, 660, 520);
         titleLabelsViewFrame = CGRectMake(60, 60, 310, 44);
@@ -54,9 +51,6 @@
         detailsScrollViewFrame = CGRectMake(60, 111, 648, 794);
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
-        topBarTitleLabelFrame = CGRectMake(60, 0, 150, 44);
-        firstBreadCrumb.frame = CGRectMake(190, 0, 150, 44);
-        secondBreadCrumb.frame = CGRectMake(firstBreadCrumb.frame.origin.x + 120, 0, 350, 44);
         searchBtnFrame = CGRectMake(1024-145, 0, 122, 44);
         scrollViewFrame = CGRectMake(50, 110, 660, 520);
         titleLabelsViewFrame = CGRectMake(40, 60, 310, 44);
@@ -67,6 +61,7 @@
     
     CGRect frm = CGRectMake(0, -20, self.view.bounds.size.width, self.view.bounds.size.height);
     self.view.frame = frm;
+    topBarTitleLabelFrame = CGRectMake(60, 0, 150, 44);
     topBar.frame = topBarFrame;
     topBarTitleLabel.frame = topBarTitleLabelFrame;
     searchBtn.frame = searchBtnFrame;
