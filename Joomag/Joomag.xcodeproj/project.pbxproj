@@ -133,7 +133,6 @@
 		5A4D503C17EC8B36007E6BDB /* exploreCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D503B17EC8B36007E6BDB /* exploreCell.png */; };
 		5A55B7F41813B9D600696284 /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F31813B9D500696284 /* shareBtn@2x.png */; };
 		5A55B7F61813D0E300696284 /* buyIssueBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */; };
-		5A55B7F81813E82400696284 /* buyIssueBtnBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F71813E82400696284 /* buyIssueBtnBg@2x.png */; };
 		5A55B7FE1814097B00696284 /* shareBtn_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */; };
 		5A6C94B717C770E400B7DED0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */; };
 		5A6C94B817C770E400B7DED0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A617C770E400B7DED0 /* SDImageCache.m */; };
@@ -378,7 +377,6 @@
 		5A4D503B17EC8B36007E6BDB /* exploreCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exploreCell.png; sourceTree = "<group>"; };
 		5A55B7F31813B9D500696284 /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
 		5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyIssueBg@2x.png"; sourceTree = "<group>"; };
-		5A55B7F71813E82400696284 /* buyIssueBtnBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyIssueBtnBg@2x.png"; sourceTree = "<group>"; };
 		5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn_iPad@2x.png"; sourceTree = "<group>"; };
 		5A6C94A317C770E400B7DED0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
@@ -609,16 +607,14 @@
 		2C0B75BB179723A200735AD3 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				5A27D06D1819A9CE0043A5E2 /* search */,
 				2C444A1A18141E9900BB5F58 /* bookMarkSeparator@2x.png */,
 				2C444A1B18141E9900BB5F58 /* buyIssueBtnBg@2x.png */,
 				5A18095E1809EE3200527FA5 /* settings */,
 				2C600B9917FE0B49004A3D01 /* howTo */,
-				2C600B9817FE0B27004A3D01 /* restoreItunes */,
-				2C600B9717FE0B14004A3D01 /* notificationSettings */,
 				5A0FFC4317EF0AE4009B268D /* myLib */,
 				5A4D503317EC4C86007E6BDB /* tabBar */,
 				5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */,
-				5A55B7F71813E82400696284 /* buyIssueBtnBg@2x.png */,
 				5A7AFCC117C0EEA900380CBD /* searchTopBarBg_iPad@2x.png */,
 				5A7AFCC317C0F0FF00380CBD /* searchTabBarClose_iPad@2x.png */,
 				5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */,
@@ -915,6 +911,8 @@
 		5A18095E1809EE3200527FA5 /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				2C600B9817FE0B27004A3D01 /* restoreItunes */,
+				2C600B9717FE0B14004A3D01 /* notificationSettings */,
 				2C444A22181436B700BB5F58 /* cancel_forgotpass_iPad@2x.png */,
 				2C444A23181436B700BB5F58 /* login_separator_iPad@2x.png */,
 				2C7A13461812EAC200C39D08 /* add_bookmark_iPad@2x.png */,
@@ -981,6 +979,13 @@
 				5A17414018016F8C00B0CC1F /* MyLIbMagazinesTabelView.m */,
 			);
 			name = MyLibrary;
+			sourceTree = "<group>";
+		};
+		5A27D06D1819A9CE0043A5E2 /* search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = search;
 			sourceTree = "<group>";
 		};
 		5A4D503217EC4C6A007E6BDB /* tabBar */ = {
@@ -1273,7 +1278,6 @@
 				2C444A25181436B700BB5F58 /* login_separator_iPad@2x.png in Resources */,
 				5A55B7F41813B9D600696284 /* shareBtn@2x.png in Resources */,
 				5A55B7F61813D0E300696284 /* buyIssueBg@2x.png in Resources */,
-				5A55B7F81813E82400696284 /* buyIssueBtnBg@2x.png in Resources */,
 				5A55B7FE1814097B00696284 /* shareBtn_iPad@2x.png in Resources */,
 				5AEFB5FF18141FF3006C7DEF /* bookMarkSeparator@2x.png in Resources */,
 			);

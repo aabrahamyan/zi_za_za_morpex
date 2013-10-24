@@ -74,7 +74,7 @@
     // With some valid UIView *view:
     for(UIView *subview in [self subviews]) {
         if (subview.tag > 0) {
-            [subview removeFromSuperview];  //TODO: change subview frame
+            [subview removeFromSuperview];
         }
     }
     

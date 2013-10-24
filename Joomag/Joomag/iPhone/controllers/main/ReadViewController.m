@@ -193,8 +193,6 @@
         queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
         
         
-        
-        
         [self startDownloadMagazine:i withImageUrl:queryUri];
          
     }}
@@ -433,20 +431,7 @@
 }
 
 - (void)backToFeaturedView {
-    UIViewAnimationOptions animationType;
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    
-    if (screenHeight > screenWidth) {
-        animationType = UIViewAnimationOptionTransitionFlipFromRight;
-    } else {
-        animationType = UIViewAnimationOptionTransitionFlipFromTop;
-    }
-    
-    
-    [UIView transitionWithView: self.navigationController.view duration:1 options:animationType animations:nil completion:nil];
+    [UIView transitionWithView: self.navigationController.view duration:1 options:[Util getFlipAnimationType] animations:nil completion:nil];
     [self.navigationController popViewControllerAnimated: NO];
 }
 

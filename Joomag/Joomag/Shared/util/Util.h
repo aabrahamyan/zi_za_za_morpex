@@ -26,4 +26,6 @@
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
++ (UIViewAnimationOptions)getFlipAnimationType;
+
 @end

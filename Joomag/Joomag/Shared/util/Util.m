@@ -77,4 +77,18 @@
     return newImage;
 }
 
++ (UIViewAnimationOptions)getFlipAnimationType {
+    UIViewAnimationOptions animationType;
+
+    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (iOrientation == UIDeviceOrientationPortrait) {
+        animationType = UIViewAnimationOptionTransitionFlipFromLeft;
+    } else {
+        animationType = UIViewAnimationOptionTransitionFlipFromBottom;
+    }
+    
+    return animationType;
+}
+
 @end

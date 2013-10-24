@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate> {
+@interface SearchViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate> {
 @protected
     UIView       *topView;
     UIButton     *closeButton;

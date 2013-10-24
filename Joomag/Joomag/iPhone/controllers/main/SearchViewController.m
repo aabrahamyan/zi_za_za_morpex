@@ -10,7 +10,8 @@
 #import "MainDataHolder.h"
 #import "Util.h"
 #import "MagazinRecord.h"
-#import "ImageDownloader.h"
+#import "UIImageView+WebCache.h"
+#import "ReadViewController.h"
 
 @interface SearchViewController () {
     MainDataHolder *dataHolder;
@@ -19,6 +20,9 @@
     NSArray *arrSerach;
     int tileW;
     int tileH;
+    
+    CGRect searchBarViewFrame, searchScrollViewFrame;
+    UIInterfaceOrientation iOrientation;
 }
 
 @property (nonatomic, strong) NSArray *entries;
@@ -53,20 +57,24 @@
     
     //-------------------------------- Top Bar ------------------------------------
     topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 44)]; //TODO
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchTopBarBg.png"]];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"buyIssueBg.png"]];
     [topView addSubview:backgroundView];
     [topView sendSubviewToBack: backgroundView];
     [self.view addSubview: topView];
     
     //-------------------------- Close Search Botton -------`----------------------
-    closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 46, 44)];
-    [closeButton addTarget:self  action:@selector(closeSearch) forControlEvents:UIControlEventTouchDown];
-    [closeButton setBackgroundImage: [Util imageNamedSmart:@"searchTabBarClose"] forState:UIControlStateNormal];
+    closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeButton.frame = CGRectMake(0, 0, 44, 44);
+    [closeButton setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateNormal];
+    [closeButton setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateSelected];
+    [closeButton setImage:[Util imageNamedSmart:@"closeButton"] forState:UIControlStateHighlighted];
+    closeButton.showsTouchWhenHighlighted = YES;
+    [closeButton addTarget:self action:@selector(closeSearchHandler) forControlEvents:UIControlEventTouchUpInside];
+    
     [topView addSubview: closeButton];
     
     //------------------------------ Scroll View ----------------------------------
     searchScrollView = [[UIScrollView alloc] init];
-    searchScrollView.frame = CGRectMake(70, 46, 884, 640); // TODO
     //searchScrollView.pagingEnabled = YES;
     searchScrollView.backgroundColor = [UIColor clearColor];
     searchScrollView.delegate = self;
@@ -74,11 +82,11 @@
     [self.view addSubview: searchScrollView];
     
     
-    tileH = 220; tileW = 170; //TODO
+    tileH = 220; tileW = 170;
     [self setTiles: self.entries];
     
-    searchBarView = [[UIView alloc] initWithFrame:CGRectMake(277, 90, 470, 53)];
-    UIImageView *searchBarbackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchBarBg.png"]];
+    searchBarView = [[UIView alloc] init];
+    UIImageView *searchBarbackgroundView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"searchBarBg"]];
     [searchBarView addSubview:searchBarbackgroundView];
     [searchBarView sendSubviewToBack: searchBarbackgroundView];
     [self.view addSubview: searchBarView];
@@ -101,8 +109,21 @@
     [closeSearchBarBtn setBackgroundImage: [Util imageNamedSmart:@"searchBarClose"] forState:UIControlStateNormal];
     
     [searchBarView addSubview: closeSearchBarBtn];
+}
+
+- (void)viewDidLayoutSubviews {
+    iOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
-    [self loadMagazines: self.entries];
+    if (iOrientation == UIDeviceOrientationPortrait) {
+        searchBarViewFrame = CGRectMake(149, 90, 470, 53);
+        searchScrollViewFrame = CGRectMake(60, 46, 648, 840);
+    } else {
+        searchBarViewFrame = CGRectMake(277, 90, 470, 53);
+        searchScrollViewFrame = CGRectMake(70, 46, 884, 640);
+    }
+    
+    searchBarView.frame = searchBarViewFrame;
+    searchScrollView.frame = searchScrollViewFrame;
 }
 
 // -------------------------------------------------------------------------------
@@ -115,15 +136,31 @@
     int yPosition = 10;
     
     for (int i = 0; i < arr.count; i++) {
+        /*
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
         imageView.image = [UIImage imageNamed:@"placeholder.png"];
         imageView.tag = i+1;
         
         [searchScrollView addSubview:imageView];
+        */
+        
+        MagazinRecord * mRec = [[MagazinRecord alloc] init];
+        mRec = [self.entries objectAtIndex: i];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = mRec.magazineID;
+        [imageView setImageWithURL: [NSURL URLWithString: mRec.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
+        
+        [searchScrollView addSubview: imageView];
+        
+        UITapGestureRecognizer *tapOnImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage:)];
+        tapOnImageView.delegate = self;
+        [imageView addGestureRecognizer: tapOnImageView];
         
         xPosition = xPosition + tileW + 70;
         
-        if(xPosition >= 800){
+        if(xPosition >= ((iOrientation == UIDeviceOrientationPortrait) ? 650 : 800)){
             xPosition = 0;
             yPosition = yPosition + tileH + 50;
         }
@@ -133,61 +170,13 @@
     searchScrollView.contentSize = CGSizeMake(searchScrollView.frame.size.width, yPosition+tileH);
 }
 
-// -------------------------------------------------------------------------------
-// loadPage:
-// Load an individual page
-// -------------------------------------------------------------------------------
-- (void)loadMagazines: (NSArray *)arr {
-    for (UIImageView *subview in [searchScrollView subviews]) {
-        if (subview.tag != 0) {
-            // Load an individual page, first seeing if we've already loaded it
-            MagazinRecord *mRecord = [arr objectAtIndex:subview.tag-1];
-            if (!mRecord.magazinDetailsIcon) {
-                // NSLog(@"index: %i",subview.tag);
-                [self startIconDownload:mRecord forIndexPath:subview.tag-1];
-            } else {
-                subview.image = mRecord.magazinDetailsIcon;
-            }
-        }
-    }
-}
-
-// -------------------------------------------------------------------------------
-//	startIconDownload:forIndexPath:
-// -------------------------------------------------------------------------------
-- (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
-    NSNumber *indexP = [NSNumber numberWithInteger:page];
-    
-    //NSLog(@"imageview: %i",page);
-    
-    ImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexP];
-    
-    if (imageDownloader == nil) {
-        
-        imageDownloader = [[ImageDownloader alloc] init];
-        imageDownloader.magazinRecord = magazinRecord;
-        
-        [imageDownloader setCompletionHandler:^{
-            //NSLog(@"Download Image: %i",page);
-            ((UIImageView *)[[searchScrollView subviews] objectAtIndex:page]).image = magazinRecord.magazinDetailsIcon;
-            [self setShadow:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
-        }];
-        
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexP];
-        [imageDownloader startDownloadDetailsImageWithImageView:((UIImageView *)[[searchScrollView subviews] objectAtIndex:page])];
-    }
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
     [self reloadScroll];
     NSArray *arr = [self searchMagazineByText: textField.text];
-    //NSLog(@"arr: %@", arr);
-    
     [self setTiles: arr];
-    [self loadMagazines: arr];
     
     return YES;
 }
@@ -195,15 +184,13 @@
 - (NSArray *)searchMagazineByText: (NSString *)textStr {
     
     for (int i = 0; i < entriesLength; i++) {
-        // [textStr isEqualToString: ((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle]
-        
-        if ([textStr rangeOfString: ((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle options:NSCaseInsensitiveSearch].location != NSNotFound)
-        {
+        if ([((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle rangeOfString: textStr options:NSCaseInsensitiveSearch].location == NSNotFound) {
+        } else {
             [self.workingArray addObject: ((MagazinRecord *)[self.entries objectAtIndex: i])];
         }
     }
-    NSArray *result = [NSArray arrayWithArray: self.workingArray];
     
+    NSArray *result = [NSArray arrayWithArray: self.workingArray];
     [self.workingArray removeAllObjects];
     
     return result;
@@ -250,18 +237,26 @@
     imageView.clipsToBounds = NO;
 }
 
-
-- (void)closeSearch {
-    [UIView transitionWithView: self.navigationController.view duration:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];
-    [self.navigationController popViewControllerAnimated: NO];
-}
-
-
 - (void)closeSearchBar {
     [self reloadScroll];
     [self setTiles: dataHolder.testData];
-    [self loadMagazines: dataHolder.testData];
     searchTextField.text = @"";
+}
+
+
+- (void)tapOnImage:(UITapGestureRecognizer *)gesture {
+    UIImageView *imageView = (UIImageView *)gesture.view;
+    ReadViewController *readVC = [[ReadViewController alloc] init];
+    [readVC hitPageDescriptionWithMagazineId:imageView.tag];
+    
+    [UIView transitionWithView: self.navigationController.view duration:1 options:[Util getFlipAnimationType] animations:nil completion:nil];
+    
+    [self.navigationController pushViewController: readVC animated: NO];
+}
+
+- (void)closeSearchHandler {
+    [UIView transitionWithView: self.navigationController.view duration:1 options:[Util getFlipAnimationType] animations:nil completion:nil];
+    [self.navigationController popViewControllerAnimated: NO];
 }
 
 #pragma mark - UIScrollViewDelegate
