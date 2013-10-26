@@ -67,7 +67,7 @@
         [self addSubview: self.buyIssueBtn];
         
         self.shareBtn = [[UIButton alloc] init];
-        [self.shareBtn addTarget:self  action:@selector(shareHandler) forControlEvents:UIControlEventTouchDown];
+        [self.shareBtn addTarget:self  action:@selector(shareHandler:) forControlEvents:UIControlEventTouchDown];
         [self.shareBtn setBackgroundImage: [Util imageNamedSmart:@"shareBtn"] forState:UIControlStateNormal];
         [self.shareBtn setTitle:@"     SHARE" forState:UIControlStateNormal];
         self.shareBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
@@ -118,8 +118,9 @@
     [self.delegate buyIssueHandler];
 }
 
-- (void)shareHandler{
-    [self.delegate shareHandler];
+- (void)shareHandler: (id)sender{
+    UIButton *button = (UIButton *)sender;
+    [self.delegate shareHandler:button];
 }
 
 

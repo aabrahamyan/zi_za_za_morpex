@@ -201,13 +201,31 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBuyIssue" object:nil];
 }
 
-- (void)shareHandler {
+- (void)shareHandler:(UIButton *)shareBtn {
     
     MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex: scrollView.currentPage];
-    NSLog(@"share currentMagazine: %@", currentMagazine);
     
+    NSLog(@"share currentMagazine Icone: %@", currentMagazine.magazinDetailsIcon);
+    NSLog(@"share currentMagazine Title: %@", currentMagazine.magazinTitle);
     
+    NSString *message = currentMagazine.magazinTitle;
+    UIImage *imageToShare = currentMagazine.magazinDetailsIcon;
     
+    NSArray *postItems = @[message, imageToShare];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]
+                                            initWithActivityItems:postItems
+                                            applicationActivities:nil];
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
+    
+    /*
+    NSLog(@"shareBtn.frame: %@", NSStringFromCGRect(shareBtn.frame));
+    
+    _popover = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+    _popover.delegate = self;
+    [_popover presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:0 animated:YES];
+    */
 }
 
 #pragma Response Tracker Delegates ---

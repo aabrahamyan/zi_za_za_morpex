@@ -105,7 +105,7 @@
             yPosition = [arr[i%index][1] intValue]*height;
         }
         
-        NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
+        // NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
         imageView.image = [UIImage imageNamed:@"placeholder.png"];

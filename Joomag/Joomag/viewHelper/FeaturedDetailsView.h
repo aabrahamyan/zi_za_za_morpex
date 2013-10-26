@@ -12,10 +12,10 @@
 @optional
 - (void)readHandler;
 - (void)buyIssueHandler;
-- (void)shareHandler;
+- (void)shareHandler: (UIButton *)shareBtn;
 @end
 
-@interface FeaturedDetailsView : UIView <FeaturedDetailsButtonsDelegate>
+@interface FeaturedDetailsView : UIView <FeaturedDetailsButtonsDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) id <FeaturedDetailsButtonsDelegate> delegate;
 

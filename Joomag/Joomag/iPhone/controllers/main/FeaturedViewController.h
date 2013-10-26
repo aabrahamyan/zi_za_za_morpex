@@ -14,7 +14,7 @@
 @class FeaturedScrollView;
 @class FeaturedDetailsView;
 
-@interface FeaturedViewController : UIViewController <ResponseTrackerDelegate, FeaturedDetailsButtonsDelegate>  {
+@interface FeaturedViewController : UIViewController <ResponseTrackerDelegate, FeaturedDetailsButtonsDelegate, UIPopoverControllerDelegate>  {
     
 @protected
     UIView *topBar;
@@ -24,6 +24,7 @@
 }
 
 @property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic, strong) UIPopoverController *popover;
 
 - (void)showDetailsView;
 
