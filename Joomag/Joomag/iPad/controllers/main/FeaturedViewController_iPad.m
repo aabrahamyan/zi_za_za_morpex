@@ -52,7 +52,6 @@
     return [[BuyIssueViewController_iPad alloc] init];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

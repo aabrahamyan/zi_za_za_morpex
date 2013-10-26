@@ -204,9 +204,9 @@
 - (void)shareHandler:(UIButton *)shareBtn {
     
     MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex: scrollView.currentPage];
-    
-    NSLog(@"share currentMagazine Icone: %@", currentMagazine.magazinDetailsIcon);
-    NSLog(@"share currentMagazine Title: %@", currentMagazine.magazinTitle);
+   
+    // NSLog(@"share currentMagazine Icone: %@", currentMagazine.magazinDetailsIcon);
+    // NSLog(@"share currentMagazine Title: %@", currentMagazine.magazinTitle);
     
     NSString *message = currentMagazine.magazinTitle;
     UIImage *imageToShare = currentMagazine.magazinDetailsIcon;
@@ -217,15 +217,15 @@
                                             initWithActivityItems:postItems
                                             applicationActivities:nil];
     
-    [self presentViewController:activityVC animated:YES completion:nil];
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPhone) {
+        _popover = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+        _popover.delegate = self;
+        [_popover presentPopoverFromRect:CGRectMake(0, 0, 500, 500) inView:self.view permittedArrowDirections:0 animated:YES];
+    } else {
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
     
-    /*
-    NSLog(@"shareBtn.frame: %@", NSStringFromCGRect(shareBtn.frame));
     
-    _popover = [[UIPopoverController alloc] initWithContentViewController:activityVC];
-    _popover.delegate = self;
-    [_popover presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:0 animated:YES];
-    */
 }
 
 #pragma Response Tracker Delegates ---
