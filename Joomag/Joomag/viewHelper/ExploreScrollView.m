@@ -22,6 +22,7 @@
     int tileW;
     int tileH;
     int index;
+    int pageLength;
 }
 
 // the set of ImageDownloader objects for each magazine
@@ -61,12 +62,16 @@
     {
         NSArray *arrayIPhone = @[ @[@0, @0], @[@1, @0]];
         tileH = 170; tileW = 130;
+        pageLength = round(self.entries.count/2);
+        
         [self setTilesWithArray: arrayIPhone tileWidth: TILE_WIDTH_IPHONE andHeight: TILE_HEIGHT_IPHONE];
     }
     else
     {
         NSArray *arrayIPad = @[ @[@0, @0], @[@1, @0], @[@2, @0], @[@0, @1], @[@1, @1], @[@2, @1] ];
         tileH = 220; tileW = 170;
+        pageLength = round(self.entries.count/6)+1;
+        
         [self setTilesWithArray: arrayIPad tileWidth: TILE_WIDTH_IPAD andHeight: TILE_HEIGHT_IPAD];
     }
     
@@ -84,17 +89,23 @@
     int yPosition = 0;
     int offsetX = 0;
     index = [arr count];
+    int iPhonePos = 0;
     
     for (int i = 0; i < entriesLength; i ++) {
         
         if(i%index == 0 && i!=0){
             offsetX += index/2*width;
         }
+                
+        if (index == 2) {
+            xPosition += iPhonePos;
+            yPosition = 0;
+        } else {
+            xPosition = offsetX + [arr[i%index][0] intValue]*width;
+            yPosition = [arr[i%index][1] intValue]*height;
+        }
         
-        xPosition = offsetX + [arr[i%index][0] intValue]*width;
-        yPosition = [arr[i%index][1] intValue]*height;
-        
-        //NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
+        NSLog(@"x: %d y: %d index: %i",xPosition, yPosition, index);
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, tileW, tileH)];
         imageView.image = [UIImage imageNamed:@"placeholder.png"];
@@ -105,10 +116,15 @@
         [imageView addGestureRecognizer: tapOnImageView];
         
         [self addSubview:imageView];
+        
+        iPhonePos = width;
     }
     
+    //NSLog(@"xPosition: %i", xPosition);
+    //NSLog(@"yPosition: %i", yPosition);
+    
     // Set up the content size of the scroll view for IPHONE
-    self.contentSize = CGSizeMake(xPosition+30+tileW, self.frame.size.height);
+    self.contentSize = CGSizeMake(pageLength*self.frame.size.width, self.frame.size.height);
 }
 
 // -------------------------------------------------------------------------------
