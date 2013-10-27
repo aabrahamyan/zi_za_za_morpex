@@ -104,7 +104,9 @@
     //-------------------------------- Search Botton ------------------------------------
     searchBtn = [[UIButton alloc] init];
     [searchBtn addTarget:self  action:@selector(searchHandler) forControlEvents:UIControlEventTouchDown];
-    [searchBtn setBackgroundImage: [Util imageNamedSmart:@"searchIconeTopBar"] forState:UIControlStateNormal];
+    [searchBtn setTitle:@"  Search Titles" forState:UIControlStateNormal];
+    searchBtn.titleLabel.font = [UIFont fontWithName:@"proximanovaregular" size:16.0f];
+    [searchBtn setImage: [Util imageNamedSmart:@"searchIconeTopBar"] forState:UIControlStateNormal];
     searchBtn.showsTouchWhenHighlighted = YES;
     [topBar addSubview: searchBtn];
     
@@ -164,6 +166,7 @@
         categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-235, 320, 200)];
     } else {
         categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-157, 320, 112)];
+        searchBarView.hidden = YES;
     }
     categoriesTable.callbacker = self;
     
