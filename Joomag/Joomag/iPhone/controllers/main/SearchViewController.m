@@ -28,7 +28,6 @@
 @property (nonatomic, strong) NSArray *entries;
 @property (nonatomic, strong) NSArray *searchResult;
 // the set of ImageDownloader objects for each magazine
-@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) NSMutableArray *workingArray;
 
 
@@ -44,7 +43,6 @@
         dataHolder = [MainDataHolder getInstance];
         self.entries = dataHolder.testData;
         entriesLength = self.entries.count;
-        self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
         self.view.backgroundColor = RGBA(64, 64, 65, 1);
         arrSerach = [[NSArray alloc] init];
         self.workingArray = [NSMutableArray array];
@@ -184,8 +182,7 @@
 - (NSArray *)searchMagazineByText: (NSString *)textStr {
     
     for (int i = 0; i < entriesLength; i++) {
-        if ([((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle rangeOfString: textStr options:NSCaseInsensitiveSearch].location == NSNotFound) {
-        } else {
+        if ([((MagazinRecord *)[self.entries objectAtIndex: i]).magazinTitle rangeOfString: textStr options:NSCaseInsensitiveSearch].location != NSNotFound) {
             [self.workingArray addObject: ((MagazinRecord *)[self.entries objectAtIndex: i])];
         }
     }

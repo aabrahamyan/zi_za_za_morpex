@@ -220,7 +220,7 @@
 
 - (void) hitIssueDescription : (NSInteger) magazineId {
     MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex:magazineId];
-    // NSLog(@"currentMagazine: %@", currentMagazine.magazinDetailsImageURL);
+    
     dateLabel.text = currentMagazine.magazinDate;
     
     [imageView setImageWithURL: [NSURL URLWithString: currentMagazine.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];

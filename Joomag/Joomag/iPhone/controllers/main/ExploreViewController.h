@@ -15,14 +15,16 @@
 @class ExploreScrollView;
 @class ExploreTableView;
 @class DetailsExploreScrollView;
+@class BuyIssueViewController;
 
-@interface ExploreViewController : UIViewController <ResponseTrackerDelegate, ExploreScrollViewDelegate, DetailsExploreScrollViewDelegate> {
+@interface ExploreViewController : UIViewController <ResponseTrackerDelegate, ExploreScrollViewDelegate, DetailsExploreScrollViewDelegate, UITextFieldDelegate> {
     
 @protected
-    UIView * topBar;
-    UILabel * topBarTitleLabel;
-    UILabel * firstBreadCrumb;
-    UILabel * secondBreadCrumb;
+    UIView  *topBar;
+    UILabel *topBarTitleLabel;
+    UIView  *searchBarView;
+    UILabel *firstBreadCrumb;
+    UILabel *secondBreadCrumb;
     
     UIButton *searchBtn;
     UIView *titleLabels;
@@ -37,8 +39,9 @@
     UIActivityIndicatorView * activityIndicator;
 }
 
-- (void) redrawData;
+@property (nonatomic, strong) BuyIssueViewController * buyIssueVC;
 
+- (void) redrawData;
 - (void) redrawDataAndTopBar: (NSString *) breadcrumb withHierarchy : (NSInteger) hierarchy;
 
 @end

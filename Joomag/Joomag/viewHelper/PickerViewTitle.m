@@ -32,8 +32,6 @@
         [self addSubview: _pickerView];
         
         self.isOpen = NO;
-        
-        NSLog(@"_dataArray: %@", _dataArray);
     }
     return self;
 }

@@ -13,19 +13,23 @@
 #import "ConnectionManager.h"
 #import "MagazinRecord.h"
 #import "ReadViewController.h"
+#import "BuyIssueViewController.h"
 
 #define TOP_VIEW_HEIGHT 44
 #define NAV_SCROLL_HEIGHT 130
 
 @interface ExploreViewController () {
     MainDataHolder *dataHolder;
-    UILabel        *label1;
-    UILabel        *label2;
-    UILabel        *label3;
-    UIView         *border;
+    UITextField *searchTextField;
+    UILabel     *label1;
+    UILabel     *label2;
+    UILabel     *label3;
+    UIView      *border;
     
     int hierarchy;
 }
+
+@property (nonatomic, strong) NSMutableArray *workingArray;
 
 @end
 
@@ -114,7 +118,7 @@
 
     //---------------------------- Scroll View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 100, 320, 180)];
+        scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(15, 130, 320, 180)];
     } else {
         scrollView = [[ExploreScrollView alloc] initWithFrame:CGRectMake(70, 130, 720, 450)];
     }
@@ -127,17 +131,37 @@
     //Notify When Page Changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl2) name:@"updatePageControl2" object:nil];
     
+    //---------------------------- Search Bar ------------------------
+    searchBarView = [[UIView alloc] initWithFrame:CGRectMake(10, 50, 300, 30)];
+    UIImageView *searchBarbackgroundView = [[UIImageView alloc] initWithImage:[Util imageNamedSmart:@"searchBarBg"]];
+    [searchBarView addSubview:searchBarbackgroundView];
+    [searchBarView sendSubviewToBack: searchBarbackgroundView];
+    
+    [self.view addSubview: searchBarView];
+    
+    CGRect frame = CGRectMake(40, 5, 240, 30);
+    searchTextField = [[UITextField alloc] initWithFrame:frame];
+    searchTextField.textColor = [UIColor whiteColor];
+    searchTextField.font = [UIFont systemFontOfSize:14.0];
+    searchTextField.placeholder = @"Search Titles";
+    searchTextField.backgroundColor = [UIColor clearColor];
+    searchTextField.autocorrectionType = UITextAutocorrectionTypeYes;
+    searchTextField.keyboardType = UIKeyboardTypeDefault;
+    searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    searchTextField.delegate = self;
+    
+    [searchBarView addSubview:searchTextField];
+
     //----------------------------Title Labels With Border ------------------------
-    titleLabels = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 44)];
+    titleLabels = [[UIView alloc] initWithFrame:CGRectMake(0, 74, 320, 44)];
     [titleLabels addSubview: [self titleLabelsWithBorder]];
     titleLabels.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:titleLabels];
     
-    
     //--------------------------- Categories Table -----------------------------
     if(IS_IPHONE_5) {
-        categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-245, 320, 200)];
+        categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-235, 320, 200)];
     } else {
         categoriesTable = [[ExploreTableView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height-157, 320, 112)];
     }
@@ -204,7 +228,7 @@
 }
 
 - (UIView *)titleLabelsWithBorder {
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(17, 0, 290, 44)];
 
     label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 77, 44)]; label1.text = @"FEATURED";
     label2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 69, 44)]; label2.text = @"POPULAR";
@@ -217,7 +241,7 @@
         
         ((UILabel *)[labelArr objectAtIndex:i]).backgroundColor = [UIColor clearColor];
         ((UILabel *)[labelArr objectAtIndex:i]).textColor = [UIColor whiteColor];
-        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont boldSystemFontOfSize:14.0];
+        ((UILabel *)[labelArr objectAtIndex:i]).font = [UIFont systemFontOfSize:14.0];
         ((UILabel *)[labelArr objectAtIndex:i]).numberOfLines = 1;
         ((UILabel *)[labelArr objectAtIndex:i]).tag = i;
         ((UILabel *)[labelArr objectAtIndex:i]).userInteractionEnabled = YES;
@@ -408,9 +432,9 @@
     [categoriesTable reloadExploreTable];
     [self redrawData];
     
-    // NSLog(@"entries: %i", dataHolder.testData.count);
+    NSLog(@"entries: %i", dataHolder.testData.count);
     
-    //---------------------------- Page Control ------------------------------------
+    //---------------------------- Page Control ------------------------------------ //TODO: 
     if(pageControl && !pageControl.hidden) {
         pageControl = [[UIPageControl alloc] init];
         pageControl.currentPage = 0;
@@ -418,6 +442,7 @@
         pageControl.pageIndicatorTintColor = [UIColor grayColor];
         pageControl.backgroundColor = [UIColor clearColor];
         CGRect pageControlFrame = CGRectMake(0, 270, 320, 30);
+        pageControl.hidden = NO;
         pageControl.frame = pageControlFrame;
     } else {
         pageControl.hidden = NO;
@@ -457,5 +482,29 @@
         }
     }
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    [self searchMagazineByText: textField.text];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showBuyIssue" object:nil];
+    
+    return YES;
+}
+
+- (void)searchMagazineByText: (NSString *)textStr {
+    
+    for (int i = 0; i < [MainDataHolder getInstance].testData.count; i++) {
+        
+        if ([((MagazinRecord *)[[MainDataHolder getInstance].testData objectAtIndex: i]).magazinTitle rangeOfString: textStr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+            [MainDataHolder getInstance].currentMagazineNumber = i;
+            
+            break;
+        }
+    }
+}
+ 
 
 @end

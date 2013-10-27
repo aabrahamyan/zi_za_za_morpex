@@ -304,12 +304,14 @@ static CustomTabBarController * customTabBarController;
 }
 
 - (void) showBuyIssueView {
-    NSLog(@"showBuyIssueView");
     self.buyIssueVC = [self getBuyIssueViewController];
     
     [self.view addSubview: self.buyIssueVC.view];
     
     int currentMagazineNumber = [MainDataHolder getInstance].currentMagazineNumber;
+    
+    NSLog(@"currentMagazineNumber: %i", currentMagazineNumber);
+    
     [self.buyIssueVC hitIssueDescription: currentMagazineNumber];
     
     [self.buyIssueVC animateUpAndDown:YES];

@@ -158,6 +158,7 @@
 		5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */; };
 		5A8BC7CD17F5AEAF0007FE99 /* FaceBookUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */; };
 		5A9B07B1181D725E00D8093C /* PickerViewDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B07B0181D725E00D8093C /* PickerViewDate.m */; };
+		5A9B07B3181D866300D8093C /* searchBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B07B2181D866300D8093C /* searchBarBg@2x.png */; };
 		5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */; };
 		5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F023317F2C73D0029F0C5 /* SIAlertView.m */; };
 		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
@@ -424,6 +425,7 @@
 		5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBookUtil.m; sourceTree = "<group>"; };
 		5A9B07AF181D725E00D8093C /* PickerViewDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewDate.h; sourceTree = "<group>"; };
 		5A9B07B0181D725E00D8093C /* PickerViewDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewDate.m; sourceTree = "<group>"; };
+		5A9B07B2181D866300D8093C /* searchBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBg@2x.png"; sourceTree = "<group>"; };
 		5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
 		5A9F023217F2C73D0029F0C5 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
 		5A9F023317F2C73D0029F0C5 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				5A0FFC4117EF0A56009B268D /* noInternet@2x.png */,
 				5A0FFC4B17EF6F2A009B268D /* retryButton@2x.png */,
 				5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */,
+				5A9B07B2181D866300D8093C /* searchBarBg@2x.png */,
 				5A0FFC4917EF6A4F009B268D /* logo@2x.png */,
 				5A55B7F31813B9D500696284 /* shareBtn@2x.png */,
 				5AB0F68F17DD5F7D00671C24 /* editIcone@2x.png */,
@@ -1298,6 +1301,7 @@
 				5A55B7F61813D0E300696284 /* buyIssueBg@2x.png in Resources */,
 				5A55B7FE1814097B00696284 /* shareBtn_iPad@2x.png in Resources */,
 				5AEFB5FF18141FF3006C7DEF /* bookMarkSeparator@2x.png in Resources */,
+				5A9B07B3181D866300D8093C /* searchBarBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
