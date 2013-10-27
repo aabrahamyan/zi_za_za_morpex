@@ -39,7 +39,7 @@
     
     if (iOrientation == UIDeviceOrientationPortrait) {
         topBarFrame = CGRectMake(0, 0, 768, 44);
-        filterLabelsFrame = CGRectMake(560, 0, 300, 30);
+        filterLabelsFrame = CGRectMake(560, 0, 300, 44);
         loginContainerFrame = CGRectMake(0, 44, 768, 90);
         loginTextFrame = CGRectMake(20, 10, 350, 70);
         joomagButtonFrame = CGRectMake(310, 30, 200, 35);
@@ -49,7 +49,7 @@
         scrollViewFrame = CGRectMake(120, 160, 600, 700);
     } else {
         topBarFrame = CGRectMake(0, 0, 1024, 44);
-        filterLabelsFrame = CGRectMake(800, 0, 300, 30);
+        filterLabelsFrame = CGRectMake(800, 0, 300, 44);
         loginContainerFrame = CGRectMake(0, 44, 1024, 90);
         loginTextFrame = CGRectMake(70, 10, 350, 70);
         joomagButtonFrame = CGRectMake(510, 30, 200, 35);
