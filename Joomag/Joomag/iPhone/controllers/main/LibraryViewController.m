@@ -151,6 +151,7 @@
     }
     
     pickerViewTitle = [[PickerViewTitle alloc] initWithFrame:CGRectMake(0, 568, 320, 200)];
+    pickerViewDate = [[PickerViewDate alloc] initWithFrame:CGRectMake(0, 568, 320, 200)];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissPickerOnScreenTap)];
@@ -201,20 +202,21 @@
         [self animateLabelBorder: label1];
         NSLog(@"DATE");
         
+        [pickerViewTitle animateUpAndDown: NO];
         
-//        NSDate * now = [[NSDate alloc] init];
-//        NSCalendar *cal = [NSCalendar currentCalendar];
-//        NSDateComponents * comps = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
-//        [comps setMinute:0];
-//        [comps setSecond:0];
-//        NSDate * date = [cal dateFromComponents:comps];
-//        
-//        [self.datePicker setDate:date animated:TRUE];
-//        
+        [self.view addSubview: pickerViewDate];
         
+        if (pickerViewDate.isOpen) {
+            [pickerViewDate animateUpAndDown: NO];
+        } else {
+            [pickerViewDate animateUpAndDown: YES];
+        }
+
         
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];
+        
+        [pickerViewDate animateUpAndDown: NO];
         
         pickerViewTitle.dataArray = [MainDataHolder getInstance].magazinesTitleList;
         
@@ -343,6 +345,7 @@
 
 - (void) dismissPickerOnScreenTap {
     [pickerViewTitle animateUpAndDown: NO];
+    [pickerViewDate animateUpAndDown: NO];
 }
 
 #pragma Response Tracker Delegates ---

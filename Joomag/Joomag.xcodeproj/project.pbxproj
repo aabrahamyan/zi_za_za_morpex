@@ -157,6 +157,7 @@
 		5A7AFCC617C0FC6B00380CBD /* searchBarBg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC517C0FC6A00380CBD /* searchBarBg_iPad@2x.png */; };
 		5A7AFCC817C0FE7600380CBD /* searchBarClose_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */; };
 		5A8BC7CD17F5AEAF0007FE99 /* FaceBookUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */; };
+		5A9B07B1181D725E00D8093C /* PickerViewDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B07B0181D725E00D8093C /* PickerViewDate.m */; };
 		5A9F023417F2C73D0029F0C5 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */; };
 		5A9F023517F2C73D0029F0C5 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F023317F2C73D0029F0C5 /* SIAlertView.m */; };
 		5AA5B30117F0528E003EDFF4 /* moreBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA5B30017F0528E003EDFF4 /* moreBG@2x.png */; };
@@ -421,6 +422,8 @@
 		5A7AFCC717C0FE7600380CBD /* searchBarClose_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarClose_iPad@2x.png"; sourceTree = "<group>"; };
 		5A8BC7CB17F5AEAE0007FE99 /* FaceBookUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceBookUtil.h; sourceTree = "<group>"; };
 		5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBookUtil.m; sourceTree = "<group>"; };
+		5A9B07AF181D725E00D8093C /* PickerViewDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewDate.h; sourceTree = "<group>"; };
+		5A9B07B0181D725E00D8093C /* PickerViewDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewDate.m; sourceTree = "<group>"; };
 		5A9F023117F2C73D0029F0C5 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
 		5A9F023217F2C73D0029F0C5 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
 		5A9F023317F2C73D0029F0C5 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
@@ -996,6 +999,8 @@
 			children = (
 				5A2AEAE4181D70D9009C2593 /* PickerViewTitle.h */,
 				5A2AEAE5181D70D9009C2593 /* PickerViewTitle.m */,
+				5A9B07AF181D725E00D8093C /* PickerViewDate.h */,
+				5A9B07B0181D725E00D8093C /* PickerViewDate.m */,
 			);
 			name = PickerView;
 			sourceTree = "<group>";
@@ -1385,6 +1390,7 @@
 				2C444A19181419DC00BB5F58 /* RegistrationParser.m in Sources */,
 				2C444A2118142CE100BB5F58 /* LoggedInView.m in Sources */,
 				5A2AEAE6181D70D9009C2593 /* PickerViewTitle.m in Sources */,
+				5A9B07B1181D725E00D8093C /* PickerViewDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

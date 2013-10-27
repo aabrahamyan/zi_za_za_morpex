@@ -11,6 +11,7 @@
 #import "MyLIbMagazinesTabelView.h"
 #import "ResponseTrackerDelegate.h"
 #import "PickerViewTitle.h"
+#import "PickerViewDate.h"
 
 @interface LibraryViewController : UIViewController <ResponseTrackerDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource> {
     
@@ -25,7 +26,8 @@
     UIButton *fbButton;
     UIButton *twitterButton;
     MyLIbMagazinesTabelView *magazinesTableView;
-    PickerViewTitle    *pickerViewTitle;
+    PickerViewTitle         *pickerViewTitle;
+    PickerViewDate          *pickerViewDate;
 }
 
 @end

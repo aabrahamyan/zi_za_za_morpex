@@ -60,10 +60,6 @@
     }
 }
 
-- (void) animateDown {
-    [self animateUpAndDown:NO];
-}
-
 // Number of components.
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
