@@ -18,6 +18,11 @@ static MainDataHolder * mainDataHolder;
 - (id) init {
     if((self = [super init])) {
         // Init data here
+        
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        self.width = screenRect.size.width;
+        self.height = screenRect.size.height;
+        
         self.testData = [[NSMutableArray alloc] init];
         self.bookMarkData =[[NSMutableArray alloc] init];
         
@@ -28,9 +33,7 @@ static MainDataHolder * mainDataHolder;
         self.highlightedData = [[NSMutableArray alloc] init];
         
         self.categoriesList = [[NSMutableArray alloc] init];
-        
-        
-        
+        self.magazinesTitleList = [[NSMutableArray alloc] init];
         
         group1 = [NSMutableArray  arrayWithObjects:
                   [NSArray arrayWithObjects:@"Cat title 1",@"title 1",@"General Information", @"placeholder.png", nil],

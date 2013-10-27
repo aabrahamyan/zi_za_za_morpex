@@ -10,11 +10,13 @@
 
 @interface MainDataHolder : NSObject
 
-
+@property float height;
+@property float width;
 
 @property (nonatomic, strong) NSArray * magazinesList;
 @property (nonatomic, strong) NSArray * popularMagList;
 @property (nonatomic, strong) NSArray * highlightedMagList;
+@property (nonatomic, strong) NSMutableArray * magazinesTitleList;
 
 @property (strong, nonatomic) NSMutableArray * testData;
 @property (strong, nonatomic) NSMutableArray * popularsData;
@@ -25,7 +27,6 @@
 @property (nonatomic, strong) NSMutableArray *categoriesList;
 
 @property (strong, nonatomic) NSMutableArray * bookMarkData;
-
 
 @property (nonatomic, strong) NSMutableArray * myLibMagazines;
 

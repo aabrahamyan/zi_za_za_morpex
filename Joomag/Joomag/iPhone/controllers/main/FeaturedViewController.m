@@ -225,7 +225,6 @@
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     
-    
 }
 
 #pragma Response Tracker Delegates ---

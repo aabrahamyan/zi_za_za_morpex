@@ -118,14 +118,12 @@
     
     if(IS_IPHONE_5) {
         magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 370)];
-    } else if(!IS_IPAD) {
-        magazinesTableView = [[MyLIbMagazinesTabelView alloc] initWithFrame:CGRectMake(10, 100, 300, 300)];
+        
+        [self.view addSubview: magazinesTableView];
     }
     
     //magazinesTableView.delegate = self;
     //magazinesTableView.dataSource = self;
-    
-    [self.view addSubview: magazinesTableView];
 
     if (!fbUtil.session.isOpen) {
         // create a fresh session object
@@ -151,6 +149,14 @@
             
         }
     }
+    
+    pickerViewTitle = [[PickerViewTitle alloc] initWithFrame:CGRectMake(0, 568, 320, 200)];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissPickerOnScreenTap)];
+    
+    [self.view addGestureRecognizer:tap];
+    
 }
 
 - (UIView *)titleLabelsWithBorder {
@@ -190,12 +196,36 @@
 {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     
+    
     if (gesture.view.tag == 0) {
         [self animateLabelBorder: label1];
         NSLog(@"DATE");
+        
+        
+//        NSDate * now = [[NSDate alloc] init];
+//        NSCalendar *cal = [NSCalendar currentCalendar];
+//        NSDateComponents * comps = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+//        [comps setMinute:0];
+//        [comps setSecond:0];
+//        NSDate * date = [cal dateFromComponents:comps];
+//        
+//        [self.datePicker setDate:date animated:TRUE];
+//        
+        
+        
     } else if(gesture.view.tag == 1){
         [self animateLabelBorder: label2];
-        NSLog(@"TITLE");
+        
+        pickerViewTitle.dataArray = [MainDataHolder getInstance].magazinesTitleList;
+        
+        [self.view addSubview: pickerViewTitle];
+        
+        if (pickerViewTitle.isOpen) {
+            [pickerViewTitle animateUpAndDown: NO];
+        } else {
+            [pickerViewTitle animateUpAndDown: YES];
+        }
+        
     } else if(gesture.view.tag == 2){
         [self animateLabelBorder: label3];
         NSLog(@"EDIT");
@@ -309,6 +339,10 @@
 
 - (void)didDatePckerMonthChanged: (NSString *) month {
     NSLog(@"month: %@", month);
+}
+
+- (void) dismissPickerOnScreenTap {
+    [pickerViewTitle animateUpAndDown: NO];
 }
 
 #pragma Response Tracker Delegates ---
