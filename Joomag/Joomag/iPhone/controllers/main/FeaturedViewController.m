@@ -71,6 +71,9 @@
     //Notify When Page Changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageControl) name:@"updatePageControl" object:nil];
     
+    //Notify When Data Changes
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMagazineData) name:@"updateMagazineData" object:nil];
+    
     //---------------------------- Details View ------------------------------------
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         
@@ -225,6 +228,10 @@
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     
+}
+
+- (void)updateMagazineData {
+    [scrollView reloadData];
 }
 
 #pragma Response Tracker Delegates ---

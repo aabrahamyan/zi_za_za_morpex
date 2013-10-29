@@ -56,9 +56,38 @@
     return self;
 }
 
+- (void) reloadData {
+    // NSLog(@"[[MainDataHolder getInstance].testData count]: %i", [[MainDataHolder getInstance].testData count]);
+    
+    // Get Data
+    self.entries = [MainDataHolder getInstance].testData;
+    entriesLength = self.entries.count;
+    
+    for (UIImageView *subeView in [self subviews]) {
+        if ([subeView isKindOfClass:[UIImageView class]] && subeView.tag > 0) {
+            [subeView removeFromSuperview];
+        }
+    }
+    
+    [self.pageViews removeAllObjects];
+    
+    // Populate Array With NSNull
+    for (NSInteger i = 0; i < [[MainDataHolder getInstance].testData count]; ++i) {
+        [self.pageViews addObject:[NSNull null]];
+    }
+    
+    [self loadVisiblePage: 0];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
+}
+
 - (void) redrawData {
 
     if([[MainDataHolder getInstance].testData count] != 0) {
+        
+        // Get Data
+        self.entries = [MainDataHolder getInstance].testData;
+        entriesLength = self.entries.count;
         
         if (!didDataExist) {
             
@@ -66,11 +95,7 @@
             for (NSInteger i = 0; i < [[MainDataHolder getInstance].testData count]; ++i) {
                 [self.pageViews addObject:[NSNull null]];
             }
-            
-            // Get Data
-            self.entries = [MainDataHolder getInstance].testData;
-            entriesLength = self.entries.count;
-            
+
             didDataExist = YES;
         }
         
@@ -84,11 +109,8 @@
         UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
         
         for (UIImageView *subview in [self subviews]) {
-            
             if ([subview isKindOfClass:[UIImageView class]] && subview.tag > 0) {
-
                 CGRect frame = self.frame;
-                
                 if (iOrientation == UIDeviceOrientationPortrait) {
                     self.contentOffset = CGPointMake(self.currentPage*768, 0);
                     frame.origin.x = 768 * (subview.tag-1);
@@ -96,7 +118,6 @@
                     self.contentOffset = CGPointMake(self.currentPage*1024, 0);
                     frame.origin.x = 1024 * (subview.tag-1);
                 }
-                
                 frame.origin.y = 0.0f;
                 subview.frame = frame;
             }
@@ -125,13 +146,19 @@
     
     // Load an individual pages
     for (NSInteger i = firstPage; i <= lastPage; i++) {
-        [self loadPage:i];
+        if (i < firstPage) {
+            [self loadPage:0];
+        } else {
+            [self loadPage:i];
+        }
     }
     
     // Purge anything after the last page
     for (NSInteger i = lastPage+1; i < entriesLength; i++) {
         [self purgePage:i];
     }
+    
+    // NSLog(@"coooouuunntt:: %i", self.subviews.count);
 }
 
 // -------------------------------------------------------------------------------
@@ -169,6 +196,9 @@
     // Remove a page from the scroll view and reset the container array
     UIView *pageView = [self.pageViews objectAtIndex:page];
     if ((NSNull*)pageView != [NSNull null]) {
+        
+        // NSLog(@"purge page: %i", page);
+        
         [pageView removeFromSuperview];
         [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
     }
@@ -178,6 +208,8 @@
 //	startIconDownload:forIndexPath:
 // -------------------------------------------------------------------------------
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
+    
+    // NSLog(@"magazinRecord.magazinImageURL: %@", magazinRecord.magazinImageURL);
 
     UIImageView *newPageView = [[UIImageView alloc] init];
 
@@ -254,14 +286,12 @@
     
     self.currentPage = (NSInteger)floor(self.contentOffset.x / pageWidth);
     
-    [self loadVisiblePage: self.currentPage];
-    
-    
 }
 
 // called on start of dragging (may require some time and or distance to move)
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    [self loadVisiblePage: self.currentPage];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
 

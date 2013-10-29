@@ -16,5 +16,6 @@
 @property (nonatomic, assign) NSInteger currentPage;
 
 - (void) redrawData;
+- (void) reloadData;
 
 @end

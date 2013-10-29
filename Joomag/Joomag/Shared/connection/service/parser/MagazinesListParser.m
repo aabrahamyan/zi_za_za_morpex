@@ -81,6 +81,8 @@
             mgRecord.magazineID = [[currentMagazine objectForKey:@"ID"] intValue];
             mgRecord.magazinPrice = [currentMagazine objectForKey:@"price"];
             
+            NSLog(@"POPULAR: %@", mgRecord.magazinImageURL);
+            
             [[MainDataHolder getInstance].magazinesTitleList addObject:mgRecord.magazinTitle];
             [[MainDataHolder getInstance].testData addObject:mgRecord];
         }

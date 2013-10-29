@@ -210,7 +210,7 @@
 }
 
 - (void) setupScrollTableView {
-    
+    [scrollView redrawData];
 }
 
 - (void) redrawData {
@@ -219,6 +219,8 @@
             scrollView.entries = dataHolder.testData;
             firstBreadCrumbData = dataHolder.testData;
             [scrollView redrawData];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateMagazineData" object:nil];
             
             if(activityIndicator) {
                 [activityIndicator removeFromSuperview];
@@ -307,9 +309,7 @@
     
     [self.view addSubview:activityIndicator];
     [activityIndicator startAnimating];
-
 }
-
 
 -(void)titleLabelTapHandler :(id) sender {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
@@ -319,9 +319,7 @@
     if (gesture.view.tag == 0) {
         
         if([[MainDataHolder getInstance].magazinesList count] == 0) {
-           
             [self createActivityIndicator];
-            
             [connManager constructGetMagazinesListRequest:self:@"featured":nil:nil:nil];
         } else {
             [self bindArrayToMappingObject:@"featured"];
@@ -332,9 +330,7 @@
     } else if(gesture.view.tag == 1){
         
         if([[MainDataHolder getInstance].popularMagList count] == 0) {
-           
             [self createActivityIndicator];
-            
             [connManager constructGetMagazinesListRequest:self:@"Popular":nil:nil:nil];
         } else {
             [self bindArrayToMappingObject:@"Popular"];
