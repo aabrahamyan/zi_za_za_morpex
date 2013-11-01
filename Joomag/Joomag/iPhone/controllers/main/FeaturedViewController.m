@@ -9,22 +9,19 @@
 #import "FeaturedViewController.h"
 #import "DataHolder.h"
 #import "MagazinRecord.h"
-#import "ImageDownloader.h"
 #import "ReadViewController.h"
 #import "Util.h"
 #import "AFNetworking.h"
 #import "MainDataHolder.h"
 #import "ConnectionManager.h"
 #import "NoInternetView.h"
+#import "UIImageView+WebCache.h"
 
 @interface FeaturedViewController (){
     MainDataHolder *dataHolder;
     MagazinRecord *mRecord;
     UILabel *testLabel;
 }
-
-// the set of ImageDownloader objects for each app
-@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 
 @end
 
@@ -114,6 +111,10 @@
 // -------------------------------------------------------------------------------
 - (void)showDetailsView {
     
+    if (scrollView.currentPage < 0) {
+        scrollView.currentPage = 0;
+    }
+    
     mRecord = [dataHolder.testData objectAtIndex:scrollView.currentPage];
     
     dataHolder.currentMagazineNumber = scrollView.currentPage;
@@ -148,29 +149,12 @@
 }
 
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
-    
-    NSNumber *index = [NSNumber numberWithInteger:page];
-    ImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:index];
-    
-    if (imageDownloader == nil) {
-        imageDownloader = [[ImageDownloader alloc] init];
-        imageDownloader.magazinRecord = magazinRecord;
-        UIImageView *newPageView = [[UIImageView alloc] init];
-        
-        [imageDownloader setCompletionHandler:^{
-            //NSLog(@"Details Download Image: %i",page);
-            
-            // Display the newly loaded image
-            detailsView.imageView.image = magazinRecord.magazinDetailsIcon;
-            
-            // Remove the IconDownloader from the in progress list.
-            // This will result in it being deallocated.
-            [self.imageDownloadsInProgress removeObjectForKey:index];
-        }];
-        
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:index];
-        [imageDownloader startDownloadDetailsImageWithImageView: newPageView];
-        // [imageDownloader startDownloadWithImageView:newPageView withURL:magazinRecord.magazinDetailsImageURL andSetIcon:magazinRecord.magazinDetailsIcon];
+    if (!magazinRecord.magazinDetailsIcon) {
+        [detailsView.imageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL]
+                              placeholderImage: [UIImage imageNamed:@"placeholder.png"]
+                                       options: SDWebImageProgressiveDownload];
+    } else {
+        detailsView.imageView.image = magazinRecord.magazinDetailsIcon;
     }
 }
 

@@ -76,7 +76,7 @@
         [self.pageViews addObject:[NSNull null]];
     }
     
-    [self loadVisiblePage: 0];
+    [self loadVisiblePage: self.currentPage];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
 }
@@ -146,11 +146,7 @@
     
     // Load an individual pages
     for (NSInteger i = firstPage; i <= lastPage; i++) {
-        if (i < firstPage) {
-            [self loadPage:0];
-        } else {
-            [self loadPage:i];
-        }
+        [self loadPage:i];
     }
     
     // Purge anything after the last page
@@ -282,17 +278,18 @@
 // -------------------------------------------------------------------------------
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
-    
     self.currentPage = (NSInteger)floor(self.contentOffset.x / pageWidth);
-    
 }
 
 // called on start of dragging (may require some time and or distance to move)
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self loadVisiblePage: self.currentPage];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePageControl" object:nil];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideDetailsView" object:nil];
+    [self loadVisiblePage: self.currentPage];
 }
 
 
