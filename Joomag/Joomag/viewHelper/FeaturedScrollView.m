@@ -33,7 +33,7 @@
     if (self) {
         // Initialization code
 
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = RGBA(49, 49, 49, 1);
         self.pagingEnabled = YES;
         //self.showsVerticalScrollIndicator = NO;
         //self.showsHorizontalScrollIndicator = NO;

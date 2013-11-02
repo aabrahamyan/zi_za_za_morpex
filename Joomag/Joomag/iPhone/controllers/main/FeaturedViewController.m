@@ -123,13 +123,15 @@
     detailsView.title.text = mRecord.magazinTitle;
     detailsView.text.text = mRecord.magazinDetailsText;
     
-    if (!mRecord.magazinDetailsIcon) {
+    //if (!mRecord.magazinDetailsIcon) {
         //detailsView.imageView.image = [UIImage imageNamed:@"placeholder.png"];
-        detailsView.imageView.image = nil;
+        //detailsView.imageView.image = nil;
         [self startIconDownload:mRecord forIndexPath:scrollView.currentPage];
-    } else {
-        detailsView.imageView.image = mRecord.magazinDetailsIcon;
-    }
+    //} else {
+        
+        
+//detailsView.imageView.image = mRecord.magazinDetailsIcon;
+  //  }
     
     
     [UIView animateWithDuration:0.3 animations:^() {
@@ -149,13 +151,34 @@
 }
 
 - (void)startIconDownload:(MagazinRecord *)magazinRecord forIndexPath:(NSInteger)page {
+    /*
     if (!magazinRecord.magazinDetailsIcon) {
         [detailsView.imageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL]
                               placeholderImage: [UIImage imageNamed:@"placeholder.png"]
                                        options: SDWebImageProgressiveDownload];
     } else {
+    
+    mRecord.magazinDetailsIcon = detailsView.imageView.image;
+    
+        NSLog(@"mRecord.magazinDetailsIcon: %@", mRecord.magazinDetailsIcon);
         detailsView.imageView.image = magazinRecord.magazinDetailsIcon;
     }
+    */
+
+    __block MagazinRecord *__blockRecord = mRecord;
+    
+    [detailsView.imageView setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL]
+                placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                         success:^(UIImage *image, BOOL dummy) {
+                             if (image) {
+                                 __blockRecord.magazinDetailsIcon = image;
+                             }
+                         }
+                         failure:^(NSError *error) {
+                             
+                         }
+     ];
+    
 }
 
 #pragma Featured Buttons Handlers
@@ -192,11 +215,13 @@
     
     MagazinRecord * currentMagazine = [[MainDataHolder getInstance].testData objectAtIndex: scrollView.currentPage];
    
-    // NSLog(@"share currentMagazine Icone: %@", currentMagazine.magazinDetailsIcon);
-    // NSLog(@"share currentMagazine Title: %@", currentMagazine.magazinTitle);
+    [self startIconDownload:currentMagazine forIndexPath:scrollView.currentPage];
+    
+    NSLog(@"share currentMagazine Icone: %@", mRecord.magazinDetailsIcon);
+    NSLog(@"share currentMagazine Title: %@", currentMagazine.magazinTitle);
     
     NSString *message = currentMagazine.magazinTitle;
-    UIImage *imageToShare = currentMagazine.magazinDetailsIcon;
+    UIImage *imageToShare = mRecord.magazinDetailsIcon;//currentMagazine.magazinDetailsIcon;
     
     NSArray *postItems = @[message, imageToShare];
     

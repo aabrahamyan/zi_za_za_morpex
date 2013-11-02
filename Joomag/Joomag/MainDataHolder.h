@@ -14,8 +14,8 @@
 @property float width;
 
 @property (nonatomic, strong) NSMutableArray * magazinesList;
-@property (nonatomic, strong) NSArray * popularMagList;
-@property (nonatomic, strong) NSArray * highlightedMagList;
+@property (nonatomic, strong) NSMutableArray * popularMagList;
+@property (nonatomic, strong) NSMutableArray * highlightedMagList;
 @property (nonatomic, strong) NSMutableArray * magazinesTitleList;
 
 @property (strong, nonatomic) NSMutableArray * testData;
