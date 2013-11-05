@@ -17,8 +17,11 @@
 #import "BuyIssueViewController.h"
 #import "Util.h"
 #import "MainDataHolder.h"
+#import "NoInternetView.h"
 
-@interface CustomTabBarController ()
+@interface CustomTabBarController () {
+    NoInternetView *noInternetView;
+}
 
 @end
 
@@ -117,6 +120,11 @@ static CustomTabBarController * customTabBarController;
     [self.view addSubview:self.exploreNavigationController.view];
     [self.view addSubview:self.myBookshelfNavigationController.view];
     
+    noInternetView = [[NoInternetView alloc] initWithFrame:self.view.bounds];
+    noInternetView.alpha = 0;
+    [self.view addSubview: noInternetView];
+    
+    [self showNoInternetConnectionView];
 }
 
 - (void) loadView {
@@ -191,6 +199,8 @@ static CustomTabBarController * customTabBarController;
     [self.backGroundView addSubview:self.noteButton];
     
     [self.view bringSubviewToFront:self.backGroundView];
+    
+    // [self.view bringSubviewToFront: noInternetView];
 }
 
 - (void)centerAlignImageAndTextForButton:(UIButton*)button
@@ -220,6 +230,8 @@ static CustomTabBarController * customTabBarController;
 }
 
 - (void) toggleTabs: (id) target {
+    
+    [self showNoInternetConnectionView];
     
     NSInteger targetId = ((UIButton *)target).tag;
     
@@ -310,11 +322,21 @@ static CustomTabBarController * customTabBarController;
     
     int currentMagazineNumber = [MainDataHolder getInstance].currentMagazineNumber;
     
-    NSLog(@"currentMagazineNumber: %i", currentMagazineNumber);
+    // NSLog(@"currentMagazineNumber: %i", currentMagazineNumber);
     
     [self.buyIssueVC hitIssueDescription: currentMagazineNumber];
     
     [self.buyIssueVC animateUpAndDown:YES];
+}
+
+- (void)showNoInternetConnectionView {
+    noInternetView.alpha = 0;
+    
+    if (![Util isReachable]) {
+        [UIView animateWithDuration:1 animations:^{
+            noInternetView.alpha = 1;
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

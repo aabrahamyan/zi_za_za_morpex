@@ -28,4 +28,6 @@
 
 + (UIViewAnimationOptions)getFlipAnimationType;
 
++ (BOOL)isReachable;
+
 @end

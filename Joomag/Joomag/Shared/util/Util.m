@@ -9,6 +9,7 @@
 #import "Util.h"
 #import "Constants.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "Reachability.h"
 
 @implementation Util
 
@@ -89,6 +90,15 @@
     }
     
     return animationType;
+}
+
++ (BOOL)isReachable {
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    if (internetStatus != NotReachable) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

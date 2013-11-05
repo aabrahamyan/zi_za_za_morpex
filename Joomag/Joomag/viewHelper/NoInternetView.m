@@ -16,7 +16,7 @@
     if (self) {
         // Initialization code
         
-        self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor clearColor];
         
         UIImageView *bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width,
                                                                              self.frame.size.height)];

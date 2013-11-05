@@ -195,6 +195,7 @@
 		5AE6521C17F99CD000A130BE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE6521B17F99CD000A130BE /* Social.framework */; };
 		5AEBEC5F17F5906500011C43 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEBEC5E17F5906500011C43 /* FacebookSDK.framework */; };
 		5AEFB5FF18141FF3006C7DEF /* bookMarkSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AEFB5FE18141FF3006C7DEF /* bookMarkSeparator@2x.png */; };
+		5AF3F3EA1829823800F39DB6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F3E91829823800F39DB6 /* Reachability.m */; };
 		5AF9789F17D758E2008FA0C2 /* faceBookButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */; };
 		5AF978A017D758E2008FA0C2 /* joomagButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */; };
 		5AF978A117D758E2008FA0C2 /* twitterButton_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */; };
@@ -483,6 +484,8 @@
 		5AE6521B17F99CD000A130BE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5AEBEC5E17F5906500011C43 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		5AEFB5FE18141FF3006C7DEF /* bookMarkSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookMarkSeparator@2x.png"; sourceTree = "<group>"; };
+		5AF3F3E81829823800F39DB6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5AF3F3E91829823800F39DB6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5AF9789C17D758E2008FA0C2 /* faceBookButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceBookButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AF9789D17D758E2008FA0C2 /* joomagButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joomagButton_iPad@2x.png"; sourceTree = "<group>"; };
 		5AF9789E17D758E2008FA0C2 /* twitterButton_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton_iPad@2x.png"; sourceTree = "<group>"; };
@@ -518,10 +521,6 @@
 		2C0B758417971C0900735AD3 = {
 			isa = PBXGroup;
 			children = (
-				5AFF44A718183F9F001887B8 /* MessageUI.framework */,
-				5AFF44A518183F97001887B8 /* Security.framework */,
-				5AE6521B17F99CD000A130BE /* Social.framework */,
-				5AE6521917F989D500A130BE /* Accounts.framework */,
 				2C0B759617971C0900735AD3 /* Joomag */,
 				2C0B758F17971C0900735AD3 /* Frameworks */,
 				2C0B758E17971C0900735AD3 /* Products */,
@@ -539,6 +538,10 @@
 		2C0B758F17971C0900735AD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AFF44A718183F9F001887B8 /* MessageUI.framework */,
+				5AFF44A518183F97001887B8 /* Security.framework */,
+				5AE6521B17F99CD000A130BE /* Social.framework */,
+				5AE6521917F989D500A130BE /* Accounts.framework */,
 				5AEBEC5E17F5906500011C43 /* FacebookSDK.framework */,
 				5A6C94C117C7718300B7DED0 /* ImageIO.framework */,
 				5A6C94BF17C7717400B7DED0 /* MapKit.framework */,
@@ -865,6 +868,8 @@
 				2CC4247D17A6DE17007A494E /* Constants.m */,
 				2CC4247F17A6DE23007A494E /* Util.h */,
 				2CC4248017A6DE23007A494E /* Util.m */,
+				5AF3F3E81829823800F39DB6 /* Reachability.h */,
+				5AF3F3E91829823800F39DB6 /* Reachability.m */,
 				5A8BC7CB17F5AEAE0007FE99 /* FaceBookUtil.h */,
 				5A8BC7CC17F5AEAE0007FE99 /* FaceBookUtil.m */,
 			);
@@ -1395,6 +1400,7 @@
 				2C444A2118142CE100BB5F58 /* LoggedInView.m in Sources */,
 				5A2AEAE6181D70D9009C2593 /* PickerViewTitle.m in Sources */,
 				5A9B07B1181D725E00D8093C /* PickerViewDate.m in Sources */,
+				5AF3F3EA1829823800F39DB6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
