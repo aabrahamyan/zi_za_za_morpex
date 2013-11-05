@@ -105,7 +105,9 @@
         }
     }
     
-    [self setContentSize:CGSizeMake(self.frame.size.width, yPosition)];
+    NSLog(@"yPosition: %i", yPosition+HEIGHT);
+    
+    [self setContentSize:CGSizeMake(self.frame.size.width, yPosition+HEIGHT)];
 }
 
 - (void)tapOnImage:(UITapGestureRecognizer *)gesture {

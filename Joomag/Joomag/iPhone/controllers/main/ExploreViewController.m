@@ -193,7 +193,7 @@
             border.hidden = YES;
             
             if(!det && !det.hidden) {
-                det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(10, 64, 300, 400)];
+                det = [[DetailsExploreScrollView alloc] initWithFrame:CGRectMake(10, 84, 300, 400)];
                 det.detailsExploreDelegate = self;
             } else {
                 det.hidden = NO;

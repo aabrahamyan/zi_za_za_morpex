@@ -163,14 +163,14 @@
 
 - (void) startIconDownload: (MagazinRecord *) magazinRecord : (UIImageView *) view {
     
-    //[view setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL] placeholderImage: nil options:SDWebImageProgressiveDownload];
+    [view setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL] placeholderImage: [UIImage imageNamed:@"placeholder.png"] options:SDWebImageProgressiveDownload];
     
-    __block UIImageView *imageView = view;
-    imageView.alpha = 0.0f;
-    imageView.tag = magazinRecord.magazineID;
+    // __block UIImageView *imageView = view;
+    // imageView.alpha = 0.0f;
+    view.tag = magazinRecord.magazineID;
     
     // Here we use the new provided setImageWithURL: method to load the web image
-
+/*
     [view setImageWithURL: [NSURL URLWithString: magazinRecord.magazinDetailsImageURL]
                 placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                          success:^(UIImage *image, BOOL dummy) {
@@ -190,6 +190,7 @@
                              NSLog(@"FAILED DOWNLOADING IMAGE !!!");
                          }
      ];
+    */
 }
 
 
