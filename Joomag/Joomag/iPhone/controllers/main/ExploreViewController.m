@@ -220,7 +220,7 @@
             firstBreadCrumbData = dataHolder.testData;
             [scrollView redrawData];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateMagazineData" object:nil];
+            // [[NSNotificationCenter defaultCenter] postNotificationName:@"updateMagazineData" object:nil];
             
             if(activityIndicator) {
                 [activityIndicator removeFromSuperview];
