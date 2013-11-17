@@ -20,6 +20,10 @@
 @property (nonatomic, strong) NSString *magazinPrice;
 @property (nonatomic, assign) NSInteger magazineID;
 
+@property (nonatomic, strong) NSString *magazinInAppPrice;
+@property (nonatomic, strong) NSString *magazinInAppSubscription;
+@property (nonatomic, strong) NSArray *magazinInAppIssue;
+
 @property (nonatomic, strong) NSMutableArray  *pageImageURLsArray;
 @property (nonatomic, strong) UIImage         *magazinPageIcon;
 
