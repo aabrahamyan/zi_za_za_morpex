@@ -86,7 +86,7 @@
             mgRecord.magazinInAppSubscription = [currentMagazine objectForKey:@"inAppPrice_subscription"];
             mgRecord.magazinInAppIssue = [currentMagazine objectForKey:@"inAppPrice_issue"];
             
-            NSLog(@"POPULAR: %@", mgRecord.magazinInAppSubscription);
+            NSLog(@"POPULAR: %@", mgRecord.magazinInAppIssue);
             
             [[MainDataHolder getInstance].magazinesTitleList addObject:mgRecord.magazinTitle];
             [[MainDataHolder getInstance].testData addObject:mgRecord];
