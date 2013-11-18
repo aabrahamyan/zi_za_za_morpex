@@ -65,7 +65,8 @@
     } else if (!magType) {
         list =  [MainDataHolder getInstance].filteredCategories; 
     }
-        
+    
+    //NSLog(@"data: %@", [MainDataHolder getInstance].magazinesList);
     
     [[MainDataHolder getInstance].testData removeAllObjects];
     for (int counter = 0; counter < [list count]; counter ++) {
@@ -81,7 +82,11 @@
             mgRecord.magazineID = [[currentMagazine objectForKey:@"ID"] intValue];
             mgRecord.magazinPrice = [currentMagazine objectForKey:@"price"];
             
-            NSLog(@"POPULAR: %@", mgRecord.magazinImageURL);
+            mgRecord.magazinInAppPrice = [currentMagazine objectForKey:@"inAppPrice"];
+            mgRecord.magazinInAppSubscription = [currentMagazine objectForKey:@"inAppPrice_subscription"];
+            mgRecord.magazinInAppIssue = [currentMagazine objectForKey:@"inAppPrice_issue"];
+            
+            NSLog(@"POPULAR: %@", mgRecord.magazinInAppIssue);
             
             [[MainDataHolder getInstance].magazinesTitleList addObject:mgRecord.magazinTitle];
             [[MainDataHolder getInstance].testData addObject:mgRecord];

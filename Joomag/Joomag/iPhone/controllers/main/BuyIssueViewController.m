@@ -231,7 +231,9 @@
     
     buyIssueBtn.tag = currentMagazine.magazineID;
     
-    [buyIssueBtn setTitle: [NSString stringWithFormat: @"$%@", currentMagazine.magazinPrice] forState:UIControlStateNormal];
+    [buyIssueBtn setTitle: [NSString stringWithFormat: @"$%@", currentMagazine.magazinInAppPrice] forState:UIControlStateNormal];
+    
+    [subscribeIssueBtn setTitle: [NSString stringWithFormat: @"$%@", currentMagazine.magazinInAppSubscription] forState:UIControlStateNormal];
     
     afterPurchaseText.text = [NSString stringWithFormat:@"Your new issue of %@ is now waiting for you in your library", currentMagazine.magazinTitle];
 }

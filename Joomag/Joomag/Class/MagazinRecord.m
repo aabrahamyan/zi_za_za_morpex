@@ -13,6 +13,7 @@
 
 - (id)init {
     if (self = [super init]) {
+        self.magazinInAppIssue = [[NSArray alloc] init];
         self.pageImageURLsArray = [[NSMutableArray alloc] init];
     }
     
