@@ -41,8 +41,8 @@
         
         self.minimumZoomScale = 1.0f;
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-                self.maximumZoomScale = 1.883f;
-                self.zoomScale = 1.883f;
+            self.maximumZoomScale = 1.883f;
+            self.zoomScale = 1.883f;
         } else {
             self.maximumZoomScale = 1.955f;
             self.zoomScale = 1.955f;

@@ -43,6 +43,7 @@
                 
                 NSArray * resultArray = [loginResponseParser parserData:responseObject];
                 [callback didFinishResponse:resultArray];
+                
             }
          
             failure:^(AFHTTPRequestOperation *operation, NSError *error) {                

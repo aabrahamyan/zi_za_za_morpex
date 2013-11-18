@@ -482,7 +482,7 @@
         } else {
             tlView = [[TiledView alloc] initWithFrame:CGRectMake(0, 0, 3000, 2000)];           
             
-            scrollView.contentSize = CGSizeMake(3000, 2000);
+            //scrollView.contentSize = CGSizeMake(3000, 2000);
         }
         
         
@@ -614,7 +614,6 @@
 -(void)showingDownloadProgress {
     loadedPercentage++;
     
-    // NSLog(@"count: --------------------------- %i -----------------------------", (loadPercentage*100/pageCount));
     
     [UIView animateWithDuration:0.5f animations:^{
         // NSLog(@"width: %i", (loadPercentage*100/pageCount)*1024/100);
