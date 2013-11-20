@@ -15,7 +15,7 @@
 #import "ConnectionManager.h"
 #import "MainDataHolder.h"
 #import "UIImageView+WebCache.h"
-#import "ReaderView.h"  
+#import "ReaderView.h"
 #import "TiledView.h"
 #import "CustomTabBarController.h"
 #import "CustomTabBarController_iPad.h"
@@ -73,6 +73,12 @@
     CGSize oldCVSize;
     
     float _scalingFactor;
+    
+    BOOL didEnterLoadView;
+    NSInteger MAIN_MAG_ID;
+    
+    UIInterfaceOrientation currentOrientation;
+    BOOL orientationChanged;
 }
 
 @end
@@ -85,7 +91,10 @@
     if (self) {
 
         self.view.backgroundColor = [UIColor clearColor];
+        didEnterLoadView = YES;
+        MAIN_MAG_ID = 0;
     }
+    
     return self;
 }
 
@@ -117,12 +126,10 @@
 }
 
 - (void) didFinishResponse: (id)responseObject {
-    @autoreleasepool {
-        
     
     
         NSArray * pageData = (NSArray*) responseObject;            
-        
+    
         [self calculateScalingFactor:pageData];
         
         if([pageData count] == 1) {
@@ -166,20 +173,20 @@
         
         
     }
-    }
+    
 }
 
 - (void) generatePageStringAndHit: (NSInteger) numberOfPages {
     NSString * page = @"";
     
-    @autoreleasepool {
         if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*768, magazineHeight);
         } else {
             pageScrollView.contentSize = CGSizeMake((numberOfPages/2)*1024, magazineHeight);
         }
-    for (int i = 0;i < numberOfPages; i++) {                
     
+    for (int i = 0;i < numberOfPages; i++) {
+        
         NSString * currentNumberString = [NSString stringWithFormat:@"%d", i];
         if([currentNumberString length] == 1) {
             page = [NSString stringWithFormat:@"0%@",currentNumberString];
@@ -187,15 +194,27 @@
             page = [NSString stringWithFormat:@"%@", currentNumberString];
         }
         
-        [pageImages setObject:[NSNull null] forKey:currentNumberString]; 
+        [pageImages setObject:[NSNull null] forKey:currentNumberString];
+    }
+    
+    
+        for (int i = 0;i < numberOfPages; i++) {
+    
+            NSString * currentNumberString = [NSString stringWithFormat:@"%d", i];
+            if([currentNumberString length] == 1) {
+                page = [NSString stringWithFormat:@"0%@",currentNumberString];
+            } else {
+                page = [NSString stringWithFormat:@"%@", currentNumberString];
+            }
         
-        NSString * queryUri = [Util generateRequestBlock:page withMagazineId:self.currentMagazineId];
-        queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
+            //[pageImages setObject:[NSNull null] forKey:currentNumberString];
         
-        
-        [self startDownloadMagazine:i withImageUrl:queryUri];
+            NSString * queryUri = [Util generateRequestBlock:page withMagazineId:self.currentMagazineId];
+            queryUri = [@"http://www.joomag.com/Frontend/WebService/getPageG.php?token=" stringByAppendingFormat:@"%@%@", queryUri, @"&si=1"];
+                
+            [self startDownloadMagazine:i withImageUrl:queryUri];
          
-    }}
+    }
     
         
 }
@@ -206,6 +225,7 @@
     if(currentMagazine) {
         NSInteger magId = currentMagazine.magazineID;
         self.currentMagazineId = magId;
+        MAIN_MAG_ID = magazineId;
         ConnectionManager * conManager = [[ConnectionManager alloc] init];
         [conManager constructGetMagazineRequest:magId withCallback:self];
     }
@@ -357,8 +377,7 @@
     progressView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1, 2)]; // TODO
     progressView.backgroundColor = [UIColor redColor];
     
-    [navScrollViewContainer addSubview: progressView];
-    
+    [navScrollViewContainer addSubview: progressView];    
   
     // [self startDownloadMagazine: 0]; //TODO set scroll View current page
 }
@@ -367,14 +386,17 @@
 - (void)loadView {
     [super loadView];
     
-    
-    
+    didEnterLoadView = YES;
+    orientationChanged = YES;
     pageImages = [[NSMutableDictionary alloc] init];
     pageViews = [[NSMutableArray alloc] init];
     
     self.view.backgroundColor = [UIColor clearColor];
     
     [self drawAllBorshesHere];
+    
+    currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        
 }
 
 - (void)tapOnScreenHandler {
@@ -565,7 +587,6 @@
 
     
     [itemImage setImageWithURL:[NSURL URLWithString: imageStr] placeholderImage:[UIImage imageNamed:@"placeholder.png"] options: 0 success:^(UIImage *image, BOOL cached) {
-        @autoreleasepool {
             
         
             [self showingDownloadProgress];            
@@ -603,7 +624,7 @@
             
             navScrollView.contentSize = CGSizeMake(itemContentWidth, 130);
 
-        }
+        
         
     } failure:^(NSError *error) {
         NSLog(@"Failure = %@",[error localizedDescription]);
@@ -634,6 +655,11 @@
         progresLabel.hidden = YES;
         progressView.hidden = YES;
         progressBgView.hidden = YES;
+        
+        if(orientationChanged) {
+            didEnterLoadView = NO;
+            orientationChanged = NO;
+        }
     }
 }
 
@@ -665,14 +691,12 @@
 
         for (NSInteger i=0; i<firstPage; i++) {
             [self purgePage:i];
-        }
-    
-    @autoreleasepool {
+        }        
     
         for (NSInteger i=firstPage; i<=lastPage; i++) {
             [self loadPage:i];
         }
-    }
+    
 
         for (NSInteger i=lastPage+1; i < [self getPageImagesCount]; i++) {
             [self purgePage:i];
@@ -787,15 +811,46 @@
     
 }
 
-- (void) viewDidLayoutSubviews {
-    UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (iOrientation == UIDeviceOrientationPortrait) {
-        
-    } else {
-        
-    }
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];        
+}
 
+- (void) viewDidLayoutSubviews {
+   if(!didEnterLoadView && orientationChanged) {
+       UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
+       
+       if(currentOrientation != iOrientation) {
+           currentOrientation = iOrientation;
+           orientationChanged = YES;
+       } else {
+           orientationChanged = YES;
+       }
+       
+        [pageImages removeAllObjects];
+        [pageViews removeAllObjects];
+        
+        [pageScrollView removeFromSuperview];
+        pageScrollView = nil;
+        
+        [topView removeFromSuperview];
+        topView = nil;
+        
+        [navScrollViewContainer removeFromSuperview];
+        navScrollViewContainer = nil;
+        
+        [buyView removeFromSuperview];
+        buyView = nil;                
+
+        if (iOrientation == UIDeviceOrientationPortrait) {
+            [self drawAllBorshesHere];
+        } else {
+            [self drawAllBorshesHere];
+        }
+       
+       [self hitPageDescription:MAIN_MAG_ID];
+       
+    }
+    
 }
 
 
