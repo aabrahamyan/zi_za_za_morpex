@@ -387,7 +387,7 @@
     [super loadView];
     
     didEnterLoadView = YES;
-    orientationChanged = YES;
+    orientationChanged = NO;
     pageImages = [[NSMutableDictionary alloc] init];
     pageViews = [[NSMutableArray alloc] init];
     
@@ -654,12 +654,9 @@
     if( (loadedPercentage*100/pageCount) == 100) {
         progresLabel.hidden = YES;
         progressView.hidden = YES;
-        progressBgView.hidden = YES;
+        progressBgView.hidden = YES;                
+        didEnterLoadView = NO;
         
-        if(orientationChanged) {
-            didEnterLoadView = NO;
-            orientationChanged = NO;
-        }
     }
 }
 
@@ -815,39 +812,48 @@
     [super viewDidAppear:animated];        
 }
 
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    NSLog(@"Rotation");
+    
+}
+
 - (void) viewDidLayoutSubviews {
-   if(!didEnterLoadView && orientationChanged) {
+   if(!didEnterLoadView) {
        UIInterfaceOrientation iOrientation = [UIApplication sharedApplication].statusBarOrientation;
        
        if(currentOrientation != iOrientation) {
            currentOrientation = iOrientation;
            orientationChanged = YES;
-       } else {
-           orientationChanged = YES;
        }
        
-        [pageImages removeAllObjects];
-        [pageViews removeAllObjects];
+       if(orientationChanged) {
+           [pageImages removeAllObjects];
+           [pageViews removeAllObjects];
         
-        [pageScrollView removeFromSuperview];
-        pageScrollView = nil;
+           [pageScrollView removeFromSuperview];
+           pageScrollView = nil;
         
-        [topView removeFromSuperview];
-        topView = nil;
+           [topView removeFromSuperview];
+           topView = nil;
         
-        [navScrollViewContainer removeFromSuperview];
-        navScrollViewContainer = nil;
+           [navScrollViewContainer removeFromSuperview];
+           navScrollViewContainer = nil;
         
-        [buyView removeFromSuperview];
-        buyView = nil;                
+           [buyView removeFromSuperview];
+           buyView = nil;
+           
+           [self hitPageDescription:MAIN_MAG_ID];
+           
+           if(iOrientation == UIInterfaceOrientationPortrait || iOrientation == UIInterfaceOrientationLandscapeRight) {
+               [self drawAllBorshesHere];
+               orientationChanged = NO;
 
-        if (iOrientation == UIDeviceOrientationPortrait) {
-            [self drawAllBorshesHere];
-        } else {
-            [self drawAllBorshesHere];
-        }
+           }
+       }
        
-       [self hitPageDescription:MAIN_MAG_ID];
+       
+    
        
     }
     
