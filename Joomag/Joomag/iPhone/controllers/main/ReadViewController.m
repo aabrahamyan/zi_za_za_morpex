@@ -57,6 +57,7 @@
     int scrollViewInd1;
     int scrollViewInd2;
     int oldScrollViewIndex;
+    int pageNumberYouWantToGoTo;
     
     //----- Read Properties ------//
     CGFloat magazineWidth;
@@ -78,6 +79,7 @@
     NSInteger MAIN_MAG_ID;
     
     UIInterfaceOrientation currentOrientation;
+    UIInterfaceOrientation currentInResponseOrientation;
     BOOL orientationChanged;
 }
 
@@ -93,6 +95,8 @@
         self.view.backgroundColor = [UIColor clearColor];
         didEnterLoadView = YES;
         MAIN_MAG_ID = 0;
+        pageNumberYouWantToGoTo = 0;
+        currentInResponseOrientation = [UIApplication sharedApplication].statusBarOrientation;
     }
     
     return self;
@@ -100,8 +104,6 @@
 
 - (void) calculateScalingFactor : (NSArray *) pageData {
     NSLog(@"pageData = %@",pageData);
-    
-    
     
     if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         magazineWidth = 768;
@@ -172,6 +174,17 @@
     } else {
         
         
+    }
+ 
+    UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if(currentInResponseOrientation != orient) {
+        CGRect frame = pageScrollView.frame; 
+        frame.origin.x = frame.size.width * pageNumberYouWantToGoTo;
+        frame.origin.y = 0;
+        [pageScrollView scrollRectToVisible:frame animated:NO];
+        scrollViewIndex = pageNumberYouWantToGoTo;
+        [self loadVisiblePages];
     }
     
 }
@@ -564,6 +577,7 @@
     }
     
     scrollViewIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
+    pageNumberYouWantToGoTo = scrollViewIndex;
     [self loadVisiblePages];
     
 }
@@ -597,7 +611,7 @@
             
             [self loadVisiblePages];
            
-            
+        
             
             item.image = image;
             
@@ -655,8 +669,7 @@
         progresLabel.hidden = YES;
         progressView.hidden = YES;
         progressBgView.hidden = YES;                
-        didEnterLoadView = NO;
-        
+        didEnterLoadView = NO;        
     }
 }
 
@@ -847,16 +860,10 @@
            
            if(iOrientation == UIInterfaceOrientationPortrait || iOrientation == UIInterfaceOrientationLandscapeRight) {
                [self drawAllBorshesHere];
-               orientationChanged = NO;
-
+               orientationChanged = NO;               
            }
        }
-       
-       
-    
-       
-    }
-    
+    }    
 }
 
 
