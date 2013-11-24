@@ -49,7 +49,7 @@
     
     //---------------------------- Scroll View ------------------------------------
     scrollView = [[FeaturedScrollView alloc] initWithFrame:CGRectMake(0, 46.5, self.view.frame.size.width,
-                                                                      self.view.frame.size.height-90)]; // TODO frmae size
+                                                                      self.view.frame.size.height-90)];
     
     [self.view addSubview: scrollView];
     
@@ -90,6 +90,15 @@
     
     // Hide Details view when start dragging
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideDetailsView) name:@"hideDetailsView" object:nil];
+    
+    //Create and add the Activity Indicator to first view
+    loader = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    loader.alpha = 1.0;
+    loader.center = self.view.center;
+    loader.hidesWhenStopped = YES;
+    [self.view addSubview:loader];
+    [self.view bringSubviewToFront:loader];
+    [loader startAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -256,6 +265,7 @@
     [scrollView redrawData];
     [self showDetailsView];
     pageControl.numberOfPages = dataHolder.testData.count;
+    [loader stopAnimating];
 }
 
 @end

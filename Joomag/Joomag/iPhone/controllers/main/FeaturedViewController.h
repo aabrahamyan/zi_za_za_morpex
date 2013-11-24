@@ -17,6 +17,7 @@
 @interface FeaturedViewController : UIViewController <ResponseTrackerDelegate, FeaturedDetailsButtonsDelegate, UIPopoverControllerDelegate>  {
     
 @protected
+    UIActivityIndicatorView *loader;
     UIView *topBar;
     FeaturedScrollView  *scrollView;
     UIPageControl       *pageControl;
