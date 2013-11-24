@@ -135,6 +135,7 @@
 		5A55B7F41813B9D600696284 /* shareBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F31813B9D500696284 /* shareBtn@2x.png */; };
 		5A55B7F61813D0E300696284 /* buyIssueBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */; };
 		5A55B7FE1814097B00696284 /* shareBtn_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */; };
+		5A693DF218427D200074E907 /* BuyIssueScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A693DF118427D200074E907 /* BuyIssueScrollView.m */; };
 		5A6C94B717C770E400B7DED0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */; };
 		5A6C94B817C770E400B7DED0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94A617C770E400B7DED0 /* SDImageCache.m */; };
 		5A6C94B917C770E400B7DED0 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C94AA17C770E400B7DED0 /* SDWebImageDecoder.m */; };
@@ -384,6 +385,8 @@
 		5A55B7F31813B9D500696284 /* shareBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn@2x.png"; sourceTree = "<group>"; };
 		5A55B7F51813D0E200696284 /* buyIssueBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyIssueBg@2x.png"; sourceTree = "<group>"; };
 		5A55B7FD1814097A00696284 /* shareBtn_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareBtn_iPad@2x.png"; sourceTree = "<group>"; };
+		5A693DF018427D200074E907 /* BuyIssueScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyIssueScrollView.h; sourceTree = "<group>"; };
+		5A693DF118427D200074E907 /* BuyIssueScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyIssueScrollView.m; sourceTree = "<group>"; };
 		5A6C94A317C770E400B7DED0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		5A6C94A417C770E400B7DED0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		5A6C94A517C770E400B7DED0 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -964,6 +967,8 @@
 				5ABEC45817B0016600E2EAEA /* FeaturedScrollView.m */,
 				5ABEC45A17B0017C00E2EAEA /* FeaturedDetailsView.h */,
 				5ABEC45B17B0017C00E2EAEA /* FeaturedDetailsView.m */,
+				5A693DF018427D200074E907 /* BuyIssueScrollView.h */,
+				5A693DF118427D200074E907 /* BuyIssueScrollView.m */,
 			);
 			name = FeaturedView;
 			sourceTree = "<group>";
@@ -1401,6 +1406,7 @@
 				5A2AEAE6181D70D9009C2593 /* PickerViewTitle.m in Sources */,
 				5A9B07B1181D725E00D8093C /* PickerViewDate.m in Sources */,
 				5AF3F3EA1829823800F39DB6 /* Reachability.m in Sources */,
+				5A693DF218427D200074E907 /* BuyIssueScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

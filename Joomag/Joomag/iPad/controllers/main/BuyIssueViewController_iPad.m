@@ -33,8 +33,6 @@
     self.view.frame = CGRectMake(0, 1024, 1024, 768);
     
     buttonContainer.hidden = NO;
-    
-    [self setIssuesWithData];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -104,44 +102,6 @@
     afterPurchaseText.frame = CGRectMake(320, 30, 370, 80);
     afterPurchaseGoReadBtn.frame = CGRectMake(320, 130, 170, 36);
     afterPurchaseShopForMoreBtn.frame = CGRectMake(517, 130, 170, 36);
-}
-
-// TODO
-- (void)setIssuesWithData {
-    
-    int posX = 0;
-    int posY = 540;
-    float width = 140;
-    float height = 180;
-    
-    for (int i = 0; i < 9; i++) {
-        
-        UIView *issueContainer = [[UIView alloc] initWithFrame:CGRectMake(posX, posY, width, height+30)];
-        
-        [scrollView addSubview: issueContainer];
-        
-        UIImageView *imagView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, width, height)];
-        imagView.image = [UIImage imageNamed:@"placeholder.png"];
-
-        [issueContainer addSubview: imagView];
-        
-        UILabel *date = [[UILabel alloc] initWithFrame: CGRectMake(0, height+5, width, 20)];
-        date.textColor = [UIColor grayColor];
-        date.backgroundColor = [UIColor clearColor];
-        date.font = [UIFont fontWithName:@"proximanovalight" size:14.0f];
-        date.text = [NSString stringWithFormat:@"Issue- %i",i];
-        date.textAlignment = NSTextAlignmentCenter;
-        
-        [issueContainer addSubview: date];
-        
-        posX += 180;
-        if(posX >= 670){
-            posX = 0;
-            posY += 250;
-        }
-    }
-    
-    scrollView.contentSize =  CGSizeMake(670, posY+210);
 }
 
 - (void)didReceiveMemoryWarning

@@ -112,7 +112,7 @@
     buyIssueText.contentInset = UIEdgeInsetsMake(0.0,0.0,0,0.0);
     buyIssueText.textColor = [UIColor whiteColor];
     buyIssueText.editable = NO;
-    buyIssueText.text = @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    buyIssueText.text = @"";
     
     [scrollView addSubview: buyIssueText];
     
@@ -164,9 +164,7 @@
     
     [scrollView addSubview: subscribeIssueBtn];
     
-    
     // --------------------------------------- After Purchaase View ------------------------------------------
-    
     afterPurchase = [[UIView alloc] initWithFrame: CGRectMake(20, 80, 280, 200)];
     afterPurchase.backgroundColor = [UIColor clearColor];
     afterPurchase.hidden = YES;
@@ -216,6 +214,7 @@
     
     [afterPurchase addSubview: afterPurchaseShopForMoreBtn];
     
+    [self setIssuesWithData];
 }
 
 - (void) hitIssueDescription : (NSInteger) magazineId {
@@ -236,6 +235,48 @@
     [subscribeIssueBtn setTitle: [NSString stringWithFormat: @"$%@", currentMagazine.magazinInAppSubscription] forState:UIControlStateNormal];
     
     afterPurchaseText.text = [NSString stringWithFormat:@"Your new issue of %@ is now waiting for you in your library", currentMagazine.magazinTitle];
+}
+
+// TODO
+- (void)setIssuesWithData {
+    
+    int posX = 0;
+    int posY = 540;
+    int width = 140;
+    int height = 180;
+    int deviceH = IS_IPAD ? 670 : 300;
+    int padding = IS_IPAD ? 20 : 0;
+    
+    NSLog(@"deviceH: %i", deviceH);
+    
+    for (int i = 0; i < 9; i++) {
+        
+        UIView *issueContainer = [[UIView alloc] initWithFrame:CGRectMake(posX, posY, width, height+30)];
+        
+        [scrollView addSubview: issueContainer];
+        
+        UIImageView *imagView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, width, height)];
+        imagView.image = [UIImage imageNamed:@"placeholder.png"];
+        
+        [issueContainer addSubview: imagView];
+        
+        UILabel *date = [[UILabel alloc] initWithFrame: CGRectMake(0, height+5, width, 20)];
+        date.textColor = [UIColor grayColor];
+        date.backgroundColor = [UIColor clearColor];
+        date.font = [UIFont fontWithName:@"proximanovalight" size:14.0f];
+        date.text = [NSString stringWithFormat:@"Issue- %i",i];
+        date.textAlignment = NSTextAlignmentCenter;
+        
+        [issueContainer addSubview: date];
+        
+        posX += 160+padding;
+        if(posX >= deviceH){
+            posX = 0;
+            posY += 230+padding;
+        }
+    }
+    
+    scrollView.contentSize =  CGSizeMake(deviceH, posY+210);
 }
 
 - (void)buyButtonHandler {
